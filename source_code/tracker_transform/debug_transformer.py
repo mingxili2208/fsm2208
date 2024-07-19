@@ -20,20 +20,6 @@ R_euler=[
         ]
 
 
-def euler_to_matrix(euler):
-    """
-    将欧拉角 (yxz) 转换为旋转矩阵。
-    """
-    return R.from_euler('yxz', [euler[2], euler[0], euler[1]]).as_matrix()
-
-def matrix_to_euler(matrix):
-    """
-    将旋转矩阵转换为欧拉角 (yxz)。
-    返回: [yaw, pitch, roll] 顺序的欧拉角（弧度）。
-    """
-    euler = R.from_matrix(matrix).as_euler('yxz')
-    return [euler[0], euler[2], euler[1]]
-
 def transform_to_sandbox(cam_coord,T_pos, R_euler):
     """
     转换 Vive Tracker 相机坐标系到sandbox世界坐标系。
