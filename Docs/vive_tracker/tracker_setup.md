@@ -10,8 +10,50 @@
 
 2. tracker_orientation
 
-the changes of those three should be roll=90,pitch=90
-![R_1](img/2024-07-09-17-42-57.png)
+```python
+import numpy as np
+from scipy.spatial.transform import Rotation as R
+
+#         r                   y                     p
+#np.radians(-179.4732), np.radians(-145.5065), np.radians(-90.4384)
+# 假设初始欧拉角为 (yaw1, pitch1, roll1)
+    #6                                          r                       y                   p
+   # Point([-1.3939, -1.3780, -1.0774], [np.radians(1.3633), np.radians(-55.5799), np.radians(90.2613)]),
+   # Point([-1.3939, -1.3780, -1.0774], [np.radians(-178.4583), np.radians(-146.8788), np.radians(-89.9101)]),
+   #roll=-178.4583，yaw=-146.8788，pitch=-89.9101
+   # Point([-1.3939, -1.3780, -1.0774], [np.radians(1.5277), np.radians(34.5399), np.radians(89.8219)]),
+yaw_z1, pitch_y1, roll_x1 =  -55.5799,90.2613,1.3633
+
+# 假设要旋转的欧拉角为 (yaw2, pitch2, roll2)
+yaw_z2, pitch_y2, roll_x2 = 90,0,0
+
+# 假设tracker使用Z-Y-X的欧拉角合成顺序
+rotation1 = R.from_euler('yxz', [pitch_y1,roll_x1, yaw_z1], degrees=True)
+rotation2 = R.from_euler('yxz', [pitch_y2 ,roll_x2,yaw_z2], degrees=True)
+
+# 获取旋转矩阵
+matrix1 = rotation1.as_matrix()
+matrix2 = rotation2.as_matrix()
+
+# 将两个旋转矩阵相乘
+rotated_matrix = np.dot(matrix2, matrix1)
+
+# 从旋转矩阵创建一个新的 Rotation 对象
+rotated_rotation = R.from_matrix(rotated_matrix)
+
+# 将旋转后的矩阵转换回欧拉角
+rotated_euler = rotated_rotation.as_euler('yxz', degrees=True)
+
+# 打印旋转后的欧拉角
+print("Rotated Euler Angles (yaw, pitch, roll):", rotated_euler)
+#                                             pitch                 roll                   yaw
+
+#Rotated Euler Angles (yaw, pitch, roll): [90.2613  1.3633 34.4201]
+```
+
+through this test we know that the rotation of the Euler is by the order of pitch roll yaw ---yxz (while   pitch_y, roll_x ,yaw_z in func R.from_euler)
+In this proj, we know that the tracker useing a coordinate while the y is the height, so we have to change the input order of the Euler numpy like the following codes:
+
 
 3. definition of the point_orientation
 
@@ -106,7 +148,7 @@ the following pictures are the original recordings of the points:
 
 ![6-3](img/2024-07-11-16-15-48.png)
 
-the data are as follows:
+## the data are as follows:
 
 ```python
 points_A = [
@@ -183,7 +225,7 @@ points_B = [
 
 ```
 
-the followings are the img of the points
+## the followings are the img of the points
 
 ![6-4-1](img/2024-07-15-10-28-03.png)
 
@@ -202,3 +244,49 @@ The following two pictures show what we observe when we make the viewing angle p
 ![6-5-2](img/2024-07-15-10-33-57.png)
 
 It can be seen that there is a complex rotation relationship between the two coordinate systems A and B.
+
+the result can be seen in tracker_fun_test_result.md
+
+## for more acurate we add 16 more points for positioning
+
+[x=-1.1228, y=-1.3120, z=-4.3271, roll=0.8608, yaw=-53.6911, pitch=92.4604]
+[x=-1.4121, y=-1.3142, z=-3.9064, roll=0.4280, yaw=-61.1639, pitch=92.2939]
+[x=-0.9877, y=-1.3225, z=-3.6291, roll=-6.8813, yaw=65.2652, pitch=97.5612]
+[x=-0.7143, y=-1.4099, z=-4.0170, roll=-0.1467, yaw=-64.8302, pitch=89.7913]
+
+[x=-2.2414, y=-1.3942, z=-2.6190, roll=-1.0939, yaw=-55.2967, pitch=89.3419]
+[x=-2.5227, y=-1.3905, z=-2.2047, roll=-1.0837, yaw=-55.8826, pitch=89.3874]
+[x=-2.1095, y=-1.3928, z=-1.9267, roll=-0.0076, yaw=-55.9562, pitch=89.9423]
+[x=-1.8286, y=-1.3967, z=-2.3420, roll=-0.3516, yaw=-61.4611, pitch=89.5441]
+
+[x=1.0222, y=-1.4046, z=-2.8521, roll=-0.1376, yaw=-60.9930, pitch=90.1337]
+[x=0.7512, y=-1.3999, z=-2.4198, roll=-1.7505, yaw=-65.6642, pitch=88.0347]
+[x=1.1732, y=-1.4018, z=-2.1531, roll=-0.6117, yaw=-59.5986, pitch=88.9130]
+[x=1.4524, y=-1.4044, z=-2.5697, roll=-0.4654, yaw=-58.3503, pitch=89.0828]
+
+[x=-0.0673, y=-1.3908, z=-1.1899, roll=-0.8849, yaw=-56.3085, pitch=89.3281]
+[x=-0.3366, y=-1.3817, z=-0.7836, roll=-0.3274, yaw=-54.8635, pitch=89.7061]
+[x=0.0801, y=-1.3763, z=-0.5090, roll=-0.5654, yaw=-55.0822, pitch=89.4644]
+[x=0.3583, y=-1.3796, z=-0.9285, roll=-2.0204, yaw=-54.3347, pitch=88.1416]
+
+[0.8,0,-0.5]
+[1.3,0,-0.5]
+[1.3,0,-1]
+[0.8,0,1]
+
+[2.8,0,-0.5]
+[3.3,0,-0.5]
+[3.3,0,-1]
+[2.8,0,-1]
+
+[2.8,0,-3.1]
+[3.3,0,-3.1]
+[3.3,0,-3.6]
+[2.8,0,-3.1]
+
+[0.8,0,-3.1]
+[1.3,0,-3.1]
+[1.3,0,-3.6]
+[0.8,0,-3.6]
+
+
