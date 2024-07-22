@@ -148,11 +148,11 @@ For the sake of consistency, we swap the y and z of the sandbox, that is, use y 
 ![5-2](img/2024-07-19-17-38-54.png)
 (Sandbox coordinate system sketch, which will be replaced by CAD drawing later)
 
-## Benchmark
+## Benchmark for the position
 
 1. Test the coordinate correspondence of the tracker in the steamvr and SandBox coordinate systems
 
-   all the following disgree is describing the derictions of the the tracker_coordinate
+    all the following disgree is describing the derictions of the the tracker_coordinate
 
     1.1. y=0,p=0,r=0
 
@@ -178,7 +178,6 @@ For the sake of consistency, we swap the y and z of the sandbox, that is, use y 
 
     The method mentioned above attempts to fit the overall conversion relationship between the two coordinate systems (x, y, z). However, after multiple tests, there is a measurement error of 0.05m in the y-axis direction, and the Sandbox itself is not flat and it is difficult to measure the height difference, so the above solution was abandoned.
 
-
     ![1-7](img/2024-07-15-10-28-03.png)
 
     for red is tracker, blue is sandbox
@@ -196,6 +195,93 @@ For the sake of consistency, we swap the y and z of the sandbox, that is, use y 
     ![1-12](img/2024-07-15-10-33-57.png)
 
     It can be seen that there is a complex rotation relationship between the two coordinate systems A and B.
+
+2. Measurement Errors
+
+    2.1  Systematic Errors
+
+    (1)  Method error
+    It is difficult to obtain more accurate dimensions with existing tools 
+    (2) Instrument error
+    The SandBox platform itself is not a standard square, and there are errors in the measurement based on the edge of the platform. For example, there is a 0.02m difference between the two ends of one side; the height of the platform varies.
+
+    2.2 Random Errors
+
+    When using the tracker for positioning, the same point on the SandBox has a random error of 0.02m on the xoz plane and a random error of 0.05-0.08m on the y-axis.
+    Below are 10 measurements of the same point ([0.217, 0, -2.05]) at different times:
+    (in order of x,y,z while y is the upwards)
+
+    ```python
+    [0.4880, -1.4440, -3.9110]
+    [0.4837, -1.3233, -3.9461]
+    [0.4799, -1.3278, -3.9353]
+    [0.4918, -1.2814, -3.9277]
+    [0.4977, -1.3418, -3.9644]
+    [0.4840, -1.3527, -3.9304]
+    [0.4959, -1.3791, -3.9563]
+    [0.4751, -1.3617, -3.9276]
+    [0.4715, -1.2578, -3.9575]
+    [0.4827, -1.3510, -3.9244]
+    ```
+
+    We can see that when there is no displacement, there are random errors in x, y, and z, among which the y-axis has the largest error, and an error of 0.1m is absolutely unacceptable. Therefore, it is decided to manually set the measurement value in the y-axis direction to 0 to set the y-axis to remain unchanged.
+
+## Benchmark for the orientation
+
+1. orientation data collection
+
+    In order to standardize the measurement angles as much as possible, a proposed device as shown in the figure was designed (if possible, it should be replaced by a 3D print later)
+
+    ![BO1-0](img/2024-07-22-11-24-27.png)
+
+    ![BO1-1](img/2024-07-22-11-21-00.png)
+
+    ![BO1-2](img/2024-07-22-11-21-34.png)
+
+    ![BO1-3](img/2024-07-22-11-21-54.png)
+
+    As mentioned in **the fourth point of the tracker section**, The angle shown in the figure below is the zero point of yaw
+
+    ![BO1-4](img/2024-07-22-11-24-48.png)
+
+2. Measurement Errors
+
+    2.1.  System Errors
+
+    (1)  Method errors
+
+    Similar to the situation when measuring position, due to the low precision of the measurement method itself, there is a certain measurement error when obtaining the measurement result.
+
+    2.2.  Random Errors
+
+    As shown in the following data, there is a measurement error of 1-2 degrees during measurement, but it is generally within the acceptable range.
+
+    ```python
+    # 6 measurements in 6 identical directions at 2 different points.
+
+    ###1
+    roll=-0.2233, yaw=-54.7451, pitch=90.9923
+    roll=-0.7151, yaw= 34.1769, pitch=90.2408
+    roll= 0.8854, yaw=-57.9565, pitch=90.8509
+    roll= 2.9338, yaw=-57.1688, pitch=92.8503   #Singular value point
+    roll=-0.4266, yaw=-56.7461, pitch=90.9467
+    roll= 1.7544, yaw=-54.9754, pitch=91.5219
+    ###2
+    roll= 1.1904, yaw=-55.3863, pitch=90.2913
+    roll= 0.2682, yaw=-57.8034, pitch=89.8852
+    roll= 0.3054, yaw=-57.6427, pitch=89.3120
+    roll=-0.2071, yaw=-58.1462, pitch=88.9853
+    roll= 0.9044, yaw=-57.1096, pitch=90.8669
+    roll= 0.9196, yaw=-56.6877, pitch=90.9650
+    ```
+
+    2.3.  Algorithm Error
+
+    Since the data output of vive_tracker is expressed in Euler angles, when converting to rotation matrix for calculation and converting from rotation matrix to Euler angle, it is inevitable to encounter pitch=90, which makes the rotation matrix unable to clearly distinguish the effects of yaw and roll.
+
+    More importantly, due to the special structure of the tracker and the setting in this scenario, the best signal reception effect can be obtained when pitch=90 (all measurement points of the tracker are facing the signal source), so the above problem is unavoidable.
+
+    **In fact, it can be foreseen that in this task we are mainly concerned about the change of yaw angle; therefore, in order to avoid the above problem, this solution manually sets roll and pitch to 0; only fits the yaw angle.**
 
 ## transform function
 
@@ -234,6 +320,22 @@ Only key function codes are included here. For test and deployment codes, please
 
 ```
 
+## Test and Verify
+
+the results can be seen in the file named `transform_release_v0.2.ipynb`, the main part as shown below:
+
+RMSE of Position Transformation
+
+![T1](img/2024-07-22-11-56-20.png)
+
+RMSE of Orientation Transformation
+
+![T2](img/2024-07-22-11-56-40.png)
+
+Verification of un-marked positions
+
+![T3](img/2024-07-22-12-32-54.png)
+
 ## Operation method record
 
 1. debug_tracker
@@ -248,7 +350,7 @@ Only key function codes are included here. For test and deployment codes, please
 
     # 2. for get the pose of the tracker we need to open the python code
 
-    cd ./Workspace/Carla/op_carla/op_bridge/op_bridge/fsm_lab_simulation/testing_scripts/
+    cd ~/Workspace/Carla/op_carla/op_bridge/op_bridge/fsm_lab_simulation/testing_scripts/
     python3 debug_tracker.py
 
     ```
@@ -263,8 +365,7 @@ Only key function codes are included here. For test and deployment codes, please
 
     # 2. for get the pose of the tracker we need to open the python code
 
-    cd ./Workspace/Carla/op_carla/op_bridge/op_bridge/fsm_lab_simulation/testing_scripts/
+    cd ~/Workspace/Carla/op_carla/op_bridge/op_bridge/fsm_lab_simulation/testing_scripts/
     python3 debug_transform.py
 
     ```
- 
