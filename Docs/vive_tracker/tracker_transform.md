@@ -127,19 +127,19 @@ we need to transform the coordinates of tracker from steamvr to sandbox, so we h
 
 4. definition of the point_orientation
 
-    we need to define the coordinate_system of tracker and the orientation of how to turn it.~~
-    ~~The guidelines have given a defination of tracker_coordinate as the picture shows
+    we need to define the coordinate_system of tracker and the orientation of how to turn it.
+
+    The guidelines have given a defination of tracker_coordinate as the picture shows
 
     ![4-1](img/2024-07-10-09-57-36.png)
 
-    we may use this as the definition of the tracker_coordinate
+    we may use this as the definition of the tracker_coordinate ,and define that :
 
-    and define that :
     **The tracker's z-axis is parallel to the SandBox's z-axis, which is 0 degrees.**
 
 ## SandBox_coordinate
 
-the coordinate of sandbox is also a right-handed system, however it been designed as use z as the upward.
+the coordinate of sandbox is also a right-handed system, however it been designed as using z axis as the upward.
 
 For the sake of consistency, we swap the y and z of the sandbox, that is, use y to represent upward.
 
@@ -150,24 +150,23 @@ For the sake of consistency, we swap the y and z of the sandbox, that is, use y 
 
 ## Benchmark for the position
 
-1. Test the coordinate correspondence of the tracker in the steamvr and SandBox coordinate systems
+1. Test the coordinate correspondence of the tracker in the steamvr and SandBox coordinate systems.
 
-    all the following disgree is describing the derictions of the the tracker_coordinate
+    all the following disgree is describing the derictions of the the tracker_coordinate.
 
-    1.1. y=0,p=0,r=0
+    1.1. y=0,p=0,r=0;
 
-    the axis_orientation of the tracker_coordinate should be the same with the sandbox_coordinate
-    orientation itself
+    the axis_orientation of the tracker_coordinate should be the same with the sandbox_coordinate orientation itself
 
     ![B1.1-1](img/2024-07-10-17-59-59.png)
     ![B1.1-2](img/2024-07-11-16-15-01.png)
 
-    1.2. y=-90,p=30,r=0
+    1.2. y=-90,p=30,r=0;
 
     ![B1.2-1](img/2024-07-10-17-46-11.png)
     ![B1.2-2](img/2024-07-11-16-15-23.png)
 
-    1.3. y=30,p=0,r=-20
+    1.3. y=30,p=0,r=-20;
 
     ![B1.3-1](img/2024-07-10-17-47-00.png)
     ![B1.3-2](img/2024-07-11-16-15-48.png)
@@ -180,7 +179,7 @@ For the sake of consistency, we swap the y and z of the sandbox, that is, use y 
 
     ![1-7](img/2024-07-15-10-28-03.png)
 
-    for red is tracker, blue is sandbox
+    for red is tracker in steamvr, blue is tracker in sandbox;
 
     ![1-8](img/2024-07-15-10-29-19.png)
 
@@ -201,11 +200,11 @@ For the sake of consistency, we swap the y and z of the sandbox, that is, use y 
     2.1  Systematic Errors
 
     (1)  Method error
-    It is difficult to obtain more accurate dimensions with existing tools 
-    (2) Instrument error
+    It is difficult to obtain more accurate dimensions with existing tools.
+    (2)  Instrument error
     The SandBox platform itself is not a standard square, and there are errors in the measurement based on the edge of the platform. For example, there is a 0.02m difference between the two ends of one side; the height of the platform varies.
 
-    2.2 Random Errors
+    2.2  Random Errors
 
     When using the tracker for positioning, the same point on the SandBox has a random error of 0.02m on the xoz plane and a random error of 0.05-0.08m on the y-axis.
     Below are 10 measurements of the same point ([0.217, 0, -2.05]) at different times:

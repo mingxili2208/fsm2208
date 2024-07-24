@@ -21,7 +21,8 @@ autoware
 2. apollo using CyberRT as Middleware.
    ![S-1](img/2024-07-22-16-51-17.png)
 
-    using coroutine Realize close integration of scheduling and algorithm business logic
+    using coroutine Realize close integration of
+     scheduling and algorithm business logic
 
 3. ros2 provide DDS as coroutine
 
