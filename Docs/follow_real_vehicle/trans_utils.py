@@ -304,10 +304,7 @@ def carla_location_to_pose(carla_location):
 
 
 def ros_point_to_carla_location(ros_point):
-    ##########for tracker
-    return carla.Location(ros_point.x, -ros_point.z, ros_point.y)
-    #########################################################################################
-    #return carla.Location(ros_point.x, -ros_point.y, ros_point.z)
+    return carla.Location(ros_point.x, -ros_point.y, ros_point.z)
 
 
 def RPY_to_carla_rotation(roll, pitch, yaw):
@@ -369,7 +366,7 @@ def ros_pose_to_transform_matrix(msg):
 
 def RPY2quaternion(roll, pitch, yaw):
     """
-    transform eluer to quaternion
+    transform steamvr eluer to quaternion
     parameter:
         roll
         pitch

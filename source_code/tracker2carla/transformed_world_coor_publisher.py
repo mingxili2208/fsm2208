@@ -12,18 +12,17 @@ from geometry_msgs.msg import PoseStamped, Pose, Point, Quaternion
 from std_msgs.msg import Header
 from rclpy.node import Node 
 
-HOST = "localhost"
-PORT = 2000
-VEHICLE_NAME = "follow-adtruck"
+VEHICLE_NAME = "follow_adtruck"
 
 class TransformedSandBoxCoorPublisherNode(Node):
     def __init__(self):
         #self.node = rclpy.create_node("transformed_SandBox_coordinate_publisher_node")
         super().__init__("transformed_SandBox_coordinate_publisher_node")
         self.publisher = self.create_publisher(
-            PoseStamped, f"/real_world/{VEHICLE_NAME.replace('-', '_')}/transformed", 1
+            PoseStamped, f"/real_world/{VEHICLE_NAME}/transformed", 1
         )
-        self.timer = self.create_timer(0.01, self.publish_transformed_coor)
+        # FOR TESTING set timer as 1 
+        self.timer = self.create_timer(1, self.publish_transformed_coor)
         self.sandbox_transformer=VR2SandBoxTransformer()
         # Get the initial pose.
         
@@ -36,7 +35,10 @@ class TransformedSandBoxCoorPublisherNode(Node):
         header.frame_id = "real_world"
 
         pose = Pose()
-        pose.position = Point(x=transformed_position[0], y=transformed_position[1], z=transformed_position[2])
+        # transformed_position is 0---x,1---y,2---z; while y is the upwards; 
+        # for unify we set ros2_coor as 0---x,1---y,2---z while z is upwards;
+        # which means z_ros2_coor = y_transformed_position  
+        pose.position = Point(x=transformed_position[0], y=transformed_position[2], z=transformed_position[1])
         pose.orientation = Quaternion(
                 x=trans.RPY2quaternion(0,0,transformed_yaw)[0],
                 y=trans.RPY2quaternion(0,0,transformed_yaw)[1],
