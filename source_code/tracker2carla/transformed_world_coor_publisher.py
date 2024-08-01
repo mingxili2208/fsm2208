@@ -22,7 +22,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
             PoseStamped, f"/real_world/{VEHICLE_NAME}/transformed", 1
         )
         # FOR TESTING set timer as 1 
-        self.timer = self.create_timer(1, self.publish_transformed_coor)
+        self.timer = self.create_timer(0.1, self.publish_transformed_coor)
         self.sandbox_transformer=VR2SandBoxTransformer()
         # Get the initial pose.
         
@@ -50,7 +50,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
 
         self.publisher.publish(msg)
         self.get_logger().info(
-            f"Transformed Published! [{msg.pose.position.x}, {msg.pose.position.y}, {msg.pose.position.z}, {msg.pose.orientation.w}, {msg.pose.orientation.x}, {msg.pose.orientation.y}, {msg.pose.orientation.z}]"
+            f"\n Transformed Published! [{msg.pose.position.x}, {msg.pose.position.y}, {msg.pose.position.z}, {msg.pose.orientation.w}, {msg.pose.orientation.x}, {msg.pose.orientation.y}, {msg.pose.orientation.z}]"
         )
 
 

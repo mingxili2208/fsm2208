@@ -95,25 +95,37 @@ class CarlaCoordinatorTest(Node):
         
         pose = data.pose
         self.get_logger().debug(f"pose is : {pose}")
-        roll, pitch, yaw = quat2euler([
-                pose.orientation.w,
-                pose.orientation.x,
-                pose.orientation.y,
-                pose.orientation.z,
-            ])
-        self.get_logger().debug(f"\n yaw is : {yaw}")
-        carla_pose_transform=carla.Transform(self.ros_point_to_carla_location(pose.position), carla.Rotation(0, yaw-90,0 ))
-
+        carla_pose_transformed=self.transform_coordinates_from_sandbox2carl(pose)
         #########################################
-        print(carla_pose_transform)
+        #print(carla_pose_transformed)
         ##########################################
         if self.ego_vehicle is not None:
-            self.ego_vehicle.set_transform(carla_pose_transform)
+            self.ego_vehicle.set_transform(carla_pose_transformed)
         else:
             self.get_logger().error(f"[VehicleFollower] Can't find Ego Vehicle named {self.agent_role_name}!! Make sure it is spawned!")
             self.stop()  # 停止 ROS 节点
             raise RuntimeError(f"Can't find Ego Vehicle named {self.agent_role_name}!! Make sure it is spawned!")  # 抛出异常
    
+    def transform_coordinates_from_sandbox2carl(self,pose):
+        pose.position.z=0.0016
+        original_point=np.array([pose.position.x, pose.position.y, pose.position.z])
+        homogeneous_point = np.append(original_point, 1)
+        transformed_homogeneous_point = self.similarity_matrix @ homogeneous_point
+        transformed_point = transformed_homogeneous_point[:3] / transformed_homogeneous_point[3]
+        x=transformed_point[0]
+        y=transformed_point[1]
+        z=transformed_point[2]
+        roll, pitch, yaw = quat2euler([
+        pose.orientation.w,
+        pose.orientation.x,
+        pose.orientation.y,
+        pose.orientation.z,
+            ])
+        yaw=math.degrees(yaw)-90
+        self.get_logger().info(f"x: {x}, y: {y}, z:{z},yaw: {yaw},")
+        new_pose=carla.Transform(carla.Location(x, y, z), carla.Rotation(0, yaw,0 ))
+        return new_pose
+    
     def test_set_coordinates_carla_transformed_from_sandbox(self,x,y,z,yaw):
         """
         set the transformed coordinates(from sandbox 2 carla & Rotate, translate, scale)
@@ -161,7 +173,7 @@ class CarlaCoordinatorTest(Node):
         self.get_logger().info(f"location: x={x}, y={y}, z={z};\n rotation: pitch={pitch}, yaw={yaw}, roll={roll}")
 
     
-    def ros_point_to_carla_location(ros_point):
+    def ros_point_to_carla_location(self,ros_point):
         return carla.Location(ros_point.x, ros_point.y, ros_point.z)
     
     def run(self):

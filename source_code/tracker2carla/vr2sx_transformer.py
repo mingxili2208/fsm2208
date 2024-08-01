@@ -92,7 +92,7 @@ class VR2SandBoxTransformer:
             print(f"\r Transformed position in Sandbox_coordinate: [x={transformed_position[0]:.4f}, y={transformed_position[1]:.4f}, z={transformed_position[2]:.4f}, yaw={np.rad2deg(transformed_yaw):.4f}]", end='')
             return transformed_position, transformed_yaw      
         except Exception:
-            logging.info('!!!!!!!!!!!! get_transformed_coor error!')
+            logging.fatal('!!!!!!!!!!!! get_transformed_coor error!')
 
 
 
