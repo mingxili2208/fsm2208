@@ -70,6 +70,8 @@ class CarlaCoordinatorTest(Node):
             self.get_logger().error(f"[VehicleFollower] Can't find Ego Vehicle named {self.agent_role_name}!! Make sure it is spawned!")
             self.stop()
             return  # 停止节点初始化
+        self.ego_vehicle.set_simulate_physics(False) 
+     
         self.similarity_matrix = np.array([[ 3.27650037e+01, -9.68207899e-01,  0.00000000e+00, -5.41650474e+01],
                              [ 9.68207899e-01,  3.27650037e+01,  0.00000000e+00,  7.28873065e+01],
                              [ 0.00000000e+00,  0.00000000e+00,  3.27793059e+01, -5.08468894e-02],

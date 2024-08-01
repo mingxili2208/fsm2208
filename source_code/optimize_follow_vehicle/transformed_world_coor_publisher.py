@@ -6,7 +6,8 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import sys
 sys.path.append("/home/jarvislee-carla/Workspace/Carlas/op_carla/op_bridge/op_bridge/fsm_lab_simulation")
 import rclpy
-import trans_utils as trans
+import math
+
 from vr2sx_transformer import VR2SandBoxTransformer
 from geometry_msgs.msg import PoseStamped, Pose, Point, Quaternion
 from std_msgs.msg import Header
@@ -28,7 +29,28 @@ class TransformedSandBoxCoorPublisherNode(Node):
         self.previous_position=None
         self.previous_yaw = None
         # Get the initial pose.
-        
+    def RPY2quaternion(self, roll, pitch, yaw):
+        """
+        transform eluer to quaternion
+        parameter:
+            roll
+            pitch
+            yaw
+        return (x, y, z, w)
+        """
+        cy = math.cos(yaw * 0.5)
+        sy = math.sin(yaw * 0.5)
+        cp = math.cos(pitch * 0.5)
+        sp = math.sin(pitch * 0.5)
+        cr = math.cos(roll * 0.5)
+        sr = math.sin(roll * 0.5)
+
+        w = cr * cp * cy + sr * sp * sy
+        x = sr * cp * cy - cr * sp * sy
+        y = cr * sp * cy + sr * cp * sy
+        z = cr * cp * sy - sr * sp * cy
+
+        return x, y, z, w    
     
     def publish_transformed_coor(self):
         
@@ -56,10 +78,10 @@ class TransformedSandBoxCoorPublisherNode(Node):
         # which means z_ros2_coor = y_transformed_position  
         pose.position = Point(x=transformed_position[0], y=transformed_position[2], z=transformed_position[1])
         pose.orientation = Quaternion(
-                x=trans.RPY2quaternion(0,0,transformed_yaw)[0],
-                y=trans.RPY2quaternion(0,0,transformed_yaw)[1],
-                z=trans.RPY2quaternion(0,0,transformed_yaw)[2],
-                w=trans.RPY2quaternion(0,0,transformed_yaw)[3]
+                x=self.RPY2quaternion(0,0,transformed_yaw)[0],
+                y=self.RPY2quaternion(0,0,transformed_yaw)[1],
+                z=self.RPY2quaternion(0,0,transformed_yaw)[2],
+                w=self.RPY2quaternion(0,0,transformed_yaw)[3]
         )
 
         msg = PoseStamped(header=header, pose=pose)
