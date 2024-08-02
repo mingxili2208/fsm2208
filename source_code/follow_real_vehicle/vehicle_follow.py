@@ -110,6 +110,7 @@ class CarlaVehicleFollowRCHandler(Node):
             raise RuntimeError(f"Can't find Ego Vehicle named {self.agent_role_name}!! Make sure it is spawned!")  # 抛出异常
    
     def transform_coordinates_from_sandbox2carl(self,pose):
+        
         pose.position.z=0.0016
         original_point=np.array([pose.position.x, pose.position.y, pose.position.z])
         homogeneous_point = np.append(original_point, 1)
