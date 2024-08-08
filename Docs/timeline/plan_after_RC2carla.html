@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Preliminary Requirements Analysis&comma; Technical Roadmap Analysis and timeline planning for Carla2RC</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="preliminary-requirements-analysis-technical-roadmap-analysis-and-timeline-planning-for-carla2rc">Preliminary Requirements Analysis, Technical Roadmap Analysis and timeline planning for Carla2RC</h1>
+<h2 id="requirements-analysis">Requirements Analysis</h2>
+<h3 id="business-process-description">Business Process Description</h3>
+<p>It is tentatively planned to be implemented in three steps.</p>
+<p>Step1. Use Python to implement a control script that outputs the movement command message of the Ackermann model vehicle; realize the script remote control of the RC.</p>
+<p>Step2. Synchronize the movement control command of the car in carla when using pygame to control the car to RC; realize the synchronous remote control of RC and carla.</p>
+<p>Step3. Build an autonomous driving model in carla, and automatically generate movement control commands through the autonomous driving algorithm and synchronize them to RC; realize carla's synchronous control of the simulated car and RC.</p>
+<h3 id="user-cases-description">User Cases Description</h3>
+<p>In step 1, users can use scripts to achieve remote control similar to the front and back + left and right steering of the remote control.</p>
+<p>In step 2, users can use pygame to achieve synchronous control of the remote control car and the simulation car in a similar way to the front and back + left and right steering of the remote control.</p>
+<p>In step 3, users can set a point in the carla simulation map, and the simulation car and the RC will reach the specified location through automatic driving with the same posture sequence (trajectory).</p>
+<h3 id="functional-requirements">Functional requirements</h3>
+<p>As Module division</p>
+<p>The following four modules are required.</p>
+<ul>
+<li>
+<p><strong>Map</strong></p>
+<ul>
+<li>Rasterized city maps as a reference for positioning and navigation</li>
+</ul>
+</li>
+<li>
+<p><strong>Location</strong></p>
+<ul>
+<li>RC coordinates are synchronized to the navigation stack</li>
+</ul>
+</li>
+<li>
+<p><strong>Path palnning</strong></p>
+<ul>
+<li>Global path planning
+<ul>
+<li>The shortest path from the current point to the target point that meets the vehicle motion requirements.</li>
+</ul>
+</li>
+<li>Path planning
+<ul>
+<li>Real-time obstacle avoidance.</li>
+<li>Intercept the global planning fragment and calculate the route that is closest to the actual movement that the car can complete.</li>
+<li>Pose Tree; Calculate the position states at multiple specific time points to achieve the motion trajectory as much as possible.</li>
+</ul>
+</li>
+<li>Movement instructions</li>
+</ul>
+</li>
+<li>
+<p><strong>Communication forwarding</strong></p>
+</li>
+</ul>
+<h3 id="non-functional-requirements">Non-functional requirements</h3>
+<ol>
+<li>realtime</li>
+<li>reliable</li>
+</ol>
+<h2 id="technical-roadmap-analysis">Technical Roadmap Analysis</h2>
+<h3 id="module-division">Module division</h3>
+<p><strong>1. Map Module:</strong></p>
+<ul>
+<li><strong>Function:</strong>
+<ul>
+<li>Load and manage rasterized city maps.</li>
+<li>Provide map data to other modules, mainly drivable areas (obstacle information, road network).</li>
+</ul>
+</li>
+<li><strong>Input:</strong> Map file (e.g. <code>.pgm</code> or <code>.png</code> format).</li>
+<li><strong>Output:</strong> Map data (e.g. ROS <code>nav_msgs/OccupancyGrid</code> message).</li>
+</ul>
+<p><strong>2. Localization Module:</strong></p>
+<ul>
+<li><strong>Function:</strong>
+<ul>
+<li>Get the real-time position information of the RC car (through the vive positioning sensor).</li>
+<li>Synchronize the coordinate system of the RC car with the coordinate system of the navigation stack.</li>
+</ul>
+</li>
+<li><strong>Input:</strong> Sensor data (x,y,z,yaw) of the RC car.</li>
+<li><strong>Output:</strong> The pose information of the RC car in the coordinate system of the navigation stack (e.g. ROS <code>geometry_msgs/PoseStamped</code> message).</li>
+</ul>
+<p><strong>3. Path Planning Module:</strong></p>
+<ul>
+<li><strong>Function:</strong>
+<ul>
+<li><strong>Global Path Planning:</strong> Based on the map data and the target point, plan the shortest path from the starting point to the target point and satisfy the vehicle motion constraints.</li>
+<li><strong>Local Path Planning:</strong> Based on the sensor information, the global path and the vehicle status, perform real-time obstacle avoidance and generate executable local paths.</li>
+<li><strong>Pose Tree:</strong> Calculate the pose states at multiple specific time points to achieve the predetermined motion trajectory as much as possible.</li>
+</ul>
+</li>
+<li><strong>Input:</strong>
+<ul>
+<li>Map data</li>
+<li>Target point</li>
+<li>Vehicle status information</li>
+<li>Sensor data</li>
+</ul>
+</li>
+<li><strong>Output:</strong>
+<ul>
+<li>Global path</li>
+<li>Local path</li>
+<li>Pose tree</li>
+</ul>
+</li>
+</ul>
+<p><strong>4. Motion Instruction Module:</strong></p>
+<ul>
+<li><strong>Function:</strong>
+<ul>
+<li>Convert the path or pose tree generated by the path planning module into motion instructions (such as speed, steering angle) that can be executed by the RC car.</li>
+</ul>
+</li>
+<li><strong>Input:</strong>
+<ul>
+<li>Path</li>
+<li>Pose tree</li>
+</ul>
+</li>
+<li><strong>Output:</strong>
+<ul>
+<li>RC car control instructions (such as speed, steering angle).</li>
+</ul>
+</li>
+</ul>
+<p><strong>5. Communication module:</strong></p>
+<ul>
+<li>
+<p><strong>Function:</strong></p>
+<ul>
+<li>Responsible for the communication between Carla and ROS, RC, and the communication between ROS nodes</li>
+<li>Communication between VIVE and ROS, mainly coordinates</li>
+<li>Communication between ROS and Carla includes coordinates, movement instructions, control instructions, etc.</li>
+<li>Communication between ROS and RC, mainly movement instructions</li>
+<li>Forward information between RC and Carla through ROS.</li>
+</ul>
+</li>
+<li>
+<p><strong>Input:</strong> Map file (such as <code>.pgm</code> or <code>.png</code> format).</p>
+</li>
+<li>
+<p><strong>Output:</strong> Map data (such as ROS <code>nav_msgs/OccupancyGrid</code> message).</p>
+</li>
+</ul>
+<p><strong>Relationships between modules:</strong></p>
+<ol>
+<li>The map module provides map data to the path planning module.</li>
+<li>The positioning module provides the RC car pose information to the path planning module.</li>
+<li>The path planning module generates global paths, local paths, and pose trees based on map data, target points, vehicle status information, and sensor data.</li>
+<li>The motion instruction module converts the output of the path planning module into control instructions for the RC car.</li>
+<li>The communication module is responsible for message forwarding between various modules and different hardware</li>
+</ol>
+<h3 id="data-flow">Data Flow</h3>
+<h3 id="key-technical-difficulties-and-solutions">Key technical difficulties and solutions</h3>
+<h2 id="timeline-planning">Timeline Planning</h2>
+<h3 id="specific-task-decomposition">Specific Task decomposition</h3>
+<p><strong>step1</strong>:(1-2 weeks)</p>
+<ol>
+<li>Understand the robot's mobile control algorithm and remote control communication</li>
+<li>Develop RC car control scripts to achieve basic motion control (forward, backward, turn)</li>
+<li>Test control effects and optimize.</li>
+</ol>
+<p><strong>step2</strong>:</p>
+<ol>
+<li>Analyze, design and implementing control prototype of the solution of synchronous control of carla and rc(1-2 weeks)</li>
+<li>Testing and iterative optimization(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≤</span></span></span></span> 1 weeks)</li>
+</ol>
+<p><strong>step3</strong>:</p>
+<ol>
+<li>Analyze, design and implement how to provide map and navigation services(1-2 weeks)</li>
+<li>Navigation stack construction and testing(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≤</span></span></span></span> 1 weeks)</li>
+<li>Simultaneous testing and optimization(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≤</span></span></span></span> 1 weeks)</li>
+</ol>
+<h3 id="milestone-event">Milestone Event</h3>
+<ol>
+<li>Script remote control test.(ddl:12/08---16/08)</li>
+<li>Draft architecture design of step2.(ddl:16/08---23/08)</li>
+<li>Prototype of step2.(ddl:23/08---29/08)</li>
+<li>Draft architecture design of step3.(ddl:29/08---06/09)</li>
+<li>Prototype of step3.(ddl:06/09---23/09)</li>
+</ol>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
