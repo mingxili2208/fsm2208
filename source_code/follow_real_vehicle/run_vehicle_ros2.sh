@@ -49,11 +49,13 @@ then
         echo "Apply the official map in Carla Simulator."
     fi
     ros2 run rviz2 rviz2 -d ${OP_AGENT_ROOT}/rviz/carla_autoware.rviz -s ${OP_AGENT_ROOT}/rviz/image/autoware.png & 
-    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/world_launcher.py
-    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/carla_vehicle_follow_RC/launch/launch_vehicle.py
+    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/world_launcher.py &
+    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/carla_vehicle_follow_RC/launch/launch_vehicle.py &
+    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/carla_vehicle_follow_RC/transformed_world_coor_publisher.py &
+    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/carla_vehicle_follow_RC/vehicle_follow_handler.py &
 else
-    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/world_launcher.py
-    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/carla_vehicle_follow_RC/launch/launch_vehicle.py
-    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/carla_vehicle_follow_RC/transformed_world_coor_publisher.py
-    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/carla_vehicle_follow_RC/vehicle_follow_handler.py
+    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/world_launcher.py &
+    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/carla_vehicle_follow_RC/launch/launch_vehicle.py &
+    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/carla_vehicle_follow_RC/transformed_world_coor_publisher.py &
+    python3 ${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/carla_vehicle_follow_RC/vehicle_follow_handler.py &
 fi

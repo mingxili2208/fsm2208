@@ -1,6 +1,6 @@
 # draft
 
-python编写脚本通过串口发送2.4G信号给遥控车
+python编写脚本通过串口发送2.4G信号给遥控车  ps2 It is a variant of spi
 
 rc小车是通过2.4GHz连接的
 
@@ -25,7 +25,6 @@ rc小车是通过2.4GHz连接的
   *   09     data   左边摇杆  0x00 = 上    0xff = 下
   * 
 **/
-
 ```
 
 ### Remote controller sender way
