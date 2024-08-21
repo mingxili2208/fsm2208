@@ -27,6 +27,17 @@
 #include "ax_robot.h"
 
 /**
+  * @brief  2.4G cmd transmit handler
+  * @param	NULL
+  * @return NULL
+**/
+void AX_CIL_Remote(void)
+{
+
+}
+
+
+/**
   * @简  述  处理PS2手柄控制命令
   * @参  数  无
   * @返回值  无
@@ -36,19 +47,21 @@ void AX_CTL_Ps2(void)
 	static uint8_t btn_select_flag = 0;
 	static uint8_t btn_joyl_flag = 0;
 	static uint8_t btn_joyr_flag = 0;
-	static uint8_t btn_l1_flag = 0;
-	static uint8_t btn_l2_flag = 0;
-	
-	static uint8_t  speed = 4;
-	static uint16_t joint_spd = 15;  //云台关节速度
+	static uint8_t speed = 4;
 	
 	//红绿灯模式下，执行控制操作
 	if(my_joystick.mode ==  0x73)
 	{
 		R_Vel.TG_IX = (int16_t)(speed*(0x80 - my_joystick.RJoy_UD));
 		R_Vel.TG_IY = (int16_t)(speed*(0x80 - my_joystick.RJoy_LR));
-		ax_akm_angle = (int16_t)(4*(0x80 - my_joystick.LJoy_LR));
 
+		//如果是阿克曼机器人
+		#if (ROBOT_TYPE == ROBOT_AKM)
+			ax_akm_angle = (int16_t)(4*(0x80 - my_joystick.LJoy_LR));
+		#else
+			R_Vel.TG_IW = (int16_t)(4*speed*(0x80 - my_joystick.LJoy_LR));
+		#endif	
+		
 		//SELECT按键，切换RGB灯效模式
 		if(my_joystick.btn1 & PS2_BT1_SELECT)
 		{
@@ -123,82 +136,8 @@ void AX_CTL_Ps2(void)
 				btn_joyr_flag = 0;
 			}
 		}
-		
-		//左右按键控制关节1
-		if(my_joystick.btn1 & PS2_BT1_LEFT)
-		{
-			ax_joint_angle[0] += joint_spd; 
-		}
-		else if(my_joystick.btn1 & PS2_BT1_RIGHT)
-		{
-			ax_joint_angle[0] -= joint_spd; 
-		}
-			
-		//上下按键控制关节2
-		if(my_joystick.btn1 & PS2_BT1_DOWN)
-		{
-			ax_joint_angle[1] += joint_spd; 
-		}
-		else if(my_joystick.btn1 & PS2_BT1_UP)
-		{
-			ax_joint_angle[1] -= joint_spd; 
-		}
-		
-		//L1按键，机械臂加速
-		if(my_joystick.btn2 & PS2_BT2_L1)
-		{
-			btn_l1_flag = 1;
-		}
-		else
-		{
-			if(btn_l1_flag)
-			{
-				//执行动作，
-				if(joint_spd < 25)
-				{
-					joint_spd =  joint_spd + 5;
-				}
-				else
-				{
-					joint_spd = 25;
-					
-					//蜂鸣器鸣叫提示
-					ax_beep_ring = BEEP_SHORT;					
-				}
-				
-				//复位标记
-				btn_l1_flag = 0;
-			}
-		}
-		
-		//L2按键，机械臂减速
-		if(my_joystick.btn2 & PS2_BT2_L2)
-		{
-			btn_l2_flag = 1;
-		}
-		else
-		{
-			if(btn_l2_flag)
-			{
-				//执行动作
-				if(joint_spd > 5)
-				{
-					joint_spd =  joint_spd -5;
-				}
-				else
-				{
-					joint_spd = 5;
-					
-					//蜂鸣器鸣叫提示
-					ax_beep_ring = BEEP_SHORT;
-				}
-				
-				//复位标记
-				btn_l2_flag = 0;
-			}
-		}
 	}
-}	
+}
 
 /**
   * @简  述  处理手机APP控制命令
