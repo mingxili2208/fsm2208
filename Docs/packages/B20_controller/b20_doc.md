@@ -32,135 +32,6 @@ nrf_pin|description|b20_pin
 6. to test the control of 2.4G 
    1. what is the logic of control
    
-   ```c
-    void Ps2_Task(void* parameter)
-    {	
-        // Save the last time. The system automatically updates it after being called.
-        static portTickType PreviousWakeTime1;
-
-        // Set the delay time to 20ms and convert the time to tick counts.
-        const portTickType TimeIncrement1 = pdMS_TO_TICKS(20);
-        
-        // Get the current system time.
-        PreviousWakeTime1 = xTaskGetTickCount();
-        
-        while(1)
-        {
-            // Call the absolute delay function for 20ms, execution frequency 50HZ.
-            vTaskDelayUntil(&PreviousWakeTime1, TimeIncrement1 );
-            
-            // Read the PS2 handle key value.
-            AX_PS2_ScanKey(&my_joystick);
-            
-            // Not in PS2 control mode.
-            if(ax_control_mode != CTL_PS2)
-            {
-                // Determine whether to enable PS2 handle control.
-                // After the START button is pressed, push the left joystick up to enter PS2 control mode.
-                if((my_joystick.btn1 == PS2_BT1_START) && (my_joystick.LJoy_UD == 0x00))
-                {
-                    // Switch to PS2 mode.
-                    ax_control_mode = CTL_PS2;	
-
-                    // Execute the buzzer beep prompt.
-                    ax_beep_ring = BEEP_SHORT;
-                }
-            }
-            
-        }
-    }
-   ```
-
-   ```c
-        if(my_joystick.mode ==  0x73)
-        {
-            R_Vel.TG_IX = (int16_t)(speed*(0x80 - my_joystick.RJoy_UD));
-            R_Vel.TG_IY = (int16_t)(speed*(0x80 - my_joystick.RJoy_LR));
-
-            //如果是阿克曼机器人
-            #if (ROBOT_TYPE == ROBOT_AKM)
-                ax_akm_angle = (int16_t)(4*(0x80 - my_joystick.LJoy_LR));
-            #else
-                R_Vel.TG_IW = (int16_t)(4*speed*(0x80 - my_joystick.LJoy_LR));
-            #endif	
-            
-            //SELECT按键，切换RGB灯效模式
-            if(my_joystick.btn1 & PS2_BT1_SELECT)
-            {
-                btn_select_flag = 1;
-            }
-            else
-            {
-                if(btn_select_flag)
-                {
-                    //灯光效果切换
-                    if(R_Light.M < LEFFECT6)
-                        R_Light.M++;
-                    else
-                        R_Light.M = LEFFECT1;
-                    
-                    //复位标记
-                    btn_select_flag = 0;
-                }
-            }
-            
-            //左摇杆按键，减速
-            if(my_joystick.btn1 & PS2_BT1_JOY_L)
-            {
-                btn_joyl_flag = 1;
-            }
-            else
-            {
-                if(btn_joyl_flag)
-                {
-                    
-                    //速度减小
-                    if(speed > 2)
-                    {
-                        speed--;
-                    }
-                    else
-                    {
-                        speed = 2;
-                        
-                        //蜂鸣器鸣叫提示
-                        ax_beep_ring = BEEP_SHORT;
-                    }
-                        
-                    //复位标记
-                    btn_joyl_flag = 0;
-                }
-            }
-            
-            //右摇杆按键，加速
-            if(my_joystick.btn1 & PS2_BT1_JOY_R)
-            {
-                btn_joyr_flag = 1;
-            }
-            else
-            {
-                if(btn_joyr_flag)
-                {
-                    //速度增加
-                    if(speed < 9)
-                    {
-                        speed++;
-                    }
-                    else
-                    {
-                        speed = 9;
-                        
-                        //蜂鸣器鸣叫提示
-                        ax_beep_ring = BEEP_SHORT;					
-                    }
-                        
-                    //复位标记
-                    btn_joyr_flag = 0;
-                }
-            }
-        }
-
-   ```
 
 ```python
 import serial
@@ -210,3 +81,101 @@ void loop() {
   }
 }
 ```
+
+![0](img/img-2024-08-26-15-06-45.png)
+
+![1](img/img-2024-08-26-15-06-23.png)
+
+![2](img/img-2024-08-26-15-03-32.png)
+
+the original and new settings of pin as
+
+|ori_test|ori_ps2|description|new|
+|--|--|--|--|
+|8|*|CE| PA0(s5-3)
+|7|PB12|CSN|PB12
+|6|*|IRQ| PA1(s6-3)
+|13|PB13|SCK|PB13
+|14|0|MOSI|PB15
+|15|1|MISO|PB14
+
+write/read once for 32 Bytes of data
+
+tmp_buf[0]=0x55
+tmp_buf[1]=0x7E
+
+tmp_buf[7]=0x7E
+tmp_buf[8]=0x55
+
+pin_mapping
+
+![3](img/img-2024-08-26-15-31-00.png)
+
+![4](img/img-2024-08-26-16-40-46.png)
+
+```c
+	//CLK 信号从主机到手柄   输出口
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;	
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	
+	GPIO_Init(GPIOC, &GPIO_InitStructure);	
+``` 
+
+q1: pin_mapping
+q2: function right or not 
+
+address of car
+
+TX: 0xff,0xff,0xff,0xff,0xff
+RX: 0xff,0xff,0xff,0xff,0xff
+
+address of trans
+
+TX: 0xff,0xff,0xff,0xff,0xff
+RX: 0xff,0xff,0xff,0xff,0xff
+
+address for test usb
+
+TX: ff,ff,ff,ff,ff
+
+RX: ff,ff,ff,ff,ff
+
+
+* q1: 确认nrf24l01的正确连接
+    1. CS、CSN、IQR接线是否正确
+    2. 是否正确初始化
+* q2: 传输配置是否正确
+* q3：包传输协议配置是否正确
+* q4: 测试数据能否正确从arduino发出
+* q5：测试参数对应关系
+* q6: 键盘中断捕获
+
+CE、CSN、IQR是控制线
+
+CSN低电平有效，可以直接接地
+
+
+nrf24l01的工作极性：
+
+q:spi的CS与24L01的CSN之间的联系
+
+## motor_controller
+
+```c
+typedef struct  
+{
+	uint8_t  ST;            // state of remote (0 closed, 1 open)
+    uint8_t  steering_angle ;           // angle of yaw
+    uint8_t  steering_angle_velocity;      // speed of angle of yaw
+    uint8_t  speed ;                 // speed of 
+    uint8_t  acceleration ;         // 
+}NRF_CTL_INFO;
+```
+
+data for test msg
+
+40 for turn is enough
+
+55 7e 01 00 40 20 00 7e 55 
+
+目前的控制原理是设定一个目标角度

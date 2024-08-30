@@ -66,3 +66,4 @@
 .\objects\ax_light.o: ..\Driver\ax_oled\ax_oled.h
 .\objects\ax_light.o: ..\Driver\ax_ps2.h
 .\objects\ax_light.o: ..\Robot\ax_akm.h
+.\objects\ax_light.o: ..\Driver\24l01.h

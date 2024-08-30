@@ -67,6 +67,17 @@ uint8_t ax_beep_ring = 0;
 //PS2手柄键值结构体
 JOYSTICK_TypeDef my_joystick;  
 
+/**
+ * @brief NRF24L01L info_structures;
+ * @param uint8_t ST:state of remote (0 closed, 1 open)
+ * @param uint8_t steering_anglespeed: change steering
+ * @param uint8_t steering_angle_velocity: 	speed of angle change
+ * @param uint8_t speed: speed of x direction
+ * @param uint8_t acceleration: speedup
+ * 
+ */
+NRF_CTL_INFO nrt_ctl_info;
+
 //控制方式选择
 uint8_t ax_control_mode = CTL_ROS;
 
@@ -113,6 +124,7 @@ void Robot_Task(void* parameter)
 			if      (ax_control_mode == CTL_PS2)    AX_CTL_Ps2();    //PS2手柄控制
 			else if (ax_control_mode == CTL_APP)    AX_CTL_App();    //APP控制
 			else if (ax_control_mode == CTL_RMS)    AX_CTL_RemoteSbus();   //SBUS航模遥控器控制
+			else if (ax_control_mode == CTL_NRF) 	FSM_CTL_NRF();   //NRF24L01航模??控器控制
 		}
 		
 		//机器人运动学处理
@@ -540,3 +552,58 @@ void Ps2_Task(void* parameter)
 
 /******************* (C) 版权 2023 XTARK **************************************/
 
+/**
+  * @brief   NRF controller
+  * @param 	 NULL
+  * @return  NULL
+  */
+void Nrf_Task(void* parameter)
+{	
+
+//		while(1)
+//	{
+//		if(NRF24L01_Check())
+//		{
+//			AX_BEEP_On();
+//			AX_Delayms(20);	
+//			AX_BEEP_Off();
+//			AX_Delayms(200);
+//			
+//		}else	break;
+//	}
+	//用于保存上次时间。调用后系统自动更新
+	static portTickType PreviousWakeTime1;
+
+	//设置延时时间20ms，将时间转为节拍数 
+	const portTickType TimeIncrement1 = pdMS_TO_TICKS(20);
+	
+	//获取当前系统时间 
+	PreviousWakeTime1 = xTaskGetTickCount();
+	
+	while(1)
+	{
+		
+		//调用绝对延时函数20ms,执行频率50HZ
+		vTaskDelayUntil(&PreviousWakeTime1, TimeIncrement1 );
+		
+		//读取PS2手柄键值
+		//AX_PS2_ScanKey(&my_joystick);
+		FSM_NRF_ScanKey(&nrt_ctl_info);
+		
+		//不在PS2控制模式下
+		if(ax_control_mode != CTL_NRF)
+		{
+			//判断是否开启PS2手柄控制
+			//START按键被按下后，左边摇杆上推，进入PS2控制模式
+			if((nrt_ctl_info.ST == 0x01) )
+			{
+				//切换到PS2模式
+				ax_control_mode = CTL_NRF;	
+
+				//执行蜂鸣器鸣叫提示
+				ax_beep_ring = BEEP_SHORT;
+			}
+		}
+		
+	}
+}

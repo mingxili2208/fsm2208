@@ -65,6 +65,7 @@
 .\objects\ax_robot.o: ..\Driver\ax_oled\ax_oled.h
 .\objects\ax_robot.o: ..\Driver\ax_ps2.h
 .\objects\ax_robot.o: ..\Robot\ax_akm.h
+.\objects\ax_robot.o: ..\Driver\24l01.h
 .\objects\ax_robot.o: ..\Robot\ax_light.h
 .\objects\ax_robot.o: ..\Robot\ax_kinematics.h
 .\objects\ax_robot.o: ..\Robot\ax_control.h

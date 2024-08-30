@@ -69,6 +69,8 @@
 
 #include "ax_akm.h"      //阿克曼机器人处理函数
 
+#include "24l01.h"
+
 
 //机器人轮子速度数据结构体
 typedef struct  
@@ -127,6 +129,8 @@ typedef struct
 	uint8_t  B;     //灯效颜色 B
 	
 }ROBOT_Light;
+
+
 
 //杂类
 #define  PI           3.1416     //圆周率PI
@@ -200,6 +204,7 @@ typedef struct
 #define  CTL_PS2    0x01    //PS2手柄控制
 #define  CTL_APP    0x02    //APP控制
 #define  CTL_RMS    0x03    //SBUS航模遥控器控制	
+#define  CTL_NRF 	0x04	//NRF controller
 
 //蜂鸣器鸣长短
 #define  BEEP_SHORT   0x01    //蜂鸣器短鸣叫一声(200ms)
@@ -242,6 +247,9 @@ extern uint8_t ax_control_mode;
 //PS2手柄键值结构体
 extern JOYSTICK_TypeDef my_joystick;  
 
+//typedef struct NRF_CTL_INFO_
+extern NRF_CTL_INFO nrt_ctl_info;
+
 //阿克曼机器人
 extern int16_t ax_akm_angle;
 
@@ -253,8 +261,6 @@ extern TaskHandle_t Robot_Task_Handle;
 extern TaskHandle_t Key_Task_Handle;
 extern TaskHandle_t Disp_Task_Handle;
 extern TaskHandle_t Trivia_Task_Handle;
-
+extern TaskHandle_t Nrf_Task_Handle;
 
 #endif
-
-/******************* (C) 版权 2023 XTARK **************************************/

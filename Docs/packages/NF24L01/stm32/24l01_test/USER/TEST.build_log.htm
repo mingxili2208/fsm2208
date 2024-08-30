@@ -16,30 +16,26 @@ Linker/Locator:  ArmLink.exe V5.06 update 4 (build 422)
 Library Manager: ArmAr.exe V5.06 update 4 (build 422)
 Hex Converter:   FromElf.exe V5.06 update 4 (build 422)
 CPU DLL:         SARMCM3.DLL V5.23
-Dialog DLL:      DARMSTM.DLL V1.68.0.0
-Target DLL:      Segger\JL2CM3.dll V2.99.23.0
-Dialog DLL:      TARMSTM.DLL V1.66.0.0
+Dialog DLL:      DCM.DLL V1.15.0.0
+Target DLL:      UL2CM3.DLL V1.159.7.0
+Dialog DLL:      TCM.DLL V1.27.0.0
  
 <h2>Project:</h2>
-C:\Users\13366\Desktop\fsm_2208\Docs\packages\NF24L01\stm32\24l01_test\USER\TEST.Uv2
-Project File Date:  06/24/2010
+C:\Users\13366\Desktop\fsm_2208\Docs\packages\NF24L01\stm32\24l01_test\USER\TEST.uvprojx
+Project File Date:  08/23/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Rebuild target 'Target 1'
+Build target 'Target 1'
 assembling STM32F10x.s...
-compiling rtc.c...
-..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
-  #include <stm32f10x_lib.h>
-..\HARDWARE\RTC\rtc.c: 0 warnings, 1 error
 compiling delay.c...
 ..\SYSTEM\delay\delay.c(1): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
   #include <stm32f10x_lib.h>
 ..\SYSTEM\delay\delay.c: 0 warnings, 1 error
-compiling usart.c...
+compiling test.c...
 ..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
   #include <stm32f10x_lib.h>
-..\SYSTEM\usart\usart.c: 0 warnings, 1 error
+test.c: 0 warnings, 1 error
 compiling 24l01.c...
 ..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
   #include <stm32f10x_lib.h>
@@ -48,18 +44,54 @@ compiling key.c...
 ..\HARDWARE\KEY\key.c(1): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
   #include <stm32f10x_lib.h>
 ..\HARDWARE\KEY\key.c: 0 warnings, 1 error
-compiling led.c...
-..\HARDWARE\LED\led.c(1): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
-  #include <stm32f10x_lib.h>	   
-..\HARDWARE\LED\led.c: 0 warnings, 1 error
-compiling wdg.c...
+compiling sys.c...
+..\SYSTEM\sys\sys.c(1): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
+  #include <stm32f10x_lib.h>		 
+..\SYSTEM\sys\sys.c: 0 warnings, 1 error
+compiling timer.c...
 ..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
   #include <stm32f10x_lib.h>
-..\HARDWARE\WDG\wdg.c: 0 warnings, 1 error
+..\HARDWARE\TIMER\timer.c: 0 warnings, 1 error
 compiling 24cxx.c...
 ..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
   #include <stm32f10x_lib.h>
 ..\HARDWARE\24CXX\24cxx.c: 0 warnings, 1 error
+compiling adc.c...
+..\HARDWARE\ADC\adc.c(1): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
+  #include <stm32f10x_lib.h>
+..\HARDWARE\ADC\adc.c: 0 warnings, 1 error
+compiling wdg.c...
+..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
+  #include <stm32f10x_lib.h>
+..\HARDWARE\WDG\wdg.c: 0 warnings, 1 error
+compiling spi.c...
+..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
+  #include <stm32f10x_lib.h>
+..\HARDWARE\SPI\spi.c: 0 warnings, 1 error
+compiling rtc.c...
+..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
+  #include <stm32f10x_lib.h>
+..\HARDWARE\RTC\rtc.c: 0 warnings, 1 error
+compiling touch.c...
+..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
+  #include <stm32f10x_lib.h>
+..\HARDWARE\TOUCH\touch.c: 0 warnings, 1 error
+compiling usart.c...
+..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
+  #include <stm32f10x_lib.h>
+..\SYSTEM\usart\usart.c: 0 warnings, 1 error
+compiling myiic.c...
+..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
+  #include <stm32f10x_lib.h>
+..\HARDWARE\24CXX\myiic.c: 0 warnings, 1 error
+compiling dma.c...
+..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
+  #include <stm32f10x_lib.h>
+..\HARDWARE\DMA\dma.c: 0 warnings, 1 error
+compiling flash.c...
+..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
+  #include <stm32f10x_lib.h>
+..\HARDWARE\FLASH\flash.c: 0 warnings, 1 error
 compiling ILI93xx.c...
 ..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
   #include <stm32f10x_lib.h>
@@ -68,45 +100,30 @@ compiling wkup.c...
 ..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
   #include <stm32f10x_lib.h>
 ..\HARDWARE\WKUP\wkup.c: 0 warnings, 1 error
-compiling test.c...
-..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h(478): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
-  #include "core_cm3.h"
-test.c: 0 warnings, 1 error
-compiling flash.c...
-..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
-  #include <stm32f10x_lib.h>
-..\HARDWARE\FLASH\flash.c: 0 warnings, 1 error
-compiling sys.c...
-..\SYSTEM\sys\sys.c(1): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
-  #include <stm32f10x_lib.h>		 
-..\SYSTEM\sys\sys.c: 0 warnings, 1 error
-compiling touch.c...
-..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
-  #include <stm32f10x_lib.h>
-..\HARDWARE\TOUCH\touch.c: 0 warnings, 1 error
-compiling myiic.c...
-..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
-  #include <stm32f10x_lib.h>
-..\HARDWARE\24CXX\myiic.c: 0 warnings, 1 error
-compiling adc.c...
-..\HARDWARE\ADC\adc.c(1): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
-  #include <stm32f10x_lib.h>
-..\HARDWARE\ADC\adc.c: 0 warnings, 1 error
-compiling dma.c...
-..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
-  #include <stm32f10x_lib.h>
-..\HARDWARE\DMA\dma.c: 0 warnings, 1 error
-compiling timer.c...
-..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
-  #include <stm32f10x_lib.h>
-..\HARDWARE\TIMER\timer.c: 0 warnings, 1 error
-compiling spi.c...
-..\SYSTEM\sys\sys.h(3): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
-  #include <stm32f10x_lib.h>
-..\HARDWARE\SPI\spi.c: 0 warnings, 1 error
+compiling led.c...
+..\HARDWARE\LED\led.c(1): error:  #5: cannot open source input file "stm32f10x_lib.h": No such file or directory
+  #include <stm32f10x_lib.h>	   
+..\HARDWARE\LED\led.c: 0 warnings, 1 error
 ".\TEST.axf" - 19 Error(s), 0 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.0.1.pack
+                ARM::CMSIS:CORE:5.0.1
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.0.1
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include
+  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.0.1
 Target not created.
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

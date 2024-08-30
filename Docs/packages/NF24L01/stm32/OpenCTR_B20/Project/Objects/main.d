@@ -65,5 +65,6 @@
 .\objects\main.o: ..\Driver\ax_oled\ax_oled.h
 .\objects\main.o: ..\Driver\ax_ps2.h
 .\objects\main.o: ..\Robot\ax_akm.h
+.\objects\main.o: ..\Driver\24l01.h
 .\objects\main.o: ..\Driver\ax_oled\ax_oled_chinese.h
 .\objects\main.o: ..\Driver\ax_oled\ax_oled_picture.h

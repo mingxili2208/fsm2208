@@ -65,3 +65,4 @@
 .\objects\ax_akm.o: ..\Driver\ax_sbus.h
 .\objects\ax_akm.o: ..\Driver\ax_oled\ax_oled.h
 .\objects\ax_akm.o: ..\Driver\ax_ps2.h
+.\objects\ax_akm.o: ..\Driver\24l01.h

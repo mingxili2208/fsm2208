@@ -313,5 +313,27 @@ void AX_CTL_RemoteSbus(void)
 	
 }
 
-/******************* (C) °æÈ¨ 2023 XTARK **************************************/
+/**
+ * @brief Function for NRF controller
+ * @param None
+ * @retval None
+ */
+void FSM_CTL_NRF(void){
+	
+	static uint8_t  speed = 4;
+	static uint8_t	based_angle_speed=4;
 
+	if(nrt_ctl_info.ST==0x01){
+		R_Vel.TG_IX = (int16_t)(speed*nrt_ctl_info.speed);
+		ax_akm_angle= (int16_t)(based_angle_speed*nrt_ctl_info.steering_angle);
+		if(nrt_ctl_info.acceleration>0){
+			speed++;
+			ax_beep_ring = BEEP_SHORT;
+		}
+		else if(nrt_ctl_info.acceleration<0){
+            speed--;
+			ax_beep_ring = BEEP_SHORT;
+        }
+	}
+	
+}

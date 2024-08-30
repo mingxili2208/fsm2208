@@ -65,3 +65,4 @@
 .\objects\ax_uart4.o: ..\Driver\ax_oled\ax_oled.h
 .\objects\ax_uart4.o: ..\Driver\ax_ps2.h
 .\objects\ax_uart4.o: ..\Robot\ax_akm.h
+.\objects\ax_uart4.o: ..\Driver\24l01.h
