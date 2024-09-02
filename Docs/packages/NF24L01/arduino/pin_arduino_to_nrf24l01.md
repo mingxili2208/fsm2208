@@ -30,3 +30,15 @@ pin|description
 6|SCK
 7|IRQ
 8|MISO
+
+## arduino_uno
+
+![4](img/img-2024-08-29-14-53-26.png)
+
+pin_uno|description|pin_nrf24l01
+--|--|--
+13|SCK|
+12|MISO|
+11|MOSI|
+7|CE|4
+8|CSN|3
