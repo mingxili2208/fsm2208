@@ -24,7 +24,7 @@ this is the framework of launching the autoware
 
 * fun_setup()  this is the initializer of the whole agent
 * Load a series of startup files
-* run_step() 
+* run_step()
 * init_subscribers()
 * call_backfunctions()
 * init_publishers()
@@ -37,10 +37,12 @@ this bash include the following two files
 
 ### carla_simulation_fsm.launch
 
-
-
-### carla_simulation_carla.launch 
+### carla_simulation_carla.launch
 
 ## run_carla_gnss_ros2.sh
 
+gnss.launch.xml
+
 ## run_lidar_slam_ros2.sh
+
+lidarslam.launch.py

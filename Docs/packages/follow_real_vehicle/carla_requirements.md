@@ -34,7 +34,6 @@ Is it to transmit the coordinates of RC to carla in real time as the coordinates
 2. Record a dense list of waypoints and let the car in carla keep tracking the waypoints
 3. The coordinates obtained in steam-vr are used as the positioning system coordinates in the planning process
 
-
 ### function
 
 way_function
