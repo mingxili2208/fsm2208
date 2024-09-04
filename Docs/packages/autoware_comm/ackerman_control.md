@@ -37,7 +37,11 @@ this bash include the following two files
 
 ### carla_simulation_fsm.launch
 
+(find-pkg-share autoware_launch)/launch/autoware.launch.xml"
+
 ### carla_simulation_carla.launch
+
+autoware_launch
 
 ## run_carla_gnss_ros2.sh
 
@@ -46,3 +50,6 @@ gnss.launch.xml
 ## run_lidar_slam_ros2.sh
 
 lidarslam.launch.py
+
+## **autoware_launch.xml**
+

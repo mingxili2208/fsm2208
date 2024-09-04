@@ -15,7 +15,6 @@
   <arg name="system" default="true" description="launch system"/>
   <arg name="map" default="true" description="launch map"/>
   <arg name="sensing" default="true" description="launch sensing"/>
-  <arg name="localization" default="true" description="launch localization"/>
   <arg name="perception" default="true" description="launch perception"/>
   <arg name="planning" default="true" description="launch planning"/>
   <arg name="control" default="true" description="launch control"/>
