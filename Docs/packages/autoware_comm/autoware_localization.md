@@ -178,7 +178,7 @@
 /localization/pose_estimator/no_ground_transform_probability
 /localization/pose_estimator/points_aligned
 /localization/pose_estimator/points_aligned_no_ground
-                    /localization/pose_estimator/pose
+/localization/pose_estimator/pose
 /localization/pose_estimator/pose_with_covariance
 /localization/pose_estimator/transform_probability
 /localization/pose_twist_fusion_filter/biased_pose
@@ -187,9 +187,10 @@
 /localization/pose_twist_fusion_filter/debug/measured_pose
 /localization/pose_twist_fusion_filter/debug/stop_flag
 /localization/pose_twist_fusion_filter/estimated_yaw_bias
-/localization/pose_twist_fusion_filter/kinematic_state
-/localization/pose_twist_fusion_filter/pose
+                    /localization/pose_twist_fusion_filter/kinematic_state
+                    /localization/pose_twist_fusion_filter/pose
                     /localization/pose_twist_fusion_filter/twist
+                    /odo
 /localization/pose_twist_fusion_filter/twist_with_covariance
 /localization/pose_with_covariance
 /localization/twist_estimator/gyro_twist
@@ -202,9 +203,8 @@
 /localization/util/downsample/pointcloud
 /localization/util/measurement_range/pointcloud
 /localization/util/voxel_grid_downsample/pointcloud
-
-
-                    /control/command/control_cmd
+                   **/control/command/control_cmd**
+                   ![0](img/2024-09-06-15-18-17.png)
 /control/command/emergency_cmd
 /control/command/gear_cmd
 /control/command/hazard_lights_cmd
@@ -218,7 +218,9 @@
 /control/gate_mode_cmd
 /control/operation_mode_transition_manager/debug_info
 /control/shift_decider/gear_cmd
-                    /control/trajectory_follower/control_cmd
+                    **/control/trajectory_follower/control_cmd**
+![1](img/2024-09-06-15-17-19.png)
+
 /control/trajectory_follower/controller_node_exe/output/debug_marker
 /control/trajectory_follower/controller_node_exe/output/estimated_steer_offset
 /control/trajectory_follower/lane_departure_checker_node/debug/processing_time_ms
@@ -234,7 +236,7 @@
 /control/vehicle_cmd_gate/operation_mode
 
 /vehicle/status/battery_charge
-/vehicle/status/control_mode
+**/vehicle/status/control_mode** for control mode 1/**
 /vehicle/status/gear_status
 /vehicle/status/hazard_lights_status
 /vehicle/status/steering_status
