@@ -1,6 +1,7 @@
 #ifndef __24L01_H
-#define __24L01_H	 		  
-#include "ax_sys.h"   
+#define __24L01_H	 	
+
+#include "ax_sys.h" 
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK战舰STM32开发板V3
@@ -91,15 +92,6 @@ u8 NRF24L01_RxPacket(u8 *rxbuf);				//接收一个包的数据
 
 void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info);
 
+u8 verifyChecksum(u8* data);
+
 #endif
-
-
-
-
-
-
-
-
-
-
-
