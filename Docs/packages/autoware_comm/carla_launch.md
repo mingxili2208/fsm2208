@@ -220,4 +220,5 @@ ${OP_AGENT_ROOT}=/home/cityu-fsm-lab-carla/Workspace/Carla/op_carla/op_agent
 source ${OP_ROS_PLUGINS_ROOT}/install/setup.bash
 ros2 launch ${OP_AGENT_ROOT}/autoware_carla_launch/carla_simulator_fsm_lab.launch.xml map_path:=${OP_AGENT_ROOT}/autoware-contents/maps/fsm_lab_maps/$map_name vehicle_model:=sample_vehicle sensor_model:=carla_sensor_kit
 
+
 ```

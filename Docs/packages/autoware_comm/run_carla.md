@@ -102,4 +102,6 @@ source ~/lmx/Docs/packages/autoware_comm/initial_config.bash
 ros2 topic echo /control/command/control_cmd
 ros2 bag record -o ~/topic_record/control_cmd.bag /control/command/control_cmd
 
+
+ros2 bag dump control_cmd.bag_0.db3 --output-format csv --topic /control/command/control_cmd > data_control_cmd.csv
 ```
