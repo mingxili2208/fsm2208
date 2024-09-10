@@ -34,3 +34,7 @@ export RUNNING_MODE="normal"
 
 source /opt/ros/humble/setup.bash
 export ROS_DOMAIN_ID=46
+
+source ${AUTOWARE_ROOT}/install/setup.bash
+
+source ${OP_ROS_PLUGINS_ROOT}/install/setup.bash

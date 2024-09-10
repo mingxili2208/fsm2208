@@ -94,11 +94,12 @@
 
 4. record topic
 
-```s
+```sh
 
+source ~/lmx/Docs/packages/autoware_comm/initial_config.bash
 
 #ros2 topic echo <topic_name>
 ros2 topic echo /control/command/control_cmd
-ros2 bag record -o ~/topic_record/** <topic_name>
+ros2 bag record -o ~/topic_record/control_cmd.bag /control/command/control_cmd
 
 ```
