@@ -132,12 +132,6 @@ int main(void)
 	//航模遥控器SBUS串口初始化
 	AX_SBUS_Init();
 
-
-
- 
-
-
-
 	//PS2手柄初始化
 	AX_PS2_Init();
 	
