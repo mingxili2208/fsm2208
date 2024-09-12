@@ -524,6 +524,16 @@
               <FileType>1</FileType>
               <FilePath>..\Driver\ax_ps2.c</FilePath>
             </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Driver\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>24l01.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Driver\24l01.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

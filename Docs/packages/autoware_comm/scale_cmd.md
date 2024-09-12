@@ -41,10 +41,15 @@ x|a=fun(x)|n=60+a|r=-(60-a)
 speed_value| description
 --|--
 
->40启动
+>30启动----120
+
+
+60已经很快了
+
 
 max=100----400
 
+设置0-2.8 map to 60--128
 
 steering_angle|after caculate|description
 --|--|--
@@ -74,6 +79,7 @@ steering_angle|after caculate|description
 150|600|30
 
 P angle
+0  0 
 10 0
 15 2
 30 10
@@ -141,8 +147,8 @@ void setup() {
   Serial.begin(9600);
 
   // 添加数据点 (角度, p值)
-  interp.addPoint(0, 10);
-  interp.addPoint(2, 15);
+  interp.addPoint(0, 0);
+  interp.addPoint(5, 15);
   interp.addPoint(10, 30);
   interp.addPoint(15, 50);
   interp.addPoint(20, 60);
@@ -171,3 +177,14 @@ void loop() {
 }
 ```
 
+借助上面的插值函数，将cmd指令的angle映射到一个合理的p值区间，并由rc控制程序进行使用
+
+max_p=120; 所以用 120+p   和 -（120-p）的公式保证传递的是byte类型变量
+
+
+speed与steering angle之间的散点图
+![7](img/img-2024-09-12-15-01-07.png)
+
+![8](img/img-2024-09-12-15-03-49.png)
+
+![9](img/img-2024-09-12-15-10-49.png)

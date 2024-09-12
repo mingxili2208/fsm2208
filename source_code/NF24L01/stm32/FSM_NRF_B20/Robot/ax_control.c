@@ -324,8 +324,8 @@ void FSM_CTL_NRF(void){
 	static uint8_t	based_angle_speed=5;//4
 
 	if(nrt_ctl_info.ST==0x01){
-		R_Vel.TG_IX = (int16_t)(speed*(nrt_ctl_info.speed));
-		ax_akm_angle= (int16_t)(based_angle_speed*(nrt_ctl_info.steering_angle));
+		R_Vel.TG_IX = (int16_t)(-speed*(0x80- nrt_ctl_info.speed));
+		ax_akm_angle= (int16_t)(-based_angle_speed*(0x78 - nrt_ctl_info.steering_angle));
 		if(nrt_ctl_info.acceleration>0){
 			speed++;
 			ax_beep_ring = BEEP_SHORT;

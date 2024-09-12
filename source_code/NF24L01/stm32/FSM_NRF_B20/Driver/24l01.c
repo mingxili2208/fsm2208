@@ -271,11 +271,11 @@ void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info)
 			
 		}else{
 			// data Error
-			nrt_ctl_info->ST=0;
-			nrt_ctl_info->steering_angle=0;
-			nrt_ctl_info->steering_angle_velocity=0;
-			nrt_ctl_info->speed=0;
-			nrt_ctl_info->acceleration=0;
+//			nrt_ctl_info->ST=0;
+//			nrt_ctl_info->steering_angle=0;
+//			nrt_ctl_info->steering_angle_velocity=0;
+//			nrt_ctl_info->speed=0;
+//			nrt_ctl_info->acceleration=0;
 			
 			AX_BEEP_On();
 			AX_LED_Red_On();	
