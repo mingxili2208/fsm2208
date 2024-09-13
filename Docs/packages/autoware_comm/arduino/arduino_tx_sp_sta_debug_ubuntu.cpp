@@ -125,6 +125,7 @@ void loop() {
     // 验证校验和
     if (data[0] == 0x42 && verifyChecksum(data)) {
       // 解析消息
+      sendStateMessage(0x01,control_command.steering_tire_angle, control_command.speed);
       control_command.steering_tire_angle = *(float*)(data + 2);
       control_command.speed = *(float*)(data + 6);
 
@@ -133,9 +134,9 @@ void loop() {
       bool ok = radio.write(&tx_buf, sizeof(tx_buf));
 
       if (ok) {
-        sendStateMessage(true,control_command.steering_tire_angle, control_command.speed);
+        sendStateMessage(0x02,control_command.steering_tire_angle, control_command.speed);
       } else {
-        sendStateMessage(false,control_command.steering_tire_angle, control_command.speed);
+        sendStateMessage(0x03,control_command.steering_tire_angle, control_command.speed);
       }
     }
   }
@@ -150,11 +151,10 @@ bool verifyChecksum(byte* data) {
   return checksum == data[10];
 }
 
-void sendStateMessage(bool flag, float steering_tire_angle, float speed) {
+void sendStateMessage(byte flag, float steering_tire_angle, float speed) {
   byte data[11];
   data[0] = 0x42;
-  if (flag==true)data[1] = 0x02;
-  else data[1]=0x03;
+  data[1] = flag;
   *(float*)(data + 2) = steering_tire_angle;
   *(float*)(data + 6) = speed;
   data[10] = calculateChecksumInterval(data,0,9);

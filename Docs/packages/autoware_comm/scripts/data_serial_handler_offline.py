@@ -57,7 +57,8 @@ for index, row in df.iterrows():
             if data[0] == 0x42 and verify_checksum(data):
                 # 解析消息
                 _, msg_type, steering_tire_angle, speed, _ = struct.unpack('<BBffB', data)
-
+                if msg_type == 0x01:
+                    logger.info("arduino received msg succeed!!")
                 if msg_type == 0x02:
                     logger.info(f'Arduino send correct as: steering_tire_angle={steering_tire_angle}, speed={speed}')
                 elif msg_type == 0x03:
