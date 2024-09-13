@@ -49,10 +49,10 @@ void setup() {
 
 void loop() {
 
-  if (Serial.available() >= 9) {
+  if (Serial.available() >= 11) {
     // 读取数据
-    byte data[9];
-    Serial.readBytes(data, 9);
+    byte data[11];
+    Serial.readBytes(data, 11);
 
     // 验证校验和
     if (data[0] == 0x42 && verifyChecksum(data)) {
@@ -75,20 +75,20 @@ void loop() {
 
 bool verifyChecksum(byte* data) {
   byte checksum = 0;
-  for (int i = 0; i < 8; i++) {
+  for (int i = 0; i < 10; i++) {
     checksum ^= data[i];
   }
-  return checksum == data[8];
+  return checksum == data[10];
 }
 void sendStateMessage(bool flag, float steering_tire_angle, float speed) {
-  byte data[9];
+  byte data[11];
   data[0] = 0x42;
   if (flag==true)data[1] = 0x02;
   else data[1]=0x03;
   *(float*)(data + 2) = steering_tire_angle;
   *(float*)(data + 6) = speed;
-  data[8] = calculateChecksumInterval(data,0,7);
-  Serial.write(data, 9);
+  data[10] = calculateChecksumInterval(data,0,9);
+  Serial.write(data, 11);
 }
 
 byte calculateChecksumInterval(byte array[], int head, int tail) {
