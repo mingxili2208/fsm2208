@@ -91,6 +91,7 @@ u8 NRF24L01_TxPacket(u8 *txbuf);				//发送一个包的数据
 u8 NRF24L01_RxPacket(u8 *rxbuf);				//接收一个包的数据
 
 void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info);
+void NRF24L01_FlushRx(void);
 
 u8 verifyChecksum(u8* data);
 

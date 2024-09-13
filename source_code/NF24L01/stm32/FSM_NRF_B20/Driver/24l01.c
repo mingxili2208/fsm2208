@@ -250,9 +250,10 @@ void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info)
 
 		//tmp_buf[9]=0;
 		//for testing
-		AX_BEEP_On();
-		AX_Delayms(100);	 
-		AX_BEEP_Off();
+		//AX_BEEP_On();
+		AX_Delayus(200);
+		NRF24L01_FlushRx();		
+		//AX_BEEP_Off();
 		//
 		
 		//if(tmp_buf[0]==0x55 && tmp_buf[1]==0x7E &&tmp_buf[8]==0x7E&&tmp_buf[9]==0x55&& verifyChecksum(tmp_buf)){
@@ -260,23 +261,24 @@ void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info)
 		if(tmp_buf[0]==0x55 && tmp_buf[1]==0x7E &&tmp_buf[8]==0x7E&&tmp_buf[9]==0x55){
 		
 		//if(tmp_buf[1]==0x55 && tmp_buf[2]==0x7E &&tmp_buf[9]==0x7E&&tmp_buf[10]==0x55){
+			//AX_Delayms(150);
 			nrt_ctl_info->ST=tmp_buf[2];
 			nrt_ctl_info->steering_angle=tmp_buf[3];
-			nrt_ctl_info->steering_angle_velocity=tmp_buf[4];
+			//nrt_ctl_info->steering_angle_velocity=tmp_buf[4];
 			nrt_ctl_info->speed=tmp_buf[5];
-			nrt_ctl_info->acceleration=tmp_buf[6];
-			AX_BEEP_On();
-			AX_Delayms(100);	 
-			AX_BEEP_Off();		
+			//nrt_ctl_info->acceleration=tmp_buf[6];
+			//AX_BEEP_On();
+			AX_Delayus(100);	 
+			//AX_BEEP_Off();		
 			
 		}else{
 			// data Error
-//			nrt_ctl_info->ST=0;
-//			nrt_ctl_info->steering_angle=0;
-//			nrt_ctl_info->steering_angle_velocity=0;
-//			nrt_ctl_info->speed=0;
-//			nrt_ctl_info->acceleration=0;
-			
+			nrt_ctl_info->ST=0;
+			nrt_ctl_info->steering_angle=0;
+			nrt_ctl_info->steering_angle_velocity=0;
+			nrt_ctl_info->speed=0;
+			nrt_ctl_info->acceleration=0;
+			NRF24L01_FlushRx();
 			AX_BEEP_On();
 			AX_LED_Red_On();	
 			AX_Delayms(200); 
@@ -288,7 +290,17 @@ void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info)
 		}
 
 
+	}else{
+			// data Error
+			nrt_ctl_info->ST=0;
+			nrt_ctl_info->steering_angle=0;
+			nrt_ctl_info->steering_angle_velocity=0;
+			nrt_ctl_info->speed=0;
+			nrt_ctl_info->acceleration=0;
+			AX_Delayus(100);
+		
 	}
+	
 
 }
 
@@ -305,4 +317,10 @@ u8 verifyChecksum(u8* data) {
   if (checksum == data[7])
 	return 1;
   else return 0;
+}
+void NRF24L01_FlushRx(void)
+{
+    NRF24L01_CSN = 0;            // ?? SPI ??
+    SPI2_ReadWriteByte(0xE2);    // ?? FLUSH_RX ??
+    NRF24L01_CSN = 1;            // ?? SPI ??
 }
