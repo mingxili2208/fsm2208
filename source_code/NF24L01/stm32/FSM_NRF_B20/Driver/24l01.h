@@ -90,6 +90,9 @@ u8 NRF24L01_Check(void);						//检查24L01是否存在
 u8 NRF24L01_TxPacket(u8 *txbuf);				//发送一个包的数据
 u8 NRF24L01_RxPacket(u8 *rxbuf);				//接收一个包的数据
 
+extern u8 NRF_beep_flag;	//nrf配置的beep的flag   1 接受成功，2接受失败
+
+extern u8 NRF_led_flag;	//nrf接受成功则flag 置1 绿灯短亮，否则置0 红灯短亮
 void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info);
 void NRF24L01_FlushRx(void);
 

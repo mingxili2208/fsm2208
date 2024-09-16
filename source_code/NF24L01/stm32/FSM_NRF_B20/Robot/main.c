@@ -78,7 +78,7 @@ void Ps2_Task(void *pvParameters);
 
 //spi_nrf24l01_data mission
 #define NRF_TASK_PRIO        12     
-#define NRF_STK_SIZE         128   
+#define NRF_STK_SIZE         256  
 TaskHandle_t Nrf_Task_Handle = NULL;
 void Nrf_Task(void *pvParameters);
 
@@ -165,6 +165,13 @@ int main(void)
 	AX_Delayms(100);	
 	AX_BEEP_Off();
 	AX_Delayms(100);
+	
+//	while(NRF24L01_Check())
+//	{	
+//		AX_BEEP_On();
+//		//AX_Delayms(100);		
+//	}
+//	AX_BEEP_Off();
 	
 	//创建AppTaskCreate任务
 	xTaskCreate((TaskFunction_t )Start_Task,  /* 任务入口函数 */

@@ -34,3 +34,4 @@
 .\objects\24l01.o: ..\Driver\ax_beep.h
 .\objects\24l01.o: ..\Driver\ax_delay.h
 .\objects\24l01.o: ..\Driver\ax_led.h
+.\objects\24l01.o: ..\Driver\ax_oled\ax_oled.h

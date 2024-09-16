@@ -4,16 +4,11 @@
 #include <stm32f10x.h>
 #include "ax_delay.h"
 #include "ax_led.h"
-#include "ax_oled.h"
 
 
     
 const u8 TX_ADDRESS[TX_ADR_WIDTH]={0xff,0xff,0xff,0xff,0xff}; //send_address
 const u8 RX_ADDRESS[RX_ADR_WIDTH]={0xff,0xff,0xff,0xff,0xff};	//receive_address
-
-u8 NRF_beep_flag=3;	//nrf配置的beep的flag   1 接受成功，2接受失败
-
-u8 NRF_led_flag=3;	//nrf接受成功则flag 置1 绿灯短亮，否则置0 红灯短亮
 
 //初始化24L01的IO口
 void NRF24L01_Init(void)
@@ -74,7 +69,7 @@ void NRF24L01_Init(void)
 	SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;		//时钟悬空低
 	SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;	//数据捕获于第1个时钟沿
 	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;		//NSS信号由软件控制
-	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;		//定义波特率预分频的值:波特率预分频值为16
+	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;		//定义波特率预分频的值:波特率预分频值为16
 	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;	//数据传输从MSB位开始
 	SPI_InitStructure.SPI_CRCPolynomial = 7;	//CRC值计算的多项式
 	SPI_Init(SPI2, &SPI_InitStructure);  //根据SPI_InitStruct中指定的参数初始化外设SPIx寄存器
@@ -86,7 +81,7 @@ void NRF24L01_Init(void)
 //	AX_BEEP_Off();
 //	AX_Delayms(1000);
 	
-	NRF24L01_CE=0; 			
+	NRF24L01_CE=0; 			//使能24L01
 //5	
 //	AX_BEEP_On();
 //	AX_Delayms(100);	
@@ -99,7 +94,6 @@ void NRF24L01_Init(void)
 //	AX_Delayms(100);	
 //	AX_BEEP_Off();
 //	AX_Delayms(200);
-	NRF24L01_RX_Mode();
 	 		 	 
 }
 //检测24L01是否存在
@@ -108,7 +102,7 @@ u8 NRF24L01_Check(void)
 {
 	u8 buf[5]={0XA5,0XA5,0XA5,0XA5,0XA5};
 	u8 i;
-	SPI2_SetSpeed(SPI_BaudRatePrescaler_8); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   	 
+	SPI2_SetSpeed(SPI_BaudRatePrescaler_4); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   	 
 	NRF24L01_Write_Buf(NRF_WRITE_REG+TX_ADDR,buf,5);//写入5个字节的地址.	
 	NRF24L01_Read_Buf(TX_ADDR,buf,5); //读出写入的地址  
 	for(i=0;i<5;i++)if(buf[i]!=0XA5)break;	 							   
@@ -121,11 +115,11 @@ u8 NRF24L01_Check(void)
 u8 NRF24L01_Write_Reg(u8 reg,u8 value)
 {
 	u8 status;	
-	NRF24L01_CSN=0;                 //使能SPI传输
-	status =SPI2_ReadWriteByte(reg);//发送寄存器号 
-	SPI2_ReadWriteByte(value);      //写入寄存器的值
-	NRF24L01_CSN=1;                 //禁止SPI传输	   
-	return(status);       			//返回状态值
+   	NRF24L01_CSN=0;                 //使能SPI传输
+  	status =SPI2_ReadWriteByte(reg);//发送寄存器号 
+  	SPI2_ReadWriteByte(value);      //写入寄存器的值
+  	NRF24L01_CSN=1;                 //禁止SPI传输	   
+  	return(status);       			//返回状态值
 }
 //读取SPI寄存器值
 //reg:要读的寄存器
@@ -133,10 +127,10 @@ u8 NRF24L01_Read_Reg(u8 reg)
 {
 	u8 reg_val;	    
  	NRF24L01_CSN = 0;          //使能SPI传输		
-	SPI2_ReadWriteByte(reg);   //发送寄存器号
-	reg_val=SPI2_ReadWriteByte(0XFF);//读取寄存器内容
-	NRF24L01_CSN = 1;          //禁止SPI传输		    
-	return(reg_val);           //返回状态值
+  	SPI2_ReadWriteByte(reg);   //发送寄存器号
+  	reg_val=SPI2_ReadWriteByte(0XFF);//读取寄存器内容
+  	NRF24L01_CSN = 1;          //禁止SPI传输		    
+  	return(reg_val);           //返回状态值
 }	
 //在指定位置读出指定长度的数据
 //reg:寄存器(位置)
@@ -172,7 +166,7 @@ u8 NRF24L01_Write_Buf(u8 reg, u8 *pBuf, u8 len)
 u8 NRF24L01_TxPacket(u8 *txbuf)
 {
 	u8 sta;
- 	SPI2_SetSpeed(SPI_BaudRatePrescaler_8);//spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
+ 	SPI2_SetSpeed(SPI_BaudRatePrescaler_4);//spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
 	NRF24L01_CE=0;
   	NRF24L01_Write_Buf(WR_TX_PLOAD,txbuf,TX_PLOAD_WIDTH);//写数据到TX BUF  32个字节
  	NRF24L01_CE=1;//启动发送	   
@@ -196,7 +190,7 @@ u8 NRF24L01_TxPacket(u8 *txbuf)
 u8 NRF24L01_RxPacket(u8 *rxbuf)
 {
 	u8 sta;		    							   
-	SPI2_SetSpeed(SPI_BaudRatePrescaler_8); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
+	SPI2_SetSpeed(SPI_BaudRatePrescaler_4); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
 	sta=NRF24L01_Read_Reg(STATUS);  //读取状态寄存器的值    	 
 	NRF24L01_Write_Reg(NRF_WRITE_REG+STATUS,sta); //清除TX_DS或MAX_RT中断标志
 	if(sta&RX_OK)//接收到数据
@@ -213,17 +207,15 @@ u8 NRF24L01_RxPacket(u8 *rxbuf)
 void NRF24L01_RX_Mode(void)
 {
 	NRF24L01_CE=0;	  
-	NRF24L01_Write_Buf(NRF_WRITE_REG+RX_ADDR_P0,(u8*)RX_ADDRESS,RX_ADR_WIDTH);//写RX节点地址
-	
-	NRF24L01_Write_Reg(NRF_WRITE_REG+EN_AA,0x01);    //使能通道0的自动应答    
-	NRF24L01_Write_Reg(NRF_WRITE_REG+EN_RXADDR,0x01);//使能通道0的接收地址  	 
-	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_CH,0);	     //设置RF通信频率		  
-	NRF24L01_Write_Reg(NRF_WRITE_REG+RX_PW_P0,RX_PLOAD_WIDTH);//选择通道0的有效数据宽度 	    
-	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_SETUP,0x0f);//设置TX发射参数,0db增益,2Mbps,低噪声增益开启   
-	NRF24L01_Write_Reg(NRF_WRITE_REG+CONFIG, 0x0f);//配置基本工作模式的参数;PWR_UP,EN_CRC,16BIT_CRC,接收模式 
-	NRF24L01_Write_Reg(FLUSH_RX,0xff);//清除RX FIFO寄存器 
-	NRF24L01_CE = 1; //CE为高,进入接收模式 
-	AX_Delayms(10);
+  	NRF24L01_Write_Buf(NRF_WRITE_REG+RX_ADDR_P0,(u8*)RX_ADDRESS,RX_ADR_WIDTH);//写RX节点地址
+	  
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+EN_AA,0x01);    //使能通道0的自动应答    
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+EN_RXADDR,0x01);//使能通道0的接收地址  	 
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_CH,0);	     //设置RF通信频率		  
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+RX_PW_P0,RX_PLOAD_WIDTH);//选择通道0的有效数据宽度 	    
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_SETUP,0x0f);//设置TX发射参数,0db增益,2Mbps,低噪声增益开启   
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+CONFIG, 0x0f);//配置基本工作模式的参数;PWR_UP,EN_CRC,16BIT_CRC,接收模式 
+  	NRF24L01_CE = 1; //CE为高,进入接收模式 
 }						 
 //该函数初始化NRF24L01到TX模式
 //设置TX地址,写TX数据宽度,设置RX自动应答的地址,填充TX发送数据,选择RF频道,波特率和LNA HCURR
@@ -233,149 +225,72 @@ void NRF24L01_RX_Mode(void)
 void NRF24L01_TX_Mode(void)
 {														 
 	NRF24L01_CE=0;	    
-	NRF24L01_Write_Buf(NRF_WRITE_REG+TX_ADDR,(u8*)TX_ADDRESS,TX_ADR_WIDTH);//写TX节点地址 
-	NRF24L01_Write_Buf(NRF_WRITE_REG+RX_ADDR_P0,(u8*)RX_ADDRESS,RX_ADR_WIDTH); //设置TX节点地址,主要为了使能ACK	  
+  	NRF24L01_Write_Buf(NRF_WRITE_REG+TX_ADDR,(u8*)TX_ADDRESS,TX_ADR_WIDTH);//写TX节点地址 
+  	NRF24L01_Write_Buf(NRF_WRITE_REG+RX_ADDR_P0,(u8*)RX_ADDRESS,RX_ADR_WIDTH); //设置TX节点地址,主要为了使能ACK	  
 
-	NRF24L01_Write_Reg(NRF_WRITE_REG+EN_AA,0x01);     //使能通道0的自动应答    
-	NRF24L01_Write_Reg(NRF_WRITE_REG+EN_RXADDR,0x01); //使能通道0的接收地址  
-	NRF24L01_Write_Reg(NRF_WRITE_REG+SETUP_RETR,0x1a);//设置自动重发间隔时间:500us + 86us;最大自动重发次数:10次
-	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_CH,0);       //设置RF通道为40
-	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_SETUP,0x0f);  //设置TX发射参数,0db增益,2Mbps,低噪声增益开启   
-	NRF24L01_Write_Reg(NRF_WRITE_REG+CONFIG,0x0e);    //配置基本工作模式的参数;PWR_UP,EN_CRC,16BIT_CRC,接收模式,开启所有中断
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+EN_AA,0x01);     //使能通道0的自动应答    
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+EN_RXADDR,0x01); //使能通道0的接收地址  
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+SETUP_RETR,0x1a);//设置自动重发间隔时间:500us + 86us;最大自动重发次数:10次
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_CH,0);       //设置RF通道为40
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_SETUP,0x0f);  //设置TX发射参数,0db增益,2Mbps,低噪声增益开启   
+  	NRF24L01_Write_Reg(NRF_WRITE_REG+CONFIG,0x0e);    //配置基本工作模式的参数;PWR_UP,EN_CRC,16BIT_CRC,接收模式,开启所有中断
 	NRF24L01_CE=1;//CE为高,10us后启动发送
-	AX_Delayus(10);
 }
 
 void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info)
 {
-    u8 status;
-    u8 tmp_buf[32];
+	NRF24L01_RX_Mode();
+	// AX_BEEP_On();
+	// AX_Delayms(20);	 
+	// AX_BEEP_Off();
+	// AX_Delayms(20);	 
+	u8 tmp_buf[32];
+	if(!NRF24L01_RxPacket(tmp_buf))
+	{
 
-    // 读取状态寄存器的值
-    status = NRF24L01_Read_Reg(STATUS);
-
-    // 检查 RX_OK 标志位
-    // if (status & RX_OK)
-    // {
-        // 接收到数据，读取数据包
-	
-		//AX_Delayms(10);
-		if (!NRF24L01_RxPacket(tmp_buf))  // 如果读取成功
-		{
+		//tmp_buf[9]=0;
+		//for testing
+		AX_BEEP_On();
+		AX_Delayms(100);	 
+		AX_BEEP_Off();
+		//
+		
+		//if(tmp_buf[0]==0x55 && tmp_buf[1]==0x7E &&tmp_buf[8]==0x7E&&tmp_buf[9]==0x55&& verifyChecksum(tmp_buf)){
 			
-//			AX_OLED_ClearScreen(); // 清除之前的显示内容
-//			AX_OLED_DispStr(0, 0, "RX0:", 0); // 显示标签
-
-//			// 显示 rxbuf[0] 的字符值
-//			AX_OLED_Disp16Char(24, 0, tmp_buf[0], 0); // x=24, y=0, 正常显示
+		if(tmp_buf[0]==0x55 && tmp_buf[1]==0x7E &&tmp_buf[8]==0x7E&&tmp_buf[9]==0x55){
+		
+		//if(tmp_buf[1]==0x55 && tmp_buf[2]==0x7E &&tmp_buf[9]==0x7E&&tmp_buf[10]==0x55){
+			nrt_ctl_info->ST=tmp_buf[2];
+			nrt_ctl_info->steering_angle=tmp_buf[3];
+			nrt_ctl_info->steering_angle_velocity=tmp_buf[4];
+			nrt_ctl_info->speed=tmp_buf[5];
+			nrt_ctl_info->acceleration=tmp_buf[6];
+			AX_BEEP_On();
+			AX_Delayms(100);	 
+			AX_BEEP_Off();		
 			
-			if (tmp_buf[1] == 0x55 && tmp_buf[2] == 0x7E && tmp_buf[9] == 0x7E && tmp_buf[10] == 0x55)
-			{
-				// 更新控制信息
-				nrt_ctl_info->ST = tmp_buf[3];
-				nrt_ctl_info->steering_angle = tmp_buf[4];
-				nrt_ctl_info->speed = tmp_buf[6];
-				NRF_beep_flag=1;
-				NRF_led_flag=1;
-				//AX_Delayms(10);
-			}
-			else
-			{
-					// 处理错误数据
-					NRF24L01_FlushRx();  // 清除 RX FIFO
-					NRF_beep_flag=0;
-					NRF_led_flag=0;
-			}
+		}else{
+			// data Error
+//			nrt_ctl_info->ST=0;
+//			nrt_ctl_info->steering_angle=0;
+//			nrt_ctl_info->steering_angle_velocity=0;
+//			nrt_ctl_info->speed=0;
+//			nrt_ctl_info->acceleration=0;
+			
+			AX_BEEP_On();
+			AX_LED_Red_On();	
+			AX_Delayms(200); 
+			AX_BEEP_Off();
+			AX_LED_Red_Off();	
+			AX_BEEP_On();
+			AX_Delayms(20);
+			AX_BEEP_Off();
 		}
-//		else
-//		{
-////			// 处理错误数据
-////			NRF24L01_FlushRx();  // 清除 RX FIFO
-////			NRF_beep_flag=0;
-////			NRF_led_flag=0;
-//		}
 
-//		// 清除 RX_OK 标志
-//		NRF24L01_Write_Reg(NRF_WRITE_REG + STATUS,  status | RX_OK);
 
-//		// 清除 RX FIFO，确保没有残留数据
-//		NRF24L01_FlushRx();
+	}
+
 }
-// 	else
-// 	{
-// 		// 处理错误数据
-// 		//NRF24L01_FlushRx();  // 清除 RX FIFO
-// 		NRF_beep_flag=0;
-// 		NRF_led_flag=0;
-// 	}
-// }
-
-// void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info)
-// {
-// 	//NRF24L01_RX_Mode();
-// 	// AX_BEEP_On();
-// 	// AX_Delayms(20);	 
-// 	// AX_BEEP_Off();
-// 	// AX_Delayms(20);	 
-// 	u8 tmp_buf[32];
-// 	if(!NRF24L01_RxPacket(tmp_buf))
-// 	{
-
-// 		//tmp_buf[9]=0;
-// 		//for testing
-// 		//AX_BEEP_On();
-// 		AX_Delayus(200);
-// 		NRF24L01_FlushRx();		
-// 		//AX_BEEP_Off();
-// 		//
-		
-// 		//if(tmp_buf[0]==0x55 && tmp_buf[1]==0x7E &&tmp_buf[8]==0x7E&&tmp_buf[9]==0x55&& verifyChecksum(tmp_buf)){
-			
-// 		if(tmp_buf[0]==0x55 && tmp_buf[1]==0x7E &&tmp_buf[8]==0x7E&&tmp_buf[9]==0x55){
-		
-// 		//if(tmp_buf[1]==0x55 && tmp_buf[2]==0x7E &&tmp_buf[9]==0x7E&&tmp_buf[10]==0x55){
-// 			//AX_Delayms(150);
-// 			nrt_ctl_info->ST=tmp_buf[2];
-// 			nrt_ctl_info->steering_angle=tmp_buf[3];
-// 			//nrt_ctl_info->steering_angle_velocity=tmp_buf[4];
-// 			nrt_ctl_info->speed=tmp_buf[5];
-// 			//nrt_ctl_info->acceleration=tmp_buf[6];
-// 			//AX_BEEP_On();
-// 			AX_Delayus(100);	 
-// 			//AX_BEEP_Off();		
-			
-// 		}else{
-// 			// data Error
-// //			nrt_ctl_info->ST=0;
-// //			nrt_ctl_info->steering_angle=0;
-// //			nrt_ctl_info->steering_angle_velocity=0;
-// //			nrt_ctl_info->speed=0;
-// //			nrt_ctl_info->acceleration=0;
-// 			//NRF24L01_FlushRx();
-// 			// AX_BEEP_On();
-// 			// AX_LED_Red_On();	
-// 			// AX_Delayms(200); 
-// 			// AX_BEEP_Off();
-// 			// AX_LED_Red_Off();	
-// 			// AX_BEEP_On();
-// 			// AX_Delayms(20);
-// 			// AX_BEEP_Off();
-// 		}
-
-
-// 	}else{
-// 			// data Error
-// //			nrt_ctl_info->ST=0;
-// //			nrt_ctl_info->steering_angle=0;
-// //			nrt_ctl_info->steering_angle_velocity=0;
-// //			nrt_ctl_info->speed=0;
-// //			nrt_ctl_info->acceleration=0;
-// //			AX_Delayus(100);
-		
-// 	}
-	
-
-// }
 
 /***
  * @brief Function for verifying; 1 as true, 0 as false
@@ -390,8 +305,4 @@ u8 verifyChecksum(u8* data) {
   if (checksum == data[7])
 	return 1;
   else return 0;
-}
-void NRF24L01_FlushRx(void)
-{
-	NRF24L01_Write_Reg(FLUSH_RX,0xff);
 }

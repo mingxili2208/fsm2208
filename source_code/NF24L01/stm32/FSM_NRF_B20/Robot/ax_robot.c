@@ -27,6 +27,7 @@
 #include "ax_light.h"
 #include "ax_kinematics.h"
 #include "ax_control.h"
+#include "24l01.h"
 
 //机器人速度数据
 ROBOT_Velocity  R_Vel;
@@ -328,8 +329,52 @@ void Trivia_Task(void* parameter)
 			//红灯关闭
 			AX_LED_Red_Off();
 		}			
-		
+		/*****led 管理************************************** */
+		if(NRF_led_flag!=3)
+		{
+			if(NRF_led_flag==1)
+			{
+				AX_LED_Green_On();
+				vTaskDelay(100); 
+				AX_LED_Green_Off();
+				
+				//鸣叫一声标志复位
+				NRF_led_flag = 3;
+			}
+			else
+			{
+				AX_LED_Red_On();
+				vTaskDelay(100); 
+				AX_LED_Red_Off();
+				//红灯短亮
+				NRF_led_flag = 3;		
+			}
+		}
 		/*****蜂鸣器鸣叫管理***********************************/
+		if(NRF_beep_flag!=3)
+		{
+			if(NRF_beep_flag==1)
+			{
+				AX_BEEP_On();
+				vTaskDelay(100); 
+				AX_BEEP_Off();
+				
+				//鸣叫一声标志复位
+				NRF_beep_flag = 3;
+			}
+			else
+			{
+				AX_BEEP_On();
+				vTaskDelay(200); 
+				AX_BEEP_Off();
+				vTaskDelay(100);
+				AX_BEEP_On();
+				vTaskDelay(200); 
+				AX_BEEP_Off();
+				//短鸣叫两声标志复位
+				NRF_beep_flag = 3;		
+			}
+		}
 		if(ax_beep_ring != 0)
 		{
 			if(ax_beep_ring == BEEP_SHORT)
