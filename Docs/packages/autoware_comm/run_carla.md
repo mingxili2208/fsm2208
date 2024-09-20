@@ -105,3 +105,10 @@ ros2 bag record -o ~/topic_record/control_cmd.bag /control/command/control_cmd
 
 ros2 bag dump control_cmd.bag_0.db3 --output-format csv --topic /control/command/control_cmd > data_control_cmd.csv
 ```
+
+![1](img/2024-09-20-13-37-21.png)
+
+![2](img/2024-09-20-13-41-00.png)
+
+PoseWithCovarianceStamped
+/real_world/follow_adtruck/transformed_with_covariance
