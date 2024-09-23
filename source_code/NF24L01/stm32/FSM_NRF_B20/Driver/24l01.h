@@ -97,5 +97,6 @@ void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info);
 void NRF24L01_FlushRx(void);
 
 u8 verifyChecksum(u8* data);
+void Display_Status_Message(u8 sta);
 
 #endif

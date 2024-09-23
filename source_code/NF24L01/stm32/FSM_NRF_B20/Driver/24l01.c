@@ -74,7 +74,7 @@ void NRF24L01_Init(void)
 	SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;		//时钟悬空低
 	SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;	//数据捕获于第1个时钟沿
 	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;		//NSS信号由软件控制
-	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;		//定义波特率预分频的值:波特率预分频值为16
+	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;		//定义波特率预分频的值:波特率预分频值为16
 	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;	//数据传输从MSB位开始
 	SPI_InitStructure.SPI_CRCPolynomial = 7;	//CRC值计算的多项式
 	SPI_Init(SPI2, &SPI_InitStructure);  //根据SPI_InitStruct中指定的参数初始化外设SPIx寄存器
@@ -92,6 +92,9 @@ void NRF24L01_Init(void)
 //	AX_Delayms(100);	
 //	AX_BEEP_Off();
 //	AX_Delayms(1000);
+//	NRF24L01_RX_Mode();
+//	NRF_beep_flag=1;
+//	NRF_led_flag=1;
 	
 	NRF24L01_CSN=1;			//SPI片选取消  
 	
@@ -99,17 +102,19 @@ void NRF24L01_Init(void)
 //	AX_Delayms(100);	
 //	AX_BEEP_Off();
 //	AX_Delayms(200);
-	NRF24L01_RX_Mode();
+	
 	 		 	 
 }
 //检测24L01是否存在
 //返回值:0，成功;1，失败	
 u8 NRF24L01_Check(void)
 {
+	NRF24L01_CE=0;
 	u8 buf[5]={0XA5,0XA5,0XA5,0XA5,0XA5};
 	u8 i;
-	SPI2_SetSpeed(SPI_BaudRatePrescaler_8); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   	 
-	NRF24L01_Write_Buf(NRF_WRITE_REG+TX_ADDR,buf,5);//写入5个字节的地址.	
+	SPI2_SetSpeed(SPI_BaudRatePrescaler_4); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   	 
+	NRF24L01_Write_Buf(NRF_WRITE_REG+TX_ADDR,buf,5);//写入5个字节的地址.
+	NRF24L01_CE=1;
 	NRF24L01_Read_Buf(TX_ADDR,buf,5); //读出写入的地址  
 	for(i=0;i<5;i++)if(buf[i]!=0XA5)break;	 							   
 	if(i!=5)return 1;//检测24L01错误	
@@ -172,7 +177,7 @@ u8 NRF24L01_Write_Buf(u8 reg, u8 *pBuf, u8 len)
 u8 NRF24L01_TxPacket(u8 *txbuf)
 {
 	u8 sta;
- 	SPI2_SetSpeed(SPI_BaudRatePrescaler_8);//spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
+ 	SPI2_SetSpeed(SPI_BaudRatePrescaler_4);//spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
 	NRF24L01_CE=0;
   	NRF24L01_Write_Buf(WR_TX_PLOAD,txbuf,TX_PLOAD_WIDTH);//写数据到TX BUF  32个字节
  	NRF24L01_CE=1;//启动发送	   
@@ -196,13 +201,19 @@ u8 NRF24L01_TxPacket(u8 *txbuf)
 u8 NRF24L01_RxPacket(u8 *rxbuf)
 {
 	u8 sta;		    							   
-	SPI2_SetSpeed(SPI_BaudRatePrescaler_8); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
+	SPI2_SetSpeed(SPI_BaudRatePrescaler_4); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
+	
 	sta=NRF24L01_Read_Reg(STATUS);  //读取状态寄存器的值    	 
-	NRF24L01_Write_Reg(NRF_WRITE_REG+STATUS,sta); //清除TX_DS或MAX_RT中断标志
+	//NRF24L01_Write_Reg(NRF_WRITE_REG+STATUS,sta); //清除TX_DS或MAX_RT中断标志
+	NRF24L01_CE=0;
+	NRF24L01_Write_Reg(NRF_WRITE_REG + STATUS, sta );
+	NRF24L01_CE=1;
 	if(sta&RX_OK)//接收到数据
 	{
 		NRF24L01_Read_Buf(RD_RX_PLOAD,rxbuf,RX_PLOAD_WIDTH);//读取数据
+		NRF24L01_CE=0;
 		NRF24L01_Write_Reg(FLUSH_RX,0xff);//清除RX FIFO寄存器 
+		NRF24L01_CE=1;
 		return 0; 
 	}	   
 	return 1;//没收到任何数据
@@ -221,9 +232,9 @@ void NRF24L01_RX_Mode(void)
 	NRF24L01_Write_Reg(NRF_WRITE_REG+RX_PW_P0,RX_PLOAD_WIDTH);//选择通道0的有效数据宽度 	    
 	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_SETUP,0x0f);//设置TX发射参数,0db增益,2Mbps,低噪声增益开启   
 	NRF24L01_Write_Reg(NRF_WRITE_REG+CONFIG, 0x0f);//配置基本工作模式的参数;PWR_UP,EN_CRC,16BIT_CRC,接收模式 
-	NRF24L01_Write_Reg(FLUSH_RX,0xff);//清除RX FIFO寄存器 
+	//NRF24L01_Write_Reg(FLUSH_RX,0xff);//清除RX FIFO寄存器 
 	NRF24L01_CE = 1; //CE为高,进入接收模式 
-	AX_Delayms(10);
+	//AX_Delayus(150);
 }						 
 //该函数初始化NRF24L01到TX模式
 //设置TX地址,写TX数据宽度,设置RX自动应答的地址,填充TX发送数据,选择RF频道,波特率和LNA HCURR
@@ -239,7 +250,7 @@ void NRF24L01_TX_Mode(void)
 	NRF24L01_Write_Reg(NRF_WRITE_REG+EN_AA,0x01);     //使能通道0的自动应答    
 	NRF24L01_Write_Reg(NRF_WRITE_REG+EN_RXADDR,0x01); //使能通道0的接收地址  
 	NRF24L01_Write_Reg(NRF_WRITE_REG+SETUP_RETR,0x1a);//设置自动重发间隔时间:500us + 86us;最大自动重发次数:10次
-	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_CH,0);       //设置RF通道为40
+	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_CH,0);       //设置RF通道为0
 	NRF24L01_Write_Reg(NRF_WRITE_REG+RF_SETUP,0x0f);  //设置TX发射参数,0db增益,2Mbps,低噪声增益开启   
 	NRF24L01_Write_Reg(NRF_WRITE_REG+CONFIG,0x0e);    //配置基本工作模式的参数;PWR_UP,EN_CRC,16BIT_CRC,接收模式,开启所有中断
 	NRF24L01_CE=1;//CE为高,10us后启动发送
@@ -248,45 +259,87 @@ void NRF24L01_TX_Mode(void)
 
 void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info)
 {
-    u8 status;
+		NRF24L01_RX_Mode();
+    u8 sta;
     u8 tmp_buf[32];
-
+		SPI2_SetSpeed(SPI_BaudRatePrescaler_4);
+		NRF24L01_CE=1;
     // 读取状态寄存器的值
-    status = NRF24L01_Read_Reg(STATUS);
-
+    sta = NRF24L01_Read_Reg(STATUS);
+		
+		//Display_Status_Message(sta);
+		//AX_OLED_ClearScreen();
+		
     // 检查 RX_OK 标志位
-    // if (status & RX_OK)
-    // {
-        // 接收到数据，读取数据包
-	
+
+		// 接收到数据，读取数据包
+//		AX_OLED_ClearScreen(); // 清除之前的显示内容
+//		AX_OLED_DispStr(0, 0, "sta:", 0); // 显示标签
+
+//		// 显示 rxbuf[0] 的字符值
+//		AX_OLED_Disp16Char(24, 0, sta, 0); // x=24, y=0, 正常显示
+//		NRF_beep_flag=1;
+//		NRF_led_flag=1;
 		//AX_Delayms(10);
+		AX_OLED_ClearScreen();
+		//AX_OLED_DispStr(0, 0, "RX_ok:", 0);
 		if (!NRF24L01_RxPacket(tmp_buf))  // 如果读取成功
 		{
+			AX_OLED_Disp16Char(0, 0, tmp_buf[1], 0);
+//			NRF_beep_flag=1;
+//			NRF_led_flag=1;
 			
-//			AX_OLED_ClearScreen(); // 清除之前的显示内容
-//			AX_OLED_DispStr(0, 0, "RX0:", 0); // 显示标签
+			//AX_OLED_ClearScreen(); // 清除之前的显示内容
+			//AX_OLED_DispStr(0, 0, "RX0:", 0); // 显示标签
 
-//			// 显示 rxbuf[0] 的字符值
-//			AX_OLED_Disp16Char(24, 0, tmp_buf[0], 0); // x=24, y=0, 正常显示
+			// 显示 rxbuf[0] 的字符值
+			//AX_OLED_Disp16Char(24, 0, tmp_buf[1], 0); // x=24, y=0, 正常显示
 			
-			if (tmp_buf[1] == 0x55 && tmp_buf[2] == 0x7E && tmp_buf[9] == 0x7E && tmp_buf[10] == 0x55)
+			if(tmp_buf[0]==0x55 && tmp_buf[1]==0x7E &&tmp_buf[8]==0x7E&&tmp_buf[9]==0x55)
 			{
-				// 更新控制信息
-				nrt_ctl_info->ST = tmp_buf[3];
-				nrt_ctl_info->steering_angle = tmp_buf[4];
-				nrt_ctl_info->speed = tmp_buf[6];
-				NRF_beep_flag=1;
-				NRF_led_flag=1;
-				//AX_Delayms(10);
+					nrt_ctl_info->ST=tmp_buf[2];
+					nrt_ctl_info->steering_angle=tmp_buf[3];
+					//nrt_ctl_info->steering_angle_velocity=tmp_buf[4];
+					nrt_ctl_info->speed=tmp_buf[5];
+				//NRF_beep_flag=1;
+				//NRF_led_flag=1;
+					//nrt_ctl_info->acceleration=tmp_buf[6];
 			}
+			else if (tmp_buf[1]==0x55 && tmp_buf[2]==0x7E &&tmp_buf[9]==0x7E&&tmp_buf[10]==0x55)
+			{
+				nrt_ctl_info->ST=tmp_buf[3];
+				nrt_ctl_info->steering_angle=tmp_buf[4];
+				//nrt_ctl_info->steering_angle_velocity=tmp_buf[5];
+				nrt_ctl_info->speed=tmp_buf[6];
+				//NRF_beep_flag=1;
+				//NRF_led_flag=1;
+			}
+//			if (tmp_buf[1] == 0x55 && tmp_buf[2] == 0x7E && tmp_buf[9] == 0x7E && tmp_buf[10] == 0x55)
+//			{
+//				// 更新控制信息
+//				nrt_ctl_info->ST = tmp_buf[3];
+//				nrt_ctl_info->steering_angle = tmp_buf[4];
+//				nrt_ctl_info->speed = tmp_buf[6];
+//				NRF_beep_flag=1;
+//				NRF_led_flag=1;
+//				//AX_Delayms(10);
+//			}
 			else
 			{
 					// 处理错误数据
-					NRF24L01_FlushRx();  // 清除 RX FIFO
-					NRF_beep_flag=0;
-					NRF_led_flag=0;
+					//NRF24L01_FlushRx();  // 清除 RX FIFO
+					//NRF_beep_flag=0;
+					//NRF_led_flag=0;
 			}
 		}
+		else
+		{
+			//NRF24L01_FlushRx();
+			NRF_beep_flag=0;
+			NRF_led_flag=0;
+		}
+
+ 
 //		else
 //		{
 ////			// 处理错误数据
@@ -393,5 +446,58 @@ u8 verifyChecksum(u8* data) {
 }
 void NRF24L01_FlushRx(void)
 {
+	NRF24L01_CE=0;
 	NRF24L01_Write_Reg(FLUSH_RX,0xff);
+	NRF24L01_CE=1;
+}
+void Display_Status_Message(u8 sta)
+{
+    // ?? OLED ??
+    AX_OLED_ClearScreen();
+
+    // ?? TX FIFO ???? (bit 0)
+    if (sta & 0x01)
+    {
+        AX_OLED_DispStr(0, 0, (u8*)"TX FIFO FULL", 0);
+    }
+    else
+    {
+        AX_OLED_DispStr(0, 0, (u8*)"TX FIFO OK", 0);
+    }
+
+    // ????????? (bit 1-3, RX_P_NO)
+    u8 rx_channel = (sta >> 1) & 0x07;  // ?? bit 1-3
+    char channel_msg[16];
+    //sprintf(channel_msg, "RX CH: %d", rx_channel);
+    AX_OLED_DispStr(0, 2, (u8*)channel_msg, 0);
+
+    // ???????????? (bit 4, MAX_RT)
+    if (sta & 0x10)
+    {
+        AX_OLED_DispStr(0, 3, (u8*)"MAX RETRIES REACHED", 0);
+    }
+    else
+    {
+        AX_OLED_DispStr(0, 3, (u8*)"RETRY OK", 0);
+    }
+
+    // ???????? (bit 5, TX_DS)
+    if (sta & 0x20)
+    {
+        AX_OLED_DispStr(0, 4, (u8*)"TX DONE", 0);
+    }
+    else
+    {
+        AX_OLED_DispStr(0, 4, (u8*)"TX NOT DONE", 0);
+    }
+
+    // ????????? (bit 6, RX_DR)
+    if (sta & 0x40)
+    {
+        AX_OLED_DispStr(0, 5, (u8*)"RX DATA READY", 0);
+    }
+    else
+    {
+        AX_OLED_DispStr(0, 5, (u8*)"NO RX DATA", 0);
+    }
 }

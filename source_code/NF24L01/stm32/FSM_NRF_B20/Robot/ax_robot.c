@@ -633,16 +633,17 @@ void Nrf_Task(void* parameter)
 		
 		//读取PS2手柄键值
 		//AX_PS2_ScanKey(&my_joystick);
+		//NRF24L01_RX_Mode();
+		
 		FSM_NRF_ScanKey(&nrt_ctl_info);
 		
 		//不在PS2控制模式下
 		if(ax_control_mode != CTL_NRF)
 		{
-			//判断是否开启PS2手柄控制
-			//START按键被按下后，左边摇杆上推，进入PS2控制模式
+			
 			if((nrt_ctl_info.ST == 0x01) )
 			{
-				//切换到PS2模式
+				//切换nrf模式
 				ax_control_mode = CTL_NRF;	
 
 				//执行蜂鸣器鸣叫提示
