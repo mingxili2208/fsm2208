@@ -48,8 +48,8 @@ class TransformedSandBoxCoorPublisherNode(Node):
         transformed_point = transformed_homogeneous_point[:3] / transformed_homogeneous_point[3]
 
         #yaw=transformed_yaw
-        _transformed_yaw=transformed_yaw__-90
-        self.get_logger().info(f"x: {transformed_point[0]}, y: {transformed_point[1]}, z:{transformed_point[2]},yaw: {_transformed_yaw},")
+        _transformed_yaw=math.radians(-(math.degrees(transformed_yaw__)-90))#-90#90-transformed_yaw__#+15#-90
+        self.get_logger().info(f"-------------------x: {transformed_point[0]}, y: {transformed_point[1]}, z:{transformed_point[2]},yaw: {_transformed_yaw},")
         #new_pose=carla.Transform(carla.Location(x, y, z), carla.Rotation(0, yaw,0 ))
         return transformed_point,_transformed_yaw    
 
@@ -60,6 +60,10 @@ class TransformedSandBoxCoorPublisherNode(Node):
             roll, pitch, yaw
         Return: (x, y, z, w)
         """
+        # roll = math.radians(roll)
+        # pitch = math.radians(pitch)
+        # yaw = math.radians(yaw)
+
         cy = math.cos(yaw * 0.5)
         sy = math.sin(yaw * 0.5)
         cp = math.cos(pitch * 0.5)
@@ -88,7 +92,8 @@ class TransformedSandBoxCoorPublisherNode(Node):
         header.frame_id = "real_world"
 
         pose = Pose()
-        pose.position = Point(x=transformed_position[0], y=transformed_position[1], z=transformed_position[2])
+        # 注意: Carla的y轴和ROS的y轴方向相反, 因此需要对y轴进行翻转
+        pose.position = Point(x=transformed_position[0], y=-transformed_position[1], z=transformed_position[2])
         pose.orientation = Quaternion(
             x=self.RPY2quaternion(0, 0, transformed_yaw)[0],
             y=self.RPY2quaternion(0, 0, transformed_yaw)[1],
@@ -148,7 +153,8 @@ class TransformedSandBoxCoorPublisherNode(Node):
         header.frame_id = "real_world"
 
         pose = Pose()
-        pose.position = Point(x=transformed_position[0], y=transformed_position[1], z=transformed_position[2])
+        # 注意: Carla的y轴和ROS的y轴方向相反, 因此需要对y轴进行翻转
+        pose.position = Point(x=transformed_position[0], y=-transformed_position[1], z=transformed_position[2])
         pose.orientation = Quaternion(
             x=self.RPY2quaternion(0, 0, transformed_yaw)[0],
             y=self.RPY2quaternion(0, 0, transformed_yaw)[1],
@@ -190,8 +196,8 @@ class TransformedSandBoxCoorPublisherNode(Node):
         current_time = self.get_clock().now()
         time_since_last_publish = current_time - self.last_published_time
 
-        # 如果超过5秒没有发布，则强制发布一次位姿
-        if time_since_last_publish.nanoseconds > 5 * 1e9:  # 5秒的阈值
+        # 如果超过0.02秒没有发布，则强制发布一次位姿
+        if time_since_last_publish.nanoseconds > 0.02 * 1e9:  # 5秒的阈值
             self.get_logger().warn("5 seconds passed without publishing, forcing a publish.")
             self.publish_transformed_coor_()
             #self.last_published_time = self.get_clock().now()
@@ -201,7 +207,7 @@ if __name__ == "__main__":
     rclpy.init(args=None)
 
     # Create the node
-    transformed_sandbox_coor_publisher    cd ./Workspace/Carla/op_carla/op_bridge/op_scripts/fsm_lab_simulation/_node = TransformedSandBoxCoorPublisherNode()
+    transformed_sandbox_coor_publisher_node= TransformedSandBoxCoorPublisherNode()
 
     # Spin the node
     rclpy.spin(transformed_sandbox_coor_publisher_node)

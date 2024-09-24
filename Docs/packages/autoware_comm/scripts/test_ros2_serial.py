@@ -21,7 +21,7 @@ class AckermannControlPublisher(Node):
         self.logger = logging.getLogger(__name__)
 
         # 获取参数
-        self.declare_parameter('port', '/dev/ttyUSB1')
+        self.declare_parameter('port', '/dev/ttyUSB0')
         self.declare_parameter('baudrate', 115200)
         self.declare_parameter('timeout', 0.5)  # 超时时间，单位：秒
 
