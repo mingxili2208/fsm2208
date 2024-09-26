@@ -4,7 +4,7 @@ from rclpy.serialization import deserialize_message
 from autoware_auto_control_msgs.msg import AckermannControlCommand
 
 
-bag_path = '/home/cityu-fsm-lab-carla/lmx/Data/topic_record/control_cmd.bag/control_cmd.bag_0.db3'  # 替换成你的 bag 文件路径
+bag_path = '/home/cityu-fsm-lab-carla/lmx/Data/topic_record/control_cmd_bag_2/control_cmd_bag_2_0.db3'  # 替换成你的 bag 文件路径
 storage_options = rosbag2_py.StorageOptions(uri=bag_path, storage_id='sqlite3')
 converter_options = rosbag2_py.ConverterOptions(
     input_serialization_format='cdr',
@@ -36,7 +36,7 @@ speed_not_zero = df['speed'] != 0
 
 df = df[speed_not_zero]
 
-df.to_csv('~/lmx/Data/topic_record/control_cmd.bag/control_cmd_modified.csv', index=False)
+df.to_csv('~/lmx/Data/topic_record/control_cmd_bag_2/control_cmd_2_modified.csv', index=False)
 
 print(df)
 
