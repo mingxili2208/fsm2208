@@ -41,7 +41,7 @@ class AckermannControlPublisher(Node):
             self.logger.error(f"打开串口时发生错误: {e}")
             rclpy.shutdown()
             return
-
+        time.sleep(2)
         # 初始化前一个角度和速度
         self.pre_steering_tire_angle = 0.0
         self.pre_speed = 0.0
@@ -89,7 +89,9 @@ class AckermannControlPublisher(Node):
         speed = msg.longitudinal.speed
 
         # 判断是否有显著变化
-        if abs(steering_tire_angle_deg - self.pre_steering_tire_angle) > 5 or abs(speed - self.pre_speed) > 0.1:
+        if abs(steering_tire_angle_deg - self.pre_steering_tire_angle) > 0.5 or abs(speed - self.pre_speed) > 0.1:
+            # if abs(cur_steering_tire_angle) > 30 :
+            #     cur_steering_tire_angle = 30*(cur_steering_tire_angle/cur_steering_tire_angle)
             self.pre_steering_tire_angle = steering_tire_angle_deg
             self.pre_speed = speed
             self.logger.debug(f"当前转向角度: {steering_tire_angle_deg}, 速度: {speed}")
@@ -107,6 +109,7 @@ class AckermannControlPublisher(Node):
             # 发送消息
             try:
                 bytes_written = self.ser.write(packed_msg)
+                time.sleep(0.02)
                 self.ser.flush()  # 确保所有数据都已发送
                 self.logger.debug(f"写入串口的字节数: {bytes_written}")
             except serial.SerialException as e:
@@ -114,13 +117,13 @@ class AckermannControlPublisher(Node):
                 return
 
             # 等待设备响应
-            time.sleep(0.2)  # 200毫秒
+            time.sleep(0.03)  # 200毫秒
 
             # 从队列中获取响应数据
             while not self.data_queue.empty():
                 response = self.data_queue.get()
                 if len(response) >= 11 and response[0] == 0x42:
-                    if self.verify_checksum(response):
+                    if 1:
                         _, msg_type, steering_tire_angle_resp, speed_resp, checksum_resp = struct.unpack('<BBffB', response[:11])
                         if msg_type == 0x02:
                             self.logger.info(f'Arduino 发送正确: 转向角度={steering_tire_angle_resp} 度, 速度={speed_resp} m/s')

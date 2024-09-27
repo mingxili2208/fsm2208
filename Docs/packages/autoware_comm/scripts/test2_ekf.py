@@ -49,7 +49,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
 
         #yaw=transformed_yaw
         _transformed_yaw=math.radians(-(math.degrees(transformed_yaw__)-90))#-90#90-transformed_yaw__#+15#-90
-        self.get_logger().info(f"-------------------x: {transformed_point[0]}, y: {transformed_point[1]}, z:{transformed_point[2]},yaw: {math.degrees(_transformed_yaw)},")
+        self.get_logger().info(f"-------------------x: {transformed_point[0]}, y: {transformed_point[1]}, z:{transformed_point[2]},yaw: {_transformed_yaw},")
         #new_pose=carla.Transform(carla.Location(x, y, z), carla.Rotation(0, yaw,0 ))
         return transformed_point,_transformed_yaw    
 
@@ -130,9 +130,85 @@ class TransformedSandBoxCoorPublisherNode(Node):
         self.last_published_time = self.get_clock().now()
 
 
+    def create_transformation_matrix(self,location, yaw_deg):
+        """
+        创建一个齐次变换矩阵，仅包含yaw旋转。
+        
+        :param location: 三元组 (x, y, z)
+        :param yaw_deg: yaw角度（度）
+        :return: 4x4 齐次变换矩阵
+        """
+        yaw_rad = math.radians(yaw_deg)
+        cos_yaw = np.cos(yaw_rad)
+        sin_yaw = np.sin(yaw_rad)
+        
+        T = np.array([
+            [cos_yaw, -sin_yaw, 0, location[0]],
+            [sin_yaw,  cos_yaw, 0, location[1]],
+            [0,        0,       1, location[2]],
+            [0,        0,       0, 1]
+        ])
+        return T
+
+    def invert_transformation_matrix(self,T):
+        """
+        计算齐次变换矩阵的逆。
+        
+        :param T: 4x4 齐次变换矩阵
+        :return: 4x4 逆齐次变换矩阵
+        """
+        R = T[0:3, 0:3]
+        p = T[0:3, 3]
+        R_inv = R.T
+        p_inv = -R_inv @ p
+        T_inv = np.identity(4)
+        T_inv[0:3, 0:3] = R_inv
+        T_inv[0:3, 3] = p_inv
+        return T_inv
+
+    def extract_pose(self,T):
+        """
+        从齐次变换矩阵中提取位置和yaw角。
+        
+        :param T: 4x4 齐次变换矩阵
+        :return: (位置, yaw角) 位置为三元组，yaw角为度
+        """
+        x, y, z = T[0:3, 3]
+        yaw_rad = np.arctan2(T[1,0], T[0,0])
+        yaw_deg = np.degrees(yaw_rad)
+        return (x, y, z), yaw_deg
+
+    def compute_B_pose_in_C(self,location_A, yaw_A):
+        """
+        计算框架B在框架C中的位置和yaw角。
+        
+        :param location_A: 框架A在框架C中的位置 (x, y, z)
+        :param yaw_A: 框架A在框架C中的yaw角度（度）
+        :return: 框架B在框架C中的位置和yaw角
+        """
+        # 定义 T_A->C
+        T_A_in_C = self.create_transformation_matrix(location_A, yaw_A)
+        
+        # 定义 T_A->B（固定）
+        p_A_in_B = (-0.05, 0, 0)  # A在B中的位置
+        yaw_A_in_B = 0.0         # A相对于B的yaw角（无旋转）
+        T_A_in_B = self.create_transformation_matrix(p_A_in_B, yaw_A_in_B)
+        
+        # 计算 T_A->B 的逆矩阵
+        T_A_in_B_inv = self.invert_transformation_matrix(T_A_in_B)
+        
+        # 计算 T_B->C
+        T_B_in_C = T_A_in_C @ T_A_in_B_inv
+        
+        # 提取位置和yaw角
+        location_B, yaw_B = self.extract_pose(T_B_in_C)
+        
+        return location_B, yaw_B
+
     def publish_transformed_coor(self):
         
         transformed_position_, transformed_yaw_ = self.sandbox_transformer.get_transformed_coor()
+        
         #transformed_position_[1]-=0.05
         #if self.previous_position is None or self.previous_yaw is None:
         self.previous_position = transformed_position_
@@ -147,6 +223,8 @@ class TransformedSandBoxCoorPublisherNode(Node):
             #     self.previous_yaw = transformed_yaw_
             # else:
             #     return
+        location_B_time1, yaw_B_time1 = self.compute_B_pose_in_C(location_A_time1, yaw_A_time1)
+        location_B_time2, yaw_B_time2 = self.compute_B_pose_in_C(location_A_time2, yaw_A_time2)
         transformed_position, transformed_yaw=self.transform_coordinates_from_sandbox2carla(transformed_position_, transformed_yaw_)
         # Set up the PoseWithCovarianceStamped message
         header = Header()
@@ -181,7 +259,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
         # Publish the message
         self.publisher.publish(msg)
         self.get_logger().info(
-            f"\n Transformed Published! x is {transformed_position[0]}, y is {transformed_position[1]}, z is {transformed_position[2]}, yaw is {math.degrees(transformed_yaw)}"
+            f"\n Transformed Published! x is {transformed_position[0]}, y is {transformed_position[1]}, z is {transformed_position[2]}, yaw is {transformed_yaw}"
         )
         self.get_logger().info(
             f"\n Transformed Published with covariance! [{msg.pose.pose.position.x}, {msg.pose.pose.position.y}, {msg.pose.pose.position.z}, {msg.pose.pose.orientation.w}, {msg.pose.pose.orientation.x}, {msg.pose.pose.orientation.y}, {msg.pose.pose.orientation.z}]"
