@@ -37,19 +37,47 @@ class TransformedSandBoxCoorPublisherNode(Node):
                              [ 9.68207899e-01,  3.27650037e+01,  0.00000000e+00,  7.28873065e+01],
                              [ 0.00000000e+00,  0.00000000e+00,  3.27793059e+01, -5.08468894e-02],
                              [ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
-    
+    def calculate_B_position(self,A_position, A_yaw):
+        """
+        根据 A 在 C 中的位置和 yaw 角，计算 B 在 C 中的位置。
+        :param A_position: A 在 C 中的坐标 (x_A, y_A, z_A)
+        :param A_yaw: A 在 C 中的 yaw 角（弧度制）
+        :return: B 在 C 中的坐标 (x_B, y_B, z_B)
+        """
+
+        offset_A_to_B = np.array([-0.055, 0, 0])
+
+        # 旋转矩阵 (绕 Z 轴旋转 yaw 角)
+        rotation_matrix = np.array([
+            [np.cos(A_yaw), -np.sin(A_yaw), 0],
+            [np.sin(A_yaw),  np.cos(A_yaw), 0],
+            [0, 0, 1]
+        ])
+
+        # 计算在 C 中 A 相对于 B 的偏移
+        offset_in_C = np.dot(rotation_matrix, offset_A_to_B)
+
+        # 计算 B 在 C 中的坐标
+        B_position = A_position - offset_in_C
+        return B_position
     def transform_coordinates_from_sandbox2carla(self,transformed_position__,transformed_yaw__):
         
         #pose.position.z=0.0016
-        #x=transformed_position[0], y=transformed_position[2], z=transformed_position[1]
         self.get_logger().info(f"this is orginal pose: x: {transformed_position__[0]}, y: {transformed_position__[2]}, z: 0.0016,yaw: {math.degrees(transformed_yaw__)},")
-        original_point=np.array([transformed_position__[0], transformed_position__[2], 0.0016])
+        #x=transformed_position[0], y=transformed_position[2], z=transformed_position[1]
+        # 注意: Carla的y轴和ROS的y轴方向相反, 因此需要对y轴进行翻转
+        B_position_offseted=self.calculate_B_position(np.array([transformed_position__[0],transformed_position__[2],0.0016]),transformed_yaw__)
+
+        original_point=np.array([B_position_offseted[0], B_position_offseted[1], B_position_offseted[2]])
+        #original_point=np.array([transformed_position__[0], transformed_position__[2], 0.0016])
+
         homogeneous_point = np.append(original_point, 1)
         transformed_homogeneous_point = self.similarity_matrix @ homogeneous_point
         transformed_point = transformed_homogeneous_point[:3] / transformed_homogeneous_point[3]
 
         #yaw=transformed_yaw
         _transformed_yaw=math.radians(-(math.degrees(transformed_yaw__)-90))#-90#90-transformed_yaw__#+15#-90
+        transformed_point[1]=-transformed_point[1]
         self.get_logger().info(f"____transformed___pose x: {transformed_point[0]}, y: {transformed_point[1]}, z:{transformed_point[2]},yaw: {math.degrees(_transformed_yaw)},")
         #new_pose=carla.Transform(carla.Location(x, y, z), carla.Rotation(0, yaw,0 ))
         return transformed_point,_transformed_yaw    
@@ -124,12 +152,11 @@ class TransformedSandBoxCoorPublisherNode(Node):
             f"\n this is coor_ Transformed Published! x is {transformed_position[0]}, y is {transformed_position[1]}, z is {transformed_position[2]}, yaw is {transformed_yaw}"
         )
         self.get_logger().info(
-            f"\n this is coor_ Transformed Published with covariance! [{msg.pose.pose.position.x}, {msg.pose.pose.position.y}, {msg.pose.pose.position.z}, {msg.pose.pose.orientation.w}, {msg.pose.pose.orientation.x}, {msg.pose.pose.orientation.y}, {msg.pose.pose.orientation.z}]"
+            f"\n Transformed Published with covariance! [{msg.pose.pose.position.x}, {msg.pose.pose.position.y}, {msg.pose.pose.position.z}, {msg.pose.pose.orientation.w}, {msg.pose.pose.orientation.x}, {msg.pose.pose.orientation.y}, {msg.pose.pose.orientation.z}]"
         )
 
         # 更新最后一次发布的时间
         self.last_published_time = self.get_clock().now()
-
 
     def publish_transformed_coor(self):
         
@@ -155,8 +182,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
         header.frame_id = "real_world"
 
         pose = Pose()
-        # 注意: Carla的y轴和ROS的y轴方向相反, 因此需要对y轴进行翻转
-        pose.position = Point(x=transformed_position[0], y=-transformed_position[1], z=transformed_position[2])
+        pose.position = Point(x=transformed_position[0], y=transformed_position[1], z=transformed_position[2])
         pose.orientation = Quaternion(
             x=self.RPY2quaternion(0, 0, transformed_yaw)[0],
             y=self.RPY2quaternion(0, 0, transformed_yaw)[1],
