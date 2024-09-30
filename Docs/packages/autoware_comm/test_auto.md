@@ -14,12 +14,23 @@
 2. start steam vr
 3. start vr transmit
 
+    check if the serial is online
+    
+    ```bash
+    ls /dev/ttyUSB0
+
+    sudo chmod 777 /dev/ttyUSB0
+
+    ```
+
     ```bash
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/bash
 
     source initial_config.bash 
 
+    python3 test_ros2_serial.py
+    
     ```
 
 4. start autoware vehicle agent
@@ -58,3 +69,5 @@ def ros_point_to_carla_location(ros_point):
 ```
 
 the set_frame of carla does not fellow the ekf
+
+![1](img/2024-09-30-17-09-07.png) control launch
