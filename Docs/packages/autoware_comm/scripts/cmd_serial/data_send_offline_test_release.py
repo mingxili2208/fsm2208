@@ -33,7 +33,7 @@ data_queue=queue.Queue()
 def read_from_serial(ser):
     while ser.is_open:
         try:
-            #time.sleep(0.2)
+            #time.sleep(0.06)
             if ser.in_waiting > 0:
                 response_data = ser.read(11)
                 data_queue.put(response_data)
@@ -100,7 +100,7 @@ for index, row in df.iterrows():
             continue
 
         # 等待设备响应（可根据需要调整）
-        time.sleep(0.03)  # 200毫秒
+        time.sleep(0.02)  # 200毫秒
 
         # 继续下一次发送，不再在主线程中读取
 

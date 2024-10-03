@@ -12,10 +12,20 @@
     then have to click the button play
 
 2. start steam vr
-3. start vr transmit
+3. start vr_pose transmit
+
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/bash
+
+    source initial_config.bash
+
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/scripts/debug
+
+    python3 debug_ekf.py
+
+4. start serial transmit
 
     check if the serial is online
-    
+
     ```bash
     ls /dev/ttyUSB0
 
@@ -23,21 +33,39 @@
 
     ```
 
+    start transmit
+
     ```bash
 
     cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/bash
 
     source initial_config.bash 
 
-    python3 test_ros2_serial.py
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/scripts/debug
+
+    python3 debug_ros2_serial.py
     
     ```
 
-4. start autoware vehicle agent
+5. start autoware vehicle agent
 
     ```bash
     cd ./Workspace/Carla/op_carla/op_bridge/op_scripts/fsm_lab_simulation/
-    ./test_run_vehicle_ros2.sh
+
+    ./debug_run_vehicle_ros2.sh
+
+    ```
+
+6. start car update
+
+    ```bash
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/bash
+
+    source initial_config.bash 
+
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/scripts/debug
+
+    debug_update_vehicle.py
 
     ```
 
