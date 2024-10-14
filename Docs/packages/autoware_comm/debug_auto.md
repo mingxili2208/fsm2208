@@ -99,3 +99,48 @@ def ros_point_to_carla_location(ros_point):
 the set_frame of carla does not fellow the ekf
 
 ![1](img/2024-09-30-17-09-07.png) control launch
+
+``` bash
+
+sudo fallocate -l 8G /swapfile   # 创建8GB的交换文件
+sudo chmod 600 /swapfile         # 设置正确的权限
+sudo mkswap /swapfile            # 设置交换文件
+sudo swapon /swapfile            # 启用交换文件
+
+```
+
+```bash
+cat /proc/sys/fs/inotify/max_user_watches
+
+sudo sysctl fs.inotify.max_user_watches=524288
+sudo sysctl fs.inotify.max_user_instances=1024
+
+sudo sysctl -p
+```
+
+```bash
+
+dmesg | grep -i 'killed process'
+
+```
+
+```bash
+sudo fallocate -l 8G /swapfile
+
+sudo chmod 600 /swapfile
+
+sudo mkswap /swapfile
+
+sudo swapon /swapfile
+
+#将这个 swap 设置永久生效（重启后仍可用），编辑 /etc/fstab 文件并添加以下内容:
+
+/swapfile swap swap defaults 0 0
+
+```
+
+![2](img/2024-10-04-17-43-59.png)
+
+watch -n 1 nvidia-smi
+
+nvidia-settings
