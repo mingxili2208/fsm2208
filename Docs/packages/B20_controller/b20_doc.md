@@ -14,12 +14,12 @@ nrf_pin|description|b20_pin
 --|--|--
 1|vcc|3.3
 2|gnd|gnd
-3|CSN/CS|A4
-4|CE|
-5|MOSI|A7
-6|SCK|A5
-7|IRQ|
-8|MISO|A6
+3|CSN/CS|b12
+4|CE|d2
+5|MOSI|b15
+6|SCK|b13
+7|IRQ|c12
+8|MISO|b14
 
 
 ## todo_list
