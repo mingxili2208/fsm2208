@@ -43,7 +43,7 @@
 
     cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/scripts/debug
 
-    python3 debug_ros2_serial.py
+    python3 debug5_serial.py
     
     ```
 
@@ -99,6 +99,9 @@ def ros_point_to_carla_location(ros_point):
 the set_frame of carla does not fellow the ekf
 
 ![1](img/2024-09-30-17-09-07.png) control launch
+
+## for debuging
+
 
 ``` bash
 

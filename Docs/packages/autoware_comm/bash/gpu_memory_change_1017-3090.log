@@ -1,0 +1,804 @@
+开始监控GPU显存变化，阈值为 200 MB
+[2024-10-17 15:45:17] GPU Memory change detected: 292 MB
+Thu Oct 17 15:45:17 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   40C    P8             24W /  350W |    6369MiB /  24576MiB |      2%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            363MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          177MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version        111MiB |
+|    0   N/A  N/A      5292    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       5618MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:45:19] GPU Memory change detected: 420 MB
+Thu Oct 17 15:45:20 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   40C    P8             29W /  350W |    6790MiB /  24576MiB |     26%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            363MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          177MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version        116MiB |
+|    0   N/A  N/A      5292    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       6033MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:45:22] GPU Memory change detected: 403 MB
+Thu Oct 17 15:45:22 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   40C    P8             29W /  350W |    7194MiB /  24576MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            363MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          177MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version        116MiB |
+|    0   N/A  N/A      5292    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       6438MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:45:28] GPU Memory change detected: 213 MB
+Thu Oct 17 15:45:28 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   40C    P8             29W /  350W |    7433MiB /  24576MiB |     35%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            363MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          177MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version        118MiB |
+|    0   N/A  N/A      5292    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       6675MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:46:31] GPU Memory change detected: 237 MB
+Thu Oct 17 15:46:31 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   40C    P8             30W /  350W |    7642MiB /  24576MiB |     25%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            363MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          177MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version        102MiB |
+|    0   N/A  N/A      5292    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       6900MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:46:31] GPU Memory change detected: 549 MB
+Thu Oct 17 15:46:31 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   40C    P8             30W /  350W |    8191MiB /  24576MiB |     31%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            363MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          177MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version        107MiB |
+|    0   N/A  N/A      5292    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       7443MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:46:32] GPU Memory change detected: 308 MB
+Thu Oct 17 15:46:32 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   46C    P0             62W /  350W |    8500MiB /  24576MiB |     29%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            363MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          177MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version        111MiB |
+|    0   N/A  N/A      5292    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       7748MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:47:26] GPU Memory change detected: -7833 MB
+Thu Oct 17 15:47:26 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   45C    P0             45W /  350W |     656MiB /  24576MiB |     44%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            322MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          177MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version        108MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:00] GPU Memory change detected: 303 MB
+Thu Oct 17 15:52:00 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   42C    P0            106W /  350W |     969MiB /  24576MiB |      3%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         95MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         62MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor        203MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:05] GPU Memory change detected: 221 MB
+Thu Oct 17 15:52:05 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   39C    P8             30W /  350W |    1190MiB /  24576MiB |     33%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version        101MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         61MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor        419MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:05] GPU Memory change detected: 235 MB
+Thu Oct 17 15:52:05 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   39C    P8             30W /  350W |    1425MiB /  24576MiB |     36%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version        101MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         61MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor        654MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:07] GPU Memory change detected: 221 MB
+Thu Oct 17 15:52:07 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   39C    P5             34W /  350W |    1660MiB /  24576MiB |      7%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         63MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor        889MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:07] GPU Memory change detected: 276 MB
+Thu Oct 17 15:52:07 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   39C    P5             34W /  350W |    1960MiB /  24576MiB |      9%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         63MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       1190MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:08] GPU Memory change detected: 211 MB
+Thu Oct 17 15:52:08 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   39C    P5             33W /  350W |    2193MiB /  24576MiB |     67%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         63MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       1422MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:08] GPU Memory change detected: 238 MB
+Thu Oct 17 15:52:08 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   39C    P5             33W /  350W |    2377MiB /  24576MiB |     12%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         63MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       1606MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:09] GPU Memory change detected: 277 MB
+Thu Oct 17 15:52:09 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   39C    P5             33W /  350W |    2678MiB /  24576MiB |     11%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         63MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       1908MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:09] GPU Memory change detected: 201 MB
+Thu Oct 17 15:52:09 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   39C    P5             34W /  350W |    2864MiB /  24576MiB |     10%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         63MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       2097MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:09] GPU Memory change detected: 211 MB
+Thu Oct 17 15:52:09 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   39C    P5             34W /  350W |    3073MiB /  24576MiB |     15%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         64MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       2301MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:10] GPU Memory change detected: 259 MB
+Thu Oct 17 15:52:10 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   42C    P0             52W /  350W |    3319MiB /  24576MiB |      2%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         63MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       2547MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:10] GPU Memory change detected: 339 MB
+Thu Oct 17 15:52:10 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   42C    P0             98W /  350W |    3742MiB /  24576MiB |      2%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         63MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       2972MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:11] GPU Memory change detected: 220 MB
+Thu Oct 17 15:52:11 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   42C    P0            105W /  350W |    3878MiB /  24576MiB |      3%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         63MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       3106MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:11] GPU Memory change detected: 265 MB
+Thu Oct 17 15:52:11 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   41C    P5            106W /  350W |    4161MiB /  24576MiB |      1%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         63MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       3390MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:11] GPU Memory change detected: 203 MB
+Thu Oct 17 15:52:11 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   40C    P5             87W /  350W |    4393MiB /  24576MiB |      5%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         63MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       3622MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:12] GPU Memory change detected: 206 MB
+Thu Oct 17 15:52:12 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   39C    P5             61W /  350W |    4552MiB /  24576MiB |      8%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         62MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       3783MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:12] GPU Memory change detected: 302 MB
+Thu Oct 17 15:52:12 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   39C    P5             34W /  350W |    4864MiB /  24576MiB |      8%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            338MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         62MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       4096MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:14] GPU Memory change detected: 725 MB
+Thu Oct 17 15:52:14 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   44C    P0            135W /  350W |    5579MiB /  24576MiB |      6%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            375MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         74MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       4763MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:14] GPU Memory change detected: 319 MB
+Thu Oct 17 15:52:14 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   44C    P0            136W /  350W |    5899MiB /  24576MiB |     15%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            375MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         74MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       5082MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+[2024-10-17 15:52:20] GPU Memory change detected: 212 MB
+Thu Oct 17 15:52:20 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:01:00.0  On |                  N/A |
+| 30%   46C    P0            156W /  350W |    6110MiB /  24576MiB |     38%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      1601      G   /usr/lib/xorg/Xorg                            374MiB |
+|    0   N/A  N/A      2194      G   /usr/bin/gnome-shell                          167MiB |
+|    0   N/A  N/A      2454      G   ...in/bin/sunloginclient --cmd=autorun         13MiB |
+|    0   N/A  N/A      2628      G   ...) Chrome/58.0.3029.81 Safari/537.36          4MiB |
+|    0   N/A  N/A      2770      G   ...en=FD3F701DC0C15BAABFE802FE0B04FAFB          4MiB |
+|    0   N/A  N/A      4917      G   ...erProcess --variations-seed-version         98MiB |
+|    0   N/A  N/A     46854      G   ...45,262144 --variations-seed-version         65MiB |
+|    0   N/A  N/A     80909    C+G   ...ine/Engine/Binaries/Linux/UE4Editor       5304MiB |
++-----------------------------------------------------------------------------------------+
+---------------------------------
