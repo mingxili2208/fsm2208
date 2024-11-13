@@ -65,7 +65,7 @@
 
     cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/scripts/debug
 
-    debug_update_vehicle.py
+   python3 debug_update_vehicle.py
 
     ```
 

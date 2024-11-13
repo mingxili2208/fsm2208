@@ -1,0 +1,432 @@
+Starting gpustat logging at 2024-10-25 16:45:41.
+[2024-10-25 16:45:41.548] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:41 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  10 % |  6178 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(98M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:41.835] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:42 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  10 % |  6178 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(98M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:42.127] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:42 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  10 % |  6180 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(100M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:42.411] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:42 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  21 % |  6180 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(100M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:42.712] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:42 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  17 % |  6180 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(100M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:43.002] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:43 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  34 % |  6180 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(100M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:43.294] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:43 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  31 % |  6180 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(100M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:43.607] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:43 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  28 % |  6180 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(100M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:43.921] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:44 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  22 % |  6183 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(102M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:44.200] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:44 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  42 % |  6183 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(103M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:44.490] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:44 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  36 % |  6183 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(103M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:44.767] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:44 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  34 % |  6183 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(103M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:45.064] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:45 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  31 % |  6183 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(103M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:45.370] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:45 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   1 % |  6183 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(103M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:45.656] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:45 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  12 % |  6186 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(87M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(106M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:45.942] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:46 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  53 % |  6198 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:46.228] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:46 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  42 % |  6196 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(116M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:46.516] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:46 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  37 % |  6196 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(116M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:46.816] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:46 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  35 % |  6196 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(116M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:47.100] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:47 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  31 % |  6196 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(116M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:47.388] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:47 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,   2 % |  6194 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(114M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:47.673] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:47 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  38 % |  6195 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(115M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:47.956] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:48 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  34 % |  6195 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(115M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:48.249] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:48 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  33 % |  6194 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(114M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:48.551] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:48 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  37 % |  6198 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:48.836] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:49 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  32 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(120M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:49.130] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:49 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  36 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:49.414] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:49 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  32 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:49.724] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:49 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  36 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:50.025] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:50 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  30 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:50.319] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:50 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  31 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(120M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:50.614] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:50 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  36 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(120M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:50.907] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:51 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  26 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(120M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:51.210] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:51 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  24 % |  6198 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:51.505] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:51 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  36 % |  6198 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:51.795] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:51 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  34 % |  6198 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:52.091] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:52 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  14 % |  6198 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:52.379] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:52 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  28 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(120M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:52.659] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:52 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  51 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(120M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:52.946] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:53 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  11 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(120M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:53.240] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:53 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   7 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(120M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:53.517] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:53 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  33 % |  6197 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(116M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:53.821] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:54 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  33 % |  6192 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(112M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:54.124] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:54 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  34 % |  6192 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(112M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:54.412] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:54 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  25 % |  6193 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(113M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:54.722] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:54 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   8 % |  6193 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(113M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:55.009] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:55 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   7 % |  6193 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(113M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:55.311] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:55 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  21 % |  6192 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(111M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:55.614] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:55 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  12 % |  6192 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(111M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:55.900] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:56 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   8 % |  6192 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(111M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:56.205] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:56 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  11 % |  6191 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(111M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:56.499] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:56 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  11 % |  6191 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(111M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:56.804] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:56 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   8 % |  6191 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(111M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:57.085] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:57 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   9 % |  6191 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(111M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:57.378] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:57 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   0 % |  6191 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(111M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:57.667] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:57 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  11 % |  6191 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(111M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:57.968] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:58 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   7 % |  6188 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(108M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:58.268] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:58 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   9 % |  6188 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(108M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:58.572] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:58 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  11 % |  6187 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(107M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:58.869] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:59 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   7 % |  6187 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(107M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:59.158] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:59 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   8 % |  6187 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(107M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:59.457] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:59 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   0 % |  6187 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(107M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:45:59.752] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:45:59 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  34 % |  6187 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(107M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:00.047] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:00 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  34 % |  6188 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(108M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:00.347] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:00 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   4 % |  6186 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(106M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:00.644] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:00 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  20 % |  6186 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(106M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:00.949] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:01 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   7 % |  6184 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(104M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:01.235] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:01 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  33 % |  6202 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:01.528] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:01 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  32 % |  6206 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(126M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:01.814] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:01 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  38 % |  6206 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(126M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:02.115] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:02 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  34 % |  6206 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(126M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:02.411] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:02 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  26 % |  6206 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(126M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:02.707] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:02 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   8 % |  6206 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(126M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:02.989] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:03 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   3 % |  6206 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(126M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:03.286] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:03 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  25 % |  6205 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(124M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:03.580] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:03 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  22 % |  6206 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(126M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:03.881] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:04 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  32 % |  6206 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(126M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:04.185] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:04 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  37 % |  6205 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(126M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:04.486] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:04 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  32 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(133M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:04.760] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:04 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  46 % |  6213 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(134M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:05.059] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:05 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  36 % |  6215 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(136M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:05.342] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:05 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  14 % |  6215 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(136M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:05.627] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:05 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  20 % |  6216 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(136M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:05.913] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:06 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  32 % |  6216 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(136M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:06.222] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:06 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  33 % |  6216 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(136M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:06.523] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:06 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  20 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:06.829] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:07 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   7 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:07.122] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:07 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  11 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:07.425] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:07 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   5 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(131M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:07.754] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:07 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  12 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(131M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:08.040] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:08 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   0 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(131M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:08.339] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:08 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   0 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(131M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:08.638] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:08 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  41 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(131M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:08.943] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:09 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  32 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:09.240] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:09 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  35 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:09.535] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:09 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  19 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(131M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:09.810] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:09 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  31 % |  6216 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(136M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:10.105] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:10 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  40 % |  6215 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(135M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:10.398] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:10 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  33 % |  6213 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(134M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:10.676] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:10 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   9 % |  6213 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(134M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:10.978] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:11 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  38 % |  6214 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(134M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:11.269] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:11 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  34 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:11.562] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:11 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  35 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(133M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:11.849] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:12 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  16 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(133M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:12.129] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:12 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  13 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(133M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:12.423] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:12 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   1 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:12.713] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:12 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  15 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:13.013] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:13 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  10 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:13.313] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:13 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   0 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:13.603] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:13 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  14 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:13.901] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:14 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   7 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:14.190] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:14 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  14 % |  6212 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:14.498] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:14 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  20 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(120M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:14.797] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:14 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  17 % |  6194 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(114M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:15.089] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:15 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  14 % |  6194 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(114M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:15.395] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:15 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   0 % |  6194 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(114M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:15.686] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:15 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  14 % |  6194 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(114M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:15.981] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:16 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   2 % |  6190 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:16.287] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:16 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  25 % |  6190 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:16.584] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:16 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  15 % |  6190 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:16.870] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:17 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  10 % |  6190 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:17.173] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:17 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  12 % |  6190 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:17.474] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:17 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  16 % |  6190 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:17.772] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:17 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  15 % |  6189 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:18.066] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:18 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   5 % |  6189 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:18.355] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:18 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   6 % |  6189 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:18.645] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:18 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  15 % |  6189 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:18.949] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:19 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   2 % |  6189 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(111M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:19.232] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:19 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  27 % |  6199 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(119M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:19.522] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:19 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  28 % |  6203 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(124M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:19.809] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:19 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  33 % |  6207 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(127M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:20.099] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:20 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  41 % |  6207 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(127M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:20.398] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:20 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  36 % |  6206 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(126M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:20.681] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:20 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  36 % |  6206 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(127M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:20.984] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:21 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  40 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:21.270] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:21 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  25 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(131M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:21.569] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:21 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  28 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(131M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:21.868] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:22 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  36 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(131M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:22.166] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:22 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  39 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(131M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:22.460] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:22 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  33 % |  6210 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(130M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:22.759] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:22 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   9 % |  6210 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(130M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:23.048] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:23 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  30 % |  6210 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(130M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:23.342] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:23 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  17 % |  6209 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(130M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:23.639] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:23 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  26 % |  6213 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(134M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:23.935] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:24 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  46 % |  6213 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(134M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:24.243] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:24 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  26 % |  6213 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(134M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:24.548] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:24 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  21 % |  6213 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(134M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:24.843] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:25 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  32 % |  6213 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(133M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:25.139] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:25 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  31 % |  6213 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(133M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:25.437] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:25 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  28 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(131M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:25.727] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:25 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  30 % |  6211 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(132M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:26.028] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:26 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  33 % |  6203 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(123M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:26.324] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:26 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   0 % |  6198 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:26.639] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:26 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  16 % |  6198 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:26.934] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:27 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   1 % |  6198 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:27.233] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:27 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  16 % |  6197 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:27.527] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:27 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  15 % |  6197 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:27.821] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:27 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  37 % |  6197 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:28.120] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:28 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   9 % |  6197 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:28.426] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:28 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  33 % |  6197 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:28.739] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:28 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  28 % |  6197 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(117M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:29.033] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:29 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  14 % |  6196 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(117M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:29.332] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:29 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   1 % |  6196 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(117M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:29.627] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:29 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  11 % |  6195 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(115M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:29.940] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:30 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  34 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:30.281] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:30 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   9 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:30.578] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:30 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  32 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:30.877] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:31 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  14 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:31.162] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:31 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  13 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:31.452] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:31 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  10 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:31.758] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:31 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   9 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:32.075] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:32 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  15 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:32.372] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:32 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   3 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:32.668] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:32 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  18 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:32.955] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:33 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   1 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:33.251] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:33 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  18 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:33.550] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:33 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  12 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:33.847] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:34 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  13 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:34.138] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:34 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  11 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:34.439] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:34 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  11 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:34.740] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:34 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   8 % |  6200 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:35.046] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:35 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  11 % |  6193 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(114M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:35.340] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:35 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   5 % |  6193 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(114M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:35.653] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:35 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  16 % |  6194 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(114M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:35.950] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:36 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  14 % |  6194 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(114M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:36.241] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:36 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  31 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:36.542] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:36 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  42 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:36.830] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:37 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  40 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:37.124] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:37 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  15 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:37.419] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:37 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  21 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:37.708] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:37 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  31 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:38.010] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:38 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  34 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:38.296] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:38 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   1 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:38.592] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:38 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  14 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:38.892] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:39 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   4 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:39.201] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:39 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  17 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:39.501] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:39 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   8 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:39.791] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:39 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  17 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:40.084] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:40 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  22 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:40.383] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:40 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  36 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:40.676] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:40 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  24 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:40.999] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:41 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  15 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:41.288] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:41 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   1 % |  6194 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(114M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:41.580] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:41 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  42 % |  6191 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(111M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:41.877] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:42 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  16 % |  6190 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:42.171] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:42 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  12 % |  6190 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(110M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:42.455] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:42 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  19 % |  6197 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(118M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:42.746] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:42 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  23 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:43.035] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:43 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  24 % |  6202 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:43.336] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:43 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 38°C,  33 % |  6202 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:43.630] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:43 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  36 % |  6202 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:43.923] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:44 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,   8 % |  6202 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:44.220] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:44 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  26 % |  6203 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(87M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(122M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:44.510] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:44 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  33 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+[2024-10-25 16:46:44.801] cityufsmlabcarla-Precision-3660  Fri Oct 25 16:46:44 2024  550.54.15
+[0] NVIDIA GeForce RTX 3090 | 37°C,  10 % |  6201 / 24576 MB | cityu-fsm-lab-carla(21M) cityu-fsm-lab-carla(5335M) root(443M) cityu-fsm-lab-carla(86M) cityu-fsm-lab-carla(6M) cityu-fsm-lab-carla(23M) cityu-fsm-lab-carla(42M) cityu-fsm-lab-carla(121M) cityu-fsm-lab-carla(8M) cityu-fsm-lab-carla(12M)
+Logging stopped at 2024-10-25 16:46:45.
