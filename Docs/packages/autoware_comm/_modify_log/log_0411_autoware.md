@@ -139,3 +139,92 @@ error message:
 
 
 [INFO] [1731400393.954713518] [rviz2]: Setting goal pose: Frame:map, Position(-15.625, -11.9509, 0), Orientation(0, 0, 0.687054, 0.726606) = Angle: 1.51485 
+
+
+
+
+[INFO] [1732068941.317441532] [rviz2]: Setting goal pose: Frame:map, Position(54.7385, -47.1952, 0), Orientation(0, 0, 0.298168, 0.954513) = Angle: 0.605545
+
+[INFO] [1732068968.490328145] [rviz2]: Setting goal pose: Frame:map, Position(-48.7665, -27.0183, 0), Orientation(0, 0, -0.744462, 0.667665) = Angle: -1.67946
+[INFO] [1732068970.226597497] [rviz]: client request
+[INFO] [1732068970.268462333] [rviz]: Status: 0, 
+[INFO] [1732069036.377988663] [rviz2]: Setting goal pose: Frame:map, Position(57.2278, 1.93691, 0), Orientation(0, 0, -0.456269, 0.889842) = Angle: -0.947596
+[INFO] [1732069038.920184208] [rviz]: client request
+[INFO] [1732069038.926719246] [rviz]: Status: 0, 
+[INFO] [1732069076.863165995] [rviz2]: Setting goal pose: Frame:map, Position(-15.6187, -29.7697, 0), Orientation(0, 0, 0.707107, 0.707107) = Angle: 1.5708
+
+
+[INFO] [1732074745.530787932] [rviz2]: Setting goal pose: Frame:map, Position(49.7086, -43.887, 0), Orientation(0, 0, -0.963161, 0.268924) = Angle: -2.59704
+[INFO] [1732074800.296554789] [rviz]: client request
+[INFO] [1732074800.303028076] [rviz]: Status: 0, 
+[INFO] [1732074883.819082637] [rviz2]: Setting goal pose: Frame:map, Position(-15.9319, -23.4481, 0), Orientation(0, 0, 0.703376, 0.710818) = Angle: 1.56027
+[INFO] [1732074894.024895926] [rviz]: client request
+[INFO] [1732074894.098257148] [rviz]: Status: 0, 
+[INFO] [1732074915.580836015] [rviz2]: Setting goal pose: Frame:map, Position(51.1498, -42.4458, 0), Orientation(0, 0, -0.963715, 0.266934) = Angle: -2.60117
+[INFO] [1732074917.270788954] [rviz]: client request
+[INFO] [1732074917.274672741] [rviz]: Status: 0, 
+[INFO] [1732074951.525688576] [rviz2]: Setting goal pose: Frame:map, Position(-15.9319, -30.9161, 0), Orientation(0, 0, 0.696092, 0.717953) = Angle: 1.53988
+[INFO] [1732074958.612475801] [rviz]: client request
+[INFO] [1732074958.617539572] [rviz]: Status: 0, 
+[INFO] [1732074976.421378051] [rviz2]: Setting goal pose: Frame:map, Position(54.2938, -40.6186, 0), Orientation(0, 0, -0.960519, 0.278215) = Angle: -2.57772
+[INFO] [1732074978.358372149] [rviz]: client request
+[INFO] [1732074978.362490929] [rviz]: Status: 0,
+
+
+
+new array 1
+
+[INFO] [1732176983.339649813] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 1.1455111295509997, y: -1.0389520146400004, z: 0.0016,yaw: -1.1804164893714855,
+[INFO] [1732176983.340016825] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: -14.462830590551008, y: -39.965535048651844, z:0.0016000000400000006,yaw: 91.18041648937148,
+
+[INFO] [1732177059.569538761] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 0.8829819143949997, y: -0.8655865866060002, z: 0.0016,yaw: 2.40018351125418,
+[INFO] [1732177059.569994600] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: -23.23537618293557, y: -45.46432178602338, z:0.0016000000400000006,yaw: 87.59981648874582,
+
+
+
+[INFO] [1732177162.882856950] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 0.8239335907390002, y: -2.013350896667, z: 0.0016,yaw: 4.475083511617053,
+[INFO] [1732177162.883647875] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: -24.062588273565893, y: -7.842618545272781, z:0.0016000000400000006,yaw: 85.52491648838294,
+
+[INFO] [1732177203.883403458] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 1.3043353922919998, y: -2.5719416963770003, z: 0.0016,yaw: 56.00368352148141,
+[INFO] [1732177203.883775439] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: -8.316448083501932, y: 9.135943275147927, z:0.0016000000400000006,yaw: 33.996316478518594,
+
+[INFO] [1732177261.612739118] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 1.7373296844629995, y: -2.786275254187, z: 0.0016,yaw: 85.44138352932383,
+[INFO] [1732177261.613100665] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: 5.514443749955781, y: 15.560706353858047, z:0.0016000000400000006,yaw: 4.558616470676171,
+
+[INFO] [1732177337.664267803] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 2.4616922181889995, y: -2.948471222778, z: 0.0016,yaw: 107.4244834961338,
+[INFO] [1732177337.664847861] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: 28.96594036161575, y: 20.236443448039534, z:0.0016000000400000006,yaw: -17.424483496133803,
+
+[INFO] [1732177380.727191679] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 3.0874740076669998, y: -2.8259271743810004, z: 0.0016,yaw: 94.50188349232734,
+[INFO] [1732177380.727693704] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: 49.606571146175895, y: 15.558019972263113, z:0.0016000000400000006,yaw: -4.501883492327337,
+
+[INFO] [1732177436.250528251] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 3.243929437092, y: -2.11715874888, z: 0.0016,yaw: 156.64898350669733,
+[INFO] [1732177436.250843398] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: 53.09065105029777, y: -7.0888670182487346, z:0.0016000000400000006,yaw: -66.64898350669733,
+
+[INFO] [1732177472.753682809] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 2.721832061451, y: -2.503779741919, z: 0.0016,yaw: 103.23848349497653,
+[INFO] [1732177472.754258968] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: 37.14014290965068, y: 5.389370839330166, z:0.0016000000400000006,yaw: -13.238483494976537,
+
+[INFO] [1732177525.288959408] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 1.9899403258169999, y: -2.154331533615, z: 0.0016,yaw: 86.89528352980008,
+[INFO] [1732177525.289305093] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: 13.14987240788188, y: -5.390613727120133, z:0.0016000000400000006,yaw: 3.104716470199918,
+
+[INFO] [1732177551.184007410] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 1.6561142513999996, y: -2.0649688312180006, z: 0.0016,yaw: 28.80738351597688,
+[INFO] [1732177551.184346430] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: 3.0995094709030298, y: -7.422662550159009, z:0.0016000000400000006,yaw: 61.19261648402312,
+
+[INFO] [1732177583.573130918] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 1.6255610120949995, y: -1.6862205239990002, z: 0.0016,yaw: -14.842116491773105,
+[INFO] [1732177583.573611016] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: 1.86223094649376, y: -18.94744015570983, z:0.0016000000400000006,yaw: 104.84211649177311,
+
+[INFO] [1732177097.765623420] [transformed_SandBox_coordinate_publisher_node]: ____transformed___pose x: -3.519769219886669, y: -38.886362006092014, z:0.0016000000400000006,yaw: 110.05461649270543,
+[INFO] [1732177097.785349912] [transformed_SandBox_coordinate_publisher_node]: this is orginal pose: x: 1.480294752752, y: -1.070223985284, z: 0.0016,yaw: -20.054416492705457,
+
+[1.1455, -1.0390, 0.0016, -1.1804]
+[0.8830, -0.8656, 0.0016, 2.4002]
+[0.8239, -2.0134, 0.0016, 4.4751]
+[1.3043, -2.5719, 0.0016, 56.0037]
+[1.7373, -2.7863, 0.0016, 85.4414]
+[2.4617, -2.9485, 0.0016, 107.4245]
+[3.0875, -2.8259, 0.0016, 94.5019]
+[3.2439, -2.1172, 0.0016, 156.6490]
+[2.7218, -2.5038, 0.0016, 103.2385]
+[1.9899, -2.1543, 0.0016, 86.8953]
+[1.6561, -2.0650, 0.0016, 28.8074]
+[1.6256, -1.6862, 0.0016, -14.8421]
+[1.4803, -1.0702, 0.0016, -20.0544]

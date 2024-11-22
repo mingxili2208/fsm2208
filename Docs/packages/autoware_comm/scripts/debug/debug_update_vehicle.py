@@ -107,6 +107,7 @@ class CarlaUpdateVehicleHandler(Node):
         self.current_pose.rotation.pitch=math.degrees(pitch)
         self.current_pose.rotation.yaw = -math.degrees(yaw) #-90
         self.get_logger().info(f"the yaw now is {self.current_pose.rotation.yaw} degrees")
+        self.ego_vehicle.apply_control(carla.VehicleControl(throttle=0.0, brake=1.0, steer=0.0))
         if  self.pre_pose is  None:
             self.pre_pose = self.current_pose
             if  self.ego_vehicle is not None:
