@@ -7,8 +7,8 @@
 #define PS2_CLK  12
 
 // 定义模式
-#define pressures   false
-#define rumble      false
+#define pressures   false //是否启用按键压力感应
+#define rumble      true //是否启用振动
 
 PS2X ps2x;  // 创建 PS2 控制器对象
 
@@ -44,6 +44,8 @@ void loop() {
   String dataPacket = "";
 
   // 按键状态
+  dataPacket += "L2:" + String(ps2x.Button(PSB_L2)) + ",";
+  dataPacket += "R2:" + String(ps2x.Button(PSB_R2)) + ",";
   dataPacket += "START:" + String(ps2x.Button(PSB_START)) + ",";
   dataPacket += "SELECT:" + String(ps2x.Button(PSB_SELECT)) + ",";
   dataPacket += "UP:" + String(ps2x.Button(PSB_PAD_UP)) + ",";
@@ -67,5 +69,5 @@ void loop() {
     lastDataPacket = dataPacket;  // 更新存储的上一次数据包
   }
 
-  delay(50);  // 延迟，避免过高的发送频率
+  //delay(50);  // 延迟，避免过高的发送频率
 }
