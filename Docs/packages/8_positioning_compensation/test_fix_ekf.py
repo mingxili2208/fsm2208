@@ -16,6 +16,8 @@ import numpy as np
 from rclpy.time import Time
 import carla
 from matplotlib.path import Path
+from shapely.geometry import Polygon 
+from shapely.geometry import Point as PPoint
 
 VEHICLE_NAME = "follow_adtruck"
 
@@ -39,83 +41,81 @@ class TransformedSandBoxCoorPublisherNode(Node):
                              [ 0.00000000e+00,  0.00000000e+00,  3.27793059e+01, -5.08468894e-02],
                              [ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
 
-    def calculate_B_position(self, A_position, A_yaw):
+
+    def calculate_B_position(self, A_position, A_yaw, transition_width=0.2):
         """
         根据 A 在 C 中的位置和 yaw 角，计算 B 在 C 中的位置，并通过插值平滑局部额外补偿。
         :param A_position: A 在 C 中的坐标 (x_A, y_A, z_A)
         :param A_yaw: A 在 C 中的 yaw 角（弧度制）
+        :param transition_width: 过渡带宽度，用于平滑过渡的范围大小
         :return: B 在 C 中的坐标 (x_B, y_B, z_B)
         """
-        
         x = A_position[0]
         y = A_position[1]
         yaw = A_yaw
 
         # 全局基础补偿
-        global_offset_A_to_B = np.array([-0.0355, 0, 0])
+        global_offset_A_to_B = np.array([-0.0325, 0, 0])
 
-        # 区域 1 的补偿（yaw 在 [-93, 88] 范围内）
-        region1_offset_A_to_B = np.array([-0.115, 0, 0])
+        # 区域补偿定义
+        region1_offset_A_to_B = np.array([-0.085, 0, 0])  # 区域 1 补偿
+        region2_offset_A_to_B = np.array([-0.0185, 0, 0])  # 区域 2 补偿
+        region2_1_offset_A_to_B=np.array([+0.015,0,0]) #region2_1
+        region2_2_offset_A_to_B=np.array([-0.025,0,0]) #region2_2
+        region3_offset_A_to_B = np.array([-0.125, 0, 0])  # 区域 3 补偿
+        region4_offset_A_to_B = np.array([+0.00, 0, 0])  # 区域 4 补偿
 
-        # 区域 2 的补偿（yaw 在 [88, 180] 或 [-180, -93] 范围内）
-        region2_offset_A_to_B = np.array([-0.0185, 0, 0])
-
-        # 区域 3 的补偿（多边形内且 yaw 在 [-120, 88] 范围内）
-        region3_offset_A_to_B = np.array([-0.0925, 0, 0])
-
-        # 区域 4 的补偿（新的多边形区域）
-        region4_offset_A_to_B = np.array([+0.0185, 0, 0])
-
-        # 定义区域的范围
+        # 定义局部区域的坐标范围
         local_region_x_min = -np.inf
-        local_region_x_max = 0.41
+        local_region_x_max = 0.66
         local_region_y_min = -3.09
-        local_region_y_max = -0.45
+        local_region_y_max = -0.3
 
-        # 定义局部区域的过渡带
-        transition_width = 0.20  # 过渡带的宽度
-
-        # 定义区域3的多边形
-        polygon_region3 = np.array([
-            [3.8408, -2.2162],  # A
-            [3.5942, -2.1935],  # C 
-            [3.1053, -1.7821],   # D
-            [3.8339, -1.4712]  # B
+        # 区域 3 和 区域 4 多边形定义
+        polygon_region3 = Polygon([
+            #[3.942,-1.983,]
+            #[3.993,-1.557]
+            (3.8408, -2.2162),  # A
+            (3.5942, -2.1935),  # C 
+            (3.1053, -1.7821),   # D
+            (3.8339, -1.4712)  # B
+        ])
+        polygon_region4 = Polygon([
+            (1.1455, -1.0390),
+            (0.8830, -0.8656),
+            (0.8239, -2.0134),
+            (1.3043, -2.5719),
+            (1.7373, -2.7863),
+            (2.4617, -2.9485),
+            (3.0875, -2.8259),
+            (3.2439, -2.1172),
+            (2.7218, -2.5038),
+            (1.9899, -2.1543),
+            (1.6561, -2.0650),
+            (1.6256, -1.6862),
+            (1.4803, -1.0702)
         ])
 
-        # 定义区域4的多边形
-        polygon_region4 = np.array([
-            [1.1455, -1.0390],
-            [0.8830, -0.8656],
-            [0.8239, -2.0134],
-            [1.3043, -2.5719],
-            [1.7373, -2.7863],
-            [2.4617, -2.9485],
-            [3.0875, -2.8259],
-            [3.2439, -2.1172],
-            [2.7218, -2.5038],
-            [1.9899, -2.1543],
-            [1.6561, -2.0650],
-            [1.6256, -1.6862],
-            [1.4803, -1.0702]
-        ])
+        # 扩展多边形区域（创建过渡带）
+        expanded_polygon_region3 = polygon_region3.buffer(transition_width)
+        expanded_polygon_region4 = polygon_region4.buffer(transition_width)
 
-        # 判断点是否在多边形内的函数
-        def is_point_in_polygon(point, polygon):
+        # 判断点是否在局部区域
+        def is_in_local_region(x, y):
             """
-            检查点是否在多边形内
-            :param point: (x, y) 坐标
-            :param polygon: 多边形顶点的坐标列表
-            :return: True 如果点在多边形内, 否则 False
+            检查点是否在局部区域范围内
             """
-            from matplotlib.path import Path
-            poly_path = Path(polygon)
-            return poly_path.contains_point(point)
+            return (local_region_x_min <= x <= local_region_x_max) and \
+                (local_region_y_min <= y <= local_region_y_max)
 
-        # 检查是否在局部区域的边界附近
+        # 计算过渡权重的函数
         def calculate_transition_weight(value, min_value, max_value, transition_width):
             """
             计算在过渡带内的权重。返回值在 [0, 1] 之间，0 表示没有局部补偿，1 表示完全应用局部补偿。
+            :param value: 当前值
+            :param min_value: 区域的最小边界
+            :param max_value: 区域的最大边界
+            :param transition_width: 过渡带宽度
             """
             if value < min_value:
                 return 0.0
@@ -128,38 +128,91 @@ class TransformedSandBoxCoorPublisherNode(Node):
             else:
                 return 1.0
 
-        # 分别计算 x、y 和 yaw 在过渡带中的权重
+        # 计算点到多边形边界的距离
+        def distance_to_polygon_boundary(point, polygon):
+            """
+            计算点到多边形边界的距离
+            :param point: (x, y) 坐标
+            :param polygon: Shapely Polygon 对象
+            :return: 距离值
+            """
+            return polygon.exterior.distance(PPoint(point))
+        def interpolate_offset(offset1, offset2, weight):
+            return offset1 * (1 - weight) + offset2 * weight
+        # 分别计算 x 和 y 的过渡权重
         x_weight = calculate_transition_weight(x, local_region_x_min, local_region_x_max, transition_width)
         y_weight = calculate_transition_weight(y, local_region_y_min, local_region_y_max, transition_width)
 
-        # 判断在 yaw 维度是否属于 region 1 或 region 2
-        if -93 <= np.degrees(yaw) <= 88:
-            # 区域 1 (yaw 在 [-93, 88])
+        # 区域判断逻辑
+        if is_in_local_region(x, y) and -93 <= np.degrees(yaw) <= 0:
+            # 区域 1
+            yaw_weight = calculate_transition_weight(np.degrees(yaw), -93, 88, transition_width)
+            region_weight = x_weight * y_weight * yaw_weight
             region_offset_A_to_B = region1_offset_A_to_B
-            yaw_weight = 1.0  # 完全在区域 1 内，不需要过渡
-        elif (88 <= np.degrees(yaw) <= 180) or (-180 <= np.degrees(yaw) <= -93):
-            # 区域 2 (yaw 在 [88, 180] 或 [-180, -93])
-            region_offset_A_to_B = region2_offset_A_to_B
-            yaw_weight = 1.0  # 完全在区域 2 内，不需要过渡
-        elif is_point_in_polygon([x, y], polygon_region3) and -120 <= np.degrees(yaw) <= 88:
-            # 区域 3 (点在多边形内 且 yaw 在 [-120, 88])
+            self.get_logger().info(f"------------区域 1: 权重为 {region_weight}")
+        elif is_in_local_region(x, y) and ((88 <= np.degrees(yaw) <= 180) or (-180 <= np.degrees(yaw) <= -93)):
+            # 区域 2
+            if y < -2.2022:
+                # 区域 2 的默认逻辑
+                yaw_weight = calculate_transition_weight(np.degrees(yaw), -180, -93, transition_width) + \
+                            calculate_transition_weight(np.degrees(yaw), 88, 180, transition_width)
+                region_weight = x_weight * y_weight * yaw_weight
+                region_offset_A_to_B = region2_offset_A_to_B
+                self.get_logger().info(f"-------------区域 2: 权重为 {region_weight}, 偏移为 {region_offset_A_to_B}")
+            elif -2.2022 - transition_width < y < -2.2022:
+                # 区域 2_1 和全局区域之间的过渡带
+                transition_weight = calculate_transition_weight(y, -2.2022 - transition_width, -2.2022, transition_width)
+                region_weight = transition_weight
+                region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region2_1_offset_A_to_B,transition_weight)
+                self.get_logger().info(f"--------------区域 2_1 过渡带: 权重为 {region_weight}, 偏移为 {region_offset_A_to_B}")
+            elif -2.2022 < y < -1.0268:
+                # 区域 2_1
+                region_weight = calculate_transition_weight(y, -2.2022, -1.0268, transition_width)
+                region_offset_A_to_B = region2_1_offset_A_to_B
+                self.get_logger().info(f"----------------区域 2_1: 权重为 {region_weight}, 偏移为 {region_offset_A_to_B}")
+            elif -1.0268 - transition_width < y < -1.0268 :
+                # 区域 2_1 和区域 2_2 之间的过渡带
+                transition_weight = calculate_transition_weight(y, -1.0268 - transition_width, -1.0268, transition_width)
+                region_weight = transition_weight
+                region_offset_A_to_B = interpolate_offset(region2_1_offset_A_to_B, region2_2_offset_A_to_B, transition_weight)
+                self.get_logger().info(f"------------区域 2_1 和 2_2 过渡带: 权重为 {region_weight}, 偏移为 {region_offset_A_to_B}")
+            elif y>-1.0268:
+                # 区域 2_2
+                region_weight = 1.0
+                region_offset_A_to_B = region2_2_offset_A_to_B
+                self.get_logger().info(f"--------------区域 2_2: 权重为 {region_weight}, 偏移为 {region_offset_A_to_B}")
+
+        elif polygon_region3.contains(PPoint(x, y)) and -160 <= np.degrees(yaw) <= -10:
+            # 区域 3
+            region_weight = 1.0
             region_offset_A_to_B = region3_offset_A_to_B
-            yaw_weight = 1.0  # 完全在新区域内，不需要过渡
-        elif is_point_in_polygon([x, y], polygon_region4):
-            # 区域 4 (点在新的多边形内，无 yaw 限制)
+            self.get_logger().info(f"区域 3: 点在原始多边形内部，权重为 {region_weight},偏移为 {region_offset_A_to_B}")
+        elif expanded_polygon_region3.contains(PPoint(x, y)) and -160 <= np.degrees(yaw) <= -20 :
+            # 区域 3 过渡带
+            distance = distance_to_polygon_boundary((x, y), polygon_region3)
+            region_weight = max(0.0, min(1.0, 1 - distance / transition_width))*0.8
+            region_offset_A_to_B = region3_offset_A_to_B
+            self.get_logger().info(f"区域 3 过渡带: 距离原始边界 {distance:.3f}, 权重为 {region_weight},偏移为 {region_offset_A_to_B}")
+        elif polygon_region4.contains(PPoint(x, y)):
+            # 区域 4
+            region_weight = 1.0
             region_offset_A_to_B = region4_offset_A_to_B
-            yaw_weight = 1.0  # 完全在区域内，不需要过渡
+            self.get_logger().info(f"区域 4: 点在原始多边形内部，权重为 {region_weight},偏移为 {region_offset_A_to_B}")
+        elif expanded_polygon_region4.contains(PPoint(x, y)):
+            # 区域 4 过渡带
+            distance = distance_to_polygon_boundary((x, y), polygon_region4)
+            region_weight = max(0.0, min(1.0, 1 - distance / transition_width))
+            region_offset_A_to_B = region4_offset_A_to_B
+            self.get_logger().info(f"区域 4 过渡带: 距离原始边界 {distance:.3f}, 权重为 {region_weight},偏移为 {region_offset_A_to_B}")
         else:
-            # 不在任何局部区域，使用全局补偿
+            # 全局区域
+            region_weight = 1.0
             region_offset_A_to_B = global_offset_A_to_B
-            yaw_weight = 0.0
+            self.get_logger().info(f"----------全局区域: 点不在任何区域内，权重为 {region_weight},偏移为 {region_offset_A_to_B}")
 
-        # 最终的过渡权重是 x、y 和 yaw 权重的乘积
-        transition_weight = x_weight * y_weight * yaw_weight
-
-        # 根据过渡权重插值计算最终的补偿
-        final_offset_A_to_B = (1 - transition_weight) * global_offset_A_to_B + transition_weight * region_offset_A_to_B
-
+        # 最终补偿融合
+        final_offset_A_to_B = region_weight * region_offset_A_to_B
+        self.get_logger().info(f"最终补偿值: {final_offset_A_to_B}")
         # 旋转矩阵 (绕 Z 轴旋转 yaw 角)
         rotation_matrix = np.array([
             [np.cos(A_yaw), -np.sin(A_yaw), 0],

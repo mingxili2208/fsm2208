@@ -6,7 +6,7 @@ import psutil
 import signal
 
 # 系统内存使用的阈值，超过这个比例（60%）将触发杀死内存最多进程的操作
-MEMORY_THRESHOLD = 0.6  # 3/5
+MEMORY_THRESHOLD = 0.9  # 3/5
 
 # 系统监控间隔时间（秒）
 INTERVAL = 10  # 每10秒检查一次

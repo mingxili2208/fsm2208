@@ -75,9 +75,9 @@ class TransformedSandBoxCoorPublisherNode(Node):
         # 定义区域3的多边形
         polygon_region = np.array([
             [3.8408, -2.2162],  # A
-            [3.8339, -1.4712],  # B
             [3.5942, -2.1935],  # C
-            [3.1053, -1.7821]   # D
+            [3.1053, -1.7821],   # D
+            [3.8339, -1.4712]  # B
         ])
 
         # 判断点是否在多边形内的函数
