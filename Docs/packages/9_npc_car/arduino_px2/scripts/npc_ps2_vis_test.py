@@ -217,16 +217,16 @@ class EgoVehicleTerminal:
                 ps2_data = self.read_serial_input()
                 if ps2_data:
                     # L1 控制油门
-                    if ps2_data.get("L1", 0):
+                    if ps2_data.get("L2", 1):
                         control.throttle = 1.0
 
                     # R1 控制刹车
-                    if ps2_data.get("R1", 0):
+                    if ps2_data.get("R2", 1):
                         control.brake = 1.0
 
                     # 左摇杆控制方向
                     lx = ps2_data.get("LX", 128)
-                    if lx < 100:  # 左转
+                    if lx < 110:  # 左转
                         self.steer = max(self.steer - self.steer_increment, -1.0)
                     elif lx > 150:  # 右转
                         self.steer = min(self.steer + self.steer_increment, 1.0)
@@ -236,12 +236,12 @@ class EgoVehicleTerminal:
                     control.steer = self.steer
 
                     # 右摇杆控制前进和后退
-                    ry = ps2_data.get("RY", 128)
-                    if ry < 100:  # 前进
-                        control.throttle = (128 - ry) / 128.0
+                    ry = ps2_data.get("RY", 127)
+                    if ry < 110:  # 前进
+                        control.throttle = (127 - ry) / 127.0
                         control.reverse = False
                     elif ry > 150:  # 后退
-                        control.throttle = (ry - 128) / 128.0
+                        control.throttle = (ry - 127) / 127.0
                         control.reverse = True
 
                 self.vehicle.apply_control(control)
@@ -260,7 +260,7 @@ def main():
     terminal = EgoVehicleTerminal(
         host="127.0.0.1",
         port=2000,
-        serial_port="/dev/ttyUSB0",
+        serial_port="/dev/ttyUSB1",
         baud_rate=9600
     )
     terminal.run()
