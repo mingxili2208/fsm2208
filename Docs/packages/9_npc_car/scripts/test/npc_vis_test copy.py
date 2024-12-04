@@ -7,24 +7,14 @@ import time
 import logging
 import pygame
 import carla
-from pygame.locals import K_UP, K_DOWN, K_LEFT, K_RIGHT, K_ESCAPE, K_SPACE, K_LSHIFT
+from pygame.locals import K_UP, K_DOWN, K_LEFT, K_RIGHT, K_ESCAPE, K_SPACE, K_LSHIFT 
 import numpy as np
-import math
 
 class EgoVehicleTerminal:
     def __init__(self, client=None, host="127.0.0.1", port=2000):
         self.client = client or carla.Client(host, port)
         self.client.set_timeout(10.0)
         self.world = self.client.get_world()
-
-        spawn_points = self.world.get_map().get_spawn_points()
-        if len(spawn_points) < 2:
-            print("Not enough spawn points to perform navigation.")
-            return
-        for point in spawn_points:
-            point.location.z=0.17
-
-        self.spawn_points=spawn_points
 
         # 初始化 Pygame 窗口
         pygame.init()
@@ -39,7 +29,6 @@ class EgoVehicleTerminal:
         self.clock = pygame.time.Clock()
 
         # 控制相关参数
-        self.throttle = 0.0
         self.steer = 0.0
         self.steer_increment = 0.05
         self.vehicle = None
@@ -47,7 +36,7 @@ class EgoVehicleTerminal:
         self.camera_images = {}
 
         # 指定车辆类型和颜色
-        self.vehicle_model = os.environ["NPC_MODEL_TYPE"]
+        self.vehicle_model =os.environ["NPC_MODEL_TYPE"]
         self.vehicle_color = "255,0,0"  # RGB格式颜色，例如红色
         self.vehicle_role_name = os.environ["NPC_ROLE_NAME"]
         # 生成新车辆
@@ -55,65 +44,7 @@ class EgoVehicleTerminal:
 
         # 设置三个摄像头
         self.setup_cameras()
-    def get_nearest_spawn_point(self):
-        """
-        获取小车最近的 spawn_point。
-        
-        Args:
-            vehicle (carla.Actor): 当前车辆对象。
-            spawn_points (list[carla.Transform]): 地图中的所有 spawn_point。
 
-        Returns:
-            carla.Transform: 最近的 spawn_point。
-        """
-        # 获取车辆的当前位置
-        vehicle_location = self.vehicle.get_transform().location
-
-        # 初始化最小距离和最近的 spawn_point
-        nearest_spawn_point = None
-        min_distance = float('inf')  # 设置为正无穷大
-
-        # 遍历所有 spawn_points，计算距离
-        for spawn_point in self.spawn_points:
-            # 获取 spawn_point 的位置
-            spawn_location = spawn_point.location
-
-            # 计算欧几里得距离
-            distance = math.sqrt(
-                (vehicle_location.x - spawn_location.x) ** 2 +
-                (vehicle_location.y - spawn_location.y) ** 2 +
-                (vehicle_location.z - spawn_location.z) ** 2
-            )
-
-            # 如果找到更近的点，更新
-            if distance < min_distance:
-                min_distance = distance
-                nearest_spawn_point = spawn_point
-
-        return nearest_spawn_point
-    def relocate_vehicle_to_nearest_spawn_point(self):
-        """
-        将小车刷新到最近的 spawn_point。
-
-        Args:
-            vehicle (carla.Actor): 当前车辆对象。
-            spawn_points (list[carla.Transform]): 地图中的所有 spawn_point。
-        """
-        # 获取最近的 spawn_point
-        nearest_spawn_point = self.get_nearest_spawn_point()
-
-        if nearest_spawn_point:
-            # 输出调试信息
-            print(f"Relocating vehicle to nearest spawn point: {nearest_spawn_point.location}")
-            
-            # 将车辆刷新到最近的 spawn_point
-            self.vehicle.set_transform(nearest_spawn_point)
-            control = carla.VehicleControl()
-            control.throttle = 0.0
-            control.brake = 1.0
-            self.vehicle.apply_control(control)
-        else:
-            print("No nearest spawn point found!")
     def spawn_vehicle(self):
         """生成车辆并初始化控制"""
         blueprint_library = self.world.get_blueprint_library()
@@ -145,8 +76,12 @@ class EgoVehicleTerminal:
 
         vehicle_bp.set_attribute("role_name", self.vehicle_role_name)  # 设置角色名称为 'ego_vehicle'
 
+        spawn_points = self.world.get_map().get_spawn_points()
+        if not spawn_points:
+            logging.error("No spawn points available.")
+            sys.exit(1)
 
-        spawn_point = self.spawn_points[0]
+        spawn_point = random.choice(spawn_points)
         self.vehicle = self.world.try_spawn_actor(vehicle_bp, spawn_point)
 
         if not self.vehicle:
@@ -189,7 +124,7 @@ class EgoVehicleTerminal:
 
         # 俯视摄像头（鸟瞰视角）
         bev_camera_bp = blueprint_library.find('sensor.camera.rgb')
-        bev_camera_bp.set_attribute('image_size_x', f"{self.cam_width * 2}")
+        bev_camera_bp.set_attribute('image_size_x', f"{self.cam_width*2}")
         bev_camera_bp.set_attribute('image_size_y', f"{self.cam_height}")
         bev_camera_bp.set_attribute('fov', '90')  # 调整视野角度
 
@@ -250,7 +185,13 @@ class EgoVehicleTerminal:
             if cam_key in cam_positions:
                 # 将图像转换为Pygame显示格式
                 surface = pygame.surfarray.make_surface(image.swapaxes(0, 1))
-                self.screen.blit(surface, cam_positions[cam_key])
+                if cam_key == 'bev':
+                    bev_x = cam_positions[cam_key][0]
+                    bev_y = cam_positions[cam_key][1]
+                    self.screen.blit(surface, (bev_x, bev_y))
+                else:
+                    # 上层前后摄像头直接放置
+                    self.screen.blit(surface, cam_positions[cam_key])
 
         # 在窗口左上角显示控制提示文字
         font = pygame.font.Font(None, 24)
@@ -268,99 +209,94 @@ class EgoVehicleTerminal:
                 camera.destroy()
         pygame.quit()
 
-    def run(self):
-        """主循环，处理键盘事件并控制车辆"""
-        try:
-            while True:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
+def run(self):
+    """主循环，处理键盘事件并控制车辆"""
+    try:
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    raise KeyboardInterrupt
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == K_ESCAPE:
                         raise KeyboardInterrupt
-                    elif event.type == pygame.KEYDOWN:
-                        if event.key == K_ESCAPE:
-                            raise KeyboardInterrupt
-                        elif event.key == pygame.VIDEORESIZE:
-                            self.screen_width, self.screen_height = event.size
-                            self.screen = pygame.display.set_mode((self.screen_width, self.screen_height), pygame.RESIZABLE)
-                            if self.cameras:
-                                # 更新摄像头的图像尺寸
-                                for cam_key, cam in self.cameras.items():
-                                    cam.stop()
-                                    cam.destroy()
-                                self.camera_images = {}
-                                self.setup_cameras()
-                        # 捕获数字键 1, 2, 3 切换鸟瞰视角
-                        if event.key == pygame.K_r:
-                            self.relocate_vehicle_to_nearest_spawn_point()
+                    elif event.key == pygame.VIDEORESIZE:
+                        self.screen_width, self.screen_height = event.size
+                        self.screen = pygame.display.set_mode((self.screen_width, self.screen_height), pygame.RESIZABLE)
+                        if self.cameras:
+                            # 更新摄像头的图像尺寸
+                            for cam_key, cam in self.cameras.items():
+                                cam.stop()
+                                cam.destroy()
+                            self.camera_images = {}
+                            self.setup_cameras()
 
-                        if event.key == pygame.K_1:
-                            self.update_bev_camera(location=carla.Location(x=-20, z=11.5), rotation=carla.Rotation(pitch=-30, yaw=0))
-                        elif event.key == pygame.K_2:
-                            self.update_bev_camera(location=carla.Location(x=-15, z=22.5), rotation=carla.Rotation(pitch=-50, yaw=0))
-                        elif event.key == pygame.K_3:
-                            self.update_bev_camera(location=carla.Location(x=-5, z=40.0), rotation=carla.Rotation(pitch=-80, yaw=0))
+                    # 捕获数字键 1, 2, 3 切换鸟瞰视角
+                    if event.key == pygame.K_1:
+                        self.update_bev_camera(location=carla.Location(x=-20, z=11.5), rotation=carla.Rotation(pitch=-30, yaw=0))
+                    elif event.key == pygame.K_2:
+                        self.update_bev_camera(location=carla.Location(x=-10, z=15.0), rotation=carla.Rotation(pitch=-50, yaw=0))
+                    elif event.key == pygame.K_3:
+                        self.update_bev_camera(location=carla.Location(x=0, z=20.0), rotation=carla.Rotation(pitch=-70, yaw=0))
 
-                keys = pygame.key.get_pressed()
+            keys = pygame.key.get_pressed()
 
-                # 初始化车辆控制
-                control = carla.VehicleControl()
-                control.brake = 0.0
+            # 初始化车辆控制
+            control = carla.VehicleControl()
+            control.throttle = 0.0
+            control.brake = 0.0
+            control.reverse = False
 
-                # 控制逻辑：加速、后退、刹车
-                if keys[K_SPACE]:  # 刹车
-                    self.throttle = 0.0
-                    control.brake = 1.0
-                elif keys[K_UP]:  # 加速
-                    self.throttle = 0.5
-                    control.reverse = False
-                elif keys[K_DOWN]: #
-                    self.throttle = 1.0
-                    control.reverse=True
-                else:  
-                    self.throttle = 0.0
-                
-                if keys[K_LSHIFT]:
-                    control.throttle = self.throttle * 1.5
-                else:
-                    control.throttle = self.throttle
+            # 控制逻辑：加速、后退、刹车
+            if keys[K_UP]:
+                control.throttle = 0.25
+                control.reverse = False
+            elif keys[K_DOWN]:
+                control.throttle = 0.25  # 后退时节气门较低
+                control.reverse = True
+            elif keys[K_SPACE]:
+                control.brake = 1.0
+            
+            if keys[K_LSHIFT]:
+                control.throttle = control.throttle * 1.1
 
-                # 控制逻辑：方向
-                if keys[K_LEFT]:
-                    self.steer = max(self.steer - self.steer_increment, -1.0)
-                elif keys[K_RIGHT]:
-                    self.steer = min(self.steer + self.steer_increment, 1.0)
-                else:
-                    if self.steer > 0:
-                        self.steer = max(self.steer - self.steer_increment, 0)
-                    elif self.steer < 0:
-                        self.steer = min(self.steer + self.steer_increment, 0)
+            # 控制逻辑：方向
+            if keys[K_LEFT]:
+                self.steer = max(self.steer - self.steer_increment, -1.0)
+            elif keys[K_RIGHT]:
+                self.steer = min(self.steer + self.steer_increment, 1.0)
+            else:
+                if self.steer > 0:
+                    self.steer = max(self.steer - self.steer_increment, 0)
+                elif self.steer < 0:
+                    self.steer = min(self.steer + self.steer_increment, 0)
 
-                control.steer = self.steer * 0.25
-                self.vehicle.apply_control(control)
+            control.steer = self.steer * 0.25
+            self.vehicle.apply_control(control)
 
-                # 可视化
-                self.visualization()
+            # 可视化
+            self.visualization()
 
-                # 刷新 Pygame 显示
-                pygame.display.flip()
-                self.clock.tick(60)
+            # 刷新 Pygame 显示
+            pygame.display.flip()
+            self.clock.tick(60)
 
-        except KeyboardInterrupt:
-            logging.info("Exiting...")
-        finally:
-            self.stop()
-
+    except KeyboardInterrupt:
+        logging.info("Exiting...")
+    finally:
+        self.stop()
 
 def main():
     # 配置日志
     logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.INFO)
 
-    # 设置CARLA Python API路径（
+    # 设置CARLA Python API路径
     egg_file = '/home/cityu-fsm-lab-carla/Desktop/Workspace/Carla/carla-0.9.15/PythonAPI/carla/dist/carla-0.9.15-py3.10-linux-x86_64.egg'
     if not os.path.exists(egg_file):
         logging.error(f"CARLA egg file not found at {egg_file}. Please check the path.")
         sys.exit(1)
 
     sys.path.append(egg_file)
+    import random  
 
     # 运行EgoVehicleTerminal
     terminal = EgoVehicleTerminal(

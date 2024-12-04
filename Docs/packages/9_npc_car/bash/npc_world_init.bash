@@ -3,7 +3,7 @@ export SIMULATOR_PORT="2000"
 export TRAFFIC_MANAGER_PORT="8000"
 export TEAM_AGENT=${OP_BRIDGE_ROOT}/op_bridge/fsm_lab_simulation/ego_vehicle_initializer.py
 export PYTHONPATH="${CARLA_ROOT}/PythonAPI/carla/":"${SCENARIO_RUNNER_ROOT}":"${OP_BRIDGE_ROOT}":${PYTHONPATH}
-# export AGENT_FRAME_RATE="20"
+export AGENT_FRAME_RATE="20"
 # export REMOTE_CONNECTION="False"
 # # Autonomous actor default role_name and type
 # export AGENT_ROLE_NAME="pygame-adtruck"

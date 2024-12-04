@@ -1,6 +1,12 @@
 # description of how to launch the auto_test
 
-## init
+## init resources monitor
+
+cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/scripts
+
+python3 ./monitor/test_sys_monitor.py
+
+## init car
 
 1. start carla
 
@@ -11,10 +17,38 @@
 
     then have to click the button play
 
-2. start steam vr
-3. start vr_pose transmit
+## init npc
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/bash
+1. init terminal
+
+    cd  /home/cityu-fsm-lab-carla/lmx/Docs/packages/9_npc_car/bash
+
+    source ./initial_npc_param.bash
+
+2. init npc world(only if not init any world)
+
+    cd  /home/cityu-fsm-lab-carla/lmx/Docs/packages/9_npc_car/bash
+
+    bash ./npc_world_init.bash
+
+3. init npc_car
+
+    cd  /home/cityu-fsm-lab-carla/lmx/Docs/packages/9_npc_car/bash
+
+    bash ./npc_car_init.bash
+
+## init navigation
+
+1. if in ps2
+
+2. if in waypoints(spawn_points)
+
+## init sandbox_car
+
+1. start steam vr
+2. start vr_pose transmit
+
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/bash
 
     source initial_config.bash
 
@@ -22,7 +56,7 @@
 
     python3 debug_ekf.py
 
-4. start serial transmit
+3. start serial transmit
 
     check if the serial is not online
 
@@ -37,17 +71,17 @@
 
     ```bash
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/bash
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/bash
 
     source initial_config.bash 
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/scripts/debug
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/scripts/debug
 
     python3 debug5_serial.py
     
     ```
 
-5. start autoware vehicle agent
+4. start autoware vehicle agent
 
     ```bash
     cd ./Workspace/Carla/op_carla/op_bridge/op_scripts/fsm_lab_simulation/
@@ -56,16 +90,16 @@
 
     ```
 
-6. start car update
+5. start car update
 
     ```bash
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/bash
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/bash
 
     source initial_config.bash 
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/autoware_comm/scripts/debug
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/scripts/debug
 
-   python3 debug_update_vehicle.py
+   python3 debug_update_vehicle_2.py
 
     ```
 
