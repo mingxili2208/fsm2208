@@ -112,7 +112,7 @@ class EgoVehicleTerminal:
             logging.error("No spawn points available.")
             sys.exit(1)
 
-        spawn_point = random.choice(spawn_points)
+        spawn_point = spawn_points[0] #random.choice(spawn_points)
         self.vehicle = self.world.try_spawn_actor(vehicle_bp, spawn_point)
 
         if not self.vehicle:
@@ -216,20 +216,20 @@ class EgoVehicleTerminal:
                 # 从串口读取数据
                 ps2_data = self.read_serial_input()
                 if ps2_data:
-                    # L1 控制油门
+                    # L2 控制油门
                     if ps2_data.get("L2", 1):
-                        control.throttle = 1.0
+                        control.throttle += 0.1
 
-                    # R1 控制刹车
+                    # R2 控制刹车
                     if ps2_data.get("R2", 1):
                         control.brake = 1.0
 
                     # 左摇杆控制方向
                     lx = ps2_data.get("LX", 128)
                     if lx < 110:  # 左转
-                        self.steer = max(self.steer - self.steer_increment, -1.0)
+                        self.steer = max(self.steer - self.steer_increment, -1.0)*0.8
                     elif lx > 150:  # 右转
-                        self.steer = min(self.steer + self.steer_increment, 1.0)
+                        self.steer = min(self.steer + self.steer_increment, 1.0)*0.8
                     else:  # 停止转向
                         self.steer = 0.0
 
@@ -238,10 +238,10 @@ class EgoVehicleTerminal:
                     # 右摇杆控制前进和后退
                     ry = ps2_data.get("RY", 127)
                     if ry < 110:  # 前进
-                        control.throttle = (127 - ry) / 127.0
+                        control.throttle = ((127 - ry) / 127.0)*0.15
                         control.reverse = False
                     elif ry > 150:  # 后退
-                        control.throttle = (ry - 127) / 127.0
+                        control.throttle = ((ry - 127) / 127.0)
                         control.reverse = True
 
                 self.vehicle.apply_control(control)

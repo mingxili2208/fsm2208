@@ -36,9 +36,9 @@ class EgoVehicleTerminal:
         self.camera_images = {}
 
         # 指定车辆类型和颜色
-        self.vehicle_model = "vehicle.tesla.model3"  # 您可以更改为其他车型
+        self.vehicle_model =os.environ["NPC_MODEL_TYPE"]
         self.vehicle_color = "255,0,0"  # RGB格式颜色，例如红色
-
+        self.vehicle_role_name = os.environ["NPC_ROLE_NAME"]
         # 生成新车辆
         self.spawn_vehicle()
 
@@ -74,7 +74,7 @@ class EgoVehicleTerminal:
             else:
                 logging.warning(f"The vehicle model '{self.vehicle_model}' does not have a color attribute.")
 
-        vehicle_bp.set_attribute("role_name", "ego_vehicle")  # 设置角色名称为 'ego_vehicle'
+        vehicle_bp.set_attribute("role_name", self.vehicle_role_name)  # 设置角色名称为 'ego_vehicle'
 
         spawn_points = self.world.get_map().get_spawn_points()
         if not spawn_points:
