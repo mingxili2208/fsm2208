@@ -50,7 +50,7 @@
 5. start autoware vehicle agent
 
     ```bash
-    cd ./Workspace/Carla/op_carla/op_bridge/op_scripts/fsm_lab_simulation/
+    cd /home/cityu-fsm-lab-carla/Workspace/Carla/op_carla/op_bridge/op_scripts/fsm_lab_simulation/
 
     ./debug_run_vehicle_ros2.sh
 

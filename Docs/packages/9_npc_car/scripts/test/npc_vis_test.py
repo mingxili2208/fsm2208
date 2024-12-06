@@ -10,7 +10,11 @@ import carla
 from pygame.locals import K_UP, K_DOWN, K_LEFT, K_RIGHT, K_ESCAPE, K_SPACE, K_LSHIFT
 import numpy as np
 import math
+import psutil
 
+def print_memory_usage():
+    process = psutil.Process(os.getpid())
+    print(f"Memory usage: {process.memory_info().rss / 1024 ** 2:.2f} MB")
 class EgoVehicleTerminal:
     def __init__(self, client=None, host="127.0.0.1", port=2000):
         self.client = client or carla.Client(host, port)
@@ -34,8 +38,8 @@ class EgoVehicleTerminal:
         # Pygame window set as front & back up; bev down
         self.screen_width = self.cam_width * 2
         self.screen_height = self.cam_height * 2
-        self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
-        pygame.display.set_caption("CARLA Ego Vehicle Terminal - Three Cameras")
+        self.screen = pygame.display.set_mode((self.screen_width, self.screen_height), pygame.RESIZABLE)
+        pygame.display.set_caption("CARLA Remote_NPC_Vehicle Terminal ")
         self.clock = pygame.time.Clock()
 
         # 控制相关参数
@@ -52,7 +56,10 @@ class EgoVehicleTerminal:
         self.vehicle_role_name = os.environ["NPC_ROLE_NAME"]
         # 生成新车辆
         self.spawn_vehicle()
-
+        self.resize_timer = None  # 用于延迟窗口调整
+        self.resizing = False #
+        self.bev_transfrom = None
+        self.REDRAW_EVENT = pygame.USEREVENT + 1
         # 设置三个摄像头
         self.setup_cameras()
     def get_nearest_spawn_point(self):
@@ -173,7 +180,7 @@ class EgoVehicleTerminal:
             front_camera_transform,
             attach_to=self.vehicle)
         self.cameras['front'].listen(lambda image: self.process_image(image, 'front'))
-
+        logging.info(f"Vehicle window_cam_width'{self.cam_width}' was setted.")
         # 后视摄像头
         back_camera_bp = blueprint_library.find('sensor.camera.rgb')
         back_camera_bp.set_attribute('image_size_x', f"{self.cam_width}")
@@ -192,14 +199,14 @@ class EgoVehicleTerminal:
         bev_camera_bp.set_attribute('image_size_x', f"{self.cam_width * 2}")
         bev_camera_bp.set_attribute('image_size_y', f"{self.cam_height}")
         bev_camera_bp.set_attribute('fov', '90')  # 调整视野角度
-
-        bev_camera_transform = carla.Transform(carla.Location(x=-20, z=11.5), carla.Rotation(pitch=-30, yaw=0))
+        self.bev_transfrom= carla.Transform(carla.Location(x=-20, z=11.5), carla.Rotation(pitch=-30, yaw=0))
         self.cameras['bev'] = self.world.spawn_actor(
             bev_camera_bp,
-            bev_camera_transform,
+            self.bev_transfrom,
             attach_to=self.vehicle)
         self.cameras['bev'].listen(lambda image: self.process_image(image, 'bev'))
-    def update_bev_camera(self, location, rotation):
+    
+    def update_bev_camera(self):
         """
         更新鸟瞰摄像头的位置和朝向。
 
@@ -218,15 +225,15 @@ class EgoVehicleTerminal:
             bev_camera_bp.set_attribute('image_size_x', f"{self.cam_width * 2}")
             bev_camera_bp.set_attribute('image_size_y', f"{self.cam_height}")
             bev_camera_bp.set_attribute('fov', '90')  # 调整视野角度
-
+            
             # 生成新的摄像头并附加到车辆
             self.cameras['bev'] = self.world.spawn_actor(
                 bev_camera_bp,
-                carla.Transform(location, rotation),
+                self.bev_transfrom,
                 attach_to=self.vehicle
             )
             self.cameras['bev'].listen(lambda image: self.process_image(image, 'bev'))
-            logging.info(f"Updated BEV camera to location: {location}, rotation: {rotation}")
+            logging.info(f"Updated BEV camera to location: {self.bev_transfrom.location}, rotation: {self.bev_transfrom.rotation}")
     def process_image(self, image, cam_key):
         """处理摄像头图像数据并转换为Pygame可显示格式"""
         array = np.frombuffer(image.raw_data, dtype=np.uint8)
@@ -235,7 +242,7 @@ class EgoVehicleTerminal:
         array = array[:, :, ::-1]  # BGR to RGB
 
         # 存储图像
-        self.camera_images[cam_key] = array.copy()
+        self.camera_images[cam_key] = array
 
     def visualization(self):
         """在Pygame窗口中显示三个摄像头的图像和控制信息"""
@@ -275,29 +282,51 @@ class EgoVehicleTerminal:
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         raise KeyboardInterrupt
-                    elif event.type == pygame.KEYDOWN:
+                    if event.type == pygame.VIDEORESIZE:
+                        self.resizing=True
+                        logging.info(f"Resizing window to {event.size[0]}x{event.size[1]}")
+                        self.screen_width, self.screen_height = event.size
+                        #self.screen = pygame.display.set_mode((self.screen_width, self.screen_height), pygame.RESIZABLE)
+                        
+                        # 更新摄像头的图像尺寸
+                        self.cam_width = self.screen_width // 2
+                        self.cam_height = self.screen_height // 2
+                        if self.resize_timer:
+                            pygame.time.set_timer(self.REDRAW_EVENT, 0)  # 取消之前的定时器
+                        pygame.time.set_timer(self.REDRAW_EVENT, 500)  # 500毫秒后触发重绘事件
+                        #self.resize_timer = time.time()  # 记录调整时间
+                    elif event.type == self.REDRAW_EVENT:
+                        logging.info("Window adjustment completed, updating cameras")
+                        if self.cameras and self.resizing is True:
+                            pygame.time.set_timer(self.REDRAW_EVENT, 0)  # 取消定时器
+                            #print(f"Window resized to: {width}x{height}")
+                            self.resize_timer = None
+                            logging.info("destroy camera")
+                            for cam_key, cam in self.cameras.items():
+                                cam.stop()
+                                cam.destroy()
+                                logging.info(f"destroy camera {cam_key}")
+                            self.cameras.clear()  # 清空摄像头字典
+                            self.camera_images = {}
+                            self.setup_cameras()
+                            self.resizing=False
+                    if event.type == pygame.KEYDOWN:
                         if event.key == K_ESCAPE:
                             raise KeyboardInterrupt
-                        elif event.key == pygame.VIDEORESIZE:
-                            self.screen_width, self.screen_height = event.size
-                            self.screen = pygame.display.set_mode((self.screen_width, self.screen_height), pygame.RESIZABLE)
-                            if self.cameras:
-                                # 更新摄像头的图像尺寸
-                                for cam_key, cam in self.cameras.items():
-                                    cam.stop()
-                                    cam.destroy()
-                                self.camera_images = {}
-                                self.setup_cameras()
+                        
                         # 捕获数字键 1, 2, 3 切换鸟瞰视角
                         if event.key == pygame.K_r:
                             self.relocate_vehicle_to_nearest_spawn_point()
 
                         if event.key == pygame.K_1:
-                            self.update_bev_camera(location=carla.Location(x=-20, z=11.5), rotation=carla.Rotation(pitch=-30, yaw=0))
+                            self.bev_transfrom=carla.Transform(carla.Location(x=-20, z=11.5),carla.Rotation(pitch=-30, yaw=0))
+                            self.update_bev_camera()
                         elif event.key == pygame.K_2:
-                            self.update_bev_camera(location=carla.Location(x=-15, z=22.5), rotation=carla.Rotation(pitch=-50, yaw=0))
+                            self.bev_transfrom=carla.Transform(carla.Location(x=-15, z=22.5),carla.Rotation(pitch=-50, yaw=0))
+                            self.update_bev_camera()
                         elif event.key == pygame.K_3:
-                            self.update_bev_camera(location=carla.Location(x=-5, z=40.0), rotation=carla.Rotation(pitch=-80, yaw=0))
+                            self.bev_transfrom=carla.Transform(carla.Location(x=-5 , z=40.0),carla.Rotation(pitch=-80, yaw=0))
+                            self.update_bev_camera()
 
                 keys = pygame.key.get_pressed()
 
@@ -338,10 +367,31 @@ class EgoVehicleTerminal:
                 self.vehicle.apply_control(control)
 
                 # 可视化
+                # if self.resize_timer > 0 and time.time() - self.resize_timer > self.resize_delay:
+                #     self.resize_timer = 0  # 重置计时器
+                #     if self.cameras:
+                #         logging.info("destroy camera")
+                #         for cam_key, cam in self.cameras.items():
+                #             cam.stop()
+                #             cam.destroy()
+                #             logging.info(f"destroy camera {cam_key}")
+                #         self.camera_images = {}
+                #         self.setup_cameras()
+                # if self.cameras:
+                #     logging.info("destroy camera")
+                #     for cam_key, cam in self.cameras.items():
+                #         cam.stop()
+                #         cam.destroy()
+                #         logging.info(f"destroy camera {cam_key}")
+                #     self.camera_images = {}
+                #     self.setup_cameras()
                 self.visualization()
 
                 # 刷新 Pygame 显示
+
                 pygame.display.flip()
+                if pygame.time.get_ticks() % 500 == 0:  #
+                    print_memory_usage()
                 self.clock.tick(60)
 
         except KeyboardInterrupt:

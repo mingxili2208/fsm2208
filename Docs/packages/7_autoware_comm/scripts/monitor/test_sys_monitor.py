@@ -5,8 +5,11 @@ import time
 import psutil
 import signal
 
-# 系统内存使用的阈值，超过这个比例（60%）将触发杀死内存最多进程的操作
-MEMORY_THRESHOLD = 0.9  # 3/5
+# 系统内存使用的阈值，超过这个比例（98%）将触发杀死内存最多进程的操作
+MEMORY_THRESHOLD = 0.98  
+
+# 打印Top 3进程的内存使用的阈值
+PRINT_TOP_PROCESSES_THRESHOLD = 0.70  
 
 # 系统监控间隔时间（秒）
 INTERVAL = 10  # 每10秒检查一次
@@ -19,10 +22,11 @@ def get_memory_usage():
     memory_info = psutil.virtual_memory()
     return memory_info.percent / 100.0
 
-def get_top_memory_process():
+def get_top_memory_processes(top_n=3):
     """
-    获取内存占用最多的进程。
-    :return: 内存占用最多的进程 (psutil.Process 对象)。
+    获取内存占用最多的前 N 个进程。
+    :param top_n: 返回的进程数量，默认为 3。
+    :return: 内存占用最多的前 N 个进程列表 [(psutil.Process, memory_usage)]。
     """
     processes = []
     for proc in psutil.process_iter(['pid', 'name', 'memory_info']):
@@ -36,9 +40,7 @@ def get_top_memory_process():
     # 根据内存使用量对进程进行排序
     processes.sort(key=lambda p: p[1], reverse=True)
     
-    if processes:
-        return processes[0][0]  # 返回内存占用最多的进程
-    return None
+    return processes[:top_n]  # 返回前 N 个进程
 
 def kill_process(proc):
     """
@@ -60,12 +62,19 @@ def monitor_system():
         memory_usage = get_memory_usage()
         print(f"[INFO] Current memory usage: {memory_usage * 100:.2f}%")
 
-        # 如果内存使用超过了阈值
+        # 如果内存使用超过打印Top进程的阈值
+        if memory_usage > PRINT_TOP_PROCESSES_THRESHOLD:
+            print("[INFO] Memory usage exceeded 70%. Top memory-consuming processes:")
+            top_processes = get_top_memory_processes(3)
+            for rank, (proc, mem_usage) in enumerate(top_processes, start=1):
+                print(f"  {rank}. {proc.name()} (PID: {proc.pid}) - {mem_usage / (1024 * 1024):.2f} MB")
+
+        # 如果内存使用超过了杀死进程的阈值
         if memory_usage > MEMORY_THRESHOLD:
             print("[WARNING] Memory usage exceeded threshold!")
 
             # 获取内存占用最多的进程
-            top_process = get_top_memory_process()
+            top_process = get_top_memory_processes(1)[0][0] if get_top_memory_processes(1) else None
 
             if top_process:
                 print(f"[INFO] Top memory consuming process: {top_process.name()} (PID: {top_process.pid})")
