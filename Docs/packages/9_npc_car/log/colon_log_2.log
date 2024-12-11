@@ -1,0 +1,695 @@
+Starting >>> autoware_lint_common
+Finished <<< autoware_lint_common [0.03s]
+Starting >>> autoware_cmake
+Finished <<< autoware_cmake [0.04s]
+Starting >>> autoware_auto_geometry_msgs
+Finished <<< autoware_auto_geometry_msgs [0.32s]
+Starting >>> autoware_auto_mapping_msgs
+Finished <<< autoware_auto_mapping_msgs [0.27s]
+Starting >>> autoware_auto_planning_msgs
+Finished <<< autoware_auto_planning_msgs [0.30s]
+Starting >>> autoware_auto_perception_msgs
+Finished <<< autoware_auto_perception_msgs [0.33s]
+Starting >>> autoware_auto_vehicle_msgs
+Finished <<< autoware_auto_vehicle_msgs [0.32s]
+Starting >>> tier4_debug_msgs
+Finished <<< tier4_debug_msgs [0.28s]
+Starting >>> tier4_autoware_utils
+Finished <<< tier4_autoware_utils [0.12s]
+Starting >>> autoware_planning_msgs
+Finished <<< autoware_planning_msgs [0.28s]
+Starting >>> interpolation
+Finished <<< interpolation [0.10s]
+Starting >>> autoware_utils
+Finished <<< autoware_utils [0.06s]
+Starting >>> lanelet2_extension
+Finished <<< lanelet2_extension [0.11s]
+Starting >>> autoware_common_msgs
+Finished <<< autoware_common_msgs [0.26s]
+Starting >>> autoware_adapi_v1_msgs
+Finished <<< autoware_adapi_v1_msgs [0.35s]
+Starting >>> tier4_system_msgs
+Finished <<< tier4_system_msgs [0.29s]
+Starting >>> tier4_control_msgs
+Finished <<< tier4_control_msgs [0.28s]
+Starting >>> motion_utils
+Finished <<< motion_utils [0.12s]
+Starting >>> tier4_vehicle_msgs
+Finished <<< tier4_vehicle_msgs [0.29s]
+Starting >>> autoware_auto_control_msgs
+Finished <<< autoware_auto_control_msgs [0.28s]
+Starting >>> vehicle_info_util
+Finished <<< vehicle_info_util [0.07s]
+Starting >>> tier4_planning_msgs
+Finished <<< tier4_planning_msgs [0.30s]
+Starting >>> component_interface_utils
+Finished <<< component_interface_utils [0.06s]
+Starting >>> tier4_map_msgs
+Finished <<< tier4_map_msgs [0.26s]
+Starting >>> autoware_auto_system_msgs
+Finished <<< autoware_auto_system_msgs [0.28s]
+Starting >>> component_interface_specs
+Finished <<< component_interface_specs [0.09s]
+Starting >>> tier4_perception_msgs
+Finished <<< tier4_perception_msgs [0.29s]
+Starting >>> autoware_perception_msgs
+Finished <<< autoware_perception_msgs [0.29s]
+Starting >>> autoware_auto_common
+Finished <<< autoware_auto_common [0.05s]
+Starting >>> tier4_api_msgs
+Finished <<< tier4_api_msgs [0.29s]
+Starting >>> tier4_v2x_msgs
+Finished <<< tier4_v2x_msgs [0.27s]
+Starting >>> route_handler
+Finished <<< route_handler [0.08s]
+Starting >>> planning_test_utils
+Finished <<< planning_test_utils [0.12s]
+Starting >>> autoware_auto_tf2
+Finished <<< autoware_auto_tf2 [0.06s]
+Starting >>> tier4_rtc_msgs
+Finished <<< tier4_rtc_msgs [0.31s]
+Starting >>> rtc_interface
+Finished <<< rtc_interface [0.05s]
+Starting >>> osqp_interface
+Finished <<< osqp_interface [0.06s]
+Starting >>> objects_of_interest_marker_interface
+Finished <<< objects_of_interest_marker_interface [0.07s]
+Starting >>> object_recognition_utils
+Finished <<< object_recognition_utils [0.10s]
+Starting >>> tier4_external_api_msgs
+Finished <<< tier4_external_api_msgs [0.36s]
+Starting >>> signal_processing
+Finished <<< signal_processing [0.06s]
+Starting >>> motion_velocity_smoother
+Finished <<< motion_velocity_smoother [0.19s]
+Starting >>> behavior_velocity_planner_common
+Finished <<< behavior_velocity_planner_common [0.18s]
+Starting >>> autoware_map_msgs
+Finished <<< autoware_map_msgs [0.28s]
+Starting >>> traffic_light_utils
+Finished <<< traffic_light_utils [0.08s]
+Starting >>> freespace_planning_algorithms
+Finished <<< freespace_planning_algorithms [0.12s]
+Starting >>> autoware_point_types
+Finished <<< autoware_point_types [0.06s]
+Starting >>> tier4_pcl_extensions
+Finished <<< tier4_pcl_extensions [0.05s]
+Starting >>> lane_departure_checker
+Finished <<< lane_departure_checker [0.09s]
+Starting >>> tier4_localization_msgs
+Finished <<< tier4_localization_msgs [0.26s]
+Starting >>> pointcloud_preprocessor
+Finished <<< pointcloud_preprocessor [0.16s]
+Starting >>> behavior_path_planner_common
+Finished <<< behavior_path_planner_common [0.18s]
+Starting >>> geography_utils
+Finished <<< geography_utils [0.08s]
+Starting >>> behavior_path_planner
+Finished <<< behavior_path_planner [0.19s]
+Starting >>> boost_io_context
+Finished <<< boost_io_context [0.06s]
+Starting >>> rtklib_msgs
+Finished <<< rtklib_msgs [0.27s]
+Starting >>> tensorrt_common
+Finished <<< tensorrt_common [0.06s]
+Starting >>> tier4_api_utils
+Finished <<< tier4_api_utils [0.06s]
+Starting >>> nebula_common
+Finished <<< nebula_common [0.05s]
+Starting >>> pandar_msgs
+Finished <<< pandar_msgs [0.28s]
+Starting >>> robosense_msgs
+Finished <<< robosense_msgs [0.27s]
+Starting >>> autoware_ad_api_specs
+Finished <<< autoware_ad_api_specs [0.03s]
+Starting >>> boost_tcp_driver
+Finished <<< boost_tcp_driver [0.06s]
+Starting >>> boost_udp_driver
+Finished <<< boost_udp_driver [0.09s]
+Starting >>> eagleye_msgs
+Finished <<< eagleye_msgs [0.29s]
+Starting >>> autoware_testing
+Finished <<< autoware_testing [0.03s]
+Starting >>> cuda_utils
+Finished <<< cuda_utils [0.03s]
+Starting >>> fake_test_node
+Finished <<< fake_test_node [0.06s]
+Starting >>> tier4_auto_msgs_converter
+Finished <<< tier4_auto_msgs_converter [0.05s]
+Starting >>> nebula_decoders
+Finished <<< nebula_decoders [0.11s]
+Starting >>> kalman_filter
+Finished <<< kalman_filter [0.05s]
+Starting >>> nebula_hw_interfaces
+Finished <<< nebula_hw_interfaces [0.12s]
+Starting >>> grid_map_utils
+Finished <<< grid_map_utils [0.07s]
+Starting >>> eagleye_coordinate
+Finished <<< eagleye_coordinate [0.05s]
+Starting >>> mussp
+Finished <<< mussp [0.04s]
+Starting >>> nebula_ros
+Finished <<< nebula_ros [0.25s]
+Starting >>> trajectory_follower_base
+Finished <<< trajectory_follower_base [0.08s]
+Starting >>> behavior_velocity_crosswalk_module
+Finished <<< behavior_velocity_crosswalk_module [0.16s]
+Starting >>> eagleye_navigation
+Finished <<< eagleye_navigation [0.08s]
+Starting >>> map_height_fitter
+Finished <<< map_height_fitter [0.07s]
+Starting >>> localization_util
+Finished <<< localization_util [0.08s]
+Starting >>> yabloc_common
+Finished <<< yabloc_common [0.10s]
+Starting >>> compare_map_segmentation
+Finished <<< compare_map_segmentation [0.10s]
+Starting >>> tier4_simulation_msgs
+Finished <<< tier4_simulation_msgs [0.27s]
+Starting >>> image_transport_decompressor
+Finished <<< image_transport_decompressor [0.05s]
+Starting >>> velodyne_monitor
+Finished <<< velodyne_monitor [0.05s]
+Starting >>> nebula_examples
+Finished <<< nebula_examples [0.13s]
+Starting >>> nebula_tests
+Finished <<< nebula_tests [0.10s]
+Starting >>> global_parameter_loader
+Finished <<< global_parameter_loader [0.04s]
+Starting >>> raw_vehicle_cmd_converter
+Finished <<< raw_vehicle_cmd_converter [0.10s]
+Starting >>> euclidean_cluster
+Finished <<< euclidean_cluster [0.14s]
+Starting >>> behavior_velocity_blind_spot_module
+Finished <<< behavior_velocity_blind_spot_module [0.15s]
+Starting >>> behavior_velocity_detection_area_module
+Finished <<< behavior_velocity_detection_area_module [0.15s]
+Starting >>> behavior_velocity_intersection_module
+Finished <<< behavior_velocity_intersection_module [0.17s]
+Starting >>> behavior_velocity_no_drivable_lane_module
+Finished <<< behavior_velocity_no_drivable_lane_module [0.16s]
+Starting >>> behavior_velocity_no_stopping_area_module
+Finished <<< behavior_velocity_no_stopping_area_module [0.15s]
+Starting >>> behavior_velocity_occlusion_spot_module
+Finished <<< behavior_velocity_occlusion_spot_module [0.21s]
+Starting >>> behavior_velocity_out_of_lane_module
+Finished <<< behavior_velocity_out_of_lane_module [0.16s]
+Starting >>> behavior_velocity_speed_bump_module
+Finished <<< behavior_velocity_speed_bump_module [0.15s]
+Starting >>> behavior_velocity_stop_line_module
+Finished <<< behavior_velocity_stop_line_module [0.15s]
+Starting >>> behavior_velocity_traffic_light_module
+Finished <<< behavior_velocity_traffic_light_module [0.16s]
+Starting >>> behavior_velocity_virtual_traffic_light_module
+Finished <<< behavior_velocity_virtual_traffic_light_module [0.15s]
+Starting >>> behavior_velocity_run_out_module
+Finished <<< behavior_velocity_run_out_module [0.17s]
+Starting >>> behavior_velocity_walkway_module
+Finished <<< behavior_velocity_walkway_module [0.15s]
+Starting >>> autoware_adapi_version_msgs
+Finished <<< autoware_adapi_version_msgs [0.28s]
+Starting >>> autoware_sensing_msgs
+Finished <<< autoware_sensing_msgs [0.27s]
+Starting >>> ndt_omp
+Finished <<< ndt_omp [0.07s]
+Starting >>> pointcloud_to_laserscan
+Finished <<< pointcloud_to_laserscan [0.08s]
+Starting >>> autoware_external_api_msgs
+Finished <<< autoware_external_api_msgs [0.28s]
+Starting >>> perception_utils
+Finished <<< perception_utils [0.03s]
+Starting >>> topic_state_monitor
+Finished <<< topic_state_monitor [0.05s]
+Starting >>> tree_structured_parzen_estimator
+Finished <<< tree_structured_parzen_estimator [0.05s]
+Starting >>> tvm_utility
+Finished <<< tvm_utility [0.05s]
+Starting >>> tensorrt_classifier
+Finished <<< tensorrt_classifier [0.05s]
+Starting >>> autoware_auto_geometry
+Finished <<< autoware_auto_geometry [0.07s]
+Starting >>> dummy_perception_publisher
+Finished <<< dummy_perception_publisher [0.29s]
+Starting >>> external_cmd_selector
+Finished <<< external_cmd_selector [0.08s]
+Starting >>> shape_estimation
+Finished <<< shape_estimation [0.10s]
+Starting >>> landmark_manager
+Finished <<< landmark_manager [0.08s]
+Starting >>> map_loader
+Finished <<< map_loader [0.17s]
+Starting >>> nebula_sensor_driver
+Finished <<< nebula_sensor_driver [0.05s]
+Starting >>> sampler_common
+Finished <<< sampler_common [0.10s]
+Starting >>> lidar_centerpoint
+Finished <<< lidar_centerpoint [0.15s]
+Starting >>> mission_planner
+Finished <<< mission_planner [0.16s]
+Starting >>> tensorrt_yolox
+Finished <<< tensorrt_yolox [0.11s]
+Starting >>> mpc_lateral_controller
+Finished <<< mpc_lateral_controller [0.13s]
+Starting >>> obstacle_avoidance_planner
+Finished <<< obstacle_avoidance_planner [0.16s]
+Starting >>> pid_longitudinal_controller
+Finished <<< pid_longitudinal_controller [0.10s]
+Starting >>> pure_pursuit
+Finished <<< pure_pursuit [0.10s]
+Starting >>> behavior_velocity_planner
+Finished <<< behavior_velocity_planner [0.43s]
+Starting >>> tamagawa_imu_driver
+Finished <<< tamagawa_imu_driver [0.04s]
+Starting >>> velodyne_description
+Finished <<< velodyne_description [0.03s]
+Starting >>> eagleye_geo_pose_fusion
+Finished <<< eagleye_geo_pose_fusion [0.04s]
+Starting >>> external_velocity_limit_selector
+Finished <<< external_velocity_limit_selector [0.05s]
+Starting >>> glog_component
+Finished <<< glog_component [0.04s]
+Starting >>> object_range_splitter
+Finished <<< object_range_splitter [0.05s]
+Starting >>> yabloc_monitor
+Finished <<< yabloc_monitor [0.04s]
+Starting >>> ad_api_adaptors
+Finished <<< ad_api_adaptors [0.06s]
+Starting >>> automatic_pose_initializer
+Finished <<< automatic_pose_initializer [0.05s]
+Starting >>> component_state_monitor
+Finished <<< component_state_monitor [0.05s]
+Starting >>> detected_object_feature_remover
+Finished <<< detected_object_feature_remover [0.05s]
+Starting >>> eagleye_gnss_converter
+Finished <<< eagleye_gnss_converter [0.05s]
+Starting >>> eagleye_rt
+Finished <<< eagleye_rt [0.07s]
+Starting >>> emergency_handler
+Finished <<< emergency_handler [0.06s]
+Starting >>> shift_decider
+Finished <<< shift_decider [0.06s]
+Starting >>> tensorrt_yolo
+Finished <<< tensorrt_yolo [0.08s]
+Starting >>> autoware_iv_external_api_adaptor
+Finished <<< autoware_iv_external_api_adaptor [0.12s]
+Starting >>> autoware_iv_internal_api_adaptor
+Finished <<< autoware_iv_internal_api_adaptor [0.08s]
+Starting >>> awapi_awiv_adapter
+Finished <<< awapi_awiv_adapter [0.10s]
+Starting >>> costmap_generator
+Finished <<< costmap_generator [0.10s]
+Starting >>> crosswalk_traffic_light_estimator
+Finished <<< crosswalk_traffic_light_estimator [0.09s]
+Starting >>> ekf_localizer
+Finished <<< ekf_localizer [0.10s]
+Starting >>> fault_injection
+Finished <<< fault_injection [0.08s]
+Starting >>> gyro_odometer
+Finished <<< gyro_odometer [0.09s]
+Starting >>> lidar_apollo_instance_segmentation
+Finished <<< lidar_apollo_instance_segmentation [0.08s]
+Starting >>> map_projection_loader
+Finished <<< map_projection_loader [0.11s]
+Starting >>> map_tf_generator
+Finished <<< map_tf_generator [0.09s]
+Starting >>> object_velocity_splitter
+Finished <<< object_velocity_splitter [0.08s]
+Starting >>> pose_instability_detector
+Finished <<< pose_instability_detector [0.08s]
+Starting >>> probabilistic_occupancy_grid_map
+Finished <<< probabilistic_occupancy_grid_map [0.16s]
+Starting >>> radar_crossing_objects_noise_filter
+Finished <<< radar_crossing_objects_noise_filter [0.07s]
+Starting >>> radar_fusion_to_detected_object
+Finished <<< radar_fusion_to_detected_object [0.08s]
+Starting >>> system_error_monitor
+Finished <<< system_error_monitor [0.07s]
+Starting >>> system_monitor
+Finished <<< system_monitor [0.25s]
+Starting >>> traffic_light_arbiter
+Finished <<< traffic_light_arbiter [0.06s]
+Starting >>> traffic_light_classifier
+Finished <<< traffic_light_classifier [0.09s]
+Starting >>> traffic_light_map_based_detector
+Finished <<< traffic_light_map_based_detector [0.08s]
+Starting >>> traffic_light_multi_camera_fusion
+Finished <<< traffic_light_multi_camera_fusion [0.08s]
+Starting >>> traffic_light_visualization
+Finished <<< traffic_light_visualization [0.08s]
+Starting >>> geo_pose_projector
+Finished <<< geo_pose_projector [0.08s]
+Starting >>> gnss_poser
+Finished <<< gnss_poser [0.09s]
+Starting >>> ground_segmentation
+Finished <<< ground_segmentation [0.13s]
+Starting >>> ndt_scan_matcher
+Finished <<< ndt_scan_matcher [0.08s]
+Starting >>> occupancy_grid_map_outlier_filter
+Finished <<< occupancy_grid_map_outlier_filter [0.09s]
+Starting >>> traffic_light_occlusion_predictor
+Finished <<< traffic_light_occlusion_predictor [0.10s]
+Starting >>> yabloc_image_processing
+Finished <<< yabloc_image_processing [0.08s]
+Starting >>> yabloc_particle_filter
+Finished <<< yabloc_particle_filter [0.30s]
+Starting >>> yabloc_pose_initializer
+Finished <<< yabloc_pose_initializer [0.08s]
+Starting >>> ar_tag_based_localizer
+Finished <<< ar_tag_based_localizer [0.09s]
+Starting >>> cluster_merger
+Finished <<< cluster_merger [0.08s]
+Starting >>> common_sensor_launch
+Finished <<< common_sensor_launch [0.05s]
+Starting >>> default_ad_api
+Finished <<< default_ad_api [0.12s]
+Starting >>> detected_object_validation
+Finished <<< detected_object_validation [0.16s]
+Starting >>> external_cmd_converter
+Finished <<< external_cmd_converter [0.08s]
+Starting >>> map_based_prediction
+Finished <<< map_based_prediction [0.09s]
+Starting >>> multi_object_tracker
+Finished <<< multi_object_tracker [0.12s]
+Starting >>> object_merger
+Finished <<< object_merger [0.09s]
+Starting >>> path_distance_calculator
+Finished <<< path_distance_calculator [0.07s]
+Starting >>> planning_evaluator
+Finished <<< planning_evaluator [0.10s]
+Starting >>> planning_topic_converter
+Finished <<< planning_topic_converter [0.07s]
+Starting >>> pose_initializer
+Finished <<< pose_initializer [0.10s]
+Starting >>> radar_object_clustering
+Finished <<< radar_object_clustering [0.08s]
+Starting >>> radar_object_tracker
+Finished <<< radar_object_tracker [0.11s]
+Starting >>> simple_planning_simulator
+Finished <<< simple_planning_simulator [0.13s]
+Starting >>> surround_obstacle_checker
+Finished <<< surround_obstacle_checker [0.10s]
+Starting >>> tracking_object_merger
+Finished <<< tracking_object_merger [0.09s]
+Starting >>> vehicle_cmd_gate
+Finished <<< vehicle_cmd_gate [0.33s]
+Starting >>> detection_by_tracker
+Finished <<< detection_by_tracker [0.10s]
+Starting >>> freespace_planner
+Finished <<< freespace_planner [0.14s]
+Starting >>> image_projection_based_fusion
+Finished <<< image_projection_based_fusion [0.15s]
+Starting >>> obstacle_cruise_planner
+Finished <<< obstacle_cruise_planner [0.17s]
+Starting >>> obstacle_stop_planner
+Finished <<< obstacle_stop_planner [0.17s]
+Starting >>> planning_validator
+Finished <<< planning_validator [0.36s]
+Starting >>> scenario_selector
+Finished <<< scenario_selector [0.14s]
+Starting >>> traffic_light_fine_detector
+Finished <<< traffic_light_fine_detector [0.08s]
+Starting >>> behavior_path_lane_change_module
+Finished <<< behavior_path_lane_change_module [0.19s]
+Starting >>> trajectory_follower_node
+Finished <<< trajectory_follower_node [0.13s]
+Starting >>> autoware_control_msgs
+Finished <<< autoware_control_msgs [0.26s]
+Starting >>> llh_converter
+Finished <<< llh_converter [0.05s]
+Starting >>> morai_msgs
+Finished <<< morai_msgs [0.36s]
+Starting >>> pose2twist
+Finished <<< pose2twist [0.04s]
+Starting >>> tier4_vehicle_launch
+Finished <<< tier4_vehicle_launch [0.03s]
+Starting >>> autoware_auto_msgs
+Finished <<< autoware_auto_msgs [0.04s]
+Starting >>> lidar_apollo_segmentation_tvm
+Finished <<< lidar_apollo_segmentation_tvm [0.11s]
+Starting >>> tier4_sensing_launch
+Finished <<< tier4_sensing_launch [0.04s]
+Starting >>> tier4_system_launch
+Finished <<< tier4_system_launch [0.06s]
+Starting >>> bezier_sampler
+Finished <<< bezier_sampler [0.07s]
+Starting >>> frenet_planner
+Finished <<< frenet_planner [0.07s]
+Starting >>> tier4_map_launch
+Finished <<< tier4_map_launch [0.07s]
+Starting >>> path_smoother
+Finished <<< path_smoother [0.16s]
+Starting >>> tier4_autoware_api_launch
+Finished <<< tier4_autoware_api_launch [0.12s]
+Starting >>> tier4_localization_launch
+Finished <<< tier4_localization_launch [0.13s]
+Starting >>> tier4_simulator_launch
+Finished <<< tier4_simulator_launch [0.08s]
+Starting >>> behavior_path_avoidance_module
+Finished <<< behavior_path_avoidance_module [0.20s]
+Starting >>> tier4_perception_launch
+Finished <<< tier4_perception_launch [0.20s]
+Starting >>> tier4_control_launch
+Finished <<< tier4_control_launch [0.12s]
+Starting >>> tier4_planning_launch
+Finished <<< tier4_planning_launch [0.24s]
+Starting >>> autoware_localization_msgs
+Finished <<< autoware_localization_msgs [0.27s]
+Starting >>> autoware_system_msgs
+Finished <<< autoware_system_msgs [0.27s]
+Starting >>> camera_description
+Finished <<< camera_description [0.03s]
+Starting >>> eagleye_can_velocity_converter
+Finished <<< eagleye_can_velocity_converter [0.04s]
+Starting >>> eagleye_tf
+Finished <<< eagleye_tf [0.03s]
+Starting >>> imu_description
+Finished <<< imu_description [0.03s]
+Starting >>> livox_description
+Finished <<< livox_description [0.03s]
+Starting >>> pandar_description
+Finished <<< pandar_description [0.03s]
+Starting >>> sample_vehicle_description
+Finished <<< sample_vehicle_description [0.03s]
+Starting >>> sample_vehicle_launch
+Finished <<< sample_vehicle_launch [0.03s]
+Starting >>> vls_description
+Finished <<< vls_description [0.03s]
+Starting >>> ad_api_visualizers
+<string>:3: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+/home/cityu-fsm-lab-carla/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:261: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+--- stderr: ad_api_visualizers
+/home/cityu-fsm-lab-carla/Workspace/autoware/build/ad_api_visualizers/setup.py:3: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import PkgResourcesDeprecationWarning
+/home/cityu-fsm-lab-carla/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:261: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+---
+Finished <<< ad_api_visualizers [0.90s]
+Starting >>> autoware_vehicle_msgs
+Finished <<< autoware_vehicle_msgs [0.28s]
+Starting >>> awsim_sensor_kit_description
+Finished <<< awsim_sensor_kit_description [0.03s]
+Starting >>> boost_serial_driver
+Finished <<< boost_serial_driver [0.06s]
+Starting >>> individual_params
+Finished <<< individual_params [0.03s]
+Starting >>> rtklib_bridge
+Finished <<< rtklib_bridge [0.04s]
+Starting >>> sample_sensor_kit_description
+Finished <<< sample_sensor_kit_description [0.03s]
+Starting >>> tier4_hmi_msgs
+Finished <<< tier4_hmi_msgs [0.26s]
+Starting >>> autoware_auto_msgs_adapter
+Finished <<< autoware_auto_msgs_adapter [0.08s]
+Starting >>> autoware_auto_perception_rviz_plugin
+Finished <<< autoware_auto_perception_rviz_plugin [0.07s]
+Starting >>> bag_time_manager_rviz_plugin
+Finished <<< bag_time_manager_rviz_plugin [0.08s]
+Starting >>> bluetooth_monitor
+Finished <<< bluetooth_monitor [0.06s]
+Starting >>> component_interface_tools
+Finished <<< component_interface_tools [0.04s]
+Starting >>> diagnostic_converter
+Finished <<< diagnostic_converter [0.06s]
+Starting >>> diagnostic_graph_aggregator
+Finished <<< diagnostic_graph_aggregator [0.06s]
+Starting >>> dummy_infrastructure
+Finished <<< dummy_infrastructure [0.05s]
+Starting >>> duplicated_node_checker
+Finished <<< duplicated_node_checker [0.04s]
+Starting >>> eagleye_fix2kml
+Finished <<< eagleye_fix2kml [0.05s]
+Starting >>> livox_tag_filter
+Finished <<< livox_tag_filter [0.05s]
+Starting >>> mrm_comfortable_stop_operator
+Finished <<< mrm_comfortable_stop_operator [0.05s]
+Starting >>> mrm_emergency_stop_operator
+Finished <<< mrm_emergency_stop_operator [0.05s]
+Starting >>> polar_grid
+Finished <<< polar_grid [0.09s]
+Starting >>> qp_interface
+Finished <<< qp_interface [0.06s]
+Starting >>> radar_scan_to_pointcloud2
+Finished <<< radar_scan_to_pointcloud2 [0.06s]
+Starting >>> radar_threshold_filter
+Finished <<< radar_threshold_filter [0.05s]
+Starting >>> radar_tracks_noise_filter
+Finished <<< radar_tracks_noise_filter [0.04s]
+Starting >>> rtc_manager_rviz_plugin
+Finished <<< rtc_manager_rviz_plugin [0.08s]
+Starting >>> rtc_replayer
+Finished <<< rtc_replayer [0.05s]
+Starting >>> stop_filter
+Finished <<< stop_filter [0.05s]
+Starting >>> tier4_automatic_goal_rviz_plugin
+Finished <<< tier4_automatic_goal_rviz_plugin [0.13s]
+Starting >>> tier4_datetime_rviz_plugin
+Finished <<< tier4_datetime_rviz_plugin [0.08s]
+Starting >>> tier4_debug_rviz_plugin
+Finished <<< tier4_debug_rviz_plugin [0.09s]
+Starting >>> tier4_logging_level_configure_rviz_plugin
+Finished <<< tier4_logging_level_configure_rviz_plugin [0.09s]
+Starting >>> tier4_screen_capture_rviz_plugin
+Finished <<< tier4_screen_capture_rviz_plugin [0.08s]
+Starting >>> tier4_simulated_clock_rviz_plugin
+Finished <<< tier4_simulated_clock_rviz_plugin [0.08s]
+Starting >>> tier4_target_object_type_rviz_plugin
+Finished <<< tier4_target_object_type_rviz_plugin [0.08s]
+Starting >>> time_utils
+Finished <<< time_utils [0.04s]
+Starting >>> bytetrack
+Finished <<< bytetrack [0.09s]
+Starting >>> common_awsim_sensor_launch
+Finished <<< common_awsim_sensor_launch [0.03s]
+Starting >>> eagleye_geo_pose_converter
+Finished <<< eagleye_geo_pose_converter [0.05s]
+Starting >>> joy_controller
+Finished <<< joy_controller [0.06s]
+Starting >>> tier4_adapi_rviz_plugin
+Finished <<< tier4_adapi_rviz_plugin [0.09s]
+Starting >>> tier4_calibration_rviz_plugin
+Finished <<< tier4_calibration_rviz_plugin [0.08s]
+Starting >>> tier4_camera_view_rviz_plugin
+Finished <<< tier4_camera_view_rviz_plugin [0.09s]
+Starting >>> tier4_state_rviz_plugin
+Finished <<< tier4_state_rviz_plugin [0.11s]
+Starting >>> traffic_light_ssd_fine_detector
+Finished <<< traffic_light_ssd_fine_detector [0.08s]
+Starting >>> twist2accel
+Finished <<< twist2accel [0.05s]
+Starting >>> vehicle_velocity_converter
+Finished <<< vehicle_velocity_converter [0.05s]
+Starting >>> dummy_diag_publisher
+Finished <<< dummy_diag_publisher [0.06s]
+Starting >>> front_vehicle_velocity_estimator
+Finished <<< front_vehicle_velocity_estimator [0.08s]
+Starting >>> goal_distance_calculator
+Finished <<< goal_distance_calculator [0.07s]
+Starting >>> image_diagnostics
+Finished <<< image_diagnostics [0.06s]
+Starting >>> imu_corrector
+Finished <<< imu_corrector [0.08s]
+Starting >>> kinematic_evaluator
+Finished <<< kinematic_evaluator [0.09s]
+Starting >>> lanelet2_extension_python
+Finished <<< lanelet2_extension_python [0.28s]
+Starting >>> lanelet2_map_preprocessor
+Finished <<< lanelet2_map_preprocessor [0.07s]
+Starting >>> lidar_centerpoint_tvm
+Finished <<< lidar_centerpoint_tvm [0.12s]
+Starting >>> localization_error_monitor
+Finished <<< localization_error_monitor [0.08s]
+Starting >>> localization_evaluator
+Finished <<< localization_evaluator [0.08s]
+Starting >>> radar_static_pointcloud_filter
+Finished <<< radar_static_pointcloud_filter [0.06s]
+Starting >>> radar_tracks_msgs_converter
+Finished <<< radar_tracks_msgs_converter [0.07s]
+Starting >>> simple_object_merger
+Finished <<< simple_object_merger [0.08s]
+Starting >>> simulator_compatibility_test
+<string>:3: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+/home/cityu-fsm-lab-carla/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:261: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+--- stderr: simulator_compatibility_test
+/home/cityu-fsm-lab-carla/Workspace/autoware/build/simulator_compatibility_test/setup.py:3: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import PkgResourcesDeprecationWarning
+/home/cityu-fsm-lab-carla/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:261: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+---
+Finished <<< simulator_compatibility_test [0.94s]
+Starting >>> tier4_control_rviz_plugin
+Finished <<< tier4_control_rviz_plugin [0.14s]
+Starting >>> tier4_system_rviz_plugin
+Finished <<< tier4_system_rviz_plugin [0.12s]
+Starting >>> tier4_traffic_light_rviz_plugin
+Finished <<< tier4_traffic_light_rviz_plugin [0.12s]
+Starting >>> tier4_vehicle_rviz_plugin
+Finished <<< tier4_vehicle_rviz_plugin [0.14s]
+Starting >>> traffic_light_recognition_marker_publisher
+Finished <<< traffic_light_recognition_marker_publisher [0.08s]
+Starting >>> elevation_map_loader
+Finished <<< elevation_map_loader [0.10s]
+Starting >>> lidar_apollo_segmentation_tvm_nodes
+Finished <<< lidar_apollo_segmentation_tvm_nodes [0.09s]
+Starting >>> obstacle_collision_checker
+Finished <<< obstacle_collision_checker [0.11s]
+Starting >>> pacmod_interface
+Finished <<< pacmod_interface [0.10s]
+Starting >>> tier4_localization_rviz_plugin
+Finished <<< tier4_localization_rviz_plugin [0.14s]
+Starting >>> tier4_perception_rviz_plugin
+Finished <<< tier4_perception_rviz_plugin [0.14s]
+Starting >>> accel_brake_map_calibrator
+Finished <<< accel_brake_map_calibrator [0.09s]
+Starting >>> autonomous_emergency_braking
+Finished <<< autonomous_emergency_braking [0.10s]
+Starting >>> control_performance_analysis
+Finished <<< control_performance_analysis [0.31s]
+Starting >>> control_validator
+Finished <<< control_validator [0.30s]
+Starting >>> heatmap_visualizer
+Finished <<< heatmap_visualizer [0.08s]
+Starting >>> operation_mode_transition_manager
+Finished <<< operation_mode_transition_manager [0.32s]
+Starting >>> planning_debug_tools
+Finished <<< planning_debug_tools [0.31s]
+Starting >>> predicted_path_checker
+Finished <<< predicted_path_checker [0.14s]
+Starting >>> steer_offset_estimator
+Finished <<< steer_offset_estimator [0.08s]
+Starting >>> tier4_debug_tools
+Finished <<< tier4_debug_tools [0.08s]
+Starting >>> tier4_planning_rviz_plugin
+Finished <<< tier4_planning_rviz_plugin [0.17s]
+Starting >>> awsim_sensor_kit_launch
+Finished <<< awsim_sensor_kit_launch [0.10s]
+Starting >>> obstacle_velocity_limiter
+Finished <<< obstacle_velocity_limiter [0.25s]
+Starting >>> path_sampler
+Finished <<< path_sampler [0.11s]
+Starting >>> sample_sensor_kit_launch
+Finished <<< sample_sensor_kit_launch [0.10s]
+Starting >>> behavior_path_dynamic_avoidance_module
+Finished <<< behavior_path_dynamic_avoidance_module [0.20s]
+Starting >>> behavior_path_goal_planner_module
+Finished <<< behavior_path_goal_planner_module [0.22s]
+Starting >>> behavior_path_side_shift_module
+Finished <<< behavior_path_side_shift_module [0.20s]
+Starting >>> behavior_path_start_planner_module
+Finished <<< behavior_path_start_planner_module [0.20s]
+Starting >>> behavior_path_avoidance_by_lane_change_module
+Finished <<< behavior_path_avoidance_by_lane_change_module [0.22s]
+Starting >>> behavior_path_external_request_lane_change_module
+Finished <<< behavior_path_external_request_lane_change_module [0.21s]
+Starting >>> behavior_velocity_dynamic_obstacle_stop_module
+Finished <<< behavior_velocity_dynamic_obstacle_stop_module [0.18s]
+Starting >>> behavior_velocity_template_module
+Finished <<< behavior_velocity_template_module [0.15s]
+Starting >>> static_centerline_optimizer
+Finished <<< static_centerline_optimizer [0.50s]
+Starting >>> autoware_launch
+Finished <<< autoware_launch [0.76s]
+
+Summary: 337 packages finished [44.4s]
+  2 packages had stderr output: ad_api_visualizers simulator_compatibility_test

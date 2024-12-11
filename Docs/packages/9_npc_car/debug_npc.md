@@ -52,9 +52,9 @@ python3 ./monitor/test_sys_monitor.py
 
     source initial_config.bash
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/scripts/debug
+    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/scripts/ekf
 
-    python3 debug_ekf.py
+    python3 test_fix_ekf.py
 
 3. start serial transmit
 
