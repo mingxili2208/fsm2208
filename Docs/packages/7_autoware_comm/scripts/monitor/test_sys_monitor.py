@@ -142,8 +142,8 @@ def monitor_system():
         if cpu_usage > CPU_CRITICAL_THRESHOLD:
             print("[CRITICAL] CPU usage exceeded 90%. Killing top CPU-consuming process.")
             top_process = get_top_cpu_processes(1)[0][0] if get_top_cpu_processes(1) else None
-            if top_process:
-                kill_process(top_process)
+            # if top_process:
+            #     kill_process(top_process)
 
         # 等待指定的时间间隔
         time.sleep(INTERVAL)

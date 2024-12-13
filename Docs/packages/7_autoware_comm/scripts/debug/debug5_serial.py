@@ -83,7 +83,7 @@ class IntegratedControlPublisher(Node):
             AckermannControlCommand,
             '/control/command/control_cmd',
             self.listener_callback,
-            10)
+            1)
         self.subscription  # 防止未使用变量警告
 
         # 添加新的发布者，用于发布接收到的串口数据
@@ -124,10 +124,7 @@ class IntegratedControlPublisher(Node):
             # 如果当前不是自动模式，则忽略ROS消息
             return
 
-        self.logger.info('接收到 AckermannControlCommand 消息:')
-        self.logger.info(f'  转向角度: {msg.lateral.steering_tire_angle} 弧度')
-        self.logger.info(f'  速度: {msg.longitudinal.speed} m/s')
-        self.logger.info(f'  加速度: {msg.longitudinal.acceleration} m/s²')
+        
 
         # 将转向角度从弧度转换为度，并四舍五入到3位小数
         steering_tire_angle_deg = round(math.degrees(msg.lateral.steering_tire_angle), 3)
@@ -137,7 +134,12 @@ class IntegratedControlPublisher(Node):
         if (self.pre_steering_tire_angle is None or
             self.pre_speed is None or
             abs(steering_tire_angle_deg - self.pre_steering_tire_angle) > 0.5 or
-            abs(speed - self.pre_speed) > 0.1):
+            abs(speed - self.pre_speed) > 0.05):
+
+            self.logger.info('接收到 AckermannControlCommand 消息:')
+            self.logger.info(f'  转向角度: {msg.lateral.steering_tire_angle} 弧度')
+            self.logger.info(f'  速度: {msg.longitudinal.speed} m/s')
+            self.logger.info(f'  加速度: {msg.longitudinal.acceleration} m/s²')
 
             self.pre_steering_tire_angle = steering_tire_angle_deg
             self.pre_speed = speed
@@ -151,7 +153,7 @@ class IntegratedControlPublisher(Node):
                 packed_msg = struct.pack('<BBffB', 0x42, self.MSG_TYPE_COMMAND, steering_tire_angle_deg, speed, checksum)
                 hex_msg = " ".join(f"{byte:02X}" for byte in packed_msg)
             except struct.error as e:
-                self.logger.error(f"打包消息时发生错误: {e}")
+                self.logger.error(f"打包消息时发生错误: {hex_msg}")
                 return
 
             # 判断是否与上次发送的命令不同，避免重复发送
@@ -161,7 +163,8 @@ class IntegratedControlPublisher(Node):
                 # 发送消息
                 try:
                     bytes_written = self.ser.write(packed_msg)
-                    time.sleep(0.02)
+                    #time.sleep(0.02)
+                    self.logger.info(f"send_result  {bytes_written}")
                     self.ser.flush()  # 确保所有数据都已发送
                 except serial.SerialException as e:
                     self.logger.error(f"写入串口时发生错误: {e}")
@@ -329,7 +332,7 @@ class IntegratedControlPublisher(Node):
             sent_msg.data = f"Sent Stop - 速度: {speed} m/s, 转向角度: {steering_tire_angle_deg} 度"
             self.received_data_publisher.publish(sent_msg)
 
-            time.sleep(0.1)  # 确保数据发送完毕
+            #time.sleep(0.1)  # 确保数据发送完毕
         except serial.SerialException as e:
             self.logger.error(f"发送停止命令时发生串口错误: {e}")
         except struct.error as e:
