@@ -153,16 +153,16 @@ class TransformedSandBoxCoorPublisherNode(Node):
         if expanded_polygon_region0.contains(PPoint(x, y)):
             if -93 <= np.degrees(yaw) <= 0:
                 distance = distance_to_polygon_boundary((x, y), polygon_region0)
-                transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))*0.8
+                transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))
                 region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region1_offset_A_to_B,transition_weight)
                 if self.moving_flag is True:
                     self.get_logger().info(f"------------区域 1_expanded: 偏移为 {region_offset_A_to_B}")
             elif ((88 <= np.degrees(yaw) <= 180) or (-180 <= np.degrees(yaw) <= -93)):
                 distance = distance_to_polygon_boundary((x, y), polygon_region0)
-                transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))*0.8
+                transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))
                 region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region2_offset_A_to_B,transition_weight)
                 if self.moving_flag is True:
-                    self.get_logger().info(f"------------区域 1_expanded: 偏移为 {region_offset_A_to_B}")
+                    self.get_logger().info(f"------------区域 2_expanded: 偏移为 {region_offset_A_to_B}")
         elif polygon_region0.contains(PPoint(x, y)): 
             if -93 <= np.degrees(yaw) <= 0:
                 # 区域 1
@@ -171,7 +171,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
                     self.get_logger().info(f"------------区域 1: 偏移为 {region_offset_A_to_B}")
             elif (88 <= np.degrees(yaw) <= 180) or (-180 <= np.degrees(yaw) <= -93):
                 # 区域 2
-                if y < -2.2022:
+                if y < -2.2022 - transition_width:
                     # 区域 2 的默认逻辑
                     # yaw_weight = calculate_transition_weight(np.degrees(yaw), -180, -93, transition_width) + \
                     #             calculate_transition_weight(np.degrees(yaw), 88, 180, transition_width)
@@ -180,16 +180,16 @@ class TransformedSandBoxCoorPublisherNode(Node):
                     if self.moving_flag is True:
                         self.get_logger().info(f"-------------区域 2: 偏移为 {region_offset_A_to_B}")
                 elif -2.2022 - transition_width < y < -2.2022:
-                    # 区域 2_1 和全局区域之间的过渡带
+                    # 区域 2_1 和区域2之间的过渡带
                     transition_weight = calculate_transition_weight(y, -2.2022 - transition_width, -2.2022, transition_width)
-                    region_weight = transition_weight
+                    
                     region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region2_1_offset_A_to_B,transition_weight)
                     if self.moving_flag is True:
                         self.get_logger().info(f"--------------区域 2_1 过渡带: 偏移为 {region_offset_A_to_B}")
-                elif -2.2022 < y < -1.0268:
+                elif -2.2022 < y < -1.0268 - transition_width:
                     # 区域 2_1
                     # region_weight = calculate_transition_weight(y, -2.2022, -1.0268, transition_width)
-                    region_weight = 1.0
+                    
                     region_offset_A_to_B = region2_1_offset_A_to_B
                     if self.moving_flag is True:
                         self.get_logger().info(f"----------------区域 2_1:  偏移为 {region_offset_A_to_B}")
@@ -202,14 +202,12 @@ class TransformedSandBoxCoorPublisherNode(Node):
                         self.get_logger().info(f"------------区域 2_1 和 2_2 过渡带:  偏移为 {region_offset_A_to_B}")
                 elif y>-1.0268:
                     # 区域 2_2
-                    region_weight = 1.0
                     region_offset_A_to_B = region2_2_offset_A_to_B
                     if self.moving_flag is True:
                         self.get_logger().info(f"--------------区域 2_2: 偏移为 {region_offset_A_to_B}")
 
         elif polygon_region3.contains(PPoint(x, y)) and -160 <= np.degrees(yaw) <= -10:
             # 区域 3
-            region_weight = 1.0
             region_offset_A_to_B = region3_offset_A_to_B
             if self.moving_flag is True:
                 self.get_logger().info(f"区域 3: 点在原始多边形内部，权重为 {region_weight},偏移为 {region_offset_A_to_B}")
@@ -222,7 +220,6 @@ class TransformedSandBoxCoorPublisherNode(Node):
                 self.get_logger().info(f"区域 3 过渡带: 距离原始边界 {distance:.3f}, 权重为 {region_weight},偏移为 {region_offset_A_to_B}")
         elif polygon_region4.contains(PPoint(x, y)):
             # 区域 4
-            region_weight = 1.0
             region_offset_A_to_B = region4_offset_A_to_B
             if self.moving_flag is True:
                 self.get_logger().info(f"区域 4: 点在原始多边形内部，权重为 {region_weight},偏移为 {region_offset_A_to_B}")
@@ -235,7 +232,6 @@ class TransformedSandBoxCoorPublisherNode(Node):
                 self.get_logger().info(f"区域 4 过渡带: 距离原始边界 {distance:.3f}, 权重为 {region_weight},偏移为 {region_offset_A_to_B}")
         else:
             # 全局区域
-            region_weight = 1.0
             region_offset_A_to_B = global_offset_A_to_B
             if self.moving_flag is True:
                 self.get_logger().info(f"----------全局区域: 点不在任何区域内，权重为 {region_weight},偏移为 {region_offset_A_to_B}")
