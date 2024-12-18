@@ -133,17 +133,17 @@ def monitor_system():
                 print(f"[CRITICAL] GPU {gpu_id} memory usage exceeded 90%. Killing top GPU-consuming process.")
                 # GPU 进程监控和杀死逻辑可以扩展，但这里需要专门的工具或 API 支持。
 
-        # CPU 使用率监控
-        cpu_usage = get_cpu_usage()
-        print(f"[INFO] Current CPU    usage: {cpu_usage * 100:.2f}%")
-        if cpu_usage > CPU_WARNING_THRESHOLD:
-            print("[WARNING] CPU usage exceeded 70%.")
-            print_top_cpu_processes(3)
-        if cpu_usage > CPU_CRITICAL_THRESHOLD:
-            print("[CRITICAL] CPU usage exceeded 90%. Killing top CPU-consuming process.")
-            top_process = get_top_cpu_processes(1)[0][0] if get_top_cpu_processes(1) else None
-            # if top_process:
-            #     kill_process(top_process)
+        # # CPU 使用率监控
+        # cpu_usage = get_cpu_usage()
+        # print(f"[INFO] Current CPU    usage: {cpu_usage * 100:.2f}%")
+        # if cpu_usage > CPU_WARNING_THRESHOLD:
+        #     print("[WARNING] CPU usage exceeded 70%.")
+        #     print_top_cpu_processes(3)
+        # if cpu_usage > CPU_CRITICAL_THRESHOLD:
+        #     print("[CRITICAL] CPU usage exceeded 90%. Killing top CPU-consuming process.")
+        #     top_process = get_top_cpu_processes(1)[0][0] if get_top_cpu_processes(1) else None
+        #     # if top_process:
+        #     #     kill_process(top_process)
 
         # 等待指定的时间间隔
         time.sleep(INTERVAL)

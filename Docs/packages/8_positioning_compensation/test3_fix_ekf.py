@@ -42,7 +42,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
                              [ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
 
 
-    def calculate_B_position(self, A_position, A_yaw, transition_width=0.2):
+    def calculate_B_position(self, A_position, A_yaw, transition_width=0.15):
         """
         根据 A 在 C 中的位置和 yaw 角，计算 B 在 C 中的位置，并通过插值平滑局部额外补偿。
         :param A_position: A 在 C 中的坐标 (x_A, y_A, z_A)
@@ -55,7 +55,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
         yaw = A_yaw
 
         # 全局基础补偿
-        global_offset_A_to_B = np.array([-0.0325, 0, 0])
+        global_offset_A_to_B = np.array([-0.0285, 0, 0])
 
         # 区域补偿定义
         region1_offset_A_to_B = np.array([-0.085, 0, 0])  # 区域 1 补偿
@@ -150,26 +150,15 @@ class TransformedSandBoxCoorPublisherNode(Node):
         # y_weight = calculate_transition_weight(y, local_region_y_min, local_region_y_max, transition_width)
 
         # 区域判断逻辑
-        if expanded_polygon_region0.contains(PPoint(x, y)):
-            if -93 <= np.degrees(yaw) <= 0:
-                distance = distance_to_polygon_boundary((x, y), polygon_region0)
-                transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))
-                region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region1_offset_A_to_B,transition_weight)
-                if self.moving_flag is True:
-                    self.get_logger().info(f"------------区域 1_expanded: 偏移为 {region_offset_A_to_B}")
-            elif ((88 <= np.degrees(yaw) <= 180) or (-180 <= np.degrees(yaw) <= -93)):
-                distance = distance_to_polygon_boundary((x, y), polygon_region0)
-                transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))
-                region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region2_offset_A_to_B,transition_weight)
-                if self.moving_flag is True:
-                    self.get_logger().info(f"------------区域 2_expanded: 偏移为 {region_offset_A_to_B}")
-        elif polygon_region0.contains(PPoint(x, y)): 
-            if -93 <= np.degrees(yaw) <= 0:
+        region_offset_A_to_B=global_offset_A_to_B
+
+        if polygon_region0.contains(PPoint(x, y)) and (-130 <= np.degrees(yaw) <= 50 or(50 <= np.degrees(yaw) <= 180) or (-180 <= np.degrees(yaw) <= -130) ): 
+            if -130 <= np.degrees(yaw) <= 50:
                 # 区域 1
                 region_offset_A_to_B = region1_offset_A_to_B
                 if self.moving_flag is True:
                     self.get_logger().info(f"------------区域 1: 偏移为 {region_offset_A_to_B}")
-            elif (88 <= np.degrees(yaw) <= 180) or (-180 <= np.degrees(yaw) <= -93):
+            elif (50 <= np.degrees(yaw) <= 180) or (-180 <= np.degrees(yaw) <= -130):
                 # 区域 2
                 if y < -2.2022 - transition_width:
                     # 区域 2 的默认逻辑
@@ -183,58 +172,86 @@ class TransformedSandBoxCoorPublisherNode(Node):
                     # 区域 2_1 和区域2之间的过渡带
                     transition_weight = calculate_transition_weight(y, -2.2022 - transition_width, -2.2022, transition_width)
                     
-                    region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region2_1_offset_A_to_B,transition_weight)
+                    region_offset_A_to_B = interpolate_offset(region2_offset_A_to_B, region2_1_offset_A_to_B,transition_weight)
                     if self.moving_flag is True:
-                        self.get_logger().info(f"--------------区域 2_1 过渡带: 偏移为 {region_offset_A_to_B}")
-                elif -2.2022 < y < -1.0268 - transition_width:
+                        self.get_logger().info(f"--------------区域2_to_2_1 过渡带: 偏移为 {region_offset_A_to_B}")
+                elif -2.2022 < y < -1.2268 - transition_width:
                     # 区域 2_1
                     # region_weight = calculate_transition_weight(y, -2.2022, -1.0268, transition_width)
                     
                     region_offset_A_to_B = region2_1_offset_A_to_B
                     if self.moving_flag is True:
                         self.get_logger().info(f"----------------区域 2_1:  偏移为 {region_offset_A_to_B}")
-                elif -1.0268 - transition_width < y < -1.0268 :
+                elif -1.2268 - transition_width < y < -1.2268 :
                     # 区域 2_1 和区域 2_2 之间的过渡带
-                    transition_weight = calculate_transition_weight(y, -1.0268 - transition_width, -1.0268, transition_width)
-                    region_weight = transition_weight
+                    transition_weight = calculate_transition_weight(y, -1.2268 - transition_width, -1.2268, transition_width)
                     region_offset_A_to_B = interpolate_offset(region2_1_offset_A_to_B, region2_2_offset_A_to_B, transition_weight)
                     if self.moving_flag is True:
                         self.get_logger().info(f"------------区域 2_1 和 2_2 过渡带:  偏移为 {region_offset_A_to_B}")
-                elif y>-1.0268:
+                elif y>-1.2268:
                     # 区域 2_2
                     region_offset_A_to_B = region2_2_offset_A_to_B
                     if self.moving_flag is True:
                         self.get_logger().info(f"--------------区域 2_2: 偏移为 {region_offset_A_to_B}")
-
-        elif polygon_region3.contains(PPoint(x, y)) and -160 <= np.degrees(yaw) <= -10:
+                else:
+                    region_offset_A_to_B = global_offset_A_to_B
+                    if self.moving_flag is True:
+                        self.get_logger().info(f"from_local-------全局区域: 点不在任何区域内,偏移为 {region_offset_A_to_B}")
+        elif expanded_polygon_region0.contains(PPoint(x, y)) and ((50 <= np.degrees(yaw) <= 180) or (-180 <= np.degrees(yaw) <= -130)):
+            # if -130 <= np.degrees(yaw) <= 50:
+            #     #local_1_expanded
+            #     x_weight = calculate_transition_weight(x, local_region_x_max, local_region_x_max+transition_width, transition_width)
+            #     # print(x_weight)
+            #     # y_weight = calculate_transition_weight(y, local_region_y_min, local_region_y_max, transition_width)
+            #     # print(f"   {y_weight}")
+            #     yaw_weight = calculate_transition_weight(np.degrees(yaw), -130, 50, transition_width)        
+            #     distance = distance_to_polygon_boundary((x, y), polygon_region0)
+            #     transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))*yaw_weight*(1-x_weight)
+            #     # region_offset_A_to_B = yaw_weight*y_weight*region1_offset_A_to_B
+            #     region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region1_offset_A_to_B,transition_weight)
+            #     if self.moving_flag is True:
+            #         print(f"   {x_weight}")
+            #         self.get_logger().info(f"------------区域 1_expanded: 偏移为 {region_offset_A_to_B}")
+            
+            # local_2_expanded
+            distance = distance_to_polygon_boundary((x, y), polygon_region0)
+            transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))
+            region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region2_offset_A_to_B,transition_weight)
+            if self.moving_flag is True:
+                self.get_logger().info(f"------------区域 2_expanded: 偏移为 {region_offset_A_to_B}")
+            # else:
+            #     region_offset_A_to_B = global_offset_A_to_B
+            #     if self.moving_flag is True:
+            #         self.get_logger().info(f"frome_expaned------全局区域: 点不在任何区域内,偏移为 {region_offset_A_to_B}")
+        elif polygon_region3.contains(PPoint(x, y)) and -130 <= np.degrees(yaw) <= -10:
             # 区域 3
             region_offset_A_to_B = region3_offset_A_to_B
             if self.moving_flag is True:
-                self.get_logger().info(f"区域 3: 点在原始多边形内部，权重为 {region_weight},偏移为 {region_offset_A_to_B}")
-        elif expanded_polygon_region3.contains(PPoint(x, y)) and -160 <= np.degrees(yaw) <= -20 :
+                self.get_logger().info(f"区域 3: 点在原始多边形内部, ,偏移为 {region_offset_A_to_B}")
+        elif expanded_polygon_region3.contains(PPoint(x, y)) and -130 <= np.degrees(yaw) <= -20 :
             # 区域 3 过渡带
             distance = distance_to_polygon_boundary((x, y), polygon_region3)
             transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))*0.8
             region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region3_offset_A_to_B,transition_weight)
             if self.moving_flag is True:
-                self.get_logger().info(f"区域 3 过渡带: 距离原始边界 {distance:.3f}, 权重为 {region_weight},偏移为 {region_offset_A_to_B}")
+                self.get_logger().info(f"区域 3 过渡带: 距离原始边界 {distance:.3f}偏移为 {region_offset_A_to_B}")
         elif polygon_region4.contains(PPoint(x, y)):
             # 区域 4
             region_offset_A_to_B = region4_offset_A_to_B
             if self.moving_flag is True:
-                self.get_logger().info(f"区域 4: 点在原始多边形内部，权重为 {region_weight},偏移为 {region_offset_A_to_B}")
+                self.get_logger().info(f"区域 4: 点在原始多边形内部偏移为 {region_offset_A_to_B}")
         elif expanded_polygon_region4.contains(PPoint(x, y)):
             # 区域 4 过渡带
             distance = distance_to_polygon_boundary((x, y), polygon_region4)
             transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))*0.8
-            region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region1_offset_A_to_B,transition_weight)
+            region_offset_A_to_B = interpolate_offset(global_offset_A_to_B, region4_offset_A_to_B,transition_weight)
             if self.moving_flag is True:
-                self.get_logger().info(f"区域 4 过渡带: 距离原始边界 {distance:.3f}, 权重为 {region_weight},偏移为 {region_offset_A_to_B}")
+                self.get_logger().info(f"区域 4 过渡带: 距离原始边界 {distance:.3f}, 偏移为 {region_offset_A_to_B}")
         else:
             # 全局区域
             region_offset_A_to_B = global_offset_A_to_B
             if self.moving_flag is True:
-                self.get_logger().info(f"----------全局区域: 点不在任何区域内，权重为 {region_weight},偏移为 {region_offset_A_to_B}")
+                self.get_logger().info(f"----------全局区域: 点不在任何区域内,偏移为 {region_offset_A_to_B}")
 
         # 最终补偿融合
         # final_offset_A_to_B = region_offset_A_to_B
