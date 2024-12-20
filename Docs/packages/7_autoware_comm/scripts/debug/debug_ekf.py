@@ -45,8 +45,8 @@ class TransformedSandBoxCoorPublisherNode(Node):
         :return: B 在 C 中的坐标 (x_B, y_B, z_B)
         """
 
-        offset_A_to_B = np.array([0.0, 0, 0])
-        #offset_A_to_B = np.array([-0.0185, 0, 0])
+        #offset_A_to_B = np.array([0.0, 0, 0])
+        offset_A_to_B = np.array([-0.0195, 0, 0])
         #offset_A_to_B = np.array([-0.0825, 0, 0])
 
         # 旋转矩阵 (绕 Z 轴旋转 yaw 角)
