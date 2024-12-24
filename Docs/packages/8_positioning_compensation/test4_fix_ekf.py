@@ -63,7 +63,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
         region2_1_offset_A_to_B=np.array([+0.010,0,0]) #region2_1
         region2_2_offset_A_to_B=np.array([-0.025,0,0]) #region2_2
         region3_offset_A_to_B = np.array([-0.125, 0, 0])  # 区域 3 补偿
-        region4_offset_A_to_B = np.array([+0.00, 0, 0])  # 区域 4 补偿
+        region4_offset_A_to_B = np.array([+0.015, 0, 0])  # 区域 4 补偿
 
         # 定义局部区域的坐标范围
         local_region_x_min = -1
@@ -75,6 +75,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
             (-1, -0.3),  # C 
             (0.66, -0.3),   # D
             (0.66, -3.09) # B
+            ()
         ])
         # 区域 3 和 区域 4 多边形定义
         polygon_region3 = Polygon([

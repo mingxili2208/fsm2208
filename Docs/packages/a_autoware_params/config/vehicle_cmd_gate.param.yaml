@@ -1,0 +1,95 @@
+/**:
+  ros__parameters:
+    # The frequency at which the node updates (Hz)
+    update_rate: 10.0
+    
+    # Timeout duration for system emergency heartbeat (seconds)
+    system_emergency_heartbeat_timeout: 0.5
+    
+    # Flag to enable/disable emergency handling functionality
+    use_emergency_handling: false
+    
+    # Flag to check external emergency heartbeat
+    check_external_emergency_heartbeat: false
+    
+    # Flag to require start request before operation
+    use_start_request: false
+    
+    # Enable filtering of command limits
+    enable_cmd_limit_filter: true
+    
+    # Timeout for external emergency stop heartbeat (seconds)
+    external_emergency_stop_heartbeat_timeout: 0.0
+    
+    # Deceleration rate for hold stop (m/s^2)
+    stop_hold_acceleration: -1.5
+    
+    # Emergency braking deceleration rate (m/s^2)
+    emergency_acceleration: -2.4
+    
+    # Moderate service stop deceleration rate (m/s^2)
+    moderate_stop_service_acceleration: -1.5
+    
+    # Duration required to confirm stopped state (seconds)
+    stopped_state_entry_duration_time: 0.1
+    
+    # Duration for stop state verification (seconds)
+    stop_check_duration: 1.0
+
+    # Normal driving parameters
+    nominal:
+      # Maximum velocity limit (m/s)
+      vel_lim: 25.0
+      
+      # Reference speed points for interpolation (m/s)
+      reference_speed_points: [20.0, 30.0]
+      
+      # Steering angle limits at reference speeds (rad)
+      steer_lim: [1.0, 0.8]
+      
+      # Steering rate limits at reference speeds (rad/s)
+      steer_rate_lim: [1.0, 0.8]
+      
+      # Longitudinal acceleration limits (m/s^2)
+      lon_acc_lim: [5.0, 4.0]
+      
+      # Longitudinal jerk limits (m/s^3)
+      lon_jerk_lim: [5.0, 4.0]
+      
+      # Lateral acceleration limits (m/s^2)
+      lat_acc_lim: [5.0, 4.0]
+      
+      # Lateral jerk limits (m/s^3)
+      lat_jerk_lim: [7.0, 6.0]
+      
+      # Maximum allowed difference between actual and commanded steering (rad)
+      actual_steer_diff_lim: [1.0, 0.8]
+
+    # Parameters during transition states (e.g., lane change)
+    on_transition:
+      # Maximum velocity limit during transition (m/s)
+      vel_lim: 50.0
+      
+      # Reference speed points for interpolation during transition (m/s)
+      reference_speed_points: [20.0, 30.0]
+      
+      # Steering angle limits during transition (rad)
+      steer_lim: [1.0, 0.8]
+      
+      # Steering rate limits during transition (rad/s)
+      steer_rate_lim: [1.0, 0.8]
+      
+      # Longitudinal acceleration limits during transition (m/s^2)
+      lon_acc_lim: [1.0, 0.9]
+      
+      # Longitudinal jerk limits during transition (m/s^3)
+      lon_jerk_lim: [0.5, 0.4]
+      
+      # Lateral acceleration limits during transition (m/s^2)
+      lat_acc_lim: [2.0, 1.8]
+      
+      # Lateral jerk limits during transition (m/s^3)
+      lat_jerk_lim: [7.0, 6.0]
+      
+      # Maximum allowed difference between actual and commanded steering during transition (rad)
+      actual_steer_diff_lim: [1.0, 0.8]
