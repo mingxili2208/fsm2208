@@ -1,42 +1,40 @@
 --------------------------------------
 carla gnss record start
 --------------------------------------
-[INFO] [launch]: All log files can be found below /home/cityu-fsm-lab-carla/.ros/log/2024-12-24-16-51-31-099058-cityufsmlabcarla-Precision-3660-104541
+[INFO] [launch]: All log files can be found below /home/cityu-fsm-lab-carla/.ros/log/2024-12-30-16-35-16-354824-cityufsmlabcarla-Precision-3660-11506
 [INFO] [launch]: Default logging verbosity is set to INFO
-[INFO] [gnss_poser-1]: process started with pid [104544]
-[gnss_poser-1] [WARN] [1735030291.420282055] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030291.420399048] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030292.444333874] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030292.444364420] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030293.458931344] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030293.458994240] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030294.477111617] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030294.477149874] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030295.499020445] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030295.499072356] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030296.509445562] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030296.509482421] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030297.539791271] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030297.539831692] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030298.570932643] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030298.570982403] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030299.584919434] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030299.584958493] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030300.613237291] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030300.613279320] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030301.620422143] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030301.620463275] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030302.635315326] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030302.635356775] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030303.657884618] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030303.657954797] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030304.679983817] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030304.680027239] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030305.696402414] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030305.696444271] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030306.711067591] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030306.711105869] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030307.730960031] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030307.731015039] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1735030308.758584772] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1735030308.758632943] [gnss_poser]: Please publish TF gnss_link to base_link
+[INFO] [gnss_poser-1]: process started with pid [11509]
+[gnss_poser-1] [WARN] [1735547716.548291784] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547716.548371027] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547717.556522653] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547717.556588804] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547718.578148668] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547718.578197273] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547719.579491938] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547719.579543803] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547720.605385153] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547720.605441312] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547721.640593596] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547721.640633644] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547722.677031544] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547722.677072399] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547723.721818032] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547723.721853590] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547724.751847768] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547724.751887320] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547725.779880015] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547725.779920421] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547726.792249148] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547726.792302665] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547727.839403922] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547727.839444807] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547728.887564934] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547728.887602150] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547729.915902554] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547729.915939433] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547730.982037501] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547730.982075249] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547732.022025390] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547732.022065691] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1735547733.044653158] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1735547733.044693844] [gnss_poser]: Please publish TF gnss_link to base_link
