@@ -284,6 +284,13 @@ class IntegratedControlPublisher(Node):
                 if key_char == 'm':
                     # 切换模式
                     self.toggle_mode()
+                    self.send_stop_command()
+                    with self.cmd_lock:
+                        self.speed = 0.0
+                        self.steering_angle_deg = 0.0
+                        # 重置上次发送的命令以允许重新发送
+                        self.last_sent_commands['speed'] = None
+                        self.last_sent_commands['steering_angle_deg'] = None
             except AttributeError:
                 pass  # 非字符键忽略
 
@@ -303,13 +310,14 @@ class IntegratedControlPublisher(Node):
         with self.cmd_lock:
             if self.mode == self.MODE_AUTO:
                 self.mode = self.MODE_MANUAL
-                self.logger.info("切换到 MANUAL 模式")
+                self.logger.info("\n\n")
+                self.logger.info("****切换到 MANUAL 模式****\n\n")
                 # 重置上次发送的命令以便手动模式可以立即发送新指令
                 self.last_sent_commands['steering_angle_deg'] = None
                 self.last_sent_commands['speed'] = None
             else:
                 self.mode = self.MODE_AUTO
-                self.logger.info("切换到 AUTO 模式")
+                self.logger.info("****切换到 AUTO 模式****\n\n")
                 # 不需要重置，因为自动模式依赖ROS消息
 
     def send_stop_command(self):
