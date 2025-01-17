@@ -147,7 +147,9 @@ class TransformedSandBoxCoorPublisherNode(Node):
 
         # 全局基础补偿
         global_offset_CCW_A_to_B = np.array([+0.0125, 0, 0])
-        global_offset_CW_A_to_B = np.array([-0.0425, 0, 0])
+        #global_offset_CCW_A_to_B = np.array([0, 0, 0])
+        global_offset_CW_A_to_B = np.array([+0.0625, 0, 0])
+        #global_offset_CW_A_to_B = np.array([-0.0425, 0, 0])
         #global_offset_A_to_B = np.array([0, 0, 0])
         # 区域补偿定义
         region0_1_offset_A_to_B = np.array([-0.0325, 0, 0])  # 区域 0_1 补偿
