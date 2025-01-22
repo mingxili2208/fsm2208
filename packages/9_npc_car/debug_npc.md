@@ -2,7 +2,7 @@
 
 ## init resources monitor
 
-cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/scripts
+cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/scripts
 
 python3 ./monitor/test_sys_monitor.py
 
@@ -21,19 +21,19 @@ python3 ./monitor/test_sys_monitor.py
 
 1. init terminal
 
-    cd  /home/cityu-fsm-lab-carla/lmx/Docs/packages/9_npc_car/bash
+    cd  /home/cityu-fsm-lab-carla/lmx/packages/9_npc_car/bash
 
     source ./initial_npc_param.bash
 
 2. init npc world(only if not init any world)
 
-    cd  /home/cityu-fsm-lab-carla/lmx/Docs/packages/9_npc_car/bash
+    cd  /home/cityu-fsm-lab-carla/lmx/packages/9_npc_car/bash
 
     bash ./npc_world_init.bash
 
 3. init npc_car
 
-    cd  /home/cityu-fsm-lab-carla/lmx/Docs/packages/9_npc_car/bash
+    cd  /home/cityu-fsm-lab-carla/lmx/packages/9_npc_car/bash
 
     bash ./npc_car_init.bash
 
@@ -139,7 +139,6 @@ the set_frame of carla does not fellow the ekf
 ![1](img/2024-09-30-17-09-07.png) control launch
 
 ## for debuging
-
 
 ``` bash
 

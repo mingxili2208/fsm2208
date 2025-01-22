@@ -39,4 +39,4 @@ source ${AUTOWARE_ROOT}/install/setup.bash
 
 source ${OP_ROS_PLUGINS_ROOT}/install/setup.bash
 
-python3 /home/cityu-fsm-lab-carla/lmx/Docs/packages/9_npc_car/scripts/test/npc_vis_test.py
+python3 /home/cityu-fsm-lab-carla/lmx/packages/9_npc_car/scripts/test/npc_vis_test.py

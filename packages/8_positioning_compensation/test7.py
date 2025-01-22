@@ -485,13 +485,15 @@ class TransformedSandBoxCoorPublisherNode(Node):
         # 注意: Carla的y轴和ROS的y轴方向相反, 因此需要对y轴进行翻转
         B_position_offseted=self.calculate_B_position(np.array([transformed_position__[0],transformed_position__[2],0.0017]),transformed_yaw__)
 
+        # if self.moving_flag==True:
+        #     self.get_logger().info(f"B_position_offseted------ z:{B_position_offseted[2]}")
         original_point=np.array([B_position_offseted[0], B_position_offseted[1], B_position_offseted[2]])
         #original_point=np.array([transformed_position__[0], transformed_position__[2], 0.0016])
 
         homogeneous_point = np.append(original_point, 1)
         transformed_homogeneous_point = self.similarity_matrix @ homogeneous_point
         transformed_point = transformed_homogeneous_point[:3] / transformed_homogeneous_point[3]
-
+        transformed_point[2]=0.0017
         #yaw=transformed_yaw
         _transformed_yaw=math.radians(-(math.degrees(transformed_yaw__)-90))#-90#90-transformed_yaw__#+15#-90
         transformed_point[1]=-transformed_point[1]
