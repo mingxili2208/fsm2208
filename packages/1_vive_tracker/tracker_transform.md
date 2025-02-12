@@ -335,6 +335,12 @@ Verification of un-marked positions
 
 ![T3](img/2024-07-22-12-32-54.png)
 
+## refresh rate
+
+![11](img/2025-02-10-15-48-25.png)
+
+as showing the rate should be up to 120HZ
+
 ## Operation method record
 
 1. debug_tracker

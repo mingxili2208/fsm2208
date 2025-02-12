@@ -48,15 +48,15 @@ python3 ./monitor/test_sys_monitor.py
 1. start steam vr
 2. start vr_pose transmit
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/bash
+    cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/bash
 
     source initial_config.bash
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/8_positioning_compensation
+    cd /home/cityu-fsm-lab-carla/lmx/packages/8_positioning_compensation
 
     python3 test3_fix_ekf.py
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/scripts/ekf
+    cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/scripts/ekf
 
     python3 test_fix_ekf.py
 
