@@ -363,13 +363,13 @@ class TransformedSandBoxCoorPublisherNode(Node):
             #     region_offset_A_to_B = global_offset_A_to_B
             #     if self.moving_flag is True:
             #         self.get_logger().info(f"frome_expaned------全局区域: 点不在任何区域内,偏移为 {region_offset_A_to_B}")
-        elif polygon_region3.contains(PPoint(x, y)) and -130 <= np.degrees(yaw) <= -20:
+        elif polygon_region3.contains(PPoint(x, y)) and -130 <= np.degrees(yaw) <= -80:
             # 区域 3 CCW
             self.direction='CCW'
             region_offset_A_to_B = region3_offset_A_to_B
             if self.moving_flag is True:
                 self.get_logger().info(f"区域 3: 点在原始多边形内部, ,偏移为 {region_offset_A_to_B}")
-        elif expanded_polygon_region3.contains(PPoint(x, y)) and -130 <= np.degrees(yaw) <= -30 :
+        elif expanded_polygon_region3.contains(PPoint(x, y)) and -130 <= np.degrees(yaw) <= -80 :
             # 区域 3 过渡带 CCW
             self.direction='CW'
             distance = distance_to_polygon_boundary((x, y), polygon_region3)
