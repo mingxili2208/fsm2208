@@ -36,7 +36,8 @@
    (3). Overall mission modeling
    (4). Model reduction
         RC Mosquito Car
-   (5). 
+   (5). sync step of carla
+        set as sync mode and set fixed_delta_seconds as 1.0/30
 
 4. Model Analysis
    Model and analyze the delay and control accuracy of the entire system to obtain a reasonable evaluation of the algorithm stability.
