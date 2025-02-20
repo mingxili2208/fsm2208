@@ -77,11 +77,11 @@ then have to click the button play
 
     ```bash
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/bash
+    cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/bash
 
     source initial_config.bash 
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/scripts/debug
+    cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/scripts/debug
 
     python3 debug5_serial.py
     
@@ -90,7 +90,7 @@ then have to click the button play
 4. start autoware vehicle agent
 
     ```bash
-    cd ./Workspace/Carla/op_carla/op_bridge/op_scripts/fsm_lab_simulation/
+    cd ~/Workspace/Carla/op_carla/op_bridge/op_scripts/fsm_lab_simulation/
 
     ./debug_run_vehicle_ros2.sh
 
@@ -99,10 +99,10 @@ then have to click the button play
 5. start car update
 
     ```bash
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/bash
+    cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/bash
 
     source initial_config.bash 
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/scripts/debug
+    cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/scripts/debug
 
    python3 debug_update_vehicle_3.py

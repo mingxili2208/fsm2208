@@ -1,42 +1,55 @@
 --------------------------------------
 carla gnss record start
 --------------------------------------
-[INFO] [launch]: All log files can be found below /home/cityu-fsm-lab-carla/.ros/log/2025-02-14-16-20-46-106924-cityufsmlabcarla-Precision-3660-192469
+[INFO] [launch]: All log files can be found below /home/cityu-fsm-lab-carla/.ros/log/2025-02-18-13-21-49-062979-cityufsmlabcarla-Precision-3660-102292
 [INFO] [launch]: Default logging verbosity is set to INFO
-[INFO] [gnss_poser-1]: process started with pid [192471]
-[gnss_poser-1] [WARN] [1739521246.601756683] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521246.601839393] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521247.616822865] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521247.616861719] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521248.680009846] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521248.680050004] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521249.731959775] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521249.732036008] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521250.861678531] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521250.861717623] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521251.882298787] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521251.882362039] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521252.901822365] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521252.901877461] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521253.915713666] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521253.915748183] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521254.934520105] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521254.934571656] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521255.938718065] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521255.938757447] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521256.960954903] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521256.960992734] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521257.995026101] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521257.995066524] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521259.013154803] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521259.013194311] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521260.034342895] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521260.034380130] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521261.047220459] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521261.047265656] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521262.063860555] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521262.063900328] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521263.078651416] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521263.078694142] [gnss_poser]: Please publish TF gnss_link to base_link
-[gnss_poser-1] [WARN] [1739521264.098096252] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
-[gnss_poser-1] [WARN] [1739521264.098139582] [gnss_poser]: Please publish TF gnss_link to base_link
+[INFO] [gnss_poser-1]: process started with pid [102293]
+[gnss_poser-1] [WARN] [1739856109.588260804] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856109.588348687] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856110.597707166] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856110.597750850] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856111.626125160] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856111.626161402] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856112.662613214] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856112.662654835] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856113.689231038] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856113.689268673] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856114.741033136] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856114.741069585] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856115.758995308] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856115.759033254] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856116.777659099] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856116.777698376] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856117.798991814] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856117.799033030] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856118.809678904] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856118.809718142] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856119.829821131] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856119.829860287] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856120.832835258] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856120.832886859] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856121.848356760] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856121.848398911] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856122.859840803] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856122.859887237] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856123.890439344] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856123.890479495] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856124.900001082] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856124.900039626] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856125.927815425] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856125.927852286] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] [WARN] [1739856126.960176399] [gnss_poser]: "gnss_link" passed to lookupTransform argument target_frame does not exist. 
+[gnss_poser-1] [WARN] [1739856126.960215258] [gnss_poser]: Please publish TF gnss_link to base_link
+[gnss_poser-1] 1739952215.353031 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952215.452914 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952215.453048 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952215.553142 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952215.653195 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952215.753356 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952215.853421 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952215.953515 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952216.153664 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952216.353754 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952216.753831 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952217.153857 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
+[gnss_poser-1] 1739952217.953942 [46]        tev: ddsi_udp_conn_write to udp/239.255.0.1:18900 failed with retcode -1
