@@ -589,7 +589,6 @@ void Nrf_Task(void* parameter)
 		//调用绝对延时函数20ms,执行频率50HZ
 		vTaskDelayUntil(&PreviousWakeTime1, TimeIncrement1 );
 		
-		//读取PS2手柄键值
 		//AX_PS2_ScanKey(&my_joystick);
 		FSM_NRF_ScanKey(&nrt_ctl_info);
 		
@@ -605,11 +604,12 @@ void Nrf_Task(void* parameter)
 
 				//执行蜂鸣器鸣叫提示
 				ax_beep_ring = BEEP_SHORT;
-			}else if (nrt_ctl_info.ST == 0x02)
+			}
+		}
+		if (nrt_ctl_info.ST == 0x02)
 			{
 				FSM_NRF_SendDis();
 			}
-		}
 		
 	}
 }
