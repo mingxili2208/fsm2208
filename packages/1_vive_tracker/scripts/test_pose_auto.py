@@ -7,7 +7,7 @@ from pynput import keyboard
 
 # 串口配置
 SERIAL_PORT = "/dev/ttyUSB0"  # 请根据实际情况修改
-BAUD_RATE = 115200
+BAUD_RATE = 9600
 LOG_FILE = "a69_tracker_log.txt"
 
 # 初始化串口
@@ -27,14 +27,18 @@ recording = False  # 录制标志
 
 # 计算 XOR 校验和
 def calculate_checksum_r(data):
-    """计算 A69 设备的 XOR 校验和"""
+    """计算 A69 设备的 XOR 校验和（适用于数据包）"""
     return data[3] ^ data[4] ^ data[5] ^ data[6]
 
 # 解析 A69 设备数据
 def parse_a69_data(response):
-    """解析 A69 设备数据包"""
-    if len(response) != 10 or response[0] != 0x55 or response[1] != 0x7E or response[8] != 0x7E or response[9] != 0x55:
-        print(f"[错误] 无效数据包: {list(map(hex, response))}")
+    """解析 A69 设备数据包，返回 (distance_2, distance_3)"""
+    if len(response) != 10:
+        print(f"[错误] 接收到的数据长度错误: {len(response)}，预期 10 字节")
+        return None
+
+    if response[0] != 0x55 or response[1] != 0x7E or response[8] != 0x7E or response[9] != 0x55:
+        print(f"[错误] 无效数据包格式: {list(map(hex, response))}")
         return None
 
     checksum = response[7]
@@ -51,11 +55,16 @@ def parse_a69_data(response):
 
 # 发送 A69 数据请求
 def send_a69_data_request():
-    """按照 A69 格式发送数据请求"""
-    tx_buf = bytearray([0x55, 0x7E, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7E, 0x55])
+    """按照 A69 格式发送数据请求，并正确计算校验位"""
+    tx_buf = bytearray([0x55, 0x7E, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7E, 0x55])
+    
+    # 计算校验位
+    tx_buf[7] = calculate_checksum_r(tx_buf)
+
     ser.write(tx_buf)
     ser.flush()
-    print(f"发送 A69 数据请求: {list(map(hex, tx_buf))}")
+    print(f"发送 A69 数据请求的指令码: {hex(tx_buf[2])}")
+    #print(f"发送 A69 数据请求: {list(map(hex, tx_buf))}")
 
 # 串口监听线程
 def serial_listener():
@@ -66,6 +75,10 @@ def serial_listener():
 
             try:
                 response = ser.read(10)  # 读取 10 字节数据
+                if len(response) < 10:
+                    print("[警告] 串口返回数据不足 10 字节，丢弃")
+                    continue
+
                 parsed_data = parse_a69_data(response)
 
                 if parsed_data:
@@ -77,7 +90,7 @@ def serial_listener():
                     # 存储数据
                     recorded_data.append((timestamp, distance_2, distance_3))
                 else:
-                    print("[警告] 未收到有效数据，重发请求...")
+                    print("[警告] 收到无效数据，重发请求...")
 
             except serial.SerialException as e:
                 print(f"[错误] 串口读取失败: {e}")

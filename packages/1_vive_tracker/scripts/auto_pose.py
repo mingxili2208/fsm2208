@@ -9,7 +9,7 @@ from vive_tracker import ViveTrackerModule
 
 # 串口配置
 SERIAL_PORT = "/dev/ttyUSB0"  # 请根据实际情况修改
-BAUD_RATE = 115200
+BAUD_RATE = 9600
 
 # 设定追踪器的名称
 TRACKER_NAME = "tracker_1"
@@ -66,7 +66,7 @@ def parse_a69_data(response):
     return distance_2 / 1000.0, distance_3 / 1000.0  # 假设数据单位是 mm，转换为 m
 
 # 发送 A69 数据
-def send_a69_data(distance_2, distance_3):
+def send_a69_data(flag,distance_2, distance_3):
     """按照 A69 格式发送数据"""
     distance_2_int = int(distance_2 * 1000)  # 转换为整数
     distance_3_int = int(distance_3 * 1000)
@@ -74,7 +74,7 @@ def send_a69_data(distance_2, distance_3):
     tx_buf = bytearray(10)
     tx_buf[0] = 0x55
     tx_buf[1] = 0x7E
-    tx_buf[2] = 0x03
+    tx_buf[2] = flag
     tx_buf[3] = (distance_2_int >> 8) & 0xFF  # 高字节
     tx_buf[4] = distance_2_int & 0xFF        # 低字节
     tx_buf[5] = (distance_3_int >> 8) & 0xFF  # 高字节
@@ -86,13 +86,23 @@ def send_a69_data(distance_2, distance_3):
     ser.write(tx_buf)
     ser.flush()
     print(f"发送 A69 数据: {list(map(hex, tx_buf))}")
+def send_a69_data_request():
+    """按照 A69 格式发送数据请求，并正确计算校验位"""
+    tx_buf = bytearray([0x55, 0x7E, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7E, 0x55])
+    
+    # 计算校验位
+    tx_buf[7] = calculate_checksum_r(tx_buf)
 
+    ser.write(tx_buf)
+    ser.flush()
+    print(f"发送 A69 数据请求的指令码: {hex(tx_buf[2])}")
+    #print(f"发送 A69 数据请求: {list(map(hex, tx_buf))}")
 # 监听串口
 def serial_listener():
     global recording
     while running:
         if recording:
-            send_a69_data(0.0, 0.0)  # 发送 0x03 请求数据
+            send_a69_data_request()  # 发送 0x02 请求数据
 
             try:
                 response = ser.read(10)  # 读取 10 字节
