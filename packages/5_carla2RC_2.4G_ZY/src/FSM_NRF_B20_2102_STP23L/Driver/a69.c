@@ -156,10 +156,10 @@ void FSM_A69_ProcessReceivedData(uint8_t *data, uint8_t length, NRF_CTL_INFO *nr
     }
 
     // **校验 XOR 校验位**
-//    uint8_t checksum = data[3] ^ data[4] ^ data[5] ^ data[6];
-//    if (checksum != data[7]) {
-//        return; // 校验失败，丢弃数据
-//    }
+    uint8_t checksum = data[3] ^ data[4] ^ data[5] ^ data[6];
+    if (checksum != data[7]) {
+        return; // 校验失败，丢弃数据
+    }
 
     // **解析数据**
     nrt_ctl_info->ST = data[2];
