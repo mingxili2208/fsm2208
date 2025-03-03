@@ -131,13 +131,13 @@ void Robot_Task(void* parameter)
 		AX_ROBOT_Kinematics();	
 		
 		//舵机云台控制
-		JOINT_Control();		
+		//JOINT_Control();		
 		
 		//获取PMU6050加速度数据
         ROBOT_IMUHandle();
 		
 		//数据发送
-		ROBOT_SendDataToRos();
+		//ROBOT_SendDataToRos();
 			
 	}
 }

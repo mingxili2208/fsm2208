@@ -1,0 +1,136 @@
+2025-03-03 21:09:33,365 - INFO - Log file created at: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\logs\registration_log_20250303_210933.txt
+2025-03-03 21:09:33,365 - INFO - Reading data file: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\corrected_tracker_log_0303.csv
+2025-03-03 21:09:33,435 - INFO - Data loaded successfully. XZ_data points: 7149, laser_data points: 7149
+2025-03-03 21:09:33,435 - INFO - XZ_data statistics:
+2025-03-03 21:09:33,435 - INFO -   X range: [-2.4962, 1.6377]
+2025-03-03 21:09:33,436 - INFO -   Z range: [-4.8179, -0.4452]
+2025-03-03 21:09:33,437 - INFO - laser_data statistics:
+2025-03-03 21:09:33,437 - INFO -   X range: [0.1140, 3.8340]
+2025-03-03 21:09:33,437 - INFO -   Z range: [-3.6370, 0.7620]
+2025-03-03 21:09:33,437 - INFO - === Starting Point Cloud Registration Process ===
+2025-03-03 21:09:33,437 - INFO - Setting voxel size: 0.05
+2025-03-03 21:09:33,437 - INFO - Preprocessing point clouds...
+2025-03-03 21:09:33,437 - INFO - Preprocessing point cloud 'source', input points: 7149
+2025-03-03 21:09:33,437 - INFO - Performing voxel downsampling, voxel size: 0.05
+2025-03-03 21:09:33,437 - INFO - Points after downsampling: 1288
+2025-03-03 21:09:33,437 - INFO - Performing statistical outlier removal
+2025-03-03 21:09:33,438 - INFO - Points after outlier removal: 1227
+2025-03-03 21:09:33,438 - INFO - Computing normals
+2025-03-03 21:09:33,452 - INFO - Normals computed successfully
+2025-03-03 21:09:33,453 - INFO - Preprocessing point cloud 'target', input points: 7149
+2025-03-03 21:09:33,453 - INFO - Performing voxel downsampling, voxel size: 0.05
+2025-03-03 21:09:33,454 - INFO - Points after downsampling: 1193
+2025-03-03 21:09:33,454 - INFO - Performing statistical outlier removal
+2025-03-03 21:09:33,456 - INFO - Points after outlier removal: 1160
+2025-03-03 21:09:33,456 - INFO - Computing normals
+2025-03-03 21:09:33,466 - INFO - Normals computed successfully
+2025-03-03 21:09:33,466 - INFO - Computing initial transformation...
+2025-03-03 21:09:33,466 - INFO - Starting RANSAC initial alignment
+2025-03-03 21:09:33,467 - INFO - Computing features for source point cloud
+2025-03-03 21:09:33,467 - INFO - Computing features for 'source', input points: 1227
+2025-03-03 21:09:33,467 - INFO - Recomputing normals
+2025-03-03 21:09:33,475 - INFO - Normals computed successfully
+2025-03-03 21:09:33,475 - INFO - Computing FPFH features
+2025-03-03 21:09:33,478 - INFO - FPFH features computed successfully, dimension: 33
+2025-03-03 21:09:33,479 - INFO - Computing features for target point cloud
+2025-03-03 21:09:33,479 - INFO - Computing features for 'target', input points: 1160
+2025-03-03 21:09:33,479 - INFO - Recomputing normals
+2025-03-03 21:09:33,486 - INFO - Normals computed successfully
+2025-03-03 21:09:33,486 - INFO - Computing FPFH features
+2025-03-03 21:09:33,490 - INFO - FPFH features computed successfully, dimension: 33
+2025-03-03 21:09:33,490 - INFO - RANSAC parameters: distance_threshold=0.07500000000000001, ransac_n=3
+2025-03-03 21:09:33,490 - INFO - Executing RANSAC feature matching
+2025-03-03 21:09:33,628 - INFO - RANSAC registration result: fitness=0.9975550122249389, RMSE=0.0241599260796607
+2025-03-03 21:09:33,628 - INFO - RANSAC transformation matrix:
+2025-03-03 21:09:33,628 - INFO -   [-5.34836464e-01  8.44955568e-01 -2.09130251e-04  3.72075900e+00]
+2025-03-03 21:09:33,628 - INFO -   [-8.44955593e-01 -5.34836460e-01  8.08304506e-05 -3.72104585e+00]
+2025-03-03 21:09:33,629 - INFO -   [-4.35523441e-05  2.19936848e-04  9.99999975e-01  5.16083029e-04]
+2025-03-03 21:09:33,629 - INFO -   [0. 0. 0. 1.]
+2025-03-03 21:09:33,629 - INFO - Executing multi-stage ICP registration...
+2025-03-03 21:09:33,629 - INFO - Starting multi-stage ICP registration
+2025-03-03 21:09:33,629 - INFO - Initial registration evaluation: fitness=0.9820700896495518, RMSE=0.023333515696048336
+2025-03-03 21:09:33,629 - INFO - Stage 1 ICP: voxel_size=0.1, threshold=0.2
+2025-03-03 21:09:33,629 - INFO - Using point-to-point registration method
+2025-03-03 21:09:33,631 - INFO - Stage 1 completed: fitness=1.0, RMSE=0.019878479293170628
+2025-03-03 21:09:33,631 - INFO - Stage 1 transformation matrix:
+2025-03-03 21:09:33,632 - INFO -   [-5.21220979e-01  8.53421755e-01  6.29259312e-07  3.76514826e+00]
+2025-03-03 21:09:33,632 - INFO -   [-8.53421755e-01 -5.21220979e-01  3.44045466e-06 -3.68892263e+00]
+2025-03-03 21:09:33,632 - INFO -   [3.26414201e-06 1.25621356e-06 1.00000000e+00 1.03673902e-05]
+2025-03-03 21:09:33,632 - INFO -   [0. 0. 0. 1.]
+2025-03-03 21:09:33,632 - INFO - Stage 2 ICP: voxel_size=0.05, threshold=0.1
+2025-03-03 21:09:33,632 - INFO - Using point-to-plane registration method
+2025-03-03 21:09:33,633 - INFO - Stage 2 completed: fitness=0.9877750611246944, RMSE=0.02270650244145529
+2025-03-03 21:09:33,633 - INFO - Stage 2 transformation matrix:
+2025-03-03 21:09:33,634 - INFO -   [-5.20555286e-01  8.53827965e-01  2.88098694e-06  3.68156704e+00]
+2025-03-03 21:09:33,634 - INFO -   [-8.53827965e-01 -5.20555286e-01  8.26970260e-06 -3.69190837e+00]
+2025-03-03 21:09:33,634 - INFO -   [8.56061632e-06 1.84497019e-06 1.00000000e+00 1.43979028e-05]
+2025-03-03 21:09:33,634 - INFO -   [0. 0. 0. 1.]
+2025-03-03 21:09:33,634 - INFO - Stage 3 ICP: voxel_size=0.02, threshold=0.04
+2025-03-03 21:09:33,634 - INFO - Using point-to-plane registration method
+2025-03-03 21:09:33,635 - INFO - Stage 3 completed: fitness=0.9054604726976365, RMSE=0.019412208285090576
+2025-03-03 21:09:33,635 - INFO - Stage 3 transformation matrix:
+2025-03-03 21:09:33,635 - INFO -   [-5.20663193e-01  8.53762168e-01  2.80328200e-06  3.57880722e+00]
+2025-03-03 21:09:33,635 - INFO -   [-8.53762168e-01 -5.20663193e-01  4.05408010e-06 -3.69049785e+00]
+2025-03-03 21:09:33,635 - INFO -   [ 4.92078597e-06 -2.82525826e-07  1.00000000e+00  3.37950905e-06]
+2025-03-03 21:09:33,636 - INFO -   [0. 0. 0. 1.]
+2025-03-03 21:09:33,636 - INFO - Executing final ICP fine registration
+2025-03-03 21:09:33,636 - INFO - Final ICP result: fitness=0.8541157294213529, RMSE=0.017655566593763446
+2025-03-03 21:09:33,636 - INFO - Final transformation matrix:
+2025-03-03 21:09:33,636 - INFO -   [-5.21673073e-01  8.53145477e-01  2.79930459e-06  3.57745265e+00]
+2025-03-03 21:09:33,637 - INFO -   [-8.53145477e-01 -5.21673073e-01  1.71032557e-06 -3.68823916e+00]
+2025-03-03 21:09:33,637 - INFO -   [ 2.91947835e-06 -1.49598326e-06  1.00000000e+00  2.61764485e-06]
+2025-03-03 21:09:33,637 - INFO -   [0. 0. 0. 1.]
+2025-03-03 21:09:33,637 - INFO - === Transformation Matrix ===
+2025-03-03 21:09:33,637 - INFO - [-5.21673073e-01  8.53145477e-01  2.79930459e-06  3.57745265e+00]
+2025-03-03 21:09:33,637 - INFO - [-8.53145477e-01 -5.21673073e-01  1.71032557e-06 -3.68823916e+00]
+2025-03-03 21:09:33,637 - INFO - [ 2.91947835e-06 -1.49598326e-06  1.00000000e+00  2.61764485e-06]
+2025-03-03 21:09:33,637 - INFO - [0. 0. 0. 1.]
+2025-03-03 21:09:33,637 - INFO - Calculating original point cloud RMSE and identifying high-error points
+2025-03-03 21:09:33,665 - INFO - Computing distances between point clouds
+2025-03-03 21:09:33,670 - INFO - === Final matching result statistics ===
+2025-03-03 21:09:33,671 - INFO - Minimum distance: 0.00014
+2025-03-03 21:09:33,671 - INFO - Maximum distance: 0.22815
+2025-03-03 21:09:33,671 - INFO - Average distance: 0.03662
+2025-03-03 21:09:33,671 - INFO - Median distance: 0.01046
+2025-03-03 21:09:33,671 - INFO - Standard deviation: 0.06255
+2025-03-03 21:09:33,671 - INFO - RMSE: 0.07248
+2025-03-03 21:09:33,671 - INFO - Distance distribution histogram:
+2025-03-03 21:09:33,671 - INFO -   [0.0001, 0.0115): 3946
+2025-03-03 21:09:33,671 - INFO -   [0.0115, 0.0229): 1584
+2025-03-03 21:09:33,671 - INFO -   [0.0229, 0.0343): 281
+2025-03-03 21:09:33,671 - INFO -   [0.0343, 0.0457): 109
+2025-03-03 21:09:33,671 - INFO -   [0.0457, 0.0571): 76
+2025-03-03 21:09:33,671 - INFO -   [0.0571, 0.0685): 41
+2025-03-03 21:09:33,671 - INFO -   [0.0685, 0.0799): 43
+2025-03-03 21:09:33,671 - INFO -   [0.0799, 0.0913): 28
+2025-03-03 21:09:33,671 - INFO -   [0.0913, 0.1027): 109
+2025-03-03 21:09:33,671 - INFO -   [0.1027, 0.1141): 25
+2025-03-03 21:09:33,671 - INFO -   [0.1141, 0.1255): 19
+2025-03-03 21:09:33,671 - INFO -   [0.1255, 0.1369): 24
+2025-03-03 21:09:33,671 - INFO -   [0.1369, 0.1483): 27
+2025-03-03 21:09:33,671 - INFO -   [0.1483, 0.1597): 58
+2025-03-03 21:09:33,671 - INFO -   [0.1597, 0.1711): 145
+2025-03-03 21:09:33,671 - INFO -   [0.1711, 0.1825): 21
+2025-03-03 21:09:33,672 - INFO -   [0.1825, 0.1939): 64
+2025-03-03 21:09:33,672 - INFO -   [0.1939, 0.2053): 64
+2025-03-03 21:09:33,672 - INFO -   [0.2053, 0.2167): 372
+2025-03-03 21:09:33,672 - INFO -   [0.2167, 0.2281): 113
+2025-03-03 21:09:33,672 - INFO - Identified 835 points with error > 0.15
+2025-03-03 21:09:33,672 - INFO - === Final Registration RMSE: 0.07248 ===
+2025-03-03 21:09:33,672 - INFO - Generating error visualization plots
+2025-03-03 21:09:34,352 - INFO - Scatter plot saved to: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\visualizations\error_scatter_20250303_210933.png
+2025-03-03 21:09:35,113 - INFO - Comparison plot saved to: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\visualizations\before_after_comparison_20250303_210933.png
+2025-03-03 21:09:35,310 - INFO - Histogram plot saved to: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\visualizations\error_histogram_20250303_210933.png
+2025-03-03 21:09:36,266 - INFO - Heatmap plot saved to: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\visualizations\error_heatmap_20250303_210933.png
+2025-03-03 21:09:36,266 - INFO - Error visualization completed successfully
+2025-03-03 21:09:36,266 - INFO - Generated visualizations:
+2025-03-03 21:09:36,266 - INFO -   - Scatter plot: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\visualizations\error_scatter_20250303_210933.png
+2025-03-03 21:09:36,266 - INFO -   - Before/After comparison: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\visualizations\before_after_comparison_20250303_210933.png
+2025-03-03 21:09:36,266 - INFO -   - Error histogram: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\visualizations\error_histogram_20250303_210933.png
+2025-03-03 21:09:36,266 - INFO -   - Error heatmap: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\visualizations\error_heatmap_20250303_210933.png
+2025-03-03 21:09:36,308 - INFO - Transformation results saved to CSV file: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\aligned_tracker_log.csv
+2025-03-03 21:09:36,314 - INFO - High-error points saved to: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\high_error_points.csv
+2025-03-03 21:09:36,314 - INFO - Saving transformation matrix information
+2025-03-03 21:09:36,315 - INFO - Transformation matrix information saved to CSV file: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\transform_info.csv
+2025-03-03 21:09:36,322 - INFO - Error statistics saved to: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\error_statistics.csv
+2025-03-03 21:09:36,322 - INFO - === Point Cloud Registration Process Completed ===
