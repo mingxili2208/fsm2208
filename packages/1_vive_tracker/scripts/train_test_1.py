@@ -74,12 +74,14 @@ def inverse_transform(X_val, Z_val):
     input_data = scaler_XZ.transform(input_data)  # 归一化
     input_tensor = torch.tensor(input_data, dtype=torch.float32)
 
+    # **切换到推理模式，防止 BN 计算错误**
+    inverse_model.eval()  
+
     with torch.no_grad():
         predicted = inverse_model(input_tensor).numpy()
 
     predicted = scaler_laser.inverse_transform(predicted)  # 反归一化
     return predicted[0]  # 返回 (laser_x, laser_z)
-
 # **计算所有测试点的预测值**
 laser_pred = np.array([inverse_transform(X, Z) for X, Z in df[["X", "Z"]].values])
 
