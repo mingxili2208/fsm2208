@@ -1,8 +1,8 @@
 import pandas as pd
 
 # 定义文件路径
-input_file = "tracker_log.txt"  # 输入的 TXT 文件
-output_file = "tracker_log.csv"  # 输出的 CSV 文件
+input_file = "tracker_log_0303.txt"  # 输入的 TXT 文件
+output_file = "tracker_log_0303.csv"  # 输出的 CSV 文件
 
 # 读取文件并解析数据
 with open(input_file, "r", encoding="utf-8") as file:
