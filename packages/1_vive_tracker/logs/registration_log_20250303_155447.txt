@@ -1,0 +1,122 @@
+2025-03-03 15:54:47,033 - INFO - Log file created at: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\logs\registration_log_20250303_155447.txt
+2025-03-03 15:54:47,033 - INFO - Reading data file: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\corrected_tracker_log_0303.csv
+2025-03-03 15:54:47,041 - INFO - Data loaded successfully. XZ_data points: 7149, laser_data points: 7149
+2025-03-03 15:54:47,041 - INFO - XZ_data statistics:
+2025-03-03 15:54:47,041 - INFO -   X range: [-2.4962, 1.6377]
+2025-03-03 15:54:47,041 - INFO -   Z range: [-4.8179, -0.4452]
+2025-03-03 15:54:47,043 - INFO - laser_data statistics:
+2025-03-03 15:54:47,043 - INFO -   X range: [-0.7620, 3.6370]
+2025-03-03 15:54:47,043 - INFO -   Z range: [0.2240, 3.9440]
+2025-03-03 15:54:47,043 - INFO - === Starting Point Cloud Registration Process ===
+2025-03-03 15:54:47,043 - INFO - Setting voxel size: 0.05
+2025-03-03 15:54:47,043 - INFO - Preprocessing point clouds...
+2025-03-03 15:54:47,043 - INFO - Preprocessing point cloud 'source', input points: 7149
+2025-03-03 15:54:47,043 - INFO - Performing voxel downsampling, voxel size: 0.05
+2025-03-03 15:54:47,043 - INFO - Points after downsampling: 1286
+2025-03-03 15:54:47,043 - INFO - Performing statistical outlier removal
+2025-03-03 15:54:47,044 - INFO - Points after outlier removal: 1226
+2025-03-03 15:54:47,044 - INFO - Computing normals
+2025-03-03 15:54:47,051 - INFO - Normals computed successfully
+2025-03-03 15:54:47,051 - INFO - Preprocessing point cloud 'target', input points: 7149
+2025-03-03 15:54:47,051 - INFO - Performing voxel downsampling, voxel size: 0.05
+2025-03-03 15:54:47,053 - INFO - Points after downsampling: 1183
+2025-03-03 15:54:47,053 - INFO - Performing statistical outlier removal
+2025-03-03 15:54:47,054 - INFO - Points after outlier removal: 1151
+2025-03-03 15:54:47,054 - INFO - Computing normals
+2025-03-03 15:54:47,069 - INFO - Normals computed successfully
+2025-03-03 15:54:47,069 - INFO - Computing initial transformation...
+2025-03-03 15:54:47,069 - INFO - Starting RANSAC initial alignment
+2025-03-03 15:54:47,069 - INFO - Computing features for source point cloud
+2025-03-03 15:54:47,070 - INFO - Computing features for 'source', input points: 1226
+2025-03-03 15:54:47,070 - INFO - Recomputing normals
+2025-03-03 15:54:47,077 - INFO - Normals computed successfully
+2025-03-03 15:54:47,077 - INFO - Computing FPFH features
+2025-03-03 15:54:47,081 - INFO - FPFH features computed successfully, dimension: 33
+2025-03-03 15:54:47,081 - INFO - Computing features for target point cloud
+2025-03-03 15:54:47,081 - INFO - Computing features for 'target', input points: 1151
+2025-03-03 15:54:47,081 - INFO - Recomputing normals
+2025-03-03 15:54:47,089 - INFO - Normals computed successfully
+2025-03-03 15:54:47,089 - INFO - Computing FPFH features
+2025-03-03 15:54:47,092 - INFO - FPFH features computed successfully, dimension: 33
+2025-03-03 15:54:47,092 - INFO - RANSAC parameters: distance_threshold=0.07500000000000001, ransac_n=3
+2025-03-03 15:54:47,092 - INFO - Executing RANSAC feature matching
+2025-03-03 15:54:47,207 - INFO - RANSAC registration result: fitness=0.9861337683523654, RMSE=0.03325964320311856
+2025-03-03 15:54:47,207 - INFO - RANSAC transformation matrix:
+2025-03-03 15:54:47,207 - INFO -   [8.65957677e-01 5.00117286e-01 2.72039227e-05 3.65315228e+00]
+2025-03-03 15:54:47,207 - INFO -   [-5.00117287e-01  8.65957677e-01  2.54210438e-05  4.00538601e+00]
+2025-03-03 15:54:47,207 - INFO -   [-1.08439422e-05 -3.56187001e-05  9.99999999e-01 -3.25284674e-05]
+2025-03-03 15:54:47,207 - INFO -   [0. 0. 0. 1.]
+2025-03-03 15:54:47,207 - INFO - Executing multi-stage ICP registration...
+2025-03-03 15:54:47,207 - INFO - Starting multi-stage ICP registration
+2025-03-03 15:54:47,208 - INFO - Initial registration evaluation: fitness=0.901305057096248, RMSE=0.030181885462114148
+2025-03-03 15:54:47,208 - INFO - Stage 1 ICP: voxel_size=0.1, threshold=0.2
+2025-03-03 15:54:47,208 - INFO - Using point-to-point registration method
+2025-03-03 15:54:47,216 - INFO - Stage 1 completed: fitness=1.0, RMSE=0.020059549549725806
+2025-03-03 15:54:47,216 - INFO - Stage 1 transformation matrix:
+2025-03-03 15:54:47,216 - INFO -   [ 8.53298222e-01  5.21423192e-01 -8.40188462e-06  3.68979519e+00]
+2025-03-03 15:54:47,217 - INFO -   [-5.21423192e-01  8.53298222e-01 -7.82462977e-07  3.89333325e+00]
+2025-03-03 15:54:47,217 - INFO -   [6.76131886e-06 5.04861176e-06 1.00000000e+00 1.72194372e-05]
+2025-03-03 15:54:47,217 - INFO -   [0. 0. 0. 1.]
+2025-03-03 15:54:47,217 - INFO - Stage 2 ICP: voxel_size=0.05, threshold=0.1
+2025-03-03 15:54:47,217 - INFO - Using point-to-plane registration method
+2025-03-03 15:54:47,233 - INFO - Stage 2 completed: fitness=0.9608482871125612, RMSE=0.023743364657806024
+2025-03-03 15:54:47,233 - INFO - Stage 2 transformation matrix:
+2025-03-03 15:54:47,233 - INFO -   [ 8.54580367e-01  5.19319166e-01 -1.18314959e-05  3.68603042e+00]
+2025-03-03 15:54:47,233 - INFO -   [-5.19319166e-01  8.54580367e-01  1.09790069e-05  3.70169160e+00]
+2025-03-03 15:54:47,233 - INFO -   [ 1.58125728e-05 -3.23812116e-06  1.00000000e+00  6.56209806e-06]
+2025-03-03 15:54:47,233 - INFO -   [0. 0. 0. 1.]
+2025-03-03 15:54:47,233 - INFO - Stage 3 ICP: voxel_size=0.02, threshold=0.04
+2025-03-03 15:54:47,233 - INFO - Using point-to-plane registration method
+2025-03-03 15:54:47,248 - INFO - Stage 3 completed: fitness=0.8915171288743883, RMSE=0.019318127777961814
+2025-03-03 15:54:47,248 - INFO - Stage 3 transformation matrix:
+2025-03-03 15:54:47,248 - INFO -   [ 8.55003182e-01  5.18622752e-01 -1.80794419e-05  3.68219860e+00]
+2025-03-03 15:54:47,248 - INFO -   [-5.18622752e-01  8.55003182e-01  5.40027042e-06  3.64950746e+00]
+2025-03-03 15:54:47,248 - INFO -   [1.82586835e-05 4.75916153e-06 1.00000000e+00 2.92460866e-05]
+2025-03-03 15:54:47,248 - INFO -   [0. 0. 0. 1.]
+2025-03-03 15:54:47,248 - INFO - Executing final ICP fine registration
+2025-03-03 15:54:47,249 - INFO - Final ICP result: fitness=0.833605220228385, RMSE=0.017695806778709713
+2025-03-03 15:54:47,249 - INFO - Final transformation matrix:
+2025-03-03 15:54:47,250 - INFO -   [ 8.53630818e-01  5.20878514e-01 -7.89949122e-06  3.68679927e+00]
+2025-03-03 15:54:47,250 - INFO -   [-5.20878514e-01  8.53630818e-01 -1.48163763e-06  3.64420066e+00]
+2025-03-03 15:54:47,250 - INFO -   [5.97149595e-06 5.37944679e-06 1.00000000e+00 1.61926971e-05]
+2025-03-03 15:54:47,250 - INFO -   [0. 0. 0. 1.]
+2025-03-03 15:54:47,250 - INFO - === Transformation Matrix ===
+2025-03-03 15:54:47,250 - INFO - [ 8.53630818e-01  5.20878514e-01 -7.89949122e-06  3.68679927e+00]
+2025-03-03 15:54:47,250 - INFO - [-5.20878514e-01  8.53630818e-01 -1.48163763e-06  3.64420066e+00]
+2025-03-03 15:54:47,250 - INFO - [5.97149595e-06 5.37944679e-06 1.00000000e+00 1.61926971e-05]
+2025-03-03 15:54:47,250 - INFO - [0. 0. 0. 1.]
+2025-03-03 15:54:47,251 - INFO - Calculating original point cloud RMSE
+2025-03-03 15:54:47,287 - INFO - Computing distances between point clouds
+2025-03-03 15:54:47,292 - INFO - === Final matching result statistics ===
+2025-03-03 15:54:47,292 - INFO - Minimum distance: 0.00005
+2025-03-03 15:54:47,292 - INFO - Maximum distance: 0.27252
+2025-03-03 15:54:47,292 - INFO - Average distance: 0.04398
+2025-03-03 15:54:47,292 - INFO - Median distance: 0.01085
+2025-03-03 15:54:47,292 - INFO - Standard deviation: 0.07734
+2025-03-03 15:54:47,292 - INFO - RMSE: 0.08897
+2025-03-03 15:54:47,292 - INFO - Distance distribution histogram:
+2025-03-03 15:54:47,292 - INFO -   [0.0000, 0.0137): 4382
+2025-03-03 15:54:47,292 - INFO -   [0.0137, 0.0273): 1270
+2025-03-03 15:54:47,292 - INFO -   [0.0273, 0.0409): 156
+2025-03-03 15:54:47,292 - INFO -   [0.0409, 0.0545): 80
+2025-03-03 15:54:47,292 - INFO -   [0.0545, 0.0682): 47
+2025-03-03 15:54:47,292 - INFO -   [0.0682, 0.0818): 52
+2025-03-03 15:54:47,292 - INFO -   [0.0818, 0.0954): 41
+2025-03-03 15:54:47,292 - INFO -   [0.0954, 0.1090): 43
+2025-03-03 15:54:47,292 - INFO -   [0.1090, 0.1227): 102
+2025-03-03 15:54:47,292 - INFO -   [0.1227, 0.1363): 26
+2025-03-03 15:54:47,292 - INFO -   [0.1363, 0.1499): 24
+2025-03-03 15:54:47,293 - INFO -   [0.1499, 0.1635): 32
+2025-03-03 15:54:47,293 - INFO -   [0.1635, 0.1772): 30
+2025-03-03 15:54:47,293 - INFO -   [0.1772, 0.1908): 26
+2025-03-03 15:54:47,293 - INFO -   [0.1908, 0.2044): 64
+2025-03-03 15:54:47,293 - INFO -   [0.2044, 0.2180): 143
+2025-03-03 15:54:47,293 - INFO -   [0.2180, 0.2317): 24
+2025-03-03 15:54:47,293 - INFO -   [0.2317, 0.2453): 92
+2025-03-03 15:54:47,293 - INFO -   [0.2453, 0.2589): 259
+2025-03-03 15:54:47,293 - INFO -   [0.2589, 0.2725): 256
+2025-03-03 15:54:47,293 - INFO - === Final Registration RMSE: 0.08897 ===
+2025-03-03 15:54:47,349 - INFO - Transformation results saved to CSV file: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\aligned_tracker_log.csv
+2025-03-03 15:54:47,349 - INFO - Saving transformation matrix information
+2025-03-03 15:54:47,351 - INFO - Transformation matrix information saved to CSV file: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\transform_info.csv
+2025-03-03 15:54:47,351 - INFO - === Point Cloud Registration Process Completed ===
