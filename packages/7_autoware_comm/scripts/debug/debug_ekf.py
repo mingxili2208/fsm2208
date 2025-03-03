@@ -46,7 +46,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
         """
 
         #offset_A_to_B = np.array([0.0, 0, 0])
-        offset_A_to_B = np.array([-0.0195, 0, 0])
+        offset_A_to_B = np.array([-0.0395, 0, 0])
         #offset_A_to_B = np.array([-0.0825, 0, 0])
 
         # 旋转矩阵 (绕 Z 轴旋转 yaw 角)

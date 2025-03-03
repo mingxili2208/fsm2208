@@ -123,14 +123,14 @@ class IntegratedControlPublisher(Node):
             tx_buf[5] = int(128 + self.map_speed_sigmoid(speed))
 
         tx_buf[6] = 0x00
-        tx_buf[7] = self.calculate_checksum_interval(tx_buf, 2, 6)
+        tx_buf[7] = self.calculate_checksum_interval(tx_buf, 3, 6)
         tx_buf[8] = 0x7E
         tx_buf[9] = 0x55
 
         for attempt in range(3):
             self.ser.write(tx_buf)
             self.ser.flush()
-            time.sleep(0.1)
+            time.sleep(0.01)
             response = self.ser.read(10)
             if self.parse_ack_response(response):
                 self.logger.info("A69 设备确认收到指令")

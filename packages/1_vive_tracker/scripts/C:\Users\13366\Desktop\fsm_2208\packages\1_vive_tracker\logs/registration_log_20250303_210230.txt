@@ -1,0 +1,4 @@
+2025-03-03 21:02:30,554 - INFO - Log file created at: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\logs/registration_log_20250303_210230.txt
+2025-03-03 21:02:30,554 - INFO - Reading data file: C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\corrected_tracker_log_0303.csv
+2025-03-03 21:02:30,554 - ERROR - Failed to load data: [Errno 2] No such file or directory: 'C:\\Users\\13366\\Desktop\\fsm_2208\\packages\\1_vive_tracker\\scripts\\corrected_tracker_log_0303.csv'
+2025-03-03 21:02:30,554 - CRITICAL - Program terminated: [Errno 2] No such file or directory: 'C:\\Users\\13366\\Desktop\\fsm_2208\\packages\\1_vive_tracker\\scripts\\corrected_tracker_log_0303.csv'
