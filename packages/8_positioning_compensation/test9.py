@@ -146,19 +146,19 @@ class TransformedSandBoxCoorPublisherNode(Node):
         yaw = A_yaw
 
         # 全局基础补偿
-        global_offset_CCW_A_to_B = np.array([+0.0625, 0, 0])
+        global_offset_CCW_A_to_B = np.array([+0.0225, 0, 0])
         global_offset_CW_A_to_B = np.array([-0.0425, 0, 0])
         #global_offset_A_to_B = np.array([0, 0, 0])
         # 区域补偿定义
         region0_1_offset_A_to_B = np.array([-0.0325, 0, 0])  # 区域 0_1 补偿
         region1_offset_A_to_B = np.array([-0.045, 0, 0])  # 区域 1 补偿
-        region2_offset_A_to_B = np.array([-0.0455, 0, 0])  # 区域 2 补偿
-        region2_1_offset_A_to_B=np.array([-0.0455,0,0]) #region2_1
-        region2_2_offset_A_to_B=np.array([-0.0755,0,0]) #region2_2
+        region2_offset_A_to_B = np.array([-0.0255, 0, 0])  # 区域 2 补偿
+        region2_1_offset_A_to_B=np.array([-0.0255,0,0]) #region2_1
+        region2_2_offset_A_to_B=np.array([-0.0155,0,0]) #region2_2
         region3_offset_A_to_B = np.array([-0.125, 0, 0])  # 区域 3 补偿
         #region4_offset_A_to_B = np.array([+0.00, 0, 0])  # 区域 4 补偿
         region4_offset_A_to_B = np.array([+0.012, 0, 0])
-        region5_offset_A_to_B = np.array([-0.085, 0, 0])
+        region5_offset_A_to_B = np.array([-0.035, 0, 0])
         region5_1_offset_A_to_B = np.array([0, 0, 0])
 
         # 定义局部区域的坐标范围
@@ -173,7 +173,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
             (-1, 0.3),  # C 
             ( 1.2, 0.3),
             ( 1.2,-0.3),
-            (0.66, 0.3),   # D
+            (0.66, -0.3),   # D
             (0.66, -3.09) # B
         ])
 
@@ -204,7 +204,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
 
         polygon_region5 = Polygon([
 
-            ( 4.13, -3.86),
+            ( 4.13, -3.26),
             ( 4.13, -4.56),
             ( 3.34, -4.56),
             #( 3.19, -4.56),
@@ -220,7 +220,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
             ( 2.54, -3.56),
             #( 3.19, -3.56),
             ( 3.34, -3.56),
-            ( 3.34, -3.76)
+            ( 3.34, -3.26)
         
         ])
 
@@ -354,7 +354,17 @@ class TransformedSandBoxCoorPublisherNode(Node):
             if self.moving_flag is True:
                 print(transition_weight)
                 self.get_logger().info(f"------------区域 0_expanded: 偏移为 {region_offset_A_to_B}")  
-        elif expanded_polygon_region0.contains(PPoint(x, y)) and ((50 <= np.degrees(yaw) <= 180) or (-180 <= np.degrees(yaw) <= -130)):
+        elif expanded_polygon_region0.contains(PPoint(x, y)) and (50 <= np.degrees(yaw) <= 180) :
+            # region_0_local_2 expanded CCW
+            self.direction='CCW'
+            # local_2_expanded
+            distance = distance_to_polygon_boundary((x, y), polygon_region0)
+            transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))
+            region_offset_A_to_B = interpolate_offset(global_offset_CCW_A_to_B ,region2_2_offset_A_to_B,transition_weight)
+            if self.moving_flag is True:
+                print(transition_weight)
+                self.get_logger().info(f"------------区域 2_2expanded_global: 偏移为 {region_offset_A_to_B}")
+        elif expanded_polygon_region0.contains(PPoint(x, y)) and  (-180 <= np.degrees(yaw) <= -130):
             # region_0_local_2 expanded CCW
             self.direction='CCW'
             # local_2_expanded
@@ -363,7 +373,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
             region_offset_A_to_B = interpolate_offset(region5_offset_A_to_B, region2_offset_A_to_B,transition_weight)
             if self.moving_flag is True:
                 print(transition_weight)
-                self.get_logger().info(f"------------区域 2_expanded: 偏移为 {region_offset_A_to_B}")
+                self.get_logger().info(f"------------区域 2_0expanded_global: 偏移为 {region_offset_A_to_B}")
             # else:
             #     region_offset_A_to_B = global_offset_A_to_B
             #     if self.moving_flag is True:
