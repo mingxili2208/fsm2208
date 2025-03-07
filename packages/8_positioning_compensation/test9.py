@@ -133,7 +133,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
             # 这里只同步到self.direction，不进行发布
             pass  # 可以保留日志记录，如果需要调试，可取消注释
             # self.get_logger().info(f"当前旋转方向: {self.direction}")
-    def calculate_B_position(self, A_position, A_yaw, transition_width=0.15):
+    def calculate_B_position(self, A_position, A_yaw, transition_width=0.30):
         """
         根据 A 在 C 中的位置和 yaw 角，计算 B 在 C 中的位置，并通过插值平滑局部额外补偿。
         :param A_position: A 在 C 中的坐标 (x_A, y_A, z_A)
@@ -158,14 +158,10 @@ class TransformedSandBoxCoorPublisherNode(Node):
         region3_offset_A_to_B = np.array([-0.125, 0, 0])  # 区域 3 补偿
         #region4_offset_A_to_B = np.array([+0.00, 0, 0])  # 区域 4 补偿
         region4_offset_A_to_B = np.array([+0.012, 0, 0])
-        region5_offset_A_to_B = np.array([-0.035, 0, 0])
+        region5_offset_A_to_B = np.array([-0.04, 0, 0])
         region5_1_offset_A_to_B = np.array([0, 0, 0])
+        region6_offset_A_to_B = np.array([-0.065, 0.05, 0]) 
 
-        # 定义局部区域的坐标范围
-        local_region_x_min = -1
-        local_region_x_max = 0.66
-        local_region_y_min = -3.09
-        local_region_y_max = -0.3
         
         polygon_region0 = Polygon([
             
@@ -204,9 +200,9 @@ class TransformedSandBoxCoorPublisherNode(Node):
 
         polygon_region5 = Polygon([
 
-            ( 4.13, -3.26),
-            ( 4.13, -4.56),
-            ( 3.34, -4.56),
+            # ( 4.13, -3.06),
+            # ( 4.13, -4.56),
+            # ( 3.34, -4.56),
             #( 3.19, -4.56),
             ( 2.54, -4.56),
             ( 1.54, -4.56),
@@ -216,19 +212,27 @@ class TransformedSandBoxCoorPublisherNode(Node):
             (-1.14, -3.06),
             ( 1.34, -3.06),
             ( 1.54, -3.06),
-            ( 2.05, -3.56),
-            ( 2.54, -3.56),
+            ( 2.54, -3.06)
             #( 3.19, -3.56),
-            ( 3.34, -3.56),
-            ( 3.34, -3.26)
+            # ( 3.34, -3.06),
+  #          ( 3.34, -3.26)
         
         ])
+        polygon_region6 = Polygon([
+            ( 2.84, -4.56),
+            ( 4.13, -4.56),
+            ( 4.13, -3.36),
+            ( 2.84, -3.36)
+        ]
+
+        )
 
         # 扩展多边形区域（创建过渡带）
         expanded_polygon_region0 = polygon_region0.buffer(transition_width)
         expanded_polygon_region3 = polygon_region3.buffer(transition_width)
         expanded_polygon_region4 = polygon_region4.buffer(transition_width)
         expanded_polygon_region5 = polygon_region5.buffer(transition_width)
+        expanded_polygon_region6 = polygon_region6.buffer(transition_width)
         #expanded_polygon_region0_1 = polygon_region0_1.buffer(transition_width)
 
         # 判断点是否在局部区域
@@ -388,7 +392,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
             # 区域 3 过渡带 CCW
             self.direction='CW'
             distance = distance_to_polygon_boundary((x, y), polygon_region3)
-            transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))*0.8
+            transition_weight = max(0.0, min(1.0, 1 - distance / transition_width)) 
             region_offset_A_to_B = interpolate_offset(global_offset_CCW_A_to_B, region3_offset_A_to_B,transition_weight)
             if self.moving_flag is True:
                 print(transition_weight)
@@ -404,18 +408,19 @@ class TransformedSandBoxCoorPublisherNode(Node):
             self.direction='CW'
             if 110 < np.degrees(yaw)  <175:
                 distance = distance_to_polygon_boundary((x, y), polygon_region4)
-                transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))*0.8
+                transition_weight = max(0.0, min(1.0, 1 - distance / transition_width)) 
                 region_offset_A_to_B = interpolate_offset(global_offset_CW_A_to_B,region4_offset_A_to_B,transition_weight)
                 if self.moving_flag is True:
                     print(transition_weight)
                     self.get_logger().info(f"区域 4 过渡带 out: weight {transition_weight}; 距离原始边界 {distance:.3f}, 偏移为 {region_offset_A_to_B}") 
             else:
                 distance = distance_to_polygon_boundary((x, y), polygon_region4)
-                transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))*0.8
+                transition_weight = max(0.0, min(1.0, 1 - distance / transition_width)) 
                 region_offset_A_to_B = interpolate_offset(global_offset_CCW_A_to_B, region4_offset_A_to_B,transition_weight)
                 if self.moving_flag is True:
                     print(transition_weight)
                     self.get_logger().info(f"区域 4 过渡带 in: 距离原始边界 {distance:.3f}, 偏移为 {region_offset_A_to_B}")
+
         elif polygon_region5.contains(PPoint(x, y)) and -175< np.degrees(yaw)< 25:
             # 区域 5
             self.direction='CCW'
@@ -431,9 +436,9 @@ class TransformedSandBoxCoorPublisherNode(Node):
             # 区域 5_1 过渡带
             self.direction='CW'
             #self.point_state=determine_transition_state(polygon_region0,expanded_polygon_region0)
-            #transition_weight=calculate_transition_weight_with_state((x,y),polygon_region0,transition_width)*0.8
+            #transition_weight=calculate_transition_weight_with_state((x,y),polygon_region0,transition_width) 
             distance = distance_to_polygon_boundary((x, y), polygon_region5)
-            transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))*0.8
+            transition_weight = max(0.0, min(1.0, 1 - distance / transition_width)) 
             region_offset_A_to_B = interpolate_offset(global_offset_CW_A_to_B, region5_1_offset_A_to_B,transition_weight)
             if self.moving_flag is True:
                 print(transition_weight)
@@ -442,9 +447,9 @@ class TransformedSandBoxCoorPublisherNode(Node):
             # 区域 5 过渡带
             self.direction='CCW'
             #self.point_state=determine_transition_state(polygon_region0,expanded_polygon_region0)
-            #transition_weight=calculate_transition_weight_with_state((x,y),polygon_region0,transition_width)*0.8
+            #transition_weight=calculate_transition_weight_with_state((x,y),polygon_region0,transition_width) 
             distance = distance_to_polygon_boundary((x, y), polygon_region5)
-            transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))*0.8
+            transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))
             region_offset_A_to_B = interpolate_offset(global_offset_CCW_A_to_B, region5_offset_A_to_B,transition_weight)
             if self.moving_flag is True:
                 print(transition_weight)
@@ -453,13 +458,30 @@ class TransformedSandBoxCoorPublisherNode(Node):
             # 区域 5 过渡带 2 
             self.direction='CCW'
             #self.point_state=determine_transition_state(polygon_region0,expanded_polygon_region0)
-            #transition_weight=calculate_transition_weight_with_state((x,y),polygon_region0,transition_width)*0.8
+            #transition_weight=calculate_transition_weight_with_state((x,y),polygon_region0,transition_width) 
             distance = distance_to_polygon_boundary((x, y), polygon_region5)
-            transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))*0.8
-            region_offset_A_to_B = interpolate_offset(global_offset_CCW_A_to_B,region5_offset_A_to_B,transition_weight)
+            transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))
+            region_offset_A_to_B = interpolate_offset(region6_offset_A_to_B,region5_offset_A_to_B,transition_weight)
             if self.moving_flag is True:
                 print(transition_weight)
                 self.get_logger().info(f"区域 5 过渡带 2: 距离原始边界 {distance:.3f}, 偏移为 {region_offset_A_to_B}")
+        elif polygon_region6.contains(PPoint(x, y)) and -100< np.degrees(yaw)< 25:
+            # 区域 6
+            self.direction='CCW'
+            region_offset_A_to_B = region6_offset_A_to_B
+            if self.moving_flag is True:
+                self.get_logger().info(f"区域 6: 点在原始多边形内部偏移为 {region_offset_A_to_B}")
+        elif expanded_polygon_region6.contains(PPoint(x, y)) and -100< np.degrees(yaw)< 25:
+            # 区域 6 过渡带
+            self.direction='CCW'
+            #self.point_state=determine_transition_state(polygon_region0,expanded_polygon_region0)
+            #transition_weight=calculate_transition_weight_with_state((x,y),polygon_region0,transition_width) 
+            distance = distance_to_polygon_boundary((x, y), polygon_region6)
+            transition_weight = max(0.0, min(1.0, 1 - distance / transition_width))
+            region_offset_A_to_B = interpolate_offset(global_offset_CCW_A_to_B, region6_offset_A_to_B,transition_weight)
+            if self.moving_flag is True:
+                print(transition_weight)
+                self.get_logger().info(f"区域 6 过渡带: 距离原始边界 {distance:.3f}, 偏移为 {region_offset_A_to_B}")
         else:
             # 全局区域
             if self.direction ==  'CCW':

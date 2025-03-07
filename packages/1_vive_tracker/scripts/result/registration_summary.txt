@@ -1,0 +1,92 @@
+Rigid Body Registration Summary
+==============================
+
+Total points: 2586
+Points with error <= 0.05: 2516
+Points with error > 0.05: 70
+
+Overall position RMSE: 0.0276 meters
+Overall orientation error: 0.3487 degrees
+
+Position Transformation Matrix:
+[[-0.83432182  0.          0.55127771  3.65460789]
+ [ 0.          1.          0.          0.        ]
+ [-0.55127771  0.         -0.83432182 -4.25914489]
+ [ 0.          0.          0.          1.        ]]
+
+Orientation Transformation Matrix:
+[[-0.83545404  0.54956032  0.        ]
+ [-0.54956032 -0.83545404  0.        ]
+ [ 0.          0.          1.        ]]
+
+High Error Points:
+Point 132: Error = 0.0532 meters
+Point 144: Error = 0.0835 meters
+Point 145: Error = 0.0857 meters
+Point 146: Error = 0.0847 meters
+Point 147: Error = 0.0710 meters
+Point 476: Error = 0.0505 meters
+Point 494: Error = 0.0550 meters
+Point 508: Error = 0.0524 meters
+Point 511: Error = 0.0522 meters
+Point 515: Error = 0.0531 meters
+Point 516: Error = 0.0741 meters
+Point 517: Error = 0.0741 meters
+Point 669: Error = 0.0566 meters
+Point 672: Error = 0.0574 meters
+Point 673: Error = 0.0570 meters
+Point 681: Error = 0.0516 meters
+Point 710: Error = 0.0550 meters
+Point 719: Error = 0.0521 meters
+Point 724: Error = 0.0568 meters
+Point 725: Error = 0.0502 meters
+Point 726: Error = 0.0534 meters
+Point 729: Error = 0.0502 meters
+Point 744: Error = 0.0501 meters
+Point 760: Error = 0.0512 meters
+Point 765: Error = 0.0515 meters
+Point 893: Error = 0.0530 meters
+Point 936: Error = 0.0500 meters
+Point 939: Error = 0.0532 meters
+Point 940: Error = 0.0553 meters
+Point 941: Error = 0.0519 meters
+Point 944: Error = 0.0572 meters
+Point 945: Error = 0.0556 meters
+Point 949: Error = 0.0550 meters
+Point 950: Error = 0.0512 meters
+Point 953: Error = 0.0561 meters
+Point 957: Error = 0.0510 meters
+Point 1261: Error = 0.0559 meters
+Point 1264: Error = 0.0502 meters
+Point 1266: Error = 0.0541 meters
+Point 1269: Error = 0.0530 meters
+Point 1270: Error = 0.0540 meters
+Point 1271: Error = 0.0502 meters
+Point 1272: Error = 0.0522 meters
+Point 1273: Error = 0.0504 meters
+Point 1396: Error = 0.0501 meters
+Point 1553: Error = 0.0731 meters
+Point 1697: Error = 0.0511 meters
+Point 1737: Error = 0.0524 meters
+Point 2014: Error = 0.0514 meters
+Point 2047: Error = 0.0503 meters
+Point 2267: Error = 0.0557 meters
+Point 2280: Error = 0.0781 meters
+Point 2281: Error = 0.0561 meters
+Point 2299: Error = 0.0541 meters
+Point 2328: Error = 0.0506 meters
+Point 2333: Error = 0.0555 meters
+Point 2334: Error = 0.0577 meters
+Point 2335: Error = 0.0542 meters
+Point 2338: Error = 0.0514 meters
+Point 2339: Error = 0.0528 meters
+Point 2341: Error = 0.0549 meters
+Point 2342: Error = 0.0534 meters
+Point 2344: Error = 0.0569 meters
+Point 2345: Error = 0.0550 meters
+Point 2346: Error = 0.0566 meters
+Point 2347: Error = 0.0500 meters
+Point 2349: Error = 0.0555 meters
+Point 2350: Error = 0.0547 meters
+Point 2353: Error = 0.0531 meters
+Point 2475: Error = 0.0595 meters
