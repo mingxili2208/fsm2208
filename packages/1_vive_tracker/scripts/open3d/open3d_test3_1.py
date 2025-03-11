@@ -5,8 +5,6 @@ import copy
 import logging
 import os
 import datetime
-import matplotlib.pyplot as plt
-from matplotlib.colors import LinearSegmentedColormap
 
 # === Setup Logger ===
 def setup_logger(log_file_path=None):
@@ -72,7 +70,7 @@ def load_data(file_path):
 
 # Load data
 try:
-    df, XZ_data, laser_data = load_data(r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\corrected_tracker_log_0303.csv")
+    df, XZ_data, laser_data = load_data(r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\data\corrected_tracker_log_0303.csv")
 except Exception as e:
     logger.critical(f"Program terminated: {e}")
     exit(1)
@@ -316,10 +314,10 @@ def multi_stage_icp(source, target, init_transform=np.identity(4), voxel_sizes=[
         logger.warning(f"Final ICP stage failed: {e}, using current transformation")
         return current_transform
 
-# === Calculate Original Point Cloud RMSE and Identify High-Error Points ===
-def calculate_original_point_rmse_and_identify_outliers(source_points, target_points, transformation, error_threshold=0.15):
-    """Calculate RMSE between transformed source points and target points, identify high-error points"""
-    logger.info("Calculating original point cloud RMSE and identifying high-error points")
+# === Calculate Original Point Cloud RMSE ===
+def calculate_original_point_rmse(source_points, target_points, transformation):
+    """Calculate RMSE between transformed source points and target points"""
+    logger.info("Calculating original point cloud RMSE")
     # Convert source points to homogeneous coordinates
     source_homo = np.hstack((source_points, np.zeros((source_points.shape[0], 1)), np.ones((source_points.shape[0], 1))))
     
@@ -362,189 +360,11 @@ def calculate_original_point_rmse_and_identify_outliers(source_points, target_po
         for i in range(len(hist)):
             logger.info(f"  [{bins[i]:.4f}, {bins[i+1]:.4f}): {hist[i]}")
         
-        # Identify high-error points
-        high_error_indices = np.where(distances > error_threshold)[0]
-        logger.info(f"Identified {len(high_error_indices)} points with error > {error_threshold}")
-        
-        return rmse, distances, high_error_indices, transformed_points, bins
+        return rmse
         
     except Exception as e:
         logger.error(f"RMSE calculation failed: {e}")
-        return None, None, [], None, None
-
-# === New Function: Visualize Error Distribution ===
-def visualize_error_distribution(original_points, transformed_points, target_points, distances, high_error_indices, bins, error_threshold):
-    """Visualize the error distribution with matplotlib"""
-    logger.info("Generating error visualization plots")
-    
-    # Create output directory if it doesn't exist
-    output_dir = r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\visualizations"
-    os.makedirs(output_dir, exist_ok=True)
-    
-    # Create a timestamp for unique filenames
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    
-    try:
-        # Plot 1: Scatter plot showing all points with error color coding
-        plt.figure(figsize=(12, 10))
-        
-        # Create custom colormap: blue->green->yellow->red
-        colors = [(0, 0, 1), (0, 1, 0), (1, 1, 0), (1, 0, 0)]
-        cmap_name = 'error_colormap'
-        cm = LinearSegmentedColormap.from_list(cmap_name, colors, N=100)
-        
-        # Normalize colors based on distance
-        max_error_for_color = max(error_threshold * 2, np.max(distances))
-        normalized_distances = np.clip(distances / max_error_for_color, 0, 1)
-        
-        # Plot target points (reference)
-        plt.scatter(target_points[:, 0], target_points[:, 1], s=10, color='gray', alpha=0.5, label='Target (Laser)')
-        
-        # Plot transformed points with color based on error
-        scatter = plt.scatter(transformed_points[:, 0], transformed_points[:, 1], 
-                             c=normalized_distances, cmap=cm, s=30, alpha=0.8, 
-                             label='Transformed Points')
-        
-        # Highlight high-error points with a different marker
-        if len(high_error_indices) > 0:
-            plt.scatter(transformed_points[high_error_indices, 0], 
-                      transformed_points[high_error_indices, 1], 
-                      s=100, facecolors='none', edgecolors='red', linewidth=2,
-                      label=f'High Error (>{error_threshold})')
-        
-        # Add colorbar
-        cbar = plt.colorbar(scatter)
-        cbar.set_label('Error Distance')
-        
-        # Add threshold line in colorbar
-        if error_threshold < max_error_for_color:
-            normalized_threshold = error_threshold / max_error_for_color
-            cbar.ax.axhline(y=normalized_threshold, color='r', linestyle='--')
-            cbar.ax.text(0.5, normalized_threshold, f'Threshold: {error_threshold:.3f}', 
-                         va='bottom', ha='center', transform=cbar.ax.transAxes, color='r')
-        
-        plt.title('Point Cloud Registration Result with Error Visualization')
-        plt.xlabel('X Coordinate')
-        plt.ylabel('Z Coordinate')
-        plt.legend(loc='upper right')
-        plt.grid(True, alpha=0.3)
-        plt.axis('equal')
-        
-        # Save the plot
-        scatter_plot_path = os.path.join(output_dir, f'error_scatter_{timestamp}.png')
-        plt.savefig(scatter_plot_path, dpi=300, bbox_inches='tight')
-        logger.info(f"Scatter plot saved to: {scatter_plot_path}")
-        plt.close()
-        
-        # Plot 2: Before and After comparison
-        plt.figure(figsize=(15, 8))
-        
-        # Before registration
-        plt.subplot(1, 2, 1)
-        plt.scatter(target_points[:, 0], target_points[:, 1], s=20, color='green', alpha=0.7, label='Target (Laser)')
-        plt.scatter(original_points[:, 0], original_points[:, 1], s=20, color='red', alpha=0.7, label='Source (XZ)')
-        plt.title('Before Registration')
-        plt.xlabel('X Coordinate')
-        plt.ylabel('Z Coordinate')
-        plt.legend()
-        plt.grid(True, alpha=0.3)
-        plt.axis('equal')
-        
-        # After registration
-        plt.subplot(1, 2, 2)
-        plt.scatter(target_points[:, 0], target_points[:, 1], s=20, color='green', alpha=0.7, label='Target (Laser)')
-        plt.scatter(transformed_points[:, 0], transformed_points[:, 1], s=20, color='blue', alpha=0.7, label='Transformed Source')
-        
-        # Highlight high-error points
-        if len(high_error_indices) > 0:
-            plt.scatter(transformed_points[high_error_indices, 0], 
-                      transformed_points[high_error_indices, 1], 
-                      s=100, facecolors='none', edgecolors='red', linewidth=2,
-                      label=f'High Error (>{error_threshold})')
-        
-        plt.title('After Registration')
-        plt.xlabel('X Coordinate')
-        plt.ylabel('Z Coordinate')
-        plt.legend()
-        plt.grid(True, alpha=0.3)
-        plt.axis('equal')
-        
-        plt.tight_layout()
-        
-        # Save the plot
-        comparison_plot_path = os.path.join(output_dir, f'before_after_comparison_{timestamp}.png')
-        plt.savefig(comparison_plot_path, dpi=300, bbox_inches='tight')
-        logger.info(f"Comparison plot saved to: {comparison_plot_path}")
-        plt.close()
-        
-        # Plot 3: Error histogram
-        plt.figure(figsize=(12, 6))
-        plt.hist(distances, bins=bins, alpha=0.7, color='skyblue', edgecolor='black')
-        plt.axvline(x=error_threshold, color='r', linestyle='--', 
-                   label=f'Error Threshold: {error_threshold:.3f}')
-        plt.title('Error Distance Distribution Histogram')
-        plt.xlabel('Error Distance')
-        plt.ylabel('Count')
-        plt.grid(True, alpha=0.3)
-        plt.legend()
-        
-        # Save the plot
-        histogram_plot_path = os.path.join(output_dir, f'error_histogram_{timestamp}.png')
-        plt.savefig(histogram_plot_path, dpi=300, bbox_inches='tight')
-        logger.info(f"Histogram plot saved to: {histogram_plot_path}")
-        plt.close()
-        
-        # Plot 4: 3D visualization of high error regions
-        # Create a heatmap of error density
-        plt.figure(figsize=(12, 10))
-        
-        # Create a 2D histogram of errors
-        x_bins = np.linspace(min(transformed_points[:, 0]), max(transformed_points[:, 0]), 50)
-        z_bins = np.linspace(min(transformed_points[:, 1]), max(transformed_points[:, 1]), 50)
-        
-        error_grid, xedges, yedges = np.histogram2d(
-            transformed_points[:, 0], transformed_points[:, 1], 
-            bins=[x_bins, z_bins], weights=distances)
-        
-        count_grid, _, _ = np.histogram2d(
-            transformed_points[:, 0], transformed_points[:, 1], 
-            bins=[x_bins, z_bins])
-        
-        # Avoid division by zero
-        count_grid[count_grid == 0] = 1
-        avg_error_grid = error_grid / count_grid
-        
-        # Plot heatmap
-        plt.imshow(avg_error_grid.T, origin='lower', aspect='auto', interpolation='bilinear',
-                  extent=[xedges[0], xedges[-1], yedges[0], yedges[-1]],
-                  cmap='hot')
-        
-        plt.colorbar(label='Average Error')
-        plt.scatter(transformed_points[:, 0], transformed_points[:, 1], s=1, color='blue', alpha=0.3)
-        
-        # Highlight high-error points
-        if len(high_error_indices) > 0:
-            plt.scatter(transformed_points[high_error_indices, 0], 
-                      transformed_points[high_error_indices, 1], 
-                      s=50, facecolors='none', edgecolors='white', linewidth=1,
-                      label=f'High Error (>{error_threshold})')
-            
-        plt.title('Error Density Heatmap')
-        plt.xlabel('X Coordinate')
-        plt.ylabel('Z Coordinate')
-        plt.legend()
-        
-        # Save the plot
-        heatmap_plot_path = os.path.join(output_dir, f'error_heatmap_{timestamp}.png')
-        plt.savefig(heatmap_plot_path, dpi=300, bbox_inches='tight')
-        logger.info(f"Heatmap plot saved to: {heatmap_plot_path}")
-        plt.close()
-        
-        return scatter_plot_path, comparison_plot_path, histogram_plot_path, heatmap_plot_path
-        
-    except Exception as e:
-        logger.error(f"Error generating visualization: {e}")
-        return None, None, None, None
+        return None
 
 # === Main Processing Flow ===
 def main():
@@ -572,26 +392,9 @@ def main():
     for row in final_transformation:
         logger.info(f"{row}")
     
-    # Calculate and output final RMSE, identify high-error points
-    # Define error threshold (adjust based on your requirements)
-    error_threshold = 0.15  # Points with error > 0.15 will be flagged
-    rmse, distances, high_error_indices, transformed_points, bins = calculate_original_point_rmse_and_identify_outliers(
-        XZ_data, laser_data, final_transformation, error_threshold)
-    
+    # Calculate and output final RMSE
+    rmse = calculate_original_point_rmse(XZ_data, laser_data, final_transformation)
     logger.info(f"=== Final Registration RMSE: {rmse:.5f} ===")
-    
-    # Visualize the error distribution
-    if distances is not None and transformed_points is not None:
-        scatter_path, comparison_path, histogram_path, heatmap_path = visualize_error_distribution(
-            XZ_data, transformed_points, laser_data, distances, high_error_indices, bins, error_threshold)
-        
-        if scatter_path:
-            logger.info("Error visualization completed successfully")
-            logger.info(f"Generated visualizations:")
-            logger.info(f"  - Scatter plot: {scatter_path}")
-            logger.info(f"  - Before/After comparison: {comparison_path}")
-            logger.info(f"  - Error histogram: {histogram_path}")
-            logger.info(f"  - Error heatmap: {heatmap_path}")
     
     # === Save transformation results ===
     try:
@@ -600,74 +403,23 @@ def main():
         transformed_XZ_homo = (final_transformation @ XZ_homo.T).T
         transformed_XZ = transformed_XZ_homo[:, :2]  # Take first two columns (X, Z)
         
-        # Create DataFrame with transformed points and error information
-        transformed_df = pd.DataFrame({
-            "X_aligned": transformed_XZ[:, 0],
-            "Z_aligned": transformed_XZ[:, 1],
-            "Error": distances,
-            "High_Error_Flag": np.where(distances > error_threshold, 1, 0)
-        })
-        
-        # Combine with original data
+        transformed_df = pd.DataFrame(transformed_XZ, columns=["X_aligned", "Z_aligned"])
         result_df = pd.concat([df, transformed_df], axis=1)
         
-        # Save main results
-        output_path = r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\aligned_tracker_log.csv"
+        output_path = r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\data\aligned_tracker_log.csv"
         result_df.to_csv(output_path, index=False)
         logger.info(f"Transformation results saved to CSV file: {output_path}")
-        
-        # Save high-error points to separate file for analysis
-        if len(high_error_indices) > 0:
-            high_error_df = result_df.iloc[high_error_indices].copy()
-            high_error_path = r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\high_error_points.csv"
-            high_error_df.to_csv(high_error_path, index=False)
-            logger.info(f"High-error points saved to: {high_error_path}")
         
         # Add transformation matrix information to log
         logger.info("Saving transformation matrix information")
         transform_info = pd.DataFrame({
-            'description': ['Transformation_Matrix', 'RMSE', 'Error_Threshold', 'High_Error_Points_Count'],
-            'value': [str(final_transformation), str(rmse), str(error_threshold), str(len(high_error_indices))]
+            'description': ['Transformation_Matrix', 'RMSE'],
+            'value': [str(final_transformation), str(rmse)]
         })
         
-        transform_info_path = r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\transform_info.csv"
+        transform_info_path = r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\data\transform_info.csv"
         transform_info.to_csv(transform_info_path, index=False)
         logger.info(f"Transformation matrix information saved to CSV file: {transform_info_path}")
-        
-        # Generate error statistics per bin
-        error_stats = []
-        for i in range(len(bins)-1):
-            bin_start = bins[i]
-            bin_end = bins[i+1]
-            bin_mask = (distances >= bin_start) & (distances < bin_end)
-            bin_count = np.sum(bin_mask)
-            
-            if bin_count > 0:
-                bin_points = result_df[bin_mask].copy()
-                
-                # Calculate statistics for points in this bin
-                x_mean = bin_points['X'].mean() if 'X' in bin_points.columns else np.nan
-                z_mean = bin_points['Z'].mean() if 'Z' in bin_points.columns else np.nan
-                x_aligned_mean = bin_points['X_aligned'].mean()
-                z_aligned_mean = bin_points['Z_aligned'].mean()
-                
-                error_stats.append({
-                    'Bin_Start': bin_start,
-                    'Bin_End': bin_end,
-                    'Count': bin_count,
-                    'Average_X': x_mean,
-                    'Average_Z': z_mean,
-                    'Average_X_Aligned': x_aligned_mean,
-                    'Average_Z_Aligned': z_aligned_mean,
-                    'Average_Error': bin_points['Error'].mean()
-                })
-        
-        # Save error statistics
-        if error_stats:
-            error_stats_df = pd.DataFrame(error_stats)
-            error_stats_path = r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\error_statistics.csv"
-            error_stats_df.to_csv(error_stats_path, index=False)
-            logger.info(f"Error statistics saved to: {error_stats_path}")
         
     except Exception as e:
         logger.error(f"Failed to save CSV: {e}")

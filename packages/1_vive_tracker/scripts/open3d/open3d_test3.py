@@ -4,7 +4,7 @@ import pandas as pd
 import copy
 
 # === 读取数据 ===
-df = pd.read_csv(r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\corrected_tracker_log_0303.csv")
+df = pd.read_csv(r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\data\corrected_tracker_log_0303.csv")
 XZ_data = df[["X", "Z"]].values
 laser_data = df[["laser_x", "laser_z"]].values
 
@@ -301,7 +301,7 @@ transformed_pcd_vis = create_colored_point_cloud(transformed_XZ, [0, 0, 1])  # �
 try:
     transformed_df = pd.DataFrame(transformed_XZ, columns=["X_aligned", "Z_aligned"])
     result_df = pd.concat([df, transformed_df], axis=1)
-    result_df.to_csv(r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\aligned_tracker_log.csv", index=False)
+    result_df.to_csv(r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\data\aligned_tracker_log.csv", index=False)
     print("已保存变换结果到CSV文件")
 except Exception as e:
     print(f"保存CSV失败: {e}")

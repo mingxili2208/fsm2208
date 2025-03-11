@@ -10,7 +10,7 @@ from torch_geometric.nn import GINConv
 from scipy.spatial import KDTree
 
 # === 读取数据 ===
-df_path = r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\corrected_tracker_log.csv"
+df_path = r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\data\corrected_tracker_log.csv"
 df = pd.read_csv(df_path)
 
 XZ_data = df[["X", "Z"]].values

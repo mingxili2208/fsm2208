@@ -142,7 +142,7 @@ def evaluate_model(model, test_loader, criterion):
 def main():
     # 加载数据
     print("Loading data...")
-    data = pd.read_csv(r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\corrected_tracker_log_0303.csv")
+    data = pd.read_csv(r"C:\Users\13366\Desktop\fsm_2208\packages\1_vive_tracker\scripts\data\corrected_tracker_log_0303.csv")
     
     # 输入特征和目标变量
     X = data[["X", "Z"]].values
