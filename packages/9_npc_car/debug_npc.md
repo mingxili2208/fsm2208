@@ -75,11 +75,11 @@ python3 ./monitor/test_sys_monitor.py
 
     ```bash
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/bash
+    cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/bash
 
     source initial_config.bash 
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/scripts/debug
+    cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/scripts/debug
 
     python3 debug5_serial.py
     
@@ -97,11 +97,11 @@ python3 ./monitor/test_sys_monitor.py
 5. start car update
 
     ```bash
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/bash
+    cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/bash
 
     source initial_config.bash 
 
-    cd /home/cityu-fsm-lab-carla/lmx/Docs/packages/7_autoware_comm/scripts/debug
+    cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/scripts/debug
 
    python3 debug_update_vehicle_2.py
 

@@ -1,0 +1,360 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #34495e;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+/* 头部容器样式，使标题和系统按钮在同一行 */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    flex-grow: 1;
+    margin-right: 15px;
+}
+/* 系统按钮容器 */
+.system-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* 使系统按钮更显眼 */
+.system-buttons .btn {
+    font-weight: bold;
+    padding: 12px 15px;
+    border-radius: 5px;
+}
+
+/* 为退出按钮添加特殊效果 */
+.system-buttons .btn-danger:hover {
+    background-color: #c82333;
+    box-shadow: 0 0 5px rgba(200, 35, 51, 0.5);
+}
+
+/* 为重启按钮添加特殊效果 */
+.system-buttons .btn-warning:hover {
+    background-color: #e0a800;
+    box-shadow: 0 0 5px rgba(224, 168, 0, 0.5);
+}
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-container {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: #ddd;
+}
+
+.tab:hover:not(.active) {
+    background-color: #eee;
+}
+
+.tab-content {
+    display: none;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.settings-group {
+    margin-bottom: 20px;
+}
+
+.settings-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-right: 5px;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.console {
+    background-color: #2b2b2b;
+    color: #f8f8f8;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    height: 300px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+.console-entry {
+    margin: 5px 0;
+    padding: 3px 0;
+    border-bottom: 1px solid #444;
+}
+
+.info {
+    color: #58B2DC;
+}
+
+.warning {
+    color: #FFD700;
+}
+
+.error {
+    color: #FF6B6B;
+}
+
+.data {
+    color: #98FB98;
+}
+
+.status-bar {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--dark-color);
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-indicator {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.status-active {
+    background-color: var(--success-color);
+}
+
+.status-inactive {
+    background-color: var(--danger-color);
+}
+
+.status-pending {
+    background-color: var(--warning-color);
+}
+
+.flex-container {
+    display: flex;
+    gap: 20px;
+}
+
+.flex-50 {
+    flex: 1 1 50%;
+}
+
+.control-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.visualization {
+    width: 100%;
+    height: 400px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.data-table th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.canvas-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+#visualization-canvas {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 20px;
+    background-color: var(--success-color);
+    border-radius: 5px;
+    transition: width 0.3s ease;
+    text-align: center;
+    color: white;
+    line-height: 20px;
+}
+
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column;
+    }
+    
+    .control-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+/* 记录审查容器样式 */
+#record-review-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 信息按钮样式 */
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+/* 表格操作按钮 */
+.btn-sm {
+    padding: 4px 8px;
+    font-size: 12px;
+}

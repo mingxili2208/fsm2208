@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker Data Process GUI</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-container {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: #ddd;
+        }
+        
+        .tab:hover:not(.active) {
+            background-color: #eee;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .settings-group {
+            margin-bottom: 20px;
+        }
+        
+        .settings-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-right: 5px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .btn-warning {
+            background-color: var(--warning-color);
+            color: white;
+        }
+        
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+        }
+        
+        .console {
+            background-color: #2b2b2b;
+            color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        
+        .console-entry {
+            margin: 5px 0;
+            padding: 3px 0;
+            border-bottom: 1px solid #444;
+        }
+        
+        .info {
+            color: #58B2DC;
+        }
+        
+        .warning {
+            color: #FFD700;
+        }
+        
+        .error {
+            color: #FF6B6B;
+        }
+        
+        .data {
+            color: #98FB98;
+        }
+        
+        .status-bar {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: var(--dark-color);
+            color: white;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status-indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        .status-active {
+            background-color: var(--success-color);
+        }
+        
+        .status-inactive {
+            background-color: var(--danger-color);
+        }
+        
+        .status-pending {
+            background-color: var(--warning-color);
+        }
+        
+        .flex-container {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .flex-50 {
+            flex: 1 1 50%;
+        }
+        
+        .control-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .visualization {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .data-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .canvas-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+        }
+        
+        #visualization-canvas {
+            width: 100%;
+            height: 100%;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        .progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: var(--success-color);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+            }
+            
+            .control-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Auto Tracker Data Process</h1>
+        </header>
+        
+        <div class="main-content">
+            <div class="tab-container">
+                <div class="tab active" data-tab="recording">Recording</div>
+                <div class="tab" data-tab="processing">Processing</div>
+                <div class="tab" data-tab="visualization">Visualization</div>
+                <div class="tab" data-tab="settings">Settings</div>
+            </div>
+            
+            <div id="recording" class="tab-content active">
+                <div class="settings-group">
+                    <div class="settings-label">Tracker Configuration</div>
+                    <div class="flex-container">
+                        <div class="flex-50">
+                            <div class="form-group">
+                                <label for="tracker-name">Tracker Name:</label>
+                                <input type="text" id="tracker-name" value="tracker_1">
+                            </div>
+                            <div class="form-group">
+                                <label for="serial-port">Serial Port:</label>
+                                <input type="text" id="serial-port" value="/dev/ttyUSB0">
+                            </div>
+                        </div>
+                        <div class="flex-50">
+                            <div class="form-group">
+                                <label for="baud-rate">Baud Rate:</label>
+                                <input type="number" id="baud-rate" value="9600">
+                            </div>
+                            <div class="form-group">
+                                <label for="output-directory">Output Directory:</label>
+                                <input type="text" id="output-directory" value="auto_generated" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <div class="settings-label">Recording Controls</div>
+                    <div class="control-buttons">
+                        <button id="btn-initialize" class="btn btn-primary">Initialize Tracker</button>
+                        <button id="btn-start-recording" class="btn btn-success" disabled>Start Recording</button>
+                        <button id="btn-stop-recording" class="btn btn-warning" disabled>Stop Recording</button>
+                        <button id="btn-record-euler" class="btn btn-primary" disabled>Record Euler Point</button>
+                        <button id="btn-save-all" class="btn btn-danger" disabled>Save All Data</button>
+                    </div>
+                    
+                    <div id="euler-input-container" style="display: none;">
+                        <div class="form-group">
+                            <label for="euler-angle">Enter the desired tracker angle (degrees):</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="euler-angle" value="0" step="0.1">
+                                <button id="btn-save-euler" class="btn btn-success">Save Euler Point</button>
+                                <button id="btn-cancel-euler" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="console">
+                    <div class="console-entry info">[INFO] Welcome to Auto Tracker Data Process</div>
+                    <div class="console-entry info">[INFO] Please initialize the tracker system</div>
+                </div>
+                
+                <div class="status-bar">
+                    <div>
+                        <span class="status-indicator status-inactive" id="tracker-status"></span> Tracker: <span id="tracker-status-text">Not Initialized</span>
+                    </div>
+                    <div>
+                        <span class="status-indicator status-inactive" id="recording-status"></span> Recording: <span id="recording-status-text">Inactive</span>
+                    </div>
+                    <div>
+                        Recorded Points: <span id="recorded-points-count">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="processing" class="tab-content">
+                <div class="settings-group">
+                    <div class="settings-label">Data Processing</div>
+                    <div class="flex-container">
+                        <div class="flex-50">
+                            <div class="form-group">
+                                <label for="negative-yaw-offset">Negative Yaw Offset:</label>
+                                <input type="number" id="negative-yaw-offset" value="122">
+                            </div>
+                        </div>
+                        <div class="flex-50">
+                            <div class="form-group">
+                                <label for="positive-yaw-offset">Positive Yaw Offset:</label>
+                                <input type="number" id="positive-yaw-offset" value="55">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="control-buttons">
+                        <button id="btn-process-data" class="btn btn-primary" disabled>Process Laser Tracker Data</button>
+                        <button id="btn-calculate-transform" class="btn btn-success" disabled>Calculate Transformations</button>
+                        <button id="btn-review-data" class="btn btn-warning" disabled>Review Data</button>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar" id="processing-progress">0%</div>
+                    </div>
+                </div>
+                
+                <div class="console">
+                    <div class="console-entry info">[INFO] Processing tab</div>
+                    <div class="console-entry info">[INFO] Use this tab to process recorded data and calculate transformations</div>
+                </div>
+                
+                <div class="status-bar">
+                    <div>
+                        <span class="status-indicator status-inactive" id="laser-data-status"></span> Laser Data: <span id="laser-data-status-text">Not Processed</span>
+                    </div>
+                    <div>
+                        <span class="status-indicator status-inactive" id="euler-data-status"></span> Euler Data: <span id="euler-data-status-text">Not Available</span>
+                    </div>
+                    <div>
+                        <span class="status-indicator status-inactive" id="transform-status"></span> Transforms: <span id="transform-status-text">Not Calculated</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="visualization" class="tab-content">
+                <div class="settings-group">
+                    <div class="settings-label">Visualization Controls</div>
+                    <div class="control-buttons">
+                        <button id="btn-visualize-points" class="btn btn-primary" disabled>Visualize Points</button>
+                        <button id="btn-show-transforms" class="btn btn-success" disabled>Show Transformations</button>
+                        <button id="btn-show-errors" class="btn btn-warning" disabled>Show Errors</button>
+                        <button id="btn-export-chart" class="btn btn-primary" disabled>Export Chart</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="error-threshold">Error Threshold (m):</label>
+                        <input type="number" id="error-threshold" value="0.05" step="0.01" min="0">
+                    </div>
+                </div>
+                
+                <div class="canvas-container">
+                    <canvas id="visualization-canvas"></canvas>
+                </div>
+                
+                <div class="settings-group" id="transformation-matrices" style="display: none;">
+                    <div class="settings-label">Transformation Matrices</div>
+                    <div class="flex-container">
+                        <div class="flex-50">
+                            <strong>Position Transformation (T_pos):</strong>
+                            <pre id="t-pos-matrix" style="background-color: #f9f9f9; padding: 10px; overflow-x: auto;">Matrix not calculated</pre>
+                        </div>
+                        <div class="flex-50">
+                            <strong>Orientation Transformation (R_euler):</strong>
+                            <pre id="r-euler-matrix" style="background-color: #f9f9f9; padding: 10px; overflow-x: auto;">Matrix not calculated</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-group" id="error-analysis" style="display: none;">
+                    <div class="settings-label">Error Analysis</div>
+                    <div class="flex-container">
+                        <div class="flex-50">
+                            <strong>Position RMSE:</strong> <span id="position-rmse">Not calculated</span>
+                        </div>
+                        <div class="flex-50">
+                            <strong>Orientation Error:</strong> <span id="orientation-error">Not calculated</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <strong>High Error Points:</strong>
+                        <div id="high-error-points">None identified</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="settings" class="tab-content">
+                <div class="settings-group">
+                    <div class="settings-label">Configuration Settings</div>
+                    <div class="form-group">
+                        <label for="log-level">Log Level:</label>
+                        <select id="log-level">
+                            <option value="debug">Debug</option>
+                            <option value="info" selected>Info</option>
+                            <option value="warning">Warning</option>
+                            <option value="error">Error</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="visualization-style">Visualization Style:</label>
+                        <select id="visualization-style">
+                            <option value="default" selected>Default</option>
+                            <option value="wireframe">Wireframe</option>
+                            <option value="heatmap">Heatmap</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="auto-save-enabled" checked> Enable Auto-Save
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="real-time-visualization" checked> Real-time Visualization
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <div class="settings-label">System Information</div>
+                    <div>
+                        <strong>Software Version:</strong> 1.0.0
+                    </div>
+                    <div>
+                        <strong>Output Directory:</strong> <span id="current-output-dir">Not initialized</span>
+                    </div>
+                    <div>
+                        <strong>Total Recorded Data:</strong> <span id="total-recorded-points">0</span> points
+                    </div>
+                </div>
+                
+                <div class="control-buttons">
+                    <button id="btn-reset-settings" class="btn btn-warning">Reset Settings</button>
+                    <button id="btn-clear-console" class="btn btn-primary">Clear Console</button>
+                    <button id="btn-check-devices" class="btn btn-success">Check Devices</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to current tab and content
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+        
+        // Global variables to simulate the system state
+        let systemState = {
+            trackerInitialized: false,
+            serialConnected: false,
+            isRecording: false,
+            recordedDataPoints: 0,
+            eulerPoints: 0,
+            laserDataProcessed: false,
+            eulerDataAvailable: false,
+            transformsCalculated: false,
+            outputDirectory: '',
+            recordingStartTime: null
+        };
+        
+        // Console functionality
+        const consoles = document.querySelectorAll('.console');
+        
+        function addConsoleEntry(message, type = 'info', consoleSelector = '.console') {
+            const consoleElement = document.querySelector(consoleSelector);
+            if (!consoleElement) return;
+            
+            const entry = document.createElement('div');
+            entry.className = `console-entry ${type}`;
+            entry.textContent = message;
+            consoleElement.appendChild(entry);
+            consoleElement.scrollTop = consoleElement.scrollHeight;
+        }
+        
+        // Button handlers
+        document.getElementById('btn-initialize').addEventListener('click', initializeTracker);
+        document.getElementById('btn-start-recording').addEventListener('click', startRecording);
+        document.getElementById('btn-stop-recording').addEventListener('click', stopRecording);
+        document.getElementById('btn-record-euler').addEventListener('click', showEulerInput);
+        document.getElementById('btn-save-all').addEventListener('click', saveAllData);
+        document.getElementById('btn-save-euler').addEventListener('click', saveEulerPoint);
+        document.getElementById('btn-cancel-euler').addEventListener('click', cancelEulerInput);
+        document.getElementById('btn-process-data').addEventListener('click', processData);
+        document.getElementById('btn-calculate-transform').addEventListener('click', calculateTransformations);
+        document.getElementById('btn-review-data').addEventListener('click', reviewData);
+        document.getElementById('btn-visualize-points').addEventListener('click', visualizePoints);
+        document.getElementById('btn-show-transforms').addEventListener('click', showTransformations);
+        document.getElementById('btn-show-errors').addEventListener('click', showErrors);
+        document.getElementById('btn-export-chart').addEventListener('click', exportChart);
+        document.getElementById('btn-reset-settings').addEventListener('click', resetSettings);
+        document.getElementById('btn-clear-console').addEventListener('click', clearConsole);
+        document.getElementById('btn-check-devices').addEventListener('click', checkDevices);
+        
+        // Initialize functions
+        function initializeTracker() {
+            const trackerName = document.getElementById('tracker-name').value;
+            const serialPort = document.getElementById('serial-port').value;
+            const baudRate = document.getElementById('baud-rate').value;
+            
+            addConsoleEntry(`[INFO] Initializing tracker system: "${trackerName}" on port ${serialPort} at ${baudRate} baud...`);
+            
+            // Simulate initialization with a delay
+            setTimeout(() => {
+                // Create timestamp for output directory
+                const now = new Date();
+                const timestamp = now.toISOString().replace(/[:.]/g, '-').substring(0, 19);
+                systemState.outputDirectory = `tracker_data_process_${timestamp}`;
+                
+                // Update the output directory field
+                document.getElementById('output-directory').value = systemState.outputDirectory;
+                document.getElementById('current-output-dir').textContent = systemState.outputDirectory;
+                
+                systemState.trackerInitialized = true;
+                systemState.serialConnected = true;
+                
+                // Update status indicators
+                document.getElementById('tracker-status').className = 'status-indicator status-active';
+                document.getElementById('tracker-status-text').textContent = 'Initialized';
+                
+                // Enable recording buttons
+                document.getElementById('btn-start-recording').disabled = false;
+                document.getElementById('btn-record-euler').disabled = false;
+                
+                addConsoleEntry(`[SUCCESS] Tracker "${trackerName}" successfully initialized`, 'info');
+                addConsoleEntry(`[INFO] Output directory created: ${systemState.outputDirectory}`, 'info');
+                addConsoleEntry(`[INFO] Ready to start recording data`, 'info');
+            }, 1500);
+        }
+        
+        function startRecording() {
+            if (!systemState.trackerInitialized) {
+                addConsoleEntry('[ERROR] Please initialize the tracker first', 'error');
+                return;
+            }
+            
+            systemState.isRecording = true;
+            systemState.recordingStartTime = new Date();
+            
+            // Update status indicators
+            document.getElementById('recording-status').className = 'status-indicator status-active';
+            document.getElementById('recording-status-text').textContent = 'Active';
+            
+            // Update buttons
+            document.getElementById('btn-start-recording').disabled = true;
+            document.getElementById('btn-stop-recording').disabled = false;
+            document.getElementById('btn-save-all').disabled = false;
+            
+            addConsoleEntry('[INFO] Starting continuous recording (laser_tracker.csv)...', 'info');
+            
+            // Simulate recording data points periodically
+            simulateDataRecording();
+        }
+        
+        function simulateDataRecording() {
+            if (!systemState.isRecording) return;
+            
+            // Simulate a data point being recorded
+            const timestamp = new Date().toISOString();
+            const distance2 = (Math.random() * 2 + 1).toFixed(3);
+            const distance3 = (Math.random() * 2 + 1).toFixed(3);
+            
+            // Simulate position data (x, y, z)
+            const x = (Math.random() * 2 - 1).toFixed(4);
+            const y = (Math.random() * 0.5).toFixed(4);
+            const z = (Math.random() * 2 - 3).toFixed(4);
+            
+            // Simulate orientation (roll, yaw, pitch)
+            const roll = (Math.random() * 20 - 10).toFixed(4);
+            const yaw = (Math.random() * 180 - 90).toFixed(4);
+            const pitch = (Math.random() * 20 - 10).toFixed(4);
+            
+            addConsoleEntry(`[DATA] A69: distance_2=${distance2}, distance_3=${distance3}`, 'data');
+            addConsoleEntry(`[DATA] Tracker: x=${x}, y=${y}, z=${z}, roll=${roll}, yaw=${yaw}, pitch=${pitch}`, 'data');
+            
+            systemState.recordedDataPoints++;
+            document.getElementById('recorded-points-count').textContent = systemState.recordedDataPoints;
+            document.getElementById('total-recorded-points').textContent = systemState.recordedDataPoints;
+            
+            // Schedule next data point (every 0.5-2 seconds)
+            const delay = Math.random() * 1500 + 500;
+            setTimeout(simulateDataRecording, delay);
+        }
+        
+        function stopRecording() {
+            systemState.isRecording = false;
+            
+            // Update status indicators
+            document.getElementById('recording-status').className = 'status-indicator status-inactive';
+            document.getElementById('recording-status-text').textContent = 'Inactive';
+            
+            // Update buttons
+            document.getElementById('btn-start-recording').disabled = false;
+            document.getElementById('btn-stop-recording').disabled = true;
+            
+            // Calculate recording duration
+            const duration = Math.round((new Date() - systemState.recordingStartTime) / 1000);
+            
+            addConsoleEntry(`[INFO] Stopped recording after ${duration} seconds`, 'info');
+            addConsoleEntry(`[INFO] Recorded ${systemState.recordedDataPoints} data points`, 'info');
+        }
+        
+        function showEulerInput() {
+            document.getElementById('euler-input-container').style.display = 'block';
+            document.getElementById('euler-angle').focus();
+        }
+        
+        function saveEulerPoint() {
+            const angle = document.getElementById('euler-angle').value;
+            
+            // Simulate recording an Euler data point
+            const timestamp = new Date().toISOString();
+            
+            // Simulate position data (x, y, z)
+            const x = (Math.random() * 2 - 1).toFixed(4);
+            const y = (Math.random() * 0.5).toFixed(4);
+            const z = (Math.random() * 2 - 3).toFixed(4);
+            
+            // Simulate orientation (roll, yaw, pitch)
+            const roll = (Math.random() * 20 - 10).toFixed(4);
+            const yaw = (Math.random() * 180 - 90).toFixed(4);
+            const pitch = (Math.random() * 20 - 10).toFixed(4);
+            
+            addConsoleEntry(`[DATA] Euler point recorded: angle=${angle}°`, 'data');
+            addConsoleEntry(`[DATA] Position: x=${x}, y=${y}, z=${z}, roll=${roll}, yaw=${yaw}, pitch=${pitch}`, 'data');
+            
+            systemState.eulerPoints++;
+            
+            // Update status
+            document.getElementById('euler-data-status').className = 'status-indicator status-active';
+            document.getElementById('euler-data-status-text').textContent = `${systemState.eulerPoints} Points`;
+            
+            // Enable processing button
+            document.getElementById('btn-process-data').disabled = false;
+            
+            // Hide input container
+            document.getElementById('euler-input-container').style.display = 'none';
+            
+            // Update review options
+            addConsoleEntry(`[INFO] Euler point with angle ${angle}° added. Do you want to review this record?`, 'info');
+        }
+        
+        function cancelEulerInput() {
+            document.getElementById('euler-input-container').style.display = 'none';
+        }
+        
+        function saveAllData() {
+            addConsoleEntry('[INFO] Saving all recorded data...', 'info');
+            
+            // Simulate saving delay
+            setTimeout(() => {
+                addConsoleEntry(`[SUCCESS] Laser tracker data saved to laser_tracker.csv (${systemState.recordedDataPoints} points)`, 'info');
+                
+                if (systemState.eulerPoints > 0) {
+                    addConsoleEntry(`[SUCCESS] Euler data saved (${systemState.eulerPoints} points)`, 'info');
+                }
+                
+                // Enable processing
+                document.getElementById('btn-process-data').disabled = false;
+                
+                // Update status
+                if (systemState.recordedDataPoints > 0) {
+                    document.getElementById('laser-data-status').className = 'status-indicator status-pending';
+                    document.getElementById('laser-data-status-text').textContent = 'Ready for Processing';
+                }
+            }, 1500);
+        }
+        
+        function processData() {
+            const negativeYawOffset = document.getElementById('negative-yaw-offset').value;
+            const positiveYawOffset = document.getElementById('positive-yaw-offset').value;
+            
+            addConsoleEntry(`[INFO] Processing laser tracker data with offsets: negative yaw: +${negativeYawOffset}°, positive yaw: -${positiveYawOffset}°`, 'info');
+            
+            // Update progress bar
+            updateProgressBar(0);
+            
+            // Simulate processing steps
+            setTimeout(() => {
+                updateProgressBar(30);
+                addConsoleEntry('[INFO] Applying coordinate transformations...', 'info');
+                
+                setTimeout(() => {
+                    updateProgressBar(70);
+                    addConsoleEntry('[INFO] Filtering data points...', 'info');
+                    
+                    setTimeout(() => {
+                        updateProgressBar(100);
+                        addConsoleEntry('[SUCCESS] Data processing complete!', 'info');
+                        addConsoleEntry('[INFO] Corrected data saved to corrected_laser_tracker.csv', 'info');
+                        
+                        // Update status
+                        document.getElementById('laser-data-status').className = 'status-indicator status-active';
+                        document.getElementById('laser-data-status-text').textContent = 'Processed';
+                        
+                        // Enable next steps
+                        document.getElementById('btn-calculate-transform').disabled = false;
+                        document.getElementById('btn-review-data').disabled = false;
+                        
+                        systemState.laserDataProcessed = true;
+                        
+                        // If both data types are available, we can calculate transformations
+                        if (systemState.eulerDataAvailable) {
+                            addConsoleEntry('[INFO] Both data sets available. Ready to calculate transformations.', 'info');
+                        }
+                    }, 1000);
+                }, 1500);
+            }, 1000);
+        }
+        
+        function updateProgressBar(percentage) {
+            const progressBar = document.getElementById('processing-progress');
+            progressBar.style.width = `${percentage}%`;
+            progressBar.textContent = `${percentage}%`;
+        }
+        
+        function calculateTransformations() {
+            addConsoleEntry('[INFO] Calculating coordinate transformations...', 'info');
+            
+            // Update progress bar
+            updateProgressBar(0);
+            
+            // Simulate calculation steps
+            setTimeout(() => {
+                updateProgressBar(25);
+                addConsoleEntry('[INFO] Loading position data...', 'info');
+                
+                setTimeout(() => {
+                    updateProgressBar(50);
+                    addConsoleEntry('[INFO] Calculating position transformation matrix...', 'info');
+                    
+                    setTimeout(() => {
+                        updateProgressBar(75);
+                        addConsoleEntry('[INFO] Calculating orientation transformation matrix...', 'info');
+                        
+                        setTimeout(() => {
+                            updateProgressBar(100);
+                            addConsoleEntry('[SUCCESS] Transformation calculation complete!', 'info');
+                            
+                            // Set example transformation matrices
+                            const tPosMatrix = [
+                                [0.9986, -0.0021, 0.0528, 0.2157],
+                                [0.0025, 0.9999, -0.0088, 0.0032],
+                                [-0.0527, 0.0090, 0.9986, -2.3741],
+                                [0.0000, 0.0000, 0.0000, 1.0000]
+                            ];
+                            
+                            const rEulerMatrix = [
+                                [0.9986, -0.0064, 0.0526],
+                                [0.0076, 0.9999, -0.0127],
+                                [-0.0525, 0.0136, 0.9985]
+                            ];
+                            
+                            // Format matrices for display
+                            document.getElementById('t-pos-matrix').textContent = formatMatrix(tPosMatrix);
+                            document.getElementById('r-euler-matrix').textContent = formatMatrix(rEulerMatrix);
+                            
+                            // Set error metrics
+                            document.getElementById('position-rmse').textContent = '0.0184 meters';
+                            document.getElementById('orientation-error').textContent = '1.2467 degrees';
+                            
+                            // Set high error points
+                            document.getElementById('high-error-points').innerHTML = 
+                                'Point 2: Error = 0.0612 meters<br>' +
+                                'Point 7: Error = 0.0573 meters';
+                            
+                            // Update status
+                            document.getElementById('transform-status').className = 'status-indicator status-active';
+                            document.getElementById('transform-status-text').textContent = 'Calculated';
+                            
+                            // Enable visualization
+                            document.getElementById('btn-visualize-points').disabled = false;
+                            document.getElementById('btn-show-transforms').disabled = false;
+                            document.getElementById('btn-show-errors').disabled = false;
+                            document.getElementById('btn-export-chart').disabled = false;
+                            
+                            systemState.transformsCalculated = true;
+                            
+                            addConsoleEntry('[INFO] Transformation matrices saved to transformation_matrices.txt', 'info');
+                            addConsoleEntry('[INFO] Ready for visualization', 'info');
+                        }, 1500);
+                    }, 1500);
+                }, 1000);
+            }, 1000);
+        }
+        
+        function formatMatrix(matrix) {
+            let result = '';
+            for (let row of matrix) {
+                result += '[ ';
+                for (let val of row) {
+                    result += typeof val === 'number' ? val.toFixed(4).padStart(8) : val.padStart(8);
+                    result += ' ';
+                }
+                result += ' ]\n';
+            }
+            return result;
+        }
+        
+        function reviewData() {
+            addConsoleEntry('[INFO] Reviewing recorded data...', 'info');
+            
+            // Simulate loading data
+            setTimeout(() => {
+                // Display sample data
+                addConsoleEntry('Last 3 Laser Tracker Records:', 'info');
+                for (let i = 0; i < 3; i++) {
+                    const distance2 = (Math.random() * 2 + 1).toFixed(3);
+                    const distance3 = (Math.random() * 2 + 1).toFixed(3);
+                    const x = (Math.random() * 2 - 1).toFixed(4);
+                    const y = (Math.random() * 0.5).toFixed(4);
+                    const z = (Math.random() * 2 - 3).toFixed(4);
+                    
+                    addConsoleEntry(`Record ${systemState.recordedDataPoints-i}: d2=${distance2}, d3=${distance3}, x=${x}, y=${y}, z=${z}`, 'data');
+                }
+                
+                if (systemState.eulerPoints > 0) {
+                    addConsoleEntry('Last 2 Euler Data Records:', 'info');
+                    for (let i = 0; i < Math.min(2, systemState.eulerPoints); i++) {
+                        const angle = (Math.random() * 60 - 30).toFixed(2);
+                        const x = (Math.random() * 2 - 1).toFixed(4);
+                        const y = (Math.random() * 0.5).toFixed(4);
+                        const z = (Math.random() * 2 - 3).toFixed(4);
+                        
+                        addConsoleEntry(`Record ${systemState.eulerPoints-i}: angle=${angle}°, x=${x}, y=${y}, z=${z}`, 'data');
+                    }
+                }
+                
+                addConsoleEntry('[INFO] Data review complete', 'info');
+            }, 1000);
+        }
+        
+        function visualizePoints() {
+            addConsoleEntry('[INFO] Preparing 3D visualization...', 'info');
+            
+            // Switch to visualization tab
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelector('.tab[data-tab="visualization"]').classList.add('active');
+            document.getElementById('visualization').classList.add('active');
+            
+            // Show canvas with demo visualization
+            const canvas = document.getElementById('visualization-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions to match container
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw coordinate system
+            drawCoordinateSystem(ctx, canvas.width, canvas.height);
+            
+            // Draw points
+            drawPoints(ctx, canvas.width, canvas.height);
+            
+            addConsoleEntry('[INFO] 3D visualization created', 'info');
+        }
+        
+        function drawCoordinateSystem(ctx, width, height) {
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const axisLength = Math.min(width, height) * 0.4;
+            
+            // Draw X axis (red)
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(centerX + axisLength, centerY);
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.fillStyle = 'red';
+            ctx.fillText('X', centerX + axisLength + 5, centerY + 15);
+            
+            // Draw Y axis (green)
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(centerX, centerY - axisLength);
+            ctx.strokeStyle = 'green';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.fillStyle = 'green';
+            ctx.fillText('Y', centerX - 15, centerY - axisLength - 5);
+            
+            // Draw Z axis (blue)
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(centerX - axisLength * 0.7, centerY + axisLength * 0.7);
+            ctx.strokeStyle = 'blue';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.fillStyle = 'blue';
+            ctx.fillText('Z', centerX - axisLength * 0.7 - 20, centerY + axisLength * 0.7 + 5);
+            
+            // Draw origin
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 5, 0, Math.PI * 2);
+            ctx.fillStyle = 'black';
+            ctx.fill();
+            ctx.fillText('O', centerX + 10, centerY - 10);
+        }
+        
+        function drawPoints(ctx, width, height) {
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const scale = Math.min(width, height) * 0.15;
+            
+            // Generate some random points
+            const numPoints = 15;
+            const sourcePoints = [];
+            const targetPoints = [];
+            const transformedPoints = [];
+            
+            for (let i = 0; i < numPoints; i++) {
+                // Source points (blue)
+                const srcX = (Math.random() * 2 - 1) * scale * 0.8;
+                const srcY = (Math.random() * 2 - 1) * scale * 0.8;
+                const srcZ = (Math.random() * 2 - 1) * scale * 0.8;
+                sourcePoints.push({ x: srcX, y: srcY, z: srcZ });
+                
+                // Target points (red)
+                const tgtX = srcX + scale * 0.3;
+                const tgtY = srcY - scale * 0.1;
+                const tgtZ = srcZ - scale * 0.2;
+                targetPoints.push({ x: tgtX, y: tgtY, z: tgtZ });
+                
+                // Transformed points (green)
+                const transformedX = tgtX - (Math.random() * 0.2 - 0.1) * scale * 0.3;
+                const transformedY = tgtY - (Math.random() * 0.2 - 0.1) * scale * 0.3;
+                const transformedZ = tgtZ - (Math.random() * 0.2 - 0.1) * scale * 0.3;
+                transformedPoints.push({ x: transformedX, y: transformedY, z: transformedZ });
+            }
+            
+            // Draw source points
+            for (const point of sourcePoints) {
+                const screenX = centerX + point.x - point.z * 0.7;
+                const screenY = centerY - point.y + point.z * 0.7;
+                
+                ctx.beginPath();
+                ctx.arc(screenX, screenY, 5, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(30, 144, 255, 0.7)';
+                ctx.fill();
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+            
+            // Draw target points
+            for (const point of targetPoints) {
+                const screenX = centerX + point.x - point.z * 0.7;
+                const screenY = centerY - point.y + point.z * 0.7;
+                
+                ctx.beginPath();
+                ctx.arc(screenX, screenY, 5, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 69, 0, 0.7)';
+                ctx.fill();
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+            
+            // Draw transformed points
+            for (const point of transformedPoints) {
+                const screenX = centerX + point.x - point.z * 0.7;
+                const screenY = centerY - point.y + point.z * 0.7;
+                
+                ctx.beginPath();
+                ctx.arc(screenX, screenY, 5, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(50, 205, 50, 0.7)';
+                ctx.fill();
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+            
+            // Draw legend
+            const legendX = 30;
+            const legendY = 30;
+            const legendSpacing = 25;
+            
+            // Source points
+            ctx.beginPath();
+            ctx.arc(legendX, legendY, 5, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(30, 144, 255, 0.7)';
+            ctx.fill();
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.fillStyle = 'black';
+            ctx.fillText('Source Points (A)', legendX + 15, legendY + 5);
+            
+            // Target points
+            ctx.beginPath();
+            ctx.arc(legendX, legendY + legendSpacing, 5, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 69, 0, 0.7)';
+            ctx.fill();
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.fillStyle = 'black';
+            ctx.fillText('Target Points (B)', legendX + 15, legendY + legendSpacing + 5);
+            
+            // Transformed points
+            ctx.beginPath();
+            ctx.arc(legendX, legendY + legendSpacing * 2, 5, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(50, 205, 50, 0.7)';
+            ctx.fill();
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.fillStyle = 'black';
+            ctx.fillText('Transformed Points', legendX + 15, legendY + legendSpacing * 2 + 5);
+        }
+        
+        function showTransformations() {
+            document.getElementById('transformation-matrices').style.display = 'block';
+            document.getElementById('error-analysis').style.display = 'none';
+            
+            addConsoleEntry('[INFO] Displaying transformation matrices', 'info');
+        }
+        
+        function showErrors() {
+            document.getElementById('transformation-matrices').style.display = 'none';
+            document.getElementById('error-analysis').style.display = 'block';
+            
+            addConsoleEntry('[INFO] Displaying error analysis', 'info');
+        }
+        
+        function exportChart() {
+            addConsoleEntry('[INFO] Exporting visualization as PNG image...', 'info');
+            
+            // Simulate export process
+            setTimeout(() => {
+                addConsoleEntry('[SUCCESS] Chart exported to registration_visualization.png', 'info');
+            }, 1000);
+        }
+        
+        function resetSettings() {
+            if (confirm('Are you sure you want to reset all settings to default values?')) {
+                document.getElementById('log-level').value = 'info';
+                document.getElementById('visualization-style').value = 'default';
+                document.getElementById('auto-save-enabled').checked = true;
+                document.getElementById('real-time-visualization').checked = true;
+                
+                addConsoleEntry('[INFO] Settings reset to default values', 'info');
+            }
+        }
+        
+        function clearConsole() {
+            consoles.forEach(console => {
+                console.innerHTML = '';
+            });
+            addConsoleEntry('[INFO] Console cleared', 'info');
+        }
+        
+        function checkDevices() {
+            addConsoleEntry('[INFO] Checking connected devices...', 'info');
+            
+            // Simulate device check
+            setTimeout(() => {
+                addConsoleEntry('[INFO] Found devices:', 'info');
+                addConsoleEntry('1. tracker_1 (Vive Tracker) - Connected', 'info');
+                addConsoleEntry(`2. ${document.getElementById('serial-port').value} - Connected`, 'info');
+                addConsoleEntry('[INFO] All required devices are connected', 'info');
+            }, 1500);
+        }
+        
+        // Initialize console
+        addConsoleEntry('[INFO] Auto Tracker Data Process GUI v1.0.0', 'info');
+        addConsoleEntry('[INFO] Current date: ' + new Date().toLocaleString(), 'info');
+        addConsoleEntry('[INFO] Ready to initialize tracker system', 'info');
+    </script>
+</body>
+</html>

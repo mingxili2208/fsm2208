@@ -1,0 +1,14 @@
+2025-03-10 14:52:56,866 - __main__ - INFO - Starting tracker data collection and processing
+2025-03-10 14:52:56,866 - __main__ - INFO - Press 'R' to start continuous recording
+2025-03-10 14:52:56,866 - __main__ - INFO - Press 'E' to stop continuous recording
+2025-03-10 14:52:56,866 - __main__ - INFO - Press 'T' for single point recording with angle input
+2025-03-10 14:52:56,866 - __main__ - INFO - Press 'Esc' to exit and process data
+2025-03-10 14:52:56,932 - __main__ - INFO - Successfully initialized tracker: tracker_1
+2025-03-10 14:52:56,933 - __main__ - INFO - Successfully opened serial port: /dev/ttyUSB0
+2025-03-10 14:54:13,683 - __main__ - INFO - 
+[System] Starting single record mode...
+2025-03-10 14:54:19,421 - __main__ - ERROR - Invalid angle input. Please enter a numeric value.
+2025-03-10 14:54:32,322 - __main__ - INFO - 
+[System] Starting single record mode...
+2025-03-10 14:54:59,620 - __main__ - INFO - Program interrupted by user
+2025-03-10 14:54:59,620 - __main__ - INFO - All processing complete

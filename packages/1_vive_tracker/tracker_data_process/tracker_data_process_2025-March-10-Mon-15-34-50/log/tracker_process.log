@@ -1,0 +1,49 @@
+2025-03-10 15:34:50,964 - __main__ - INFO - Starting tracker data collection and processing
+2025-03-10 15:34:50,964 - __main__ - INFO - Press 'R' to start continuous recording (laser_tracker.csv)
+2025-03-10 15:34:50,964 - __main__ - INFO - Press 'E' to stop continuous recording
+2025-03-10 15:34:50,964 - __main__ - INFO - Press 'T' for single point recording with angle input (euler.csv)
+2025-03-10 15:34:50,964 - __main__ - INFO - Press 'Esc' to exit and process data
+2025-03-10 15:34:50,980 - __main__ - INFO - Successfully initialized tracker: tracker_1
+2025-03-10 15:34:50,981 - __main__ - INFO - Successfully opened serial port: /dev/ttyUSB0
+2025-03-10 15:34:50,981 - __main__ - INFO - Created new Euler data file: tracker_data_process_2025-March-10-Mon-15-34-50/data/euler.csv
+2025-03-10 15:35:01,560 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:35:08,674 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592108.674, x=1.4506, y=-1.1209, z=-4.6506, roll=179.9209, yaw=152.5457, pitch=-89.9629, angle=0.00
+2025-03-10 15:35:15,288 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:35:29,570 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592129.570, x=1.4490, y=-1.1189, z=-4.6441, roll=0.1052, yaw=60.8524, pitch=90.7680, angle=-90.00
+2025-03-10 15:35:31,647 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:35:47,106 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592147.106, x=1.4473, y=-1.1176, z=-4.6399, roll=0.9463, yaw=-29.3038, pitch=90.3114, angle=-180.00
+2025-03-10 15:35:49,639 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:36:12,370 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592172.370, x=1.4391, y=-1.1163, z=-4.6396, roll=1.1116, yaw=-27.8732, pitch=90.2799, angle=180.00
+2025-03-10 15:36:25,631 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:36:27,873 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592187.874, x=1.4386, y=-1.1163, z=-4.6400, roll=178.8235, yaw=-118.6201, pitch=-92.2497, angle=90.00
+2025-03-10 15:37:23,631 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:37:27,777 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592247.777, x=1.9448, y=-1.1011, z=-3.8052, roll=-179.1596, yaw=-179.0649, pitch=-89.7517, angle=30.00
+2025-03-10 15:37:45,326 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:37:48,513 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592268.513, x=1.8485, y=-1.1042, z=-3.8877, roll=179.7002, yaw=121.2770, pitch=-88.7436, angle=-30.00
+2025-03-10 15:38:06,494 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:38:09,873 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592289.873, x=1.8553, y=-1.1016, z=-3.8078, roll=2.0676, yaw=30.6492, pitch=88.8728, angle=-120.00
+2025-03-10 15:38:31,062 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:38:34,264 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592314.264, x=1.9785, y=-1.0978, z=-3.6311, roll=0.6405, yaw=-86.7208, pitch=89.7994, angle=120.00
+2025-03-10 15:39:08,086 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:39:10,072 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592350.073, x=2.3660, y=-1.0900, z=-2.7217, roll=-179.8594, yaw=152.6688, pitch=-89.3552, angle=0.00
+2025-03-10 15:39:29,022 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:39:33,120 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592373.120, x=2.3907, y=-1.0881, z=-2.7734, roll=172.0244, yaw=93.8784, pitch=-81.1072, angle=-30.00
+2025-03-10 15:40:06,581 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:40:09,247 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592409.248, x=1.4597, y=-1.0903, z=-1.1428, roll=-179.9835, yaw=-178.0883, pitch=-89.0195, angle=-30.00
+2025-03-10 15:41:28,476 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:41:30,430 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741592490.431, x=0.9623, y=-1.0958, z=-1.0178, roll=179.5712, yaw=150.9588, pitch=-89.0795, angle=0.00
+2025-03-10 15:41:33,094 - __main__ - INFO - Program interrupted by user
+2025-03-10 15:41:33,094 - __main__ - INFO - All processing complete

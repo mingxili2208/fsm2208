@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker Data Process GUI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header-container">
+            <header>
+                <h1>Auto Tracker Data Process</h1>
+            </header>
+            <div class="system-buttons">
+                <button id="btn-restart" class="btn btn-warning">Restart Application</button>
+                <button id="btn-exit" class="btn btn-danger">Exit Application</button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="tab-container">
+                <div class="tab active" data-tab="recording">Recording</div>
+                <div class="tab" data-tab="processing">Processing</div>
+                <div class="tab" data-tab="visualization">Visualization</div>
+                <div class="tab" data-tab="settings">Settings</div>
+            </div>
+            
+            <div id="recording" class="tab-content active">
+                <div class="settings-group">
+                    <div class="settings-label">Tracker Configuration</div>
+                    <div class="flex-container">
+                        <div class="flex-50">
+                            <div class="form-group">
+                                <label for="tracker-name">Tracker Name:</label>
+                                <input type="text" id="tracker-name" value="tracker_1">
+                            </div>
+                            <div class="form-group">
+                                <label for="serial-port">Serial Port:</label>
+                                <input type="text" id="serial-port" value="/dev/ttyUSB0">
+                            </div>
+                        </div>
+                        <div class="flex-50">
+                            <div class="form-group">
+                                <label for="baud-rate">Baud Rate:</label>
+                                <input type="number" id="baud-rate" value="9600">
+                            </div>
+                            <div class="form-group">
+                                <label for="output-directory">Output Directory:</label>
+                                <input type="text" id="output-directory" value="auto_generated" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <div class="settings-label">Recording Controls</div>
+                    <div class="control-buttons">
+                        <button id="btn-initialize" class="btn btn-primary">Initialize Tracker</button>
+                        <button id="btn-start-recording" class="btn btn-success" disabled>Start Recording</button>
+                        <button id="btn-stop-recording" class="btn btn-warning" disabled>Stop Recording</button>
+                        <button id="btn-record-euler" class="btn btn-primary" disabled>Record Euler Point</button>
+                        <button id="btn-view-euler-records" class="btn btn-info" disabled>View Euler Records</button>
+                        <button id="btn-save-all" class="btn btn-danger" disabled>Save All Data</button>
+                    </div>
+                    
+                    <div id="euler-input-container" style="display: none;">
+                        <div class="form-group">
+                            <label for="euler-angle">Enter the desired tracker angle (degrees):</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="euler-angle" value="0" step="0.1">
+                                <button id="btn-save-euler" class="btn btn-success">Save Euler Point</button>
+                                <button id="btn-cancel-euler" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="record-review-container" style="display: none;" class="settings-group">
+                        <div class="settings-label">Record Review</div>
+                        <div class="form-group">
+                            <label for="record-angle">Current Angle Value (degrees):</label>
+                            <input type="number" id="record-angle" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <p id="record-details" style="font-family: monospace; background-color: #f5f5f5; padding: 10px; border-radius: 4px;"></p>
+                        </div>
+                        <div class="control-buttons">
+                            <button id="btn-confirm-record" class="btn btn-success">Confirm</button>
+                            <button id="btn-modify-record" class="btn btn-warning">Modify Angle</button>
+                            <button id="btn-delete-record" class="btn btn-danger">Delete Record</button>
+                        </div>
+                    </div>
+                    <div id="euler-records-container" style="display: none;" class="settings-group">
+                        <div class="settings-label">Euler Data Records</div>
+                        <div class="form-group">
+                            <table class="data-table" id="euler-records-table">
+                                <thead>
+                                    <tr>
+                                        <th>Index</th>
+                                        <th>Timestamp</th>
+                                        <th>Angle (°)</th>
+                                        <th>Position (x,y,z)</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 动态填充记录 -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="control-buttons">
+                            <button id="btn-close-records" class="btn btn-primary">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="console">
+                    <div class="console-entry info">[INFO] Welcome to Auto Tracker Data Process</div>
+                    <div class="console-entry info">[INFO] Please initialize the tracker system</div>
+                </div>
+                
+                <div class="status-bar">
+                    <div>
+                        <span class="status-indicator status-inactive" id="tracker-status"></span> Tracker: <span id="tracker-status-text">Not Initialized</span>
+                    </div>
+                    <div>
+                        <span class="status-indicator status-inactive" id="recording-status"></span> Recording: <span id="recording-status-text">Inactive</span>
+                    </div>
+                    <div>
+                        Recorded Points: <span id="recorded-points-count">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="processing" class="tab-content">
+                <div class="settings-group">
+                    
+                    <div class="settings-label">Data Processing</div>
+                    <div class="flex-container">
+                        <div class="flex-50">
+                            <div class="form-group">
+                                <label for="negative-yaw-offset">Negative Yaw Offset:</label>
+                                <input type="number" id="negative-yaw-offset" value="122">
+                            </div>
+                        </div>
+                        <div class="flex-50">
+                            <div class="form-group">
+                                <label for="positive-yaw-offset">Positive Yaw Offset:</label>
+                                <input type="number" id="positive-yaw-offset" value="55">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="control-buttons">
+                        <button id="btn-process-data" class="btn btn-primary" disabled>Process Laser Tracker Data</button>
+                        <button id="btn-calculate-transform" class="btn btn-success" disabled>Calculate Transformations</button>
+                        <button id="btn-review-data" class="btn btn-warning" disabled>Review Data</button>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar" id="processing-progress">0%</div>
+                    </div>
+                </div>
+                
+                <div class="console">
+                    <div class="console-entry info">[INFO] Processing tab</div>
+                    <div class="console-entry info">[INFO] Use this tab to process recorded data and calculate transformations</div>
+                </div>
+                
+                <div class="status-bar">
+                    <div>
+                        <span class="status-indicator status-inactive" id="laser-data-status"></span> Laser Data: <span id="laser-data-status-text">Not Processed</span>
+                    </div>
+                    <div>
+                        <span class="status-indicator status-inactive" id="euler-data-status"></span> Euler Data: <span id="euler-data-status-text">Not Available</span>
+                    </div>
+                    <div>
+                        <span class="status-indicator status-inactive" id="transform-status"></span> Transforms: <span id="transform-status-text">Not Calculated</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="visualization" class="tab-content">
+                <div class="settings-group">
+                    <div class="settings-label">Visualization Controls</div>
+                    <div class="control-buttons">
+                        <button id="btn-visualize-points" class="btn btn-primary" disabled>Visualize Points</button>
+                        <button id="btn-show-transforms" class="btn btn-success" disabled>Show Transformations</button>
+                        <button id="btn-show-errors" class="btn btn-warning" disabled>Show Errors</button>
+                        <button id="btn-export-chart" class="btn btn-primary" disabled>Export Chart</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="error-threshold">Error Threshold (m):</label>
+                        <input type="number" id="error-threshold" value="0.05" step="0.01" min="0">
+                    </div>
+                </div>
+                
+                <div class="canvas-container">
+                    <canvas id="visualization-canvas"></canvas>
+                </div>
+                
+                <div class="settings-group" id="transformation-matrices" style="display: none;">
+                    <div class="settings-label">Transformation Matrices</div>
+                    <div class="flex-container">
+                        <div class="flex-50">
+                            <strong>Position Transformation (T_pos):</strong>
+                            <pre id="t-pos-matrix" style="background-color: #f9f9f9; padding: 10px; overflow-x: auto;">Matrix not calculated</pre>
+                        </div>
+                        <div class="flex-50">
+                            <strong>Orientation Transformation (R_euler):</strong>
+                            <pre id="r-euler-matrix" style="background-color: #f9f9f9; padding: 10px; overflow-x: auto;">Matrix not calculated</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-group" id="error-analysis" style="display: none;">
+                    <div class="settings-label">Error Analysis</div>
+                    <div class="flex-container">
+                        <div class="flex-50">
+                            <strong>Position RMSE:</strong> <span id="position-rmse">Not calculated</span>
+                        </div>
+                        <div class="flex-50">
+                            <strong>Orientation Error:</strong> <span id="orientation-error">Not calculated</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <strong>High Error Points:</strong>
+                        <div id="high-error-points">None identified</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="settings" class="tab-content">
+                <div class="settings-group">
+                    <div class="settings-label">Configuration Settings</div>
+                    <div class="form-group">
+                        <label for="log-level">Log Level:</label>
+                        <select id="log-level">
+                            <option value="debug">Debug</option>
+                            <option value="info" selected>Info</option>
+                            <option value="warning">Warning</option>
+                            <option value="error">Error</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="visualization-style">Visualization Style:</label>
+                        <select id="visualization-style">
+                            <option value="default" selected>Default</option>
+                            <option value="wireframe">Wireframe</option>
+                            <option value="heatmap">Heatmap</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="auto-save-enabled" checked> Enable Auto-Save
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="real-time-visualization" checked> Real-time Visualization
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <div class="settings-label">System Information</div>
+                    <div>
+                        <strong>Software Version:</strong> 1.0.0
+                    </div>
+                    <div>
+                        <strong>Output Directory:</strong> <span id="current-output-dir">Not initialized</span>
+                    </div>
+                    <div>
+                        <strong>Total Recorded Data:</strong> <span id="total-recorded-points">0</span> points
+                    </div>
+                </div>
+                
+                <div class="control-buttons">
+                    <button id="btn-reset-settings" class="btn btn-warning">Reset Settings</button>
+                    <button id="btn-clear-console" class="btn btn-primary">Clear Console</button>
+                    <button id="btn-check-devices" class="btn btn-success">Check Devices</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

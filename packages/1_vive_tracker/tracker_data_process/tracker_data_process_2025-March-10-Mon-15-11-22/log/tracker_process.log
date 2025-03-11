@@ -1,0 +1,16 @@
+2025-03-10 15:11:22,899 - __main__ - INFO - Starting tracker data collection and processing
+2025-03-10 15:11:22,900 - __main__ - INFO - Press 'R' to start continuous recording (laser_tracker.csv)
+2025-03-10 15:11:22,900 - __main__ - INFO - Press 'E' to stop continuous recording
+2025-03-10 15:11:22,900 - __main__ - INFO - Press 'T' for single point recording with angle input (euler.csv)
+2025-03-10 15:11:22,900 - __main__ - INFO - Press 'Esc' to exit and process data
+2025-03-10 15:11:22,912 - __main__ - INFO - Successfully initialized tracker: tracker_1
+2025-03-10 15:11:22,912 - __main__ - INFO - Successfully opened serial port: /dev/ttyUSB0
+2025-03-10 15:11:22,912 - __main__ - INFO - Created new Euler data file: tracker_data_process_2025-March-10-Mon-15-11-22/data/euler.csv
+2025-03-10 15:12:13,427 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:12:20,124 - __main__ - INFO - [Data] Euler data recorded: timestamp=1741590740.125, x=1.4872, y=-0.9938, z=-4.5351, roll=0.1395, yaw=61.6697, pitch=91.2068, angle=-90.00
+2025-03-10 15:12:39,810 - __main__ - INFO - 
+[System] Starting single record mode for Euler data...
+2025-03-10 15:12:43,244 - __main__ - ERROR - Invalid angle input. Please enter a numeric value.
+2025-03-10 15:12:51,652 - __main__ - INFO - Program interrupted by user
+2025-03-10 15:12:51,652 - __main__ - INFO - All processing complete
