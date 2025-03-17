@@ -28,7 +28,7 @@ except FileNotFoundError:
     sys.exit(1)
 
 # Extract x, z (tracker position) and insert y=0
-positions_A = [[row["X"], 0, row["Z"]] for _, row in tracker_laser_df.iterrows()]
+positions_A = [[row["X"], 0, row["Y"]] for _, row in tracker_laser_df.iterrows()]
 
 # Extract laser_x, laser_z (laser position) and insert y=0
 positions_B = [[row["laser_x"], 0, row["laser_z"]] for _, row in tracker_laser_df.iterrows()]
@@ -399,8 +399,8 @@ class CoordinateTransformer:
                         'k--', alpha=0.3)
         
         plt.xlabel('X')
-        plt.ylabel('Z')
-        plt.title('Registration Results in X-Z Plane')
+        plt.ylabel('Y')
+        plt.title('Registration Results in X-Y Plane')
         plt.legend()
         plt.grid(True)
         plt.axis('equal')
@@ -448,57 +448,21 @@ def transform_point_pose(position, orientation, T_pos, R_euler):
 
 # Define orientation data (in this example using data from the original code)
 orientations_A = [
-    [np.radians(0), np.radians(56.0226), np.radians(0)],  #1
-    [np.radians(0), np.radians(56.6886), np.radians(0)],  #2
-    [np.radians(0), np.radians(148.0405), np.radians(0)], #3
-    [np.radians(0), np.radians(-123.0951), np.radians(0)],#4
-    [np.radians(0), np.radians(-32.5727), np.radians(0)], #5
-    [np.radians(0), np.radians(-34.1714), np.radians(0)],#6
-    [np.radians(0), np.radians(-32.4705), np.radians(0)], #7
-    [np.radians(0), np.radians(-32.7427), np.radians(0)], #8
-                 
-    [np.radians(0), np.radians(56.8381), np.radians(0)],  #9
-    [np.radians(0), np.radians(145.8918), np.radians(0)], #10
-    [np.radians(0), np.radians(146.6444), np.radians(0)], #11
-    [np.radians(0), np.radians(145.7026), np.radians(0)], #12
-                 
-    [np.radians(0), np.radians(-123.5578), np.radians(0)],#13
-    [np.radians(0), np.radians(-125.7373), np.radians(0)],#14
-                 
-    [np.radians(0), np.radians(121.6893), np.radians(0)], #15
-    [np.radians(0), np.radians(175.2604), np.radians(0)], #16
-                 
-    [np.radians(0), np.radians(-123.141), np.radians(0)], #17
-    [np.radians(0), np.radians(-82.1392), np.radians(0)], #18
-    [np.radians(0), np.radians(-166.0182), np.radians(0)],#19
-    [np.radians(0), np.radians(106.1353), np.radians(0)], #20
+    [np.radians(0), np.radians(-153.6356), np.radians(0)],  #1
+    [np.radians(0), np.radians(116.3060), np.radians(0)],  #2
+    [np.radians(0), np.radians(26.8196), np.radians(0)], #3
+    [np.radians(0), np.radians(-64.2517), np.radians(0)],#4
+    [np.radians(0), np.radians(72.2323), np.radians(0)], #5
+    [np.radians(0), np.radians(-108.0868), np.radians(0)],#6
 ]
 
 orientations_B = [
-        [np.radians(0), np.radians(-90), np.radians(0)],    #1
-    [np.radians(0), np.radians(-90), np.radians(0)],    #2
-    [np.radians(0), np.radians(0), np.radians(0)],      #3
-    [np.radians(0), np.radians(90), np.radians(0)],     #4
-    [np.radians(0), np.radians(180), np.radians(0)],    #5
-    [np.radians(0), np.radians(180), np.radians(0)],    #6
-    [np.radians(0), np.radians(180), np.radians(0)],    #7
-    [np.radians(0), np.radians(180), np.radians(0)],    #8
-                  
-    [np.radians(0), np.radians(-90), np.radians(0)],    #9
-    [np.radians(0), np.radians(0), np.radians(0)],      #10
-    [np.radians(0), np.radians(0), np.radians(0)],      #11
-    [np.radians(0), np.radians(0), np.radians(0)],      #12
-                  
-    [np.radians(0), np.radians(90), np.radians(0)],     #13
-    [np.radians(0), np.radians(90), np.radians(0)],     #14
-                  
-    [np.radians(0), np.radians(-30), np.radians(0)],    #15
-    [np.radians(0), np.radians(30), np.radians(0)],     #16
-                  
-    [np.radians(0), np.radians(90), np.radians(0)],     #17
-    [np.radians(0), np.radians(130), np.radians(0)],    #18
-    [np.radians(0), np.radians(50), np.radians(0)],     #19
-    [np.radians(0), np.radians(-40), np.radians(0)],    #20
+    [np.radians(0), np.radians(90.00), np.radians(0)],    #1
+    [np.radians(0), np.radians(0.00), np.radians(0)],    #2
+    [np.radians(0), np.radians(-90.00), np.radians(0)],      #3
+    [np.radians(0), np.radians(180.00), np.radians(0)],     #4
+    [np.radians(0), np.radians(-45.00), np.radians(0)],    #5
+    [np.radians(0), np.radians(135.00), np.radians(0)],    #6
 ]
 
 if __name__ == "__main__":

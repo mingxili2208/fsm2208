@@ -24,56 +24,68 @@ from mpl_toolkits.mplot3d import Axes3D
 from pynput import keyboard
 from scipy.spatial.transform import Rotation as R
 import pysurvive
-
-try:
-    from vive_tracker import ViveTrackerModule
-except ImportError:
-    print("Error: vive_tracker module not found. Please install it first.")
-    sys.exit(1)
-
-# Create timestamp for output directory
-current_time = datetime.datetime.now()
-timestamp = current_time.strftime("%Y-%B-%d-%a-%H-%M-%S")
-output_dir = f"tracker_data_process_{timestamp}"
-os.makedirs(output_dir, exist_ok=True)
-
-# Create subdirectories
-log_dir = os.path.join(output_dir, "log")
-data_dir = os.path.join(output_dir, "data")
-result_dir = os.path.join(output_dir, "result")
-img_dir = os.path.join(output_dir, "img")
-
-for directory in [log_dir, data_dir, result_dir, img_dir]:
-    os.makedirs(directory, exist_ok=True)
-
-# Setup logging
 import logging
-log_file = os.path.join(log_dir, "tracker_process.log")
-logging.basicConfig(
-    filename=log_file,
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+
+# try:
+#     from vive_tracker import ViveTrackerModule
+# except ImportError:
+#     print("Error: vive_tracker module not found. Please install it first.")
+#     sys.exit(1)
+
+# # Create timestamp for output directory
+# current_time = datetime.datetime.now()
+# timestamp = current_time.strftime("%Y-%B-%d-%a-%H-%M-%S")
+# output_dir = f"tracker_data_process_{timestamp}"
+# os.makedirs(output_dir, exist_ok=True)
+
+# # Create subdirectories
+# log_dir = os.path.join(output_dir, "log")
+# data_dir = os.path.join(output_dir, "data")
+# result_dir = os.path.join(output_dir, "result")
+# img_dir = os.path.join(output_dir, "img")
+
+# for directory in [log_dir, data_dir, result_dir, img_dir]:
+#     os.makedirs(directory, exist_ok=True)
+
+# # Setup logging
+# import logging
+# log_file = os.path.join(log_dir, "tracker_process.log")
+# logging.basicConfig(
+#     filename=log_file,
+#     level=logging.INFO,
+#     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+# )
+# logger = logging.getLogger(__name__)
 
 # Console handler for displaying logs in terminal
-console = logging.StreamHandler()
-console.setLevel(logging.INFO)
-formatter = logging.Formatter('%(levelname)s - %(message)s')
-console.setFormatter(formatter)
-logger.addHandler(console)
+# console = logging.StreamHandler()
+# console.setLevel(logging.INFO)
+# formatter = logging.Formatter('%(levelname)s - %(message)s')
+# console.setFormatter(formatter)
+# logger.addHandler(console)
 
-# File paths
-LASER_TRACKER_CSV = os.path.join(data_dir, "laser_tracker.csv")
-EULER_CSV = os.path.join(data_dir, "euler.csv")
-CORRECTED_LASER_TRACKER_CSV = os.path.join(data_dir, "corrected_laser_tracker.csv")
-
+# # File paths
+# LASER_TRACKER_CSV = os.path.join(data_dir, "laser_tracker.csv")
+# EULER_CSV = os.path.join(data_dir, "euler.csv")
+# CORRECTED_LASER_TRACKER_CSV = os.path.join(data_dir, "corrected_laser_tracker.csv")
+output_dir = None
+log_dir = None
+data_dir = None
+result_dir = None
+img_dir = None
+LASER_TRACKER_CSV = None
+EULER_CSV = None
+CORRECTED_LASER_TRACKER_CSV = None
 # Serial port configuration
 SERIAL_PORT = "/dev/ttyUSB0"  # Modify based on your setup
 BAUD_RATE = 9600
 
 # Vive tracker configuration
 TRACKER_NAME = "tracker_1"
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 class Point:
     """
@@ -604,14 +616,67 @@ def process_laser_tracker_data(input_file, output_file, angle_neg=122, angle_pos
         logger.error(f"Error processing laser tracker data: {e}")
         return None
 
+def initialize_directories(base_dir=None):
+    global output_dir, log_dir, data_dir, result_dir, img_dir
+    global LASER_TRACKER_CSV, EULER_CSV, CORRECTED_LASER_TRACKER_CSV
+    
+    # 如果没有提供base_dir，则创建一个新的带时间戳的目录
+    if base_dir is None:
+        current_time = datetime.datetime.now()
+        timestamp = current_time.strftime("%Y-%B-%d-%a-%H-%M-%S")
+        output_dir = f"tracker_data_process_{timestamp}"
+    else:
+        output_dir = base_dir
+    
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # 创建子目录
+    log_dir = os.path.join(output_dir, "log")
+    data_dir = os.path.join(output_dir, "data")
+    result_dir = os.path.join(output_dir, "result")
+    img_dir = os.path.join(output_dir, "img")
+    
+    for directory in [log_dir, data_dir, result_dir, img_dir]:
+        os.makedirs(directory, exist_ok=True)
+    
+    # 设置文件路径
+    LASER_TRACKER_CSV = os.path.join(data_dir, "laser_tracker.csv")
+    EULER_CSV = os.path.join(data_dir, "euler.csv")
+    CORRECTED_LASER_TRACKER_CSV = os.path.join(data_dir, "corrected_laser_tracker.csv")
+    
+    # 设置日志文件
+    log_file = os.path.join(log_dir, "tracker_process.log")
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setLevel(logging.INFO)
+    file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    file_handler.setFormatter(file_formatter)
+    logger.addHandler(file_handler)
+    
+    # 控制台处理器
+    console = logging.StreamHandler()
+    console.setLevel(logging.INFO)
+    console_formatter = logging.Formatter('%(levelname)s - %(message)s')
+    console.setFormatter(console_formatter)
+    logger.addHandler(console)
+    logger.setLevel(logging.INFO)
+    
+    
+    return output_dir
+
 class TrackerSystem:
-    def __init__(self, serial_port=SERIAL_PORT, baud_rate=BAUD_RATE, tracker_name=TRACKER_NAME):
+    def __init__(self, serial_port=SERIAL_PORT, baud_rate=BAUD_RATE, tracker_name=TRACKER_NAME, output_dir=None):
         self.serial_port = serial_port
         self.baud_rate = baud_rate
         self.tracker_name = tracker_name
         
+        # 如果提供了output_dir且全局目录尚未初始化，初始化目录
+        if output_dir is not None and LASER_TRACKER_CSV is None:
+            initialize_directories(output_dir)
+                
+
         # Initialize Vive Tracker Module
         logger.info("Initializing pysurvive tracking system...")
+        
         self.actx = None 
         self.updated=None
         self.initialize_tracker()
@@ -650,18 +715,15 @@ class TrackerSystem:
         """Initialize Vive Tracker"""
         try:
             self.actx = pysurvive.SimpleContext(sys.argv)
-            time.sleep(10)  # 等待初始化完成
+            time.sleep(5)  # 等待初始化完成
             logger.info("pysurvive initialized successfully!")
-
-            self.trackers = [obj for obj in self.actx.Objects()]
-            
-            if not self.trackers:
-                logger.error("No tracking devices found!")
-                sys.exit(1)
-            else:
-                logger.info(f"Found {len(self.trackers)} tracking devices:")
-                for tracker in self.trackers:
-                    logger.info(f"  - {tracker.Name().decode('utf-8')}")
+            self.updated=self.actx.NextUpdated()
+            while "LH" in str(self.updated.Name()):   
+                poseObj = self.updated.Pose()
+                poseData = poseObj[0]
+                poseTimestamp = poseObj[1]
+                print("%s: T: %f P: % 9f,% 9f,% 9f R: % 9f,% 9f,% 9f,% 9f"%(str(self.updated.Name(), 'utf-8'), poseTimestamp, poseData.Pos[0], poseData.Pos[1], poseData.Pos[2], poseData.Rot[0], poseData.Rot[1], poseData.Rot[2], poseData.Rot[3]))
+                self.updated = self.actx.NextUpdated()
 
         except Exception as e:
             logger.error(f"Error initializing tracker: {e}")
@@ -671,25 +733,44 @@ class TrackerSystem:
         """
         获取当前追踪器的位姿信息（位置 + 旋转）
         """
-        updated = self.actx.NextUpdated()
-        if updated:
-            self.updated = updated
-            pose_obj = updated.Pose()
-            pose_data = pose_obj[0]
-            timestamp = pose_obj[1]
+        if self.actx.Running():
+            updated = self.actx.NextUpdated()
+            
+            while "LH" in str(updated.Name()):  
+                print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! \n this is  LH_pose  ")
+                poseObj = updated.Pose()
+                poseData = poseObj[0]
+                poseTimestamp = poseObj[1]
+                print("%s: T: %f P: % 9f,% 9f,% 9f R: % 9f,% 9f,% 9f,% 9f"%(str(updated.Name(), 'utf-8'), poseTimestamp, poseData.Pos[0], poseData.Pos[1], poseData.Pos[2], poseData.Rot[0], poseData.Rot[1], poseData.Rot[2], poseData.Rot[3]))
+                print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
+                updated = self.actx.NextUpdated()
+            if updated:
+                poseObj = updated.Pose()
+                poseData = poseObj[0]
+                poseTimestamp = poseObj[1]
+                print("%s: T: %f P: % 9f,% 9f,% 9f R: % 9f,% 9f,% 9f,% 9f"%(str(updated.Name(), 'utf-8'), poseTimestamp, poseData.Pos[0], poseData.Pos[1], poseData.Pos[2], poseData.Rot[0], poseData.Rot[1], poseData.Rot[2], poseData.Rot[3]))
+            if updated:
+                pose_obj = updated.Pose()
+                pose_data = pose_obj[0]
+                timestamp = pose_obj[1]
 
-            position = pose_data.Pos  # [x, y, z]
-            rotation = pose_data.Rot  # 四元数 (w, x, y, z)
+                position = pose_data.Pos  # [x, y, z]
+                rotation = pose_data.Rot  # 四元数 (w, x, y, z)
 
-            # 转换为欧拉角 (yxz)
-            r = R.from_quat([rotation[1], rotation[2], rotation[3], rotation[0]])
-            euler_angles = r.as_euler("yxz")  # [yaw, pitch, roll]
+                # 转换为欧拉角 (yxz)
+                r = R.from_quat([rotation[0],rotation[1], rotation[2], rotation[3]])
+                
+                euler_angles = r.as_euler("yzx")  # [yaw, pitch, roll]
+                #euler_angles = r.as_euler("yxz")
 
-            # 重新格式化返回值，使其匹配 get_pose_euler() 的格式
-            x, y, z = position
-            yaw, pitch, roll = euler_angles  # 假设 as_euler("yxz") 返回的是 (yaw, pitch, roll)
+                euler_angles_degrees = np.degrees(euler_angles)
+                # 重新格式化返回值，使其匹配 get_pose_euler() 的格式
+                x, y, z =position
+                #x, y, z = pose_data.Pos[0],pose_data.Pos[1],pose_data.Pos[2]
+                #yaw, pitch, roll = euler_angles  # 假设 as_euler("yxz") 返回的是 (yaw, pitch, roll)
+                roll, pitch, yaw = euler_angles_degrees
 
-            return x, y, z, roll, yaw, pitch  # 与 get_pose_euler() 格式一致
+                return x, y, z, roll, yaw, pitch  # 与 get_pose_euler() 格式一致
 
         return None
     def initialize_serial(self):
@@ -719,7 +800,7 @@ class TrackerSystem:
                         logger.info(f"[Data] A69 Pose: distance_2={distance_2:.3f}, distance_3={distance_3:.3f}")
                         
                         # Request Vive Tracker pose
-                        cam_coord = self.tracker.get_pose_euler()
+                        cam_coord = self.get_tracker_pose()
                         logger.info(f"[Data] Vive Tracker Pose: x={cam_coord[0]:.4f}, y={cam_coord[1]:.4f}, z={cam_coord[2]:.4f}, "
                                    f"roll={cam_coord[3]:.4f}, yaw={cam_coord[4]:.4f}, pitch={cam_coord[5]:.4f}")
                         
@@ -806,7 +887,7 @@ class TrackerSystem:
                     angle = float(angle_input)
                     
                     # Request current Vive Tracker pose
-                    cam_coord = self.tracker.get_pose_euler()
+                    cam_coord = self.get_tracker_pose()
                     timestamp = time.time()
                     
                     # Record Euler angle data
@@ -893,7 +974,7 @@ class TrackerSystem:
             logger.info("Successfully loaded Euler data")
             
             # Extract x, z (tracker position) and insert y=0
-            positions_A = [[row["X"], 0, row["Z"]] for _, row in tracker_laser_df.iterrows()]
+            positions_A = [[row["X"], 0, row["Y"]] for _, row in tracker_laser_df.iterrows()]
             
             # Extract laser_x, laser_z (laser position) and insert y=0
             positions_B = [[row["laser_x"], 0, row["laser_z"]] for _, row in tracker_laser_df.iterrows()]

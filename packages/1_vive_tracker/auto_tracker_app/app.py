@@ -7,13 +7,19 @@ import json
 import logging
 import sys
 from werkzeug.serving import run_simple
+import pandas as pd
 
 # 导入您的主要程序模块
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-import auto_tracker_data_process as tracker
+import auto_tracker_data_process_pysurvive as tracker
 
 # 创建Flask应用
 app = Flask(__name__)
+
+import logging
+
+# 禁用 werkzeug 的请求日志
+logging.getLogger('werkzeug').setLevel(logging.ERROR)
 
 # 全局变量存储系统状态
 system_state = {
@@ -63,6 +69,9 @@ def initialize_tracker():
     """初始化追踪器"""
     global tracker_system, system_state
     
+    if system_state["trackerInitialized"]:
+        return jsonify({"success": False, "message": "Tracker already initialized"})
+
     data = request.json
     tracker_name = data.get('trackerName', 'tracker_1')
     serial_port = data.get('serialPort', '/dev/ttyUSB0')
@@ -76,7 +85,8 @@ def initialize_tracker():
         timestamp = current_time.strftime("%Y-%B-%d-%a-%H-%M-%S")
         output_dir = f"tracker_data_process_{timestamp}"
         
-        # 更新全局状态
+        tracker.initialize_directories(output_dir)
+
         system_state["outputDirectory"] = output_dir
         
         # 创建追踪器系统实例
@@ -160,7 +170,7 @@ def record_euler():
     
     try:
         # 请求当前Vive Tracker姿态
-        cam_coord = tracker_system.tracker.get_pose_euler()
+        cam_coord = tracker_system.get_tracker_pose()
         timestamp = time.time()
         
         # 记录欧拉角数据
@@ -358,7 +368,7 @@ def get_error_data():
         
         if os.path.exists(error_csv_path):
             # 读取错误CSV文件
-            import pandas as pd
+            
             error_df = pd.read_csv(error_csv_path)
             
             # 提取RMSE和高错误点

@@ -1,0 +1,4 @@
+2025-03-13 17:11:53,290 - werkzeug - WARNING -  * Debugger is active!
+2025-03-13 17:11:53,291 - werkzeug - INFO -  * Debugger PIN: 130-750-563
+2025-03-13 17:11:53,404 - werkzeug - INFO - 127.0.0.1 - - [13/Mar/2025 17:11:53] "GET /api/status HTTP/1.1" 200 -
+2025-03-13 17:11:55,389 - werkzeug - INFO - 127.0.0.1 - - [13/Mar/2025 17:11:55] "GET /api/status HTTP/1.1" 200 -

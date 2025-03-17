@@ -1,0 +1,7 @@
+2025-03-13 18:32:30,100 - auto_tracker_data_process_pysurvive - INFO - Initializing pysurvive tracking system...
+2025-03-13 18:32:40,119 - auto_tracker_data_process_pysurvive - INFO - pysurvive initialized successfully!
+2025-03-13 18:32:40,119 - auto_tracker_data_process_pysurvive - INFO - Found 2 tracking devices:
+2025-03-13 18:32:40,119 - auto_tracker_data_process_pysurvive - INFO -   - LH0
+2025-03-13 18:32:40,119 - auto_tracker_data_process_pysurvive - INFO -   - LH1
+2025-03-13 18:32:40,121 - auto_tracker_data_process_pysurvive - INFO - Successfully opened serial port: /dev/ttyUSB0
+2025-03-13 18:32:40,122 - auto_tracker_data_process_pysurvive - INFO - Created new Euler data file: tracker_data_process_2025-March-13-Thu-18-32-30/data/euler.csv
