@@ -1,4 +1,0 @@
-2025-03-13 19:41:45,592 - auto_tracker_data_process_pysurvive - INFO - Initializing pysurvive tracking system...
-2025-03-13 19:41:50,611 - auto_tracker_data_process_pysurvive - INFO - pysurvive initialized successfully!
-2025-03-13 19:41:50,613 - auto_tracker_data_process_pysurvive - INFO - Successfully opened serial port: /dev/ttyUSB0
-2025-03-13 19:41:50,614 - auto_tracker_data_process_pysurvive - INFO - Created new Euler data file: tracker_data_process_2025-March-13-Thu-19-41-45/data/euler.csv

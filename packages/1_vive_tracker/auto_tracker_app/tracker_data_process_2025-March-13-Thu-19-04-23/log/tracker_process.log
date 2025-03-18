@@ -1,3 +1,0 @@
-2025-03-13 19:04:23,362 - auto_tracker_data_process_pysurvive - INFO - Initializing pysurvive tracking system...
-2025-03-13 19:04:33,380 - auto_tracker_data_process_pysurvive - INFO - pysurvive initialized successfully!
-2025-03-13 19:04:33,381 - auto_tracker_data_process_pysurvive - ERROR - Error initializing tracker: local variable 'updated' referenced before assignment

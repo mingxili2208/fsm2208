@@ -1,3 +1,0 @@
-2025-03-14 19:12:08,329 - auto_tracker_data_process_pysurvive - INFO - Initializing pysurvive tracking system...
-2025-03-14 19:12:13,351 - auto_tracker_data_process_pysurvive - INFO - pysurvive initialized successfully!
-2025-03-14 19:12:13,351 - auto_tracker_data_process_pysurvive - ERROR - Error initializing tracker: 'NoneType' object has no attribute 'Name'

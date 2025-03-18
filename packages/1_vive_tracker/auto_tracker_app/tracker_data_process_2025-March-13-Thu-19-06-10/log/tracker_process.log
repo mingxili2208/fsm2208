@@ -1,3 +1,0 @@
-2025-03-13 19:06:10,801 - auto_tracker_data_process_pysurvive - INFO - Initializing pysurvive tracking system...
-2025-03-13 19:06:20,828 - auto_tracker_data_process_pysurvive - INFO - pysurvive initialized successfully!
-2025-03-13 19:06:20,828 - auto_tracker_data_process_pysurvive - ERROR - Error initializing tracker: a bytes-like object is required, not 'str'

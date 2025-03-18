@@ -20,14 +20,14 @@ timestamp = current_time.strftime("%Y-%B-%d-%a-%H-%M-%S")
 # Create output directory in parent directory of the script
 script_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(script_dir)
-result_dir = os.path.join(parent_dir, "result")
+result_dir = os.path.join(parent_dir, "results")
 output_dir = os.path.join(result_dir, f"tracker_data_process_{timestamp}")
 os.makedirs(output_dir, exist_ok=True)
 
 # Create subdirectories
 log_dir = os.path.join(output_dir, "log")
 data_dir = os.path.join(output_dir, "data")
-result_dir = os.path.join(output_dir, "result")
+result_dir = os.path.join(output_dir, "results")
 img_dir = os.path.join(output_dir, "img")
 
 for directory in [log_dir, data_dir, result_dir, img_dir]:
@@ -51,10 +51,12 @@ console.setFormatter(formatter)
 logger.addHandler(console)
 
 # File paths - update these with your input file paths
-LASER_TRACKER_CSV = os.path.join(parent_dir, "data/laser_tracker.csv")  # Update with your input file
-EULER_CSV = os.path.join(parent_dir, "data/euler.csv")  # Update with your input file
+LASER_TRACKER_CSV = os.path.join(parent_dir, "data/laser_tracker_1803.csv")  # Update with your input file
+EULER_CSV = os.path.join(parent_dir, "data/euler_1803.csv")  # Update with your input file
 CORRECTED_LASER_TRACKER_CSV = os.path.join(data_dir, "corrected_laser_tracker.csv")
-
+TAGET_RMSE=0.02
+ROW_X="X"
+ROW_Y="Z"
 class Point:
     """
     Represents a point in 3D space with position and orientation.
@@ -478,9 +480,9 @@ def process_laser_tracker_data(input_file, output_file):
         # Calculate corrected distances
         def compute_corrected_distances(laser_x, laser_z, yaw):
             if yaw < 0:
-                theta = np.radians(yaw + 153.6)
+                theta = np.radians(yaw + 137.4)
             else:
-                theta = np.radians(yaw - 26.8)  # Calculate offset angle (in radians)
+                theta = np.radians(yaw - 40.7)  # Calculate offset angle (in radians)
         
             # Rotation transformation, recover real vertical distance in 30° direction
             d_perp_x = laser_x * np.cos(theta)   # X direction corrected distance
@@ -501,8 +503,8 @@ def process_laser_tracker_data(input_file, output_file):
         df["laser_z"] = 1.660 - df["laser_z"]
         
         # Filter rows based on Yaw value
-        condition1 = abs(df["Yaw"] + 153.6) <= 10     # Filter data with yaw in  angle_90°±10° range
-        condition2 = abs(df["Yaw"] - (26)) <= 10       # Filter data with yaw in angle_-90°±10° range
+        condition1 = abs(df["Yaw"] + 137.4) <= 10     # Filter data with yaw in  angle_90°±10° range
+        condition2 = abs(df["Yaw"] - 40.7) <= 10       # Filter data with yaw in angle_-90°±10° range
         
         df = df[condition1 | condition2]
         
@@ -516,10 +518,6 @@ def process_laser_tracker_data(input_file, output_file):
         logger.info(f"Corrected data saved to {output_file}")
         logger.info(f"First few rows: \n{df.head()}")
         
-        # Display rows where laser_x < 0
-        negative_laser_x = df[df['laser_x'] < 0]
-        if not negative_laser_x.empty:
-            logger.info(f"Rows with negative laser_x: \n{negative_laser_x}")
             
         return df
         
@@ -552,7 +550,7 @@ def calculate_transformations_iterative(max_iterations=10, target_rmse=0.03):
             euler_df = pd.read_csv(EULER_CSV)
             
             # Extract positions
-            positions_A = [[row["X"], 0, row["Y"]] for _, row in tracker_laser_df.iterrows()]
+            positions_A = [[row[ROW_X], 0, row[ROW_Y]] for _, row in tracker_laser_df.iterrows()]
             positions_B = [[row["laser_x"], 0, row["laser_z"]] for _, row in tracker_laser_df.iterrows()]
             
             # Extract orientations 
@@ -663,7 +661,7 @@ def calculate_transformations():
         logger.info("Successfully loaded Euler data")
         
         # Extract x, z (tracker position) and insert y=0
-        positions_A = [[row["X"], 0, row["Y"]] for _, row in tracker_laser_df.iterrows()]
+        positions_A = [[row[ROW_X], 0, row[ROW_Y]] for _, row in tracker_laser_df.iterrows()]
         
         # Extract laser_x, laser_z (laser position) and insert y=0
         positions_B = [[row["laser_x"], 0, row["laser_z"]] for _, row in tracker_laser_df.iterrows()]
@@ -840,7 +838,7 @@ def main():
             logger.info("Calculating transformation matrices iteratively...")
             
             # Set target RMSE
-            target_rmse = 0.01
+            target_rmse = TAGET_RMSE
             
             # Run iterative calculation
             T_pos, R_euler, final_rmse = calculate_transformations_iterative(
