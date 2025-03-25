@@ -153,7 +153,7 @@ class EgoVehicleTerminal:
         vehicle_bp.set_attribute("role_name", self.vehicle_role_name)  # 设置角色名称为 'ego_vehicle'
 
 
-        spawn_point = self.spawn_points[3]
+        spawn_point = self.spawn_points[35]
         self.vehicle = self.world.try_spawn_actor(vehicle_bp, spawn_point)
 
         if not self.vehicle:

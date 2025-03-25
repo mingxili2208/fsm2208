@@ -15,13 +15,17 @@ from scipy.spatial.transform import Rotation as R
 
 # Create timestamp for output directory
 current_time = datetime.datetime.now()
-timestamp = current_time.strftime("%Y-%B-%d-%a-%H-%M-%S")
+timestamp = current_time.strftime("%Y-%m-%d %H:%M:%S")
+
+
+TAGET_RMSE=0.05
+
 
 # Create output directory in parent directory of the script
 script_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(script_dir)
 result_dir = os.path.join(parent_dir, "results")
-output_dir = os.path.join(result_dir, f"tracker_data_process_{timestamp}")
+output_dir = os.path.join(result_dir, f"tdps_{timestamp}_with RSME_Target_{TAGET_RMSE}")
 os.makedirs(output_dir, exist_ok=True)
 
 # Create subdirectories
@@ -54,7 +58,7 @@ logger.addHandler(console)
 LASER_TRACKER_CSV = os.path.join(parent_dir, "data/laser_tracker_1803.csv")  # Update with your input file
 EULER_CSV = os.path.join(parent_dir, "data/euler_1803.csv")  # Update with your input file
 CORRECTED_LASER_TRACKER_CSV = os.path.join(data_dir, "corrected_laser_tracker.csv")
-TAGET_RMSE=0.02
+
 ROW_X="X"
 ROW_Y="Z"
 class Point:

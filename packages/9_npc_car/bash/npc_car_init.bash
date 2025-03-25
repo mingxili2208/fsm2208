@@ -7,7 +7,7 @@ export AGENT_FRAME_RATE="20"
 export REMOTE_CONNECTION="False"
 # Autonomous actor default role_name and type
 export NPC_ROLE_NAME="vis_npc"
-export NPC_MODEL_TYPE="vehicle.tesla.model3"
+export NPC_MODEL_TYPE="vehicle.nissan.patrol_2021" #"vehicle.mitsubishi.fusorosa" #
 
 # modes are 
 #   * "leaderboard" : when runner the leaderboard (route based) scenario collections 

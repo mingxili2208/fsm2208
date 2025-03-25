@@ -37,6 +37,24 @@ class TransformedSandBoxCoorPublisherNode(Node):
                              [ 9.68207899e-01,  3.27650037e+01,  0.00000000e+00,  7.28873065e+01],
                              [ 0.00000000e+00,  0.00000000e+00,  3.27793059e+01, -5.08468894e-02],
                              [ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
+    def check_threshold(self, position, yaw, threshold=0.005):
+        
+        position_changed = (
+            abs(position[0] - self.previous_position[0]) > threshold or
+            abs(position[1] - self.previous_position[1]) > threshold or
+            abs(position[2] - self.previous_position[2]) > threshold
+        )
+        yaw_changed = abs(yaw - self.previous_yaw) > np.radians(0.286)  # 约0.286度
+
+        if position_changed or yaw_changed:
+            self.previous_position = position
+            self.previous_yaw = yaw
+            self.yaw_history.append(yaw)
+            #self.get_logger().info(f"yaw_changed is {yaw_changed}")
+            self.position_history.append(position)
+            return True
+        else:
+            return False
     def calculate_B_position(self,A_position, A_yaw):
         """
         根据 A 在 C 中的位置和 yaw 角，计算 B 在 C 中的位置。
@@ -163,20 +181,10 @@ class TransformedSandBoxCoorPublisherNode(Node):
     def publish_transformed_coor(self):
         
         transformed_position_, transformed_yaw_ = self.sandbox_transformer.get_transformed_coor()
-        #transformed_position_[1]-=0.05
-        #if self.previous_position is None or self.previous_yaw is None:
+       
         self.previous_position = transformed_position_
         self.previous_yaw = transformed_yaw_
-        #else:
-            # if abs(transformed_position_[0] - self.previous_position[0]) > 0.005 or \
-            #    abs(transformed_position_[2] - self.previous_position[2]) > 0.005 or \
-            #    abs(np.degrees(self.previous_yaw) - np.degrees(transformed_yaw_)) > 1:
-            #     self.get_logger().info(
-            #         f"\n previous_position is {self.previous_position};    the abs in x is {abs(transformed_position_[0] - self.previous_position[0])};  the abs in y is {abs(transformed_position_[2] - self.previous_position[2])} the abs in yaw is {abs(np.degrees(self.previous_yaw) - np.degrees(transformed_yaw_))}")
-            #     self.previous_position = transformed_position_
-            #     self.previous_yaw = transformed_yaw_
-            # else:
-            #     return
+
         transformed_position, transformed_yaw=self.transform_coordinates_from_sandbox2carla(transformed_position_, transformed_yaw_)
         # Set up the PoseWithCovarianceStamped message
         header = Header()
