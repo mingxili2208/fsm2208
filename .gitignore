@@ -3,3 +3,5 @@
 
 # 忽略 VS Code 配置文件
 .vscode/
+
+Logs/autoware/autoware_log.log
