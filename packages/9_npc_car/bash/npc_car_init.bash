@@ -35,6 +35,8 @@ export FREE_MAP_NAME="fsm_lab_sandbox_right_hand_driving_scene"
 source /opt/ros/humble/setup.bash
 export ROS_DOMAIN_ID=46
 
+export NPC_SPAWN_INDEX=41
+
 source ${AUTOWARE_ROOT}/install/setup.bash
 
 source ${OP_ROS_PLUGINS_ROOT}/install/setup.bash

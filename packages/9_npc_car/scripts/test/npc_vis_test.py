@@ -12,6 +12,8 @@ import numpy as np
 import math
 import psutil
 
+spawn_index = int(os.environ.get("NPC_SPAWN_INDEX", 41))
+
 def print_memory_usage():
     process = psutil.Process(os.getpid())
     print(f"Memory usage: {process.memory_info().rss / 1024 ** 2:.2f} MB")
@@ -153,7 +155,7 @@ class EgoVehicleTerminal:
         vehicle_bp.set_attribute("role_name", self.vehicle_role_name)  # 设置角色名称为 'ego_vehicle'
 
 
-        spawn_point = self.spawn_points[35]
+        spawn_point = self.spawn_points[spawn_index]
         self.vehicle = self.world.try_spawn_actor(vehicle_bp, spawn_point)
 
         if not self.vehicle:

@@ -15,8 +15,13 @@ from rclpy.node import Node
 import numpy as np
 from rclpy.time import Time
 import carla
+import datetime
+import logging
 
 VEHICLE_NAME = "follow_adtruck"
+# Create log directory in the current working directory
+LOG_DIR = os.path.join(os.getcwd(), "coordinate_logs")
+os.makedirs(LOG_DIR, exist_ok=True)
 
 class TransformedSandBoxCoorPublisherNode(Node):
     def __init__(self, update_rate=0.02):
@@ -24,6 +29,30 @@ class TransformedSandBoxCoorPublisherNode(Node):
         self.publisher = self.create_publisher(
             PoseWithCovarianceStamped, f"/real_world/{VEHICLE_NAME}/transformed_with_covariance", 1
         )
+
+        # Set up logging
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        log_file = os.path.join(LOG_DIR, f"coordinate_transform_{timestamp}.log")
+        
+        self.logger = logging.getLogger("coordinate_transform")
+        self.logger.setLevel(logging.INFO)
+        
+        # Create file handler
+        file_handler = logging.FileHandler(log_file)
+        file_handler.setLevel(logging.INFO)
+        
+        # Create formatter and add to handler
+        formatter = logging.Formatter('%(asctime)s - %(message)s')
+        file_handler.setFormatter(formatter)
+        
+        # Add handler to logger
+        self.logger.addHandler(file_handler)
+        
+        # Log header
+        self.logger.info("Timestamp, Before_X, Before_Y, Before_Z, Before_Yaw_Deg, After_X, After_Y, After_Z, After_Yaw_Deg")
+        
+        # Log the path where logs are saved
+        self.get_logger().info(f"Coordinate logs will be saved to: {log_file}")
 
         self.sandbox_transformer = VR2SandBoxTransformer()
         self.previous_position = None
@@ -187,10 +216,20 @@ class TransformedSandBoxCoorPublisherNode(Node):
 
             # Publish the message
             self.publisher.publish(msg)
+            
             if self.log_flag:
+                # Log to console
                 self.get_logger().info(
                     f"\n Transformed Published! x is {transformed_position[0]}, y is {transformed_position[1]}, z is {transformed_position[2]}, yaw is {math.degrees(transformed_yaw)}"
                 )
+                
+                # Log to file with both original and transformed coordinates
+                self.logger.info(
+                    f"{datetime.datetime.now().isoformat()}, "
+                    f"{self.current_position[0]}, {self.current_position[1]}, {self.current_position[2]}, {math.degrees(self.current_yaw)}, "
+                    f"{transformed_position[0]}, {transformed_position[1]}, {transformed_position[2]}, {math.degrees(transformed_yaw)}"
+                )
+                
             # self.get_logger().info(
             #     f"\n Transformed Published with covariance! [{msg.pose.pose.position.x}, {msg.pose.pose.position.y}, {msg.pose.pose.position.z}, {msg.pose.pose.orientation.w}, {msg.pose.pose.orientation.x}, {msg.pose.pose.orientation.y}, {msg.pose.pose.orientation.z}]"
             # )

@@ -45,7 +45,7 @@ class IntegratedControlPublisher(Node):
         
         # 初始化时间戳日志文件
         with open(self.timing_log_path, 'w') as f:
-            f.write("timestamp,event_type,pc_time,arduino_time,delay_ms,steering_angle,speed\n")
+            f.write("timestamp,event_type,pc_time,arduino_time,delay_ms,steering_angle,speed,mapped_steering,mapped_speed\n")
         
         self.log_lock = threading.Lock()
 
@@ -100,6 +100,10 @@ class IntegratedControlPublisher(Node):
         self.last_sync_time = 0     # 上次同步时间
         self.command_timestamps = {}  # 存储命令发送时间戳
 
+        # 新增: 存储最近发送的控制命令及其时间戳，用于与接收到的映射值关联
+        self.last_command_store = {}
+        self.last_command_lock = threading.Lock()
+
         # 启动串口读取线程
         self.read_thread = threading.Thread(target=self.read_from_serial, daemon=True)
         self.read_thread.start()
@@ -149,13 +153,14 @@ class IntegratedControlPublisher(Node):
         relative_time = current_time - self.time_base
         return relative_time
 
-    def log_timing_event(self, event_type, pc_time, arduino_time, delay_ms, steering_angle=0.0, speed=0.0):
+    def log_timing_event(self, event_type, pc_time, arduino_time, delay_ms, 
+                         steering_angle=0.0, speed=0.0, mapped_steering=0.0, mapped_speed=0.0):
         """记录时间戳事件到日志文件"""
         try:
             with self.log_lock:
                 with open(self.timing_log_path, 'a') as f:
                     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-                    f.write(f"{timestamp},{event_type},{pc_time},{arduino_time},{delay_ms},{steering_angle},{speed}\n")
+                    f.write(f"{timestamp},{event_type},{pc_time},{arduino_time},{delay_ms},{steering_angle},{speed},{mapped_steering},{mapped_speed}\n")
         except Exception as e:
             self.logger.error(f"写入时间戳日志时出错: {e}")
 
@@ -203,11 +208,11 @@ class IntegratedControlPublisher(Node):
             self.logger.info("Invalid checksum")
             return False
         try:
-            _, msg_type, steering_tire_angle, speed, checksum = struct.unpack('<BBffB', data[:11])
+            _, msg_type, steering_tire_angle, speed, recv_checksum = struct.unpack('<BBffB', data[:11])
+            calculated_checksum = self.calculate_checksum(msg_type, steering_tire_angle, speed)
+            return calculated_checksum == recv_checksum
         except struct.error:
             return False
-        calculated_checksum = self.calculate_checksum(msg_type, steering_tire_angle, speed)
-        return calculated_checksum == checksum
 
     def listener_callback(self, msg):
         if self.mode != self.MODE_AUTO:
@@ -233,12 +238,17 @@ class IntegratedControlPublisher(Node):
             self.pre_speed = speed
             self.logger.debug(f"当前转向角度: {steering_tire_angle_deg} 度, 速度: {speed} m/s")
             
+            # 获取当前时间戳
+            current_time = self.get_timestamp()
+            
             # 计算校验和
-            checksum = self.calculate_checksum(self.MSG_TYPE_COMMAND, steering_tire_angle_deg, speed)
+            checksum = self.calculate_checksum_with_timestamp(self.MSG_TYPE_COMMAND, current_time, steering_tire_angle_deg, speed)
 
-            # 打包消息
+            # 打包消息，包含时间戳
             try:
-                packed_msg = struct.pack('<BBffB', 0x42, self.MSG_TYPE_COMMAND, steering_tire_angle_deg, speed, checksum)
+                packed_msg = struct.pack('<BBIffB', 0x42, self.MSG_TYPE_COMMAND, 
+                                       current_time,  # 添加4字节时间戳
+                                       steering_tire_angle_deg, speed, checksum)
                 hex_msg = " ".join(f"{byte:02X}" for byte in packed_msg)
             except struct.error as e:
                 self.logger.error(f"打包消息时发生错误: {e}")
@@ -247,13 +257,14 @@ class IntegratedControlPublisher(Node):
             # 判断是否与上次发送的命令不同，避免重复发送
             if (self.last_sent_commands['speed'] != speed or
                 self.last_sent_commands['steering_angle_deg'] != steering_tire_angle_deg):
-
-                # 记录发送时间戳
-                current_time = self.get_timestamp()  # 相对时间戳
-                cmd_id = f"{current_time}_{steering_tire_angle_deg}_{speed}"
                 
-                with self.time_sync_lock:
-                    self.command_timestamps[cmd_id] = current_time
+                # 存储当前命令，用于后续与映射值关联
+                with self.last_command_lock:
+                    self.last_command_store = {
+                        'timestamp': current_time,
+                        'steering_angle_deg': steering_tire_angle_deg,
+                        'speed': speed
+                    }
                 
                 # 记录发送事件
                 self.log_timing_event("CMD_SENT", current_time, 0, 0, steering_tire_angle_deg, speed)
@@ -268,16 +279,25 @@ class IntegratedControlPublisher(Node):
                     return
 
                 # 在主脚本输出当前发送的speed和angle
-                self.logger.info(f"发送到串口 - 速度: {speed} m/s, 转向角度: {steering_tire_angle_deg} 度")
+                self.logger.info(f"发送到串口 - 时间戳: {current_time} ms, 速度: {speed} m/s, 转向角度: {steering_tire_angle_deg} 度")
 
                 # 更新上次发送的命令
                 self.last_sent_commands['speed'] = speed
                 self.last_sent_commands['steering_angle_deg'] = steering_tire_angle_deg
 
                 # 发布发送的命令信息到ROS2主题
-                sent_msg = String()
-                sent_msg.data = f"Sent - 速度: {speed} m/s, 转向角度: {steering_tire_angle_deg} 度"
-                self.received_data_publisher.publish(sent_msg)
+                if not self.stop_event.is_set():
+                    sent_msg = String()
+                    sent_msg.data = f"Sent - 时间戳: {current_time} ms, 速度: {speed} m/s, 转向角度: {steering_tire_angle_deg} 度"
+                    self.received_data_publisher.publish(sent_msg)
+
+    def calculate_checksum_with_timestamp(self, msg_type, timestamp, steering_tire_angle, speed):
+        # 打包数据为字节
+        data = struct.pack('<BIff', msg_type, timestamp, steering_tire_angle, speed)
+        checksum = 0
+        for byte in data:
+            checksum ^= byte
+        return checksum
 
     def read_from_serial(self):
         # 移除文件logging，改为只将数据放入队列
@@ -299,9 +319,9 @@ class IntegratedControlPublisher(Node):
                             self.logger.debug(f"Received control response: {' '.join(f'{byte:02X}' for byte in response_data)}")
                     
                     elif header == self.TIME_SYNC_HEADER:  # 时间同步响应
-                        # 读取剩余14个字节 (1字节类型 + 4字节PC时间戳 + 4字节Arduino时间戳 + 4字节偏移量 + 1字节校验)
-                        response_data = header_byte + self.ser.read(14)
-                        if len(response_data) == 15:
+                        # 读取剩余10个字节 (1字节类型 + 4字节PC时间戳 + 4字节Arduino时间戳 + 1字节校验)
+                        response_data = header_byte + self.ser.read(10)
+                        if len(response_data) == 11:
                             self.process_time_sync_response(response_data)
                     
                     elif header == self.ACK_HEADER:  # ACK响应
@@ -323,8 +343,8 @@ class IntegratedControlPublisher(Node):
     def process_time_sync_response(self, data):
         """处理时间同步响应"""
         try:
-            if len(data) < 15:
-                self.logger.warning(f"时间同步响应数据不完整: {len(data)} bytes")
+            if len(data) < 11 or self.stop_event.is_set():
+                self.logger.warning(f"时间同步响应数据不完整: {len(data)} bytes 或节点正在关闭")
                 return
                 
             # 解析时间同步响应 (字节顺序为小端序)
@@ -336,8 +356,8 @@ class IntegratedControlPublisher(Node):
             # 提取Arduino时间戳 (4字节, 小端序)
             arduino_time = data[6] | (data[7] << 8) | (data[8] << 16) | (data[9] << 24)
             
-            # 提取偏移量 (4字节, 小端序)
-            offset = data[10] | (data[11] << 8) | (data[12] << 16) | (data[13] << 24)
+            # 在Python端计算偏移量 (PC时间 - Arduino时间)
+            offset = pc_time - arduino_time
             
             if sync_type == 0x01:  # 同步确认
                 with self.time_sync_lock:
@@ -347,10 +367,12 @@ class IntegratedControlPublisher(Node):
                 current_time = self.get_timestamp()
                 round_trip = current_time - self.last_sync_time
                 
-                sync_msg = String()
-                sync_msg.data = f"时间同步成功 - PC时间: {pc_time} ms, Arduino时间: {arduino_time} ms, 偏移量: {offset} ms, 延迟: {round_trip} ms"
-                self.timing_publisher.publish(sync_msg)
-                self.logger.info(sync_msg.data)
+                if not self.stop_event.is_set():
+                    sync_msg = String()
+                    sync_msg.data = f"时间同步成功 - PC时间: {pc_time} ms, Arduino时间: {arduino_time} ms, 偏移量: {offset} ms, 延迟: {round_trip} ms"
+                    self.timing_publisher.publish(sync_msg)
+                
+                self.logger.info(f"时间同步成功 - PC时间: {pc_time} ms, Arduino时间: {arduino_time} ms, 偏移量: {offset} ms, 延迟: {round_trip} ms")
                 
                 # 记录时间同步事件
                 self.log_timing_event("SYNC_RESPONSE", pc_time, arduino_time, round_trip)
@@ -361,40 +383,46 @@ class IntegratedControlPublisher(Node):
     def process_ack_response(self, data):
         """处理ACK响应"""
         try:
-            if len(data) < 11:
-                self.logger.warning(f"ACK响应数据不完整: {len(data)} bytes")
+            if len(data) < 11 or self.stop_event.is_set():
+                self.logger.warning(f"ACK响应数据不完整: {len(data)} bytes 或节点正在关闭")
                 return
                 
             # 解析ACK响应 (字节顺序为小端序)
             ack_type = data[1]
             
-            # 提取时间戳 (4字节, 小端序)
-            timestamp = data[2] | (data[3] << 8) | (data[4] << 16) | (data[5] << 24)
+            # 提取PC时间戳 (4字节, 小端序)
+            pc_timestamp = data[2] | (data[3] << 8) | (data[4] << 16) | (data[5] << 24)
             
             # 提取Arduino本地时间 (4字节, 小端序)
             arduino_time = data[6] | (data[7] << 8) | (data[8] << 16) | (data[9] << 24)
             
             # 使用相对时间戳计算延迟
             current_relative_time = self.get_timestamp()
-            delay = current_relative_time - timestamp
+            delay = current_relative_time - pc_timestamp
             
             if ack_type == self.ACK_RECEIVED:
-                ack_msg = String()
-                ack_msg.data = f"命令接收确认 - PC时间戳: {timestamp} ms, Arduino时间: {arduino_time} ms, 延迟: {delay} ms"
-                self.timing_publisher.publish(ack_msg)
-                self.logger.info(ack_msg.data)
+                ack_msg_text = f"命令接收确认 - PC时间戳: {pc_timestamp} ms, Arduino时间: {arduino_time} ms, 延迟: {delay} ms"
+                self.logger.info(ack_msg_text)
+                
+                if not self.stop_event.is_set():
+                    ack_msg = String()
+                    ack_msg.data = ack_msg_text
+                    self.timing_publisher.publish(ack_msg)
                 
                 # 记录接收确认事件
-                self.log_timing_event("CMD_RECEIVED", timestamp, arduino_time, delay)
+                self.log_timing_event("CMD_RECEIVED", pc_timestamp, arduino_time, delay)
                 
             elif ack_type == self.ACK_SENT:
-                ack_msg = String()
-                ack_msg.data = f"命令发送确认 - PC时间戳: {timestamp} ms, Arduino时间: {arduino_time} ms, 总延迟: {delay} ms"
-                self.timing_publisher.publish(ack_msg)
-                self.logger.info(ack_msg.data)
+                ack_msg_text = f"命令发送确认 - PC时间戳: {pc_timestamp} ms, Arduino时间: {arduino_time} ms, 总延迟: {delay} ms"
+                self.logger.info(ack_msg_text)
+                
+                if not self.stop_event.is_set():
+                    ack_msg = String()
+                    ack_msg.data = ack_msg_text
+                    self.timing_publisher.publish(ack_msg)
                 
                 # 记录发送确认事件
-                self.log_timing_event("CMD_SENT_SUCCESS", timestamp, arduino_time, delay)
+                self.log_timing_event("CMD_SENT_SUCCESS", pc_timestamp, arduino_time, delay)
                 
         except Exception as e:
             self.logger.error(f"解析ACK响应失败: {e}")
@@ -406,57 +434,79 @@ class IntegratedControlPublisher(Node):
                 if len(response) >= 11 and response[0] == 0x42:
                     if self.verify_checksum(response):
                         try:
-                            _, msg_type, steering_tire_angle_resp, speed_resp, _ = struct.unpack('<BBffB', response[:11])
-                            steering_tire_angle_resp = round(steering_tire_angle_resp, 3)
-                            speed_resp = round(speed_resp, 3)
+                            _, msg_type, mapped_steering, mapped_speed, _ = struct.unpack('<BBffB', response[:11])
+                            
+                            # Arduino直接发送映射后的值
+                            mapped_steering = round(mapped_steering, 3)
+                            mapped_speed = round(mapped_speed, 3)
+                            
+                            # 获取最近发送的原始命令
+                            original_steering = 0.0
+                            original_speed = 0.0
+                            timestamp = 0
+                            
+                            with self.last_command_lock:
+                                if self.last_command_store:
+                                    original_steering = self.last_command_store.get('steering_angle_deg', 0.0)
+                                    original_speed = self.last_command_store.get('speed', 0.0)
+                                    timestamp = self.last_command_store.get('timestamp', 0)
+                            
                             if msg_type == 0x02:
-                                log_msg = f"Arduino 发送正确: 转向角度={steering_tire_angle_resp} 度, 速度={speed_resp} m/s"
+                                log_msg = f"Arduino 发送正确: 映射后的转向角度={mapped_steering}, 映射后的速度={mapped_speed}"
                                 self.logger.info(log_msg)
-                                # 记录成功事件
-                                self.log_timing_event("RADIO_SENT_SUCCESS", 0, 0, 0, steering_tire_angle_resp, speed_resp)
+                                # 记录成功事件，同时包含原始值和映射值
+                                self.log_timing_event("RADIO_SENT_SUCCESS", timestamp, 0, 0, 
+                                                     original_steering, original_speed, mapped_steering, mapped_speed)
                                 # 发布到新的ROS2主题
-                                received_msg = String()
-                                received_msg.data = log_msg
-                                self.received_data_publisher.publish(received_msg)
+                                if not self.stop_event.is_set():
+                                    received_msg = String()
+                                    received_msg.data = log_msg
+                                    self.received_data_publisher.publish(received_msg)
                             elif msg_type == 0x03:
-                                log_msg = f"!!!!!! Arduino 发送错误!!!!!!!\n转向角度={steering_tire_angle_resp} 度, 速度={speed_resp} m/s"
+                                log_msg = f"!!!!!! Arduino 发送错误!!!!!!!\n映射后的转向角度={mapped_steering}, 映射后的速度={mapped_speed}"
                                 self.logger.warning(log_msg)
-                                # 记录失败事件
-                                self.log_timing_event("RADIO_SENT_FAIL", 0, 0, 0, steering_tire_angle_resp, speed_resp)
+                                # 记录失败事件，同时包含原始值和映射值
+                                self.log_timing_event("RADIO_SENT_FAIL", timestamp, 0, 0, 
+                                                     original_steering, original_speed, mapped_steering, mapped_speed)
                                 # 发布到新的ROS2主题
-                                received_msg = String()
-                                received_msg.data = log_msg
-                                self.received_data_publisher.publish(received_msg)
+                                if not self.stop_event.is_set():
+                                    received_msg = String()
+                                    received_msg.data = log_msg
+                                    self.received_data_publisher.publish(received_msg)
                             elif msg_type == 0x05:
                                 log_msg = "!!!!!! Arduino 5s 内未接收到消息!!!!!!!"
                                 self.logger.error(log_msg)
                                 # 记录超时事件
-                                self.log_timing_event("TIMEOUT", 0, 0, 0)
+                                self.log_timing_event("TIMEOUT", timestamp, 0, 0)
                                 # 发布到新的ROS2主题
-                                received_msg = String()
-                                received_msg.data = log_msg
-                                self.received_data_publisher.publish(received_msg)
+                                if not self.stop_event.is_set():
+                                    received_msg = String()
+                                    received_msg.data = log_msg
+                                    self.received_data_publisher.publish(received_msg)
                         except struct.error as e:
                             log_msg = f"解析响应数据失败: {e}"
                             self.logger.error(log_msg)
                             # 发布到新的ROS2主题
-                            received_msg = String()
-                            received_msg.data = log_msg
-                            self.received_data_publisher.publish(received_msg)
+                            if not self.stop_event.is_set():
+                                received_msg = String()
+                                received_msg.data = log_msg
+                                self.received_data_publisher.publish(received_msg)
                     else:
                         log_msg = "!!!!!! Arduino 发送的校验和不正确!!!!!!!"
                         self.logger.error(log_msg)
                         # 发布到新的ROS2主题
-                        received_msg = String()
-                        received_msg.data = log_msg
-                        self.received_data_publisher.publish(received_msg)
+                        if not self.stop_event.is_set():
+                            received_msg = String()
+                            received_msg.data = log_msg
+                            self.received_data_publisher.publish(received_msg)
                 else:
                     log_msg = "!!!!!! Arduino 发送的消息格式不正确!!!!!!!"
                     self.logger.error(log_msg)
                     # 发布到新的ROS2主题
-                    received_msg = String()
-                    received_msg.data = log_msg
-                    self.received_data_publisher.publish(received_msg)
+                    if not self.stop_event.is_set():
+                        received_msg = String()
+                        received_msg.data = log_msg
+                        self.received_data_publisher.publish(received_msg)
             except queue.Empty:
                 continue  # 没有数据，继续等待
             except Exception as e:
@@ -532,29 +582,33 @@ class IntegratedControlPublisher(Node):
         try:
             steering_tire_angle_deg = round(0.0, 3)
             speed = round(0.0, 3)
-            checksum = self.calculate_checksum(self.MSG_TYPE_COMMAND, steering_tire_angle_deg, speed)
-            packed_msg = struct.pack('<BBffB', 0x42, self.MSG_TYPE_COMMAND, steering_tire_angle_deg, speed, checksum)
+            current_time = self.get_timestamp()
+            
+            # 存储停止命令，用于后续与映射值关联
+            with self.last_command_lock:
+                self.last_command_store = {
+                    'timestamp': current_time,
+                    'steering_angle_deg': steering_tire_angle_deg,
+                    'speed': speed
+                }
+            
+            checksum = self.calculate_checksum_with_timestamp(self.MSG_TYPE_COMMAND, current_time, steering_tire_angle_deg, speed)
+            packed_msg = struct.pack('<BBIffB', 0x42, self.MSG_TYPE_COMMAND, current_time, steering_tire_angle_deg, speed, checksum)
             hex_msg = " ".join(f"{byte:02X}" for byte in packed_msg)
             self.logger.info(f"发送停止命令: {hex_msg}")
-            
-            # 记录发送时间戳
-            current_time = self.get_timestamp()  # 相对时间戳
-            cmd_id = f"stop_{current_time}"
-            
-            with self.time_sync_lock:
-                self.command_timestamps[cmd_id] = current_time
             
             # 记录停止命令发送事件
             self.log_timing_event("STOP_CMD_SENT", current_time, 0, 0, 0.0, 0.0)
                 
             self.ser.write(packed_msg)
             self.ser.flush()
-            self.logger.info(f"发送到串口 - 速度: {speed} m/s, 转向角度: {steering_tire_angle_deg} 度")
+            self.logger.info(f"发送到串口 - 时间戳: {current_time} ms, 速度: {speed} m/s, 转向角度: {steering_tire_angle_deg} 度")
 
             # 发布发送的停止命令信息到ROS2主题
-            sent_msg = String()
-            sent_msg.data = f"Sent Stop - 速度: {speed} m/s, 转向角度: {steering_tire_angle_deg} 度"
-            self.received_data_publisher.publish(sent_msg)
+            if not self.stop_event.is_set():
+                sent_msg = String()
+                sent_msg.data = f"Sent Stop - 时间戳: {current_time} ms, 速度: {speed} m/s, 转向角度: {steering_tire_angle_deg} 度"
+                self.received_data_publisher.publish(sent_msg)
 
         except serial.SerialException as e:
             self.logger.error(f"发送停止命令时发生串口错误: {e}")
@@ -630,31 +684,35 @@ class IntegratedControlPublisher(Node):
                             self.send_serial_command(self.steering_angle_deg, self.speed)
                             self.last_sent_commands['speed'] = self.speed
                             self.last_sent_commands['steering_angle_deg'] = self.steering_angle_deg
-            time.sleep(0.1)  # 100ms 间隔
+            time.sleep(0.05)  # 100ms 间隔
 
     def send_serial_command(self, steering_angle_deg, speed):
         try:
             # 对发送的float值进行四舍五入到3位小数
             steering_angle_deg = round(steering_angle_deg, 3)
             speed = round(speed, 3)
+            current_time = self.get_timestamp()
+
+            # 存储当前命令，用于后续与映射值关联
+            with self.last_command_lock:
+                self.last_command_store = {
+                    'timestamp': current_time,
+                    'steering_angle_deg': steering_angle_deg,
+                    'speed': speed
+                }
 
             # 计算校验和
-            checksum = self.calculate_checksum(self.MSG_TYPE_COMMAND, steering_angle_deg, speed)
+            checksum = self.calculate_checksum_with_timestamp(self.MSG_TYPE_COMMAND, current_time, steering_angle_deg, speed)
 
             # 打包消息
-            packed_msg = struct.pack('<BBffB', 0x42, 0x01, steering_angle_deg, speed, checksum)
+            packed_msg = struct.pack('<BBIffB', 0x42, 0x01, 
+                                    current_time,  # 添加时间戳
+                                    steering_angle_deg, speed, checksum)
             hex_msg = " ".join(f"{byte:02X}" for byte in packed_msg)
 
             # 判断是否与上次发送的命令不同，避免重复发送
             if (self.last_sent_commands['speed'] != speed or
                 self.last_sent_commands['steering_angle_deg'] != steering_angle_deg):
-
-                # 记录发送时间戳
-                current_time = self.get_timestamp()  # 相对时间戳
-                cmd_id = f"{current_time}_{steering_angle_deg}_{speed}"
-                
-                with self.time_sync_lock:
-                    self.command_timestamps[cmd_id] = current_time
                 
                 # 记录手动命令发送事件
                 self.log_timing_event("MANUAL_CMD_SENT", current_time, 0, 0, steering_angle_deg, speed)
@@ -664,12 +722,13 @@ class IntegratedControlPublisher(Node):
                 self.ser.flush()
 
                 # 在主脚本输出当前发送的speed和angle
-                self.logger.info(f"发送到串口 - 速度: {speed} m/s, 转向角度: {steering_angle_deg} 度")
+                self.logger.info(f"发送到串口 - 时间戳: {current_time} ms, 速度: {speed} m/s, 转向角度: {steering_angle_deg} 度")
 
                 # 发布发送的命令信息到ROS2主题
-                sent_msg = String()
-                sent_msg.data = f"Sent - 速度: {speed} m/s, 转向角度: {steering_angle_deg} 度"
-                self.received_data_publisher.publish(sent_msg)
+                if not self.stop_event.is_set():
+                    sent_msg = String()
+                    sent_msg.data = f"Sent - 时间戳: {current_time} ms, 速度: {speed} m/s, 转向角度: {steering_angle_deg} 度"
+                    self.received_data_publisher.publish(sent_msg)
 
                 # 更新上次发送的命令
                 self.last_sent_commands['speed'] = speed
