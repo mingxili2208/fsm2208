@@ -35,7 +35,7 @@ export FREE_MAP_NAME="fsm_lab_sandbox_right_hand_driving_scene"
 source /opt/ros/humble/setup.bash
 export ROS_DOMAIN_ID=46
 
-export NPC_SPAWN_INDEX=41
+export NPC_SPAWN_INDEX=35 #9   #41 #this is neer to vr
 
 source ${AUTOWARE_ROOT}/install/setup.bash
 

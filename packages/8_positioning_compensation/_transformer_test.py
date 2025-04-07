@@ -17,7 +17,9 @@ from rclpy.time import Time
 import carla
 import datetime
 import logging
+import setproctitle
 
+setproctitle.setproctitle('python_update_coordinate')
 VEHICLE_NAME = "follow_adtruck"
 # Create log directory in the current working directory
 LOG_DIR = os.path.join(os.getcwd(), "coordinate_logs")

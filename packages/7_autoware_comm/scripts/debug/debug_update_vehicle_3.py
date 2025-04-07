@@ -24,7 +24,9 @@ from srunner.scenariomanager.carla_data_provider import CarlaDataProvider
 from geometry_msgs.msg import PoseStamped, TwistWithCovariance, PoseWithCovariance, TwistStamped, PoseWithCovarianceStamped
 from geometry_msgs.msg import PoseWithCovarianceStamped, PoseWithCovariance, Pose, Point, Quaternion
 from rclpy.node import Node 
+import setproctitle
 
+setproctitle.setproctitle('python_update_vehicle')
 class BridgeHelpers(object):
     @staticmethod
     def get_agent_actor(world, role_name):
@@ -76,7 +78,7 @@ class CarlaUpdateVehicleHandler(Node):
         self.get_logger().info(f"[VehicleFollower] Subscribed to topic: {self.topic_name}")
 
         # 创建定时器以 50 Hz 频率定时执行 apply_control
-        self.timer = self.create_timer(0.02, self.apply_control_50hz)
+        self.timer = self.create_timer(0.033, self.apply_control_50hz)
 
     def apply_control_50hz(self):
         """

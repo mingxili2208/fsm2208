@@ -4,4 +4,10 @@
 # 忽略 VS Code 配置文件
 .vscode/
 
+.vid
+
 Logs/autoware/autoware_log.log
+
+*performance*.csv
+
+*1*.mp4

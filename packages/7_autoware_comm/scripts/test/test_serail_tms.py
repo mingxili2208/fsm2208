@@ -49,6 +49,7 @@ class IntegratedControlPublisher(Node):
         
         self.log_lock = threading.Lock()
 
+        self.stop_flag=False
         # 声明并获取参数
         self.declare_parameter('port', '/dev/ttyUSB0')
         self.declare_parameter('baudrate', 115200)
@@ -141,6 +142,8 @@ class IntegratedControlPublisher(Node):
         self.sync_time_thread = threading.Thread(target=self.periodic_time_sync, daemon=True)
         self.sync_time_thread.start()
 
+        self.send_stop_command()
+
     def periodic_time_sync(self):
         """定期进行时间同步"""
         while not self.stop_event.is_set():
@@ -222,12 +225,18 @@ class IntegratedControlPublisher(Node):
         # 将转向角度从弧度转换为度，并四舍五入到3位小数
         steering_tire_angle_deg = round(math.degrees(msg.lateral.steering_tire_angle), 3)
         speed = round(msg.longitudinal.speed, 3)
-
+        acceleration=msg.longitudinal.acceleration
+        
+        if acceleration<-1.1 or (self.last_sent_commands['speed'] == speed and
+                self.last_sent_commands['steering_angle_deg'] == steering_tire_angle_deg): 
+            if self.stop_flag==False:
+                self.send_stop_command() 
+                self.stop_flag=True
         # 判断是否有显著变化
         if (self.pre_steering_tire_angle is None or
             self.pre_speed is None or
             abs(steering_tire_angle_deg - self.pre_steering_tire_angle) > 0.5 or
-            abs(speed - self.pre_speed) > 0.05):
+            abs(speed - self.pre_speed) > 0.1):
 
             self.logger.info('接收到 AckermannControlCommand 消息:')
             self.logger.info(f'  转向角度: {msg.lateral.steering_tire_angle} 弧度')
@@ -239,25 +248,26 @@ class IntegratedControlPublisher(Node):
             self.logger.debug(f"当前转向角度: {steering_tire_angle_deg} 度, 速度: {speed} m/s")
             
             # 获取当前时间戳
-            current_time = self.get_timestamp()
             
-            # 计算校验和
-            checksum = self.calculate_checksum_with_timestamp(self.MSG_TYPE_COMMAND, current_time, steering_tire_angle_deg, speed)
-
-            # 打包消息，包含时间戳
-            try:
-                packed_msg = struct.pack('<BBIffB', 0x42, self.MSG_TYPE_COMMAND, 
-                                       current_time,  # 添加4字节时间戳
-                                       steering_tire_angle_deg, speed, checksum)
-                hex_msg = " ".join(f"{byte:02X}" for byte in packed_msg)
-            except struct.error as e:
-                self.logger.error(f"打包消息时发生错误: {e}")
-                return
 
             # 判断是否与上次发送的命令不同，避免重复发送
             if (self.last_sent_commands['speed'] != speed or
                 self.last_sent_commands['steering_angle_deg'] != steering_tire_angle_deg):
-                
+                self.stop_flag=False
+                current_time = self.get_timestamp()
+            
+                # 计算校验和
+                checksum = self.calculate_checksum_with_timestamp(self.MSG_TYPE_COMMAND, current_time, steering_tire_angle_deg, speed)
+
+                # 打包消息，包含时间戳
+                try:
+                    packed_msg = struct.pack('<BBIffB', 0x42, self.MSG_TYPE_COMMAND, 
+                                        current_time,  # 添加4字节时间戳
+                                        steering_tire_angle_deg, speed, checksum)
+                    hex_msg = " ".join(f"{byte:02X}" for byte in packed_msg)
+                except struct.error as e:
+                    self.logger.error(f"打包消息时发生错误: {e}")
+                    return
                 # 存储当前命令，用于后续与映射值关联
                 with self.last_command_lock:
                     self.last_command_store = {
@@ -289,8 +299,7 @@ class IntegratedControlPublisher(Node):
                 if not self.stop_event.is_set():
                     sent_msg = String()
                     sent_msg.data = f"Sent - 时间戳: {current_time} ms, 速度: {speed} m/s, 转向角度: {steering_tire_angle_deg} 度"
-                    self.received_data_publisher.publish(sent_msg)
-
+                    self.received_data_publisher.publish(sent_msg)    
     def calculate_checksum_with_timestamp(self, msg_type, timestamp, steering_tire_angle, speed):
         # 打包数据为字节
         data = struct.pack('<BIff', msg_type, timestamp, steering_tire_angle, speed)
@@ -540,6 +549,7 @@ class IntegratedControlPublisher(Node):
                     # 切换模式
                     self.toggle_mode()
                     self.send_stop_command()
+                    self.stop_flag=False
                     with self.cmd_lock:
                         self.speed = 0.0
                         self.steering_angle_deg = 0.0

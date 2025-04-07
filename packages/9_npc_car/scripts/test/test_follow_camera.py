@@ -58,7 +58,7 @@ class VehicleMonitor:
         self.screen_width = self.cam_width * 2
         self.screen_height = self.cam_height * 2
         self.screen = pygame.display.set_mode((self.screen_width, self.screen_height), pygame.RESIZABLE)
-        pygame.display.set_caption("CARLA 车辆监控器")
+        pygame.display.set_caption("CARLA Vehicle monitor")
         self.clock = pygame.time.Clock()
 
         # 控制相关参数
@@ -202,19 +202,19 @@ class VehicleMonitor:
 
         # 显示车辆信息
         font = pygame.font.Font(None, 24)
-        vehicle_info = f"车辆ID: {self.vehicle.id} | 类型: {self.vehicle.type_id}"
+        vehicle_info = f"vehicle_ID: {self.vehicle.id} | vehicle_Type: {self.vehicle.type_id}"
         text_surface = font.render(vehicle_info, True, (255, 255, 255))
         self.screen.blit(text_surface, (10, 10))
         
         # 显示车速信息
         velocity = self.vehicle.get_velocity()
         speed = 3.6 * math.sqrt(velocity.x**2 + velocity.y**2 + velocity.z**2)  # 转换为km/h
-        speed_text = f"速度: {speed:.1f} km/h"
+        speed_text = f"Speed: {speed-3.2999:.1f} km/h"
         speed_surface = font.render(speed_text, True, (255, 255, 255))
         self.screen.blit(speed_surface, (10, 40))
         
         # 显示键位控制说明
-        controls_text = "控制: ESC退出, R重置车辆位置, 1-3切换鸟瞰视角"
+        controls_text = "control_key: ESC:exit, R:reload_vehicle, 1-3 exchange_BEV"
         controls_surface = font.render(controls_text, True, (255, 255, 255))
         self.screen.blit(controls_surface, (10, self.screen_height - 30))
 
@@ -307,11 +307,11 @@ def main():
 
     # 解析命令行参数
     import argparse
-    parser = argparse.ArgumentParser(description='CARLA车辆监控器')
-    parser.add_argument('--host', default='127.0.0.1', help='CARLA服务器主机')
-    parser.add_argument('--port', default=2000, type=int, help='CARLA服务器端口')
-    parser.add_argument('--vehicle-id', type=int, help='要监控的车辆ID')
-    parser.add_argument('--role-name', default='pygame_adtruck', help='要监控的车辆角色名称')
+    parser = argparse.ArgumentParser(description='CARLA_vehicle_monitor')
+    parser.add_argument('--host', default='127.0.0.1', help='CARLA_sever')
+    parser.add_argument('--port', default=2000, type=int, help='CARLA_server_port')
+    parser.add_argument('--vehicle-id', type=int, help='vechile_ID')
+    parser.add_argument('--role-name', default='pygame_adtruck', help='vehicle_name')
     args = parser.parse_args()
 
     # 运行VehicleMonitor
