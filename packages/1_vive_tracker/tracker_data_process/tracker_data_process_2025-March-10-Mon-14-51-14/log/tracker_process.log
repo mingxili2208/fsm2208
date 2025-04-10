@@ -1,6 +1,0 @@
-2025-03-10 14:51:14,570 - __main__ - INFO - Starting tracker data collection and processing
-2025-03-10 14:51:14,570 - __main__ - INFO - Press 'R' to start continuous recording
-2025-03-10 14:51:14,570 - __main__ - INFO - Press 'E' to stop continuous recording
-2025-03-10 14:51:14,570 - __main__ - INFO - Press 'T' for single point recording with angle input
-2025-03-10 14:51:14,570 - __main__ - INFO - Press 'Esc' to exit and process data
-2025-03-10 14:51:15,037 - __main__ - ERROR - Error: Tracker 'tracker_1' not found!

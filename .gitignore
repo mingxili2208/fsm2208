@@ -4,12 +4,18 @@
 # 忽略 VS Code 配置文件
 .vscode/
 
-.vid
+.vid/
 
-Logs/autoware/autoware_log.log
+#Logs/autoware/autoware_log.log
 
-*performance*.csv
+#*performance*.csv
 
-*1*.mp4
+*.mp4
 
 *events*.csv
+
+*.csv
+
+*.log
+
+*.zip

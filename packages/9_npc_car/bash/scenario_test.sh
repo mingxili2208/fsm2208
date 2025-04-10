@@ -11,7 +11,7 @@ PYTHON_SCRIPT="$PYTHON_SCRIPT_DIR/scenario_test4.py"
 CONFIG_FILE="$SCRIPT_DIR/traffic_config.json"
 
 # Default values
-VEHICLES=4
+VEHICLES=5
 WALKERS=0
 HOST="127.0.0.1"
 PORT=2000

@@ -1,2 +1,0 @@
-Timestamp,Event_Type,Event_Data
-2025-04-01 17:49:25,carla_connected,"{""client_version"": ""0.9.15-168-g20a4a4618"", ""server_version"": ""0.9.15-168-g20a4a4618-dirty"", ""map"": ""fsm_lab_map_package/Maps/fsm_lab_sandbox_right_hand_driving_scene/fsm_lab_sandbox_right_hand_driving_scene""}"

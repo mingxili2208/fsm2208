@@ -20,8 +20,6 @@ import argparse
 import logging
 import inspect
 import datetime
-import socket
-import json
 import setproctitle
 
 setproctitle.setproctitle('scenario_test')
@@ -35,36 +33,69 @@ except IndexError:
 
 import carla
 
-# 常量定义
-EVENT_PORT = 8700  # 用于发送事件通知的端口
-EVENT_SERVER = '127.0.0.1'  # 事件服务器地址
+def setup_logger(log_file=None):
+    """设置日志记录器"""
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    # 如果没有提供日志文件名，则创建带时间戳的默认文件名
+    if log_file is None:
+        log_dir = "logs"
+        # 创建日志目录（如果不存在）
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+        log_file = os.path.join(log_dir, f"carla_npc_{timestamp}.log")
+    
+    # 配置根日志记录器
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+    
+    # 清除任何现有的处理程序
+    if logger.handlers:
+        logger.handlers.clear()
+    
+    # 创建文件处理程序
+    file_handler = logging.FileHandler(log_file)
+    file_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    file_handler.setFormatter(file_formatter)
+    logger.addHandler(file_handler)
+    
+    # 创建控制台处理程序
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_formatter = logging.Formatter('%(levelname)s: %(message)s')
+    console_handler.setFormatter(console_formatter)
+    logger.addHandler(console_handler)
+    
+    # 记录日志文件位置
+    logger.info(f"日志记录到: {os.path.abspath(log_file)}")
+    
+    return logger
 
 def print_tm_info(tm, world):
     """打印Traffic Manager和世界同步模式的详细信息"""
-    print("\n=== Traffic Manager 和世界设置信息 ===")
+    logging.info("\n=== Traffic Manager 和世界设置信息 ===")
     
     # 打印世界设置
     settings = world.get_settings()
 
-    print(f"世界设置:")
-    print(f"  - 同步模式: {settings.synchronous_mode}")
-    print(f"  - 固定时间步长: {settings.fixed_delta_seconds}")
-    print(f"  - 子步模式: {settings.substepping}")
-    print(f"  - 最大子步时间: {settings.max_substep_delta_time}")
+    logging.info(f"世界设置:")
+    logging.info(f"  - 同步模式: {settings.synchronous_mode}")
+    logging.info(f"  - 固定时间步长: {settings.fixed_delta_seconds}")
+    logging.info(f"  - 子步模式: {settings.substepping}")
+    logging.info(f"  - 最大子步时间: {settings.max_substep_delta_time}")
     
     # 打印Traffic Manager信息
-    print(f"Traffic Manager信息:")
-    print(f"  - 端口: {tm.get_port()}")
+    logging.info(f"Traffic Manager信息:")
+    logging.info(f"  - 端口: {tm.get_port()}")
     
     # 检查Traffic Manager是否处于同步模式
     try:
         is_sync = tm.get_synchronous_mode()
-        print(f"  - 同步模式: {is_sync}")
+        logging.info(f"  - 同步模式: {is_sync}")
     except:
-        print(f"  - 同步模式: 无法获取")
+        logging.info(f"  - 同步模式: 无法获取")
     
     # 获取全局设置
-    print("\nTraffic Manager全局设置:")
+    logging.info("\nTraffic Manager全局设置:")
     try:
         global_distance = None
         # 尝试获取全局跟车距离
@@ -72,47 +103,30 @@ def print_tm_info(tm, world):
             global_distance = tm.get_global_distance_to_leading_vehicle()
         
         if global_distance is not None:
-            print(f"  - 全局跟车距离: {global_distance}米")
+            logging.info(f"  - 全局跟车距离: {global_distance}米")
         else:
-            print(f"  - 全局跟车距离: 无法获取")
+            logging.info(f"  - 全局跟车距离: 无法获取")
     except Exception as e:
-        print(f"  - 全局跟车距离: 获取时出错 ({e})")
+        logging.info(f"  - 全局跟车距离: 获取时出错 ({e})")
     
     # 检查和打印当前活动的车辆
     vehicles = world.get_actors().filter('vehicle.*')
-    print(f"\n当前世界中的车辆: {len(vehicles)}辆")
+    logging.info(f"\n当前世界中的车辆: {len(vehicles)}辆")
     
     for i, vehicle in enumerate(vehicles):
         try:
             autopilot = vehicle.get_autopilot()
             role = vehicle.attributes.get('role_name', 'unknown')
-            print(f"  车辆 {i+1}: ID={vehicle.id}, 类型={vehicle.type_id}, 角色={role}, 自动驾驶={autopilot}")
+            logging.info(f"  车辆 {i+1}: ID={vehicle.id}, 类型={vehicle.type_id}, 角色={role}, 自动驾驶={autopilot}")
         except:
-            print(f"  车辆 {i+1}: ID={vehicle.id}, 类型={vehicle.type_id}")
+            logging.info(f"  车辆 {i+1}: ID={vehicle.id}, 类型={vehicle.type_id}")
     
-    print("=======================================\n")
-
-def send_event(event_type, event_data):
-    """向性能监控服务发送事件通知"""
-    try:
-        # 创建UDP套接字
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        
-        # 构建消息
-        message = {
-            "type": event_type,
-            "time": time.time(),
-            "data": event_data
-        }
-        
-        # 发送消息
-        sock.sendto(json.dumps(message).encode(), (EVENT_SERVER, EVENT_PORT))
-        return True
-    except Exception as e:
-        print(f"发送事件失败: {e}")
-        return False
+    logging.info("=======================================\n")
 
 def main():
+    # 设置日志记录器
+    logger = setup_logger()
+    
     argparser = argparse.ArgumentParser(
         description=__doc__)
     argparser.add_argument(
@@ -166,12 +180,21 @@ def main():
         '--config',
         type=str,
         help='Path to configuration JSON file')
+    argparser.add_argument(
+        '--log-file',
+        type=str,
+        help='Path to log file')
     
     args = argparser.parse_args()
+    
+    # 如果提供了日志文件参数，重新设置日志记录器
+    if args.log_file:
+        logger = setup_logger(args.log_file)
     
     # 如果提供了配置文件，从配置文件加载
     if args.config and os.path.exists(args.config):
         try:
+            import json
             with open(args.config, 'r') as f:
                 config = json.load(f)
                 
@@ -183,17 +206,16 @@ def main():
                 args.safe_mode = config.get('safe', args.safe_mode)
                 args.asynch = config.get('asynch', args.asynch)
                 
-                print(f"已从配置文件加载设置: {args.config}")
+                logging.info(f"已从配置文件加载设置: {args.config}")
         except Exception as e:
-            print(f"加载配置文件时出错: {e}")
+            logging.error(f"加载配置文件时出错: {e}")
     
-    logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.INFO)
-    
-    # 发送启动事件
-    send_event("script_start", {
-        "script": "carla_npc_manager.py",
-        "args": vars(args)
-    })
+    # 记录脚本启动信息
+    logging.info("="*50)
+    logging.info(f"脚本启动: carla_npc_manager.py")
+    logging.info(f"启动时间: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    logging.info(f"参数: {vars(args)}")
+    logging.info("="*50)
     
     # 连接到CARLA服务器
     client = carla.Client(args.host, args.port)
@@ -203,13 +225,11 @@ def main():
     world = client.get_world()
     map = world.get_map()
     
-    # 发送环境信息事件
-    send_event("environment_info", {
-        "carla_version": client.get_client_version(),
-        "map": map.name,
-        "synchronous_mode": world.get_settings().synchronous_mode,
-        "fixed_delta_seconds": world.get_settings().fixed_delta_seconds
-    })
+    # 记录环境信息
+    logging.info(f"CARLA版本: {client.get_client_version()}")
+    logging.info(f"地图: {map.name}")
+    logging.info(f"同步模式: {world.get_settings().synchronous_mode}")
+    logging.info(f"固定时间步长: {world.get_settings().fixed_delta_seconds}")
     
     # 获取当前世界设置
     original_settings = world.get_settings()
@@ -221,20 +241,19 @@ def main():
     try:
         # 尝试连接到默认Traffic Manager端口
         traffic_manager = client.get_trafficmanager(tm_port)
-        print(f"连接到现有Traffic Manager，端口：{tm_port}")
+        logging.info(f"连接到现有Traffic Manager，端口：{tm_port}")
         tm_connected = True
     except Exception as e:
-        print(f"连接到默认Traffic Manager (端口:{tm_port})失败: {e}")
+        logging.warning(f"连接到默认Traffic Manager (端口:{tm_port})失败: {e}")
         # 如果失败，尝试使用备用端口
         try:
             tm_port = args.alt_tm_port
             traffic_manager = client.get_trafficmanager(tm_port)
-            print(f"创建新的Traffic Manager，端口：{tm_port}")
+            logging.info(f"创建新的Traffic Manager，端口：{tm_port}")
             tm_connected = True
         except Exception as e:
-            print(f"无法创建新的Traffic Manager (端口:{tm_port}): {e}")
-            print("退出脚本...")
-            send_event("error", {"message": f"无法创建Traffic Manager: {e}"})
+            logging.error(f"无法创建新的Traffic Manager (端口:{tm_port}): {e}")
+            logging.error("退出脚本...")
             return
     
     # 打印Traffic Manager和世界设置信息
@@ -249,30 +268,34 @@ def main():
     synchronous_master = False
     
     # 再次打印设置信息，以确认更改已生效
-    print("\n=== 更新后的设置 ===")
+    logging.info("\n=== 更新后的设置 ===")
     print_tm_info(traffic_manager, world)
     
     # 获取所有可用的出生点
     spawn_points = map.get_spawn_points()
     
     # 定义出生点和目标点的索引 - 使用日志中匹配的索引
-    spawn_indices = [35, 15, 40,  21]
-    target_indices = [33, 5, 19,  17]
+    spawn_indices =  [ 15, 40,  21, 44, 29] #35
+    target_indices = [ 5, 19,  17, 8,  8]   #33
     
     # 定义要生成的特定车辆类型，与日志匹配
     vehicle_types = [
-        "vehicle.tesla.cybertruck",
-        "vehicle.gazelle.omafiets",
+        #"vehicle.tesla.cybertruck",  #35---33
+        "vehicle.carlamotors.european_hgv",
+        "vehicle.mini.cooper_s",
         "vehicle.nissan.patrol_2021",
-        "vehicle.harley-davidson.low_rider"
+        "vehicle.tesla.cybertruck",
+        "vehicle.tesla.cybertruck"
     ]
     
     # 定义车辆颜色 - 与日志匹配
     vehicle_colors = [
-        None,  # 默认颜色
+        #None,  # 默认颜色
         "202,88,176",
         "159,0,0",
-        "0,38,132"
+        "0,38,132",
+        None,
+        "202,88,176"
     ]
     
     # 确保我们有足够的索引
@@ -281,7 +304,7 @@ def main():
     # 创建车辆蓝图
     blueprint_library = world.get_blueprint_library()
     
-    print(f'准备生成 {num_vehicles} 辆指定车辆')
+    logging.info(f'准备生成 {num_vehicles} 辆指定车辆')
     
     # 存储生成的车辆
     vehicle_list = []
@@ -293,14 +316,11 @@ def main():
     existing_vehicles = {}
     
     try:
-        print('生成NPC车辆...')
-        
-        # 发送车辆生成开始事件
-        send_event("spawn_begin", {"num_vehicles": num_vehicles})
+        logging.info('生成NPC车辆...')
         
         # 检查当前已有的车辆数量并记录它们的信息
         existing_actors = world.get_actors().filter('vehicle.*')
-        print(f'当前世界中已有 {len(existing_actors)} 辆车辆')
+        logging.info(f'当前世界中已有 {len(existing_actors)} 辆车辆')
         
         # 记录现有车辆信息到字典中
         for vehicle in existing_actors:
@@ -308,7 +328,7 @@ def main():
                 'type': vehicle.type_id,
                 'role': vehicle.attributes.get('role_name', 'unknown')
             }
-            print(f'记录现有车辆: ID={vehicle.id}, 类型={vehicle.type_id}, 角色={existing_vehicles[vehicle.id]["role"]}')
+            logging.info(f'记录现有车辆: ID={vehicle.id}, 类型={vehicle.type_id}, 角色={existing_vehicles[vehicle.id]["role"]}')
         
         # 生成指定数量的车辆并设置其目标点
         for i in range(num_vehicles):
@@ -319,12 +339,12 @@ def main():
             # 输出所选车辆的ID和类型信息
             vehicle_type = vehicle_id.split('.')[1] if '.' in vehicle_id else "未知"
             
-            print(f'为车辆 {i+1} 选择蓝图: ID={vehicle_id}, 类型={vehicle_type}')
+            logging.info(f'为车辆 {i+1} 选择蓝图: ID={vehicle_id}, 类型={vehicle_type}')
             
             # 设置指定的颜色（如果有）
             if vehicle_colors[i] and bp.has_attribute('color'):
                 bp.set_attribute('color', vehicle_colors[i])
-                print(f'  颜色: {vehicle_colors[i]}')
+                logging.info(f'  颜色: {vehicle_colors[i]}')
             
             # 设置角色名称为autopilot
             bp.set_attribute('role_name', 'npc_vehicle')
@@ -348,7 +368,7 @@ def main():
             spawn_attempts = 0
             while vehicle is None and spawn_attempts < 5:
                 spawn_attempts += 1
-                print(f"  尝试备用位置 {spawn_attempts}...")
+                logging.info(f"  尝试备用位置 {spawn_attempts}...")
                 # 稍微调整位置，而不是随机选择新的出生点
                 modified_spawn = carla.Transform(
                     carla.Location(
@@ -361,15 +381,8 @@ def main():
                 vehicle = world.try_spawn_actor(bp, modified_spawn)
             
             if vehicle is not None:
-                print(f'车辆 {i+1} ({vehicle_id}) 已生成')
+                logging.info(f'车辆 {i+1} ({vehicle_id}) 已生成')
                 vehicle_list.append(vehicle)
-                
-                # 发送车辆生成事件
-                send_event("vehicle_spawned", {
-                    "id": vehicle.id,
-                    "type": vehicle_id,
-                    "location": {"x": spawn_point.location.x, "y": spawn_point.location.y, "z": spawn_point.location.z}
-                })
                 
                 # 将车辆交给Traffic Manager控制
                 vehicle.set_autopilot(True, tm_port)
@@ -379,70 +392,51 @@ def main():
                 target_point = spawn_points[target_idx].location
                 traffic_manager.set_path(vehicle, [target_point])
                 
-                # 发送目标点设置事件
-                send_event("target_set", {
-                    "vehicle_id": vehicle.id,
-                    "target": {"x": target_point.x, "y": target_point.y, "z": target_point.z}
-                })
+                logging.info(f'  设置目标点: spawn_point[{target_idx}]')
+                logging.info(f'  目标坐标: x={target_point.x:.2f}, y={target_point.y:.2f}, z={target_point.z:.2f}')
                 
                 # 设置一些车辆行为参数 - 安全驾驶设置
                 if args.safe_mode:
                     try:
                         traffic_manager.auto_lane_change(vehicle, True)  # 禁用自动变道
                     except:
-                        print("  注意: 无法设置自动变道参数")
+                        logging.warning("  注意: 无法设置自动变道参数")
                     
                     try:
                         traffic_manager.distance_to_leading_vehicle(vehicle, 5.0)  # 设置较大的跟车距离
                     except:
-                        print("  注意: 无法设置跟车距离")
+                        logging.warning("  注意: 无法设置跟车距离")
                     
                     try:
-                        traffic_manager.vehicle_percentage_speed_difference(vehicle, random.uniform(10, 30))  # 显著降低速度
+                        traffic_manager.vehicle_percentage_speed_difference(vehicle, random.uniform(0, 10))  # 显著降低速度
                     except:
-                        print("  注意: 无法设置速度差异")
+                        logging.warning("  注意: 无法设置速度差异")
                     
                     try:
                         if hasattr(traffic_manager, 'set_desired_speed'):
-                            traffic_manager.set_desired_speed(vehicle, 20)  # 限制最高速度为20km/h
+                            traffic_manager.set_desired_speed(vehicle, 25)  # 限制最高速度为20km/h
                     except:
-                        print("  注意: 无法设置期望速度")
+                        logging.warning("  注意: 无法设置期望速度")
                     
-                    print(f'  已启用安全驾驶模式')
-                
-                print(f'  目标点: spawn_point[{target_idx}]')
+                    logging.info(f'  已启用安全驾驶模式')
             else:
-                print(f'无法生成车辆 ({vehicle_id})，已尝试多个位置')
-                # 发送车辆生成失败事件
-                send_event("spawn_failed", {
-                    "type": vehicle_id
-                })
+                logging.error(f'无法生成车辆 ({vehicle_id})，已尝试多个位置')
         
         # 如果使用批量生成，执行批处理
         if args.batch_spawn and batch_commands:
-            print(f"批量生成 {len(batch_commands)} 辆车辆...")
+            logging.info(f"批量生成 {len(batch_commands)} 辆车辆...")
             results = client.apply_batch_sync(batch_commands, True)
             
             # 处理结果，获取车辆引用
             for i, result in enumerate(results):
                 if result.error:
-                    print(f"  车辆 {i+1} 生成失败: {result.error}")
-                    send_event("spawn_failed", {
-                        "index": i,
-                        "error": str(result.error)
-                    })
+                    logging.error(f"  车辆 {i+1} 生成失败: {result.error}")
                 else:
                     # 获取车辆引用
                     vehicle = world.get_actor(result.actor_id)
                     if vehicle:
                         vehicle_list.append(vehicle)
-                        print(f"  车辆 {i+1} (ID={result.actor_id}) 生成成功")
-                        
-                        # 发送车辆生成事件
-                        send_event("vehicle_spawned", {
-                            "id": result.actor_id,
-                            "batch_index": i
-                        })
+                        logging.info(f"  车辆 {i+1} (ID={result.actor_id}) 生成成功")
                         
                         # 将车辆交给Traffic Manager控制
                         vehicle.set_autopilot(True, tm_port)
@@ -456,65 +450,62 @@ def main():
                         if args.safe_mode:
                             try:
                                 traffic_manager.auto_lane_change(vehicle, False)
-                                traffic_manager.distance_to_leading_vehicle(vehicle, 8.0)
-                                traffic_manager.vehicle_percentage_speed_difference(vehicle, random.uniform(30, 50))
+                                traffic_manager.distance_to_leading_vehicle(vehicle, 5)
+                                traffic_manager.vehicle_percentage_speed_difference(vehicle, random.uniform(0, 10))
                             except:
                                 pass
                     else:
-                        print(f"  无法获取车辆 {i+1} (ID={result.actor_id}) 的引用")
+                        logging.error(f"  无法获取车辆 {i+1} (ID={result.actor_id}) 的引用")
         
-        print(f'成功生成 {len(vehicle_list)} 辆NPC车辆')
-        print('按Ctrl+C停止模拟...')
-        
-        # 发送生成完成事件
-        send_event("spawn_complete", {
-            "vehicles_spawned": len(vehicle_list),
-            "vehicles_requested": num_vehicles
-        })
+        logging.info(f'成功生成 {len(vehicle_list)} 辆NPC车辆')
+        logging.info('按Ctrl+C停止模拟...')
         
         # 主循环
         try:
             while True:
-                if synchronous_master:
-                    world.tick()
-                else:
-                    world.wait_for_tick()
+                # if synchronous_master:
+                #     world.tick()
+                # else:
+                #     world.wait_for_tick()
                 
-                # 每10秒发送一次心跳事件
-                if int(time.time()) % 10 == 0:
-                    send_event("heartbeat", {
-                        "active_vehicles": len(vehicle_list),
-                        "time": time.time()
-                    })
-                    time.sleep(0.1)  # 避免在同一秒内多次发送
+                # 每60秒记录一次状态信息
+                if int(time.time()) % 60 == 0:
+                    # 检查车辆状态
+                    active_count = 0
+                    for i, vehicle in enumerate(vehicle_list):
+                        if vehicle.is_alive:
+                            active_count += 1
+                            
+                            # 获取当前位置和速度
+                            loc = vehicle.get_location()
+                            vel = vehicle.get_velocity()
+                            speed = 3.6 * np.sqrt(vel.x**2 + vel.y**2 + vel.z**2)  # km/h
+                            
+                            logging.info(f"车辆 {i+1} (ID={vehicle.id}) - "
+                                         f"位置: ({loc.x:.1f}, {loc.y:.1f}, {loc.z:.1f}), "
+                                         f"速度: {speed:.1f} km/h")
+                    
+                    logging.info(f"活动车辆: {active_count}/{len(vehicle_list)}")
+                    time.sleep(0.1)  # 避免在同一秒内多次记录
         except KeyboardInterrupt:
-            print('\n模拟被用户中断')
+            logging.info('\n模拟被用户中断')
         
     except KeyboardInterrupt:
-        print('\n模拟被用户中断')
-        # 发送中断事件
-        send_event("interrupted", {
-            "time": time.time()
-        })
+        logging.info('\n模拟被用户中断')
     except Exception as e:
-        print(f'遇到错误: {e}')
-        # 发送错误事件
-        send_event("error", {
-            "message": str(e),
-            "time": time.time()
-        })
+        logging.error(f'遇到错误: {e}')
     finally:
         # 清理并恢复原始设置
-        print('正在清理模拟...')
+        logging.info('正在清理模拟...')
         
         # 恢复原始设置
         if synchronous_master:
             world.apply_settings(original_settings)
-            print('已恢复原始世界设置')
+            logging.info('已恢复原始世界设置')
         
         # 获取当前所有车辆
         current_vehicles = world.get_actors().filter('vehicle.*')
-        print(f'当前世界中有 {len(current_vehicles)} 辆车辆')
+        logging.info(f'当前世界中有 {len(current_vehicles)} 辆车辆')
         
         # 第一步：识别哪些车辆是本脚本创建的（非先前存在的）
         vehicles_to_destroy = []
@@ -522,45 +513,45 @@ def main():
             # 如果车辆ID不在先前记录的现有车辆中，则认为是本脚本创建的
             if vehicle.id not in existing_vehicles:
                 vehicles_to_destroy.append(vehicle)
-                print(f"标记待删除车辆: ID={vehicle.id}, 类型={vehicle.type_id}")
+                logging.info(f"标记待删除车辆: ID={vehicle.id}, 类型={vehicle.type_id}")
         
-        print(f"第1步：需要删除 {len(vehicles_to_destroy)} 辆由本脚本创建的车辆")
+        logging.info(f"第1步：需要删除 {len(vehicles_to_destroy)} 辆由本脚本创建的车辆")
         
         # 第2步：关闭所有待删除车辆的自动驾驶
         active_vehicles = []
         for i, vehicle in enumerate(vehicles_to_destroy):
             try:
                 if vehicle.is_alive:
-                    print(f"  关闭车辆 {i+1} (ID={vehicle.id}) 的自动驾驶")
+                    logging.info(f"  关闭车辆 {i+1} (ID={vehicle.id}) 的自动驾驶")
                     vehicle.set_autopilot(False)
                     active_vehicles.append(vehicle)
                 else:
-                    print(f"  车辆 {i+1} 已不存在，跳过")
+                    logging.info(f"  车辆 {i+1} 已不存在，跳过")
             except Exception as e:
-                print(f"  关闭车辆自动驾驶失败: {e}")
+                logging.error(f"  关闭车辆自动驾驶失败: {e}")
         
         # 等待短暂时间，让Traffic Manager反应
         time.sleep(0.5)
         
         # 第3步：逐个销毁车辆
         destroyed_count = 0
-        print(f"第3步：逐个销毁 {len(active_vehicles)} 辆活跃车辆")
+        logging.info(f"第3步：逐个销毁 {len(active_vehicles)} 辆活跃车辆")
         for i, vehicle in enumerate(active_vehicles):
             try:
                 if vehicle.is_alive:
                     vehicle_id = vehicle.id
                     vehicle.destroy()
                     destroyed_count += 1
-                    print(f"  成功销毁车辆 {i+1} (ID={vehicle_id})")
+                    logging.info(f"  成功销毁车辆 {i+1} (ID={vehicle_id})")
                     # 短暂等待，避免过快销毁造成的问题
                     time.sleep(0.05)
                 else:
-                    print(f"  车辆 {i+1} 已不存在，跳过")
+                    logging.info(f"  车辆 {i+1} 已不存在，跳过")
             except Exception as e:
-                print(f"  销毁车辆失败: {e}")
+                logging.error(f"  销毁车辆失败: {e}")
         
         # 第4步：检查是否有任何需要删除的车辆仍然存活，并尝试批量销毁
-        print("第4步：检查并批量销毁任何剩余车辆")
+        logging.info("第4步：检查并批量销毁任何剩余车辆")
         try:
             # 再次获取当前所有车辆
             final_check = world.get_actors().filter('vehicle.*')
@@ -572,44 +563,26 @@ def main():
                     surviving_vehicles.append(vehicle)
             
             if surviving_vehicles:
-                print(f"  尝试批量销毁剩余的 {len(surviving_vehicles)} 辆车辆")
+                logging.info(f"  尝试批量销毁剩余的 {len(surviving_vehicles)} 辆车辆")
                 client.apply_batch([carla.command.DestroyActor(v) for v in surviving_vehicles])
-                print("  批量销毁命令已发送")
+                logging.info("  批量销毁命令已发送")
             else:
-                print("  没有剩余的车辆需要销毁")
+                logging.info("  没有剩余的车辆需要销毁")
         except Exception as e:
-            print(f"  批量销毁车辆失败: {e}")
-        
-        # 发送清理完成事件
-        send_event("cleanup_complete", {
-            "vehicles_destroyed": destroyed_count,
-            "vehicles_attempted": len(vehicles_to_destroy),
-            "time": time.time()
-        })
+            logging.error(f"  批量销毁车辆失败: {e}")
         
         time.sleep(0.5)
-        print('模拟已结束')
-        
-        # 发送脚本结束事件
-        send_event("script_end", {
-            "exit_status": "normal",
-            "time": time.time()
-        })
+        logging.info('模拟已结束')
+        logging.info("="*50)
+        logging.info(f"脚本结束时间: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        logging.info("="*50)
 
 if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        send_event("script_end", {
-            "exit_status": "keyboard_interrupt", 
-            "time": time.time()
-        })
+        logging.info('\n脚本被键盘中断')
     except Exception as e:
-        print(f'运行时错误: {e}')
-        send_event("script_end", {
-            "exit_status": "error",
-            "error": str(e), 
-            "time": time.time()
-        })
+        logging.error(f'运行时错误: {e}')
     finally:
-        print('\n脚本已终止')
+        logging.info('\n脚本已终止')
