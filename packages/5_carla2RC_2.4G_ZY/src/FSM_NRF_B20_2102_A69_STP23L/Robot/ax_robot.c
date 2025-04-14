@@ -467,7 +467,7 @@ void Disp_Task(void* parameter)
 		else
 		{
 			//ROS¿ØÖÆÄ£Ê½
-			AX_OLED_DispStr(90, 2, "ROS", 0);
+			AX_OLED_DispStr(90, 2, "---", 0);
 		}
 		
 		AX_OLED_DispValue(30,4,(distance_2),2,3,0);

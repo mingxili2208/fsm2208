@@ -56,7 +56,7 @@ void Ps2_Task(void *pvParameters);
 TaskHandle_t Nrf_Task_Handle = NULL;
 void Nrf_Task(void *pvParameters);
 
-#define A69_TASK_PRIO        5     
+#define A69_TASK_PRIO        12     
 #define A69_STK_SIZE         256   
 TaskHandle_t A69_Task_Handle = NULL;
 void A69_Task(void *pvParameters);
@@ -263,7 +263,7 @@ void Start_Task(void *pvParameters)
 	AX_OLED_DispStr(0, 0, "   * FSM AKM *   ", 0);	
 	AX_OLED_DispStr(0, 1, "---------------------", 0);	
 
-	AX_OLED_DispStr(0, 2, " Ver:V0.00 Mod:ROS   ", 0);
+	AX_OLED_DispStr(0, 2, " Ver:V0.00 Mod:---   ", 0);
 	AX_OLED_DispStr(30, 2, ROBOT_FW_VER, 0);		
 	AX_OLED_DispStr(0, 3, " Vol:12.2V Gyz:00000 ", 0);
 	//AX_OLED_DispStr(0, 4, "---------------------", 0);	
