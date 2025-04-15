@@ -28,7 +28,7 @@ then have to click the button play (this do not need to be Automatic Implementat
 
 open the client of steam vr ,making sure that the steam is in the mode of no head mode;
 
-## 3. open coordinate transformer forward program
+## 2.1. open coordinate transformer forward program
 
 open a new terminal
 
@@ -40,6 +40,18 @@ open a new terminal
     cd /home/cityu-fsm-lab-carla/lmx/packages/8_positioning_compensation
 
     python3 _transformer_test.py
+```
+
+## 3. enable bash
+
+open a new terminal tap in the terminal of monitor(which include monitor & carla)
+
+```bash
+
+    cd /home/cityu-fsm-lab-carla/lmx/packages/7_autoware_comm/bash
+
+    bash ./test_run_car.sh
+
 ```
 
 ## 4. open serial forward program
