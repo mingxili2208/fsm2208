@@ -28,6 +28,7 @@ class RF24Sender:
         self.sequence_counter = 0
         self.last_linear_vel = 0  # Track last sent linear velocity for logging
         self.packets_sent = 0     # Track total packets sent
+        self.last_send_time = time.time()  # Track last send time for acceleration calculation
         print(f"Connected to {port} at {baudrate} baud")
         time.sleep(2)  # Wait for serial port to stabilize
     
@@ -73,6 +74,26 @@ class RF24Sender:
         
         return packet
     
+    def threshold_motion_check(self, linear_vel, angular_vel, linear_acc=0, angular_acc=0):
+        """
+        Check if the motion command should be sent based on thresholds
+        Returns True if the command should be sent, False otherwise
+        """
+        # Check for emergency stop condition (high deceleration)
+        if linear_acc < -1100:  # -1.1m/ss converted to mm/s²
+            print(f"EMERGENCY STOP: High deceleration detected ({linear_acc/1000:.2f}m/ss)")
+            # Send a stop command immediately
+            self.send_motion_data(1, 0, 0, linear_acc, angular_acc)
+            return False
+        
+        # Check speed difference
+        speed_diff = abs(linear_vel - self.last_linear_vel)
+        if speed_diff < 200:
+            print(f"Skipping: Speed difference too small ({speed_diff} mm/s)")
+            return False
+            
+        return True
+    
     def send_motion_data(self, device_id, linear_vel, angular_vel, linear_acc=0, angular_acc=0):
         """Send motion data packet"""
         # Enforce speed limits
@@ -89,6 +110,14 @@ class RF24Sender:
         speed_diff = abs(linear_vel - self.last_linear_vel)
         if speed_diff > 1000:
             print(f"Warning: Large speed change detected: {self.last_linear_vel/1000:.2f} m/s -> {linear_vel/1000:.2f} m/s ({speed_diff/1000:.2f} m/s difference)")
+        
+        # Calculate actual acceleration based on time difference
+        current_time = time.time()
+        time_diff = current_time - self.last_send_time
+        if time_diff > 0:
+            actual_acc = (linear_vel - self.last_linear_vel) / time_diff
+            print(f"Calculated acceleration: {actual_acc/1000:.2f}m/ss")
+        self.last_send_time = current_time
         
         packet = self.pack_motion_data(device_id, linear_vel, angular_vel, linear_acc, angular_acc)
         bytes_written = self.serial.write(packet)
@@ -193,9 +222,9 @@ class TestSequence:
         sender.send_motion_data(device_id, 0, 0)
     
     @staticmethod
-    def packet_loss_test(sender, device_id=1, num_packets=100, interval=0.05):
-        """Send a sequence of numbered packets to test packet loss rate"""
-        print(f"\n===== Packet Loss Test ({num_packets} packets) =====")
+    def packet_loss_test(sender, device_id=1, num_packets=100, interval=0.02):
+        """Send a sequence of numbered packets to test packet loss rate with fine-grained speed variations"""
+        print(f"\n===== Enhanced Packet Loss Test ({num_packets} packets) =====")
         
         # Reset counter for this test
         initial_counter = sender.sequence_counter
@@ -204,48 +233,111 @@ class TestSequence:
         print(f"Starting sequence number: {initial_counter}")
         print(f"Sending {num_packets} packets with {interval:.3f}s interval...")
         
+        # Generate a more varied speed profile
+        speeds = []
+        current_speed = 0
+        target_patterns = [
+            # [target speed, duration in packets]
+            [600, 10],   # Accelerate to medium speed
+            [300, 5],    # Slow down a bit
+            [800, 15],   # Speed up to high speed
+            [0, 8],      # Stop completely
+            [-400, 12],  # Reverse at medium speed
+            [-700, 10],  # Faster reverse
+            [-300, 5],   # Slow down reverse
+            [0, 5],      # Stop again
+            [500, 10],   # Forward again
+            [200, 8],    # Slow forward
+            [0, 5],      # Final stop
+        ]
+        
+        # Generate fine-grained speed transitions
+        packet_index = 0
+        for target, duration in target_patterns:
+            start_speed = current_speed
+            for i in range(duration):
+                # Calculate intermediate speed with easing
+                progress = (i + 1) / duration
+                # Use ease-in-out curve for smoother acceleration/deceleration
+                if progress < 0.5:
+                    factor = 2 * progress * progress
+                else:
+                    factor = 1 - pow(-2 * progress + 2, 2) / 2
+                
+                intermediate_speed = int(start_speed + (target - start_speed) * factor)
+                speeds.append(intermediate_speed)
+                packet_index += 1
+                if packet_index >= num_packets:
+                    break
+            current_speed = target
+            if packet_index >= num_packets:
+                break
+                
+        # Fill any remaining packets with zeros (stop commands)
+        while len(speeds) < num_packets:
+            speeds.append(0)
+        
+        # Track command sending
+        commands_sent = 0
+        commands_skipped = 0
+        emergency_stops = 0
+        last_speed = sender.last_linear_vel
+        
         for i in range(num_packets):
-            # Alternate between different commands to make the test more representative
-            if i % 5 == 0:
-                # Forward motion
-                velocity = 300
-                angular = 0
-            elif i % 5 == 1:
-                # Forward with left turn
-                velocity = 300
-                angular = -1000
-            elif i % 5 == 2:
-                # Forward with right turn
-                velocity = 300
-                angular = 1000
-            elif i % 5 == 3:
-                # Backward motion
-                velocity = -600
-                angular = 0
-            else:
-                # Stop
-                velocity = 0
-                angular = 0
+            # Set speed and turning parameters
+            current_speed = speeds[i]
             
-            # Packet number shown in linear_acc field for easier tracking
-            sender.send_motion_data(device_id, velocity, angular, i+1, 0)
+            # Varied turning based on speed pattern
+            if current_speed > 400:
+                angular = 100 * (i % 7 - 3)  # Small oscillations when going forward fast
+            elif current_speed < -400:
+                angular = -100 * (i % 5 - 2)  # Different oscillations when going backward
+            elif abs(current_speed) > 0:
+                angular = 300 * (i % 3 - 1)  # Larger turns at moderate speed
+            else:
+                angular = 0  # No turning when stopped
+            
+            # Calculate acceleration
+            time_now = time.time()
+            dt = time_now - sender.last_send_time
+            if dt > 0:
+                acceleration = (current_speed - last_speed) / dt
+            else:
+                acceleration = 0
+                
+            # Acceleration in mm/s² to be included in the packet
+            linear_acc = int(acceleration)
+            
+            # Apply threshold check
+            if sender.threshold_motion_check(current_speed, angular, linear_acc, 0):
+                # Only send if passing the threshold check
+                sender.send_motion_data(device_id, current_speed, angular, i+1, 0)
+                commands_sent += 1
+                last_speed = current_speed
+            else:
+                commands_skipped += 1
+                if linear_acc < -1100:
+                    emergency_stops += 1
             
             # Wait between packets
             time.sleep(interval)
         
-        # Final stop command
+        # Final stop command - always send this regardless of thresholds
         sender.send_motion_data(device_id, 0, 0)
         
         # Display summary
         final_counter = sender.sequence_counter
-        expected_counter = (initial_counter + num_packets) & 0xFF
+        expected_counter = (initial_counter + commands_sent + 1) & 0xFF  # +1 for final stop
         final_packet_count = sender.packets_sent
         
-        print("\n=== Packet Loss Test Summary ===")
+        print("\n=== Enhanced Packet Loss Test Summary ===")
         print(f"Initial sequence number: {initial_counter}")
         print(f"Final sequence number: {final_counter}")
         print(f"Expected final sequence (considering overflow): {expected_counter}")
-        print(f"Packets sent in this test: {final_packet_count - initial_packet_count}")
+        print(f"Commands requested: {num_packets}")
+        print(f"Commands sent: {commands_sent} (includes final stop)")
+        print(f"Commands skipped due to thresholds: {commands_skipped}")
+        print(f"Emergency stops triggered: {emergency_stops}")
         print(f"Total packets sent since start: {final_packet_count}")
         
         if final_counter == expected_counter:
