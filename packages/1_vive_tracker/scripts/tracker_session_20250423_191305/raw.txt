@@ -1,0 +1,1 @@
+Timestamp, Distance_2(Z), Distance_3(X), X, Y, Z, Roll, Yaw, Pitch, CalibrationMode

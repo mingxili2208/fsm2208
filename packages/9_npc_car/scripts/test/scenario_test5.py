@@ -408,7 +408,8 @@ class CarlaManager:
             "vehicle.mini.cooper_s",
             "vehicle.nissan.patrol_2021",
             "vehicle.tesla.cybertruck",
-            "vehicle.tesla.cybertruck"
+            "vehicle.mini.cooper_s"
+            # "vehicle.tesla.cybertruck"
         ]
         
         # 定义车辆颜色

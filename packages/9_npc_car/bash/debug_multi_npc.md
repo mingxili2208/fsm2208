@@ -107,3 +107,6 @@ open a new teminal tap of above one (new_camera_pygame), typing in
     bash scenario_test.sh
 
 ```
+
+
+echo 'FSM_ROOT="/home/cityu-fsm-lab-carla/lmx"' >> ~/.bashrc  

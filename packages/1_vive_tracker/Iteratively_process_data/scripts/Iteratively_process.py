@@ -18,7 +18,7 @@ current_time = datetime.datetime.now()
 timestamp = current_time.strftime("%Y-%m-%d %H:%M:%S")
 
 
-TAGET_RMSE=0.05
+TAGET_RMSE=0.02
 
 
 # Create output directory in parent directory of the script
@@ -55,8 +55,8 @@ console.setFormatter(formatter)
 logger.addHandler(console)
 
 # File paths - update these with your input file paths
-LASER_TRACKER_CSV = os.path.join(parent_dir, "data/laser_tracker_1803.csv")  # Update with your input file
-EULER_CSV = os.path.join(parent_dir, "data/euler_1803.csv")  # Update with your input file
+LASER_TRACKER_CSV = os.path.join(parent_dir, "data/corrected_laser_tracker_0428_164614.csv")  # Update with your input file
+EULER_CSV = os.path.join(parent_dir, "data/euler_2304.csv")  # Update with your input file
 CORRECTED_LASER_TRACKER_CSV = os.path.join(data_dir, "corrected_laser_tracker.csv")
 
 ROW_X="X"
