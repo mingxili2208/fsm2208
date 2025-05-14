@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys
-sys.path.append("/home/cityu-fsm-lab-carla/Workspace/Carla/op_carla/op_bridge/op_bridge/fsm_lab_simulation")
+sys.path.append("/home/cityu-fsm-lab-carla/WorkplaceCarla/op_carla/op_bridge/op_bridge/fsm_lab_simulation")
 import time
 import numpy as np
 from vive_tracker import ViveTrackerModule

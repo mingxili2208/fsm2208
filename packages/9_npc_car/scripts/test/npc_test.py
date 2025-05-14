@@ -10,7 +10,7 @@ import pygame
 from pygame.locals import K_UP, K_DOWN, K_LEFT, K_RIGHT, K_ESCAPE, K_SPACE
 
 # 设置CARLA Python API路径（根据你的实际路径修改）
-sys.path.append('/home/cityu-fsm-lab-carla/Desktop/Workspace/Carla/carla-0.9.15/PythonAPI/carla/dist/carla-0.9.15-py3.10-linux-x86_64.egg')
+sys.path.append('/home/cityu-fsm-lab-carla/Desktop/WorkplaceCarla/carla-0.9.15/PythonAPI/carla/dist/carla-0.9.15-py3.10-linux-x86_64.egg')
 import carla
 
 import random

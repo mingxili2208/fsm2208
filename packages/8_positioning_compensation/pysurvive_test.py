@@ -12,7 +12,7 @@ from geometry_msgs.msg import PoseWithCovarianceStamped, PoseWithCovariance, Pos
 from std_msgs.msg import Header
 
 # 添加项目路径
-sys.path.append("/home/jarvislee-carla/Workspace/Carlas/op_carla/op_bridge/op_bridge/fsm_lab_simulation")
+sys.path.append("/home/jarvislee-carla/WorkplaceCarlas/op_carla/op_bridge/op_bridge/fsm_lab_simulation")
 from vr2sx_pysurvive import VR2SandBoxTransformer
 
 VEHICLE_NAME = "follow_adtruck"

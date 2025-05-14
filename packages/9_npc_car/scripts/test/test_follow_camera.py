@@ -298,7 +298,7 @@ def main():
     logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.INFO)
 
     # 设置CARLA Python API路径
-    egg_file = '/home/cityu-fsm-lab-carla/Desktop/Workspace/Carla/carla-0.9.15/PythonAPI/carla/dist/carla-0.9.15-py3.10-linux-x86_64.egg'
+    egg_file = '/home/cityu-fsm-lab-carla/Desktop/WorkplaceCarla/carla-0.9.15/PythonAPI/carla/dist/carla-0.9.15-py3.10-linux-x86_64.egg'
     if not os.path.exists(egg_file):
         logging.error(f"在{egg_file}未找到CARLA egg文件。请检查路径。")
         sys.exit(1)

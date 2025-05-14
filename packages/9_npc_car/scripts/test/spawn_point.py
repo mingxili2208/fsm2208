@@ -11,7 +11,7 @@ def main():
     try:
         # 根据您的 CARLA 版本和操作系统选择正确的 egg 文件
         # 例如，CARLA 0.9.15 在 Linux x86_64 下:
-        egg_file = '/home/cityu-fsm-lab-carla/Desktop/Workspace/Carla/carla-0.9.15/PythonAPI/carla/dist/carla-0.9.15-py3.10-linux-x86_64.egg'
+        egg_file = '/home/cityu-fsm-lab-carla/Desktop/WorkplaceCarla/carla-0.9.15/PythonAPI/carla/dist/carla-0.9.15-py3.10-linux-x86_64.egg'
         if not os.path.exists(egg_file):
             raise FileNotFoundError(f"CARLA egg file not found at {egg_file}. Please check the path.")
         sys.path.append(egg_file)

@@ -607,7 +607,7 @@ def main():
     logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.INFO)
 
     # Set CARLA Python API path
-    egg_file = '/home/cityu-fsm-lab-carla/Desktop/Workspace/Carla/carla-0.9.15/PythonAPI/carla/dist/carla-0.9.15-py3.10-linux-x86_64.egg'
+    egg_file = '/home/cityu-fsm-lab-carla/Desktop/WorkplaceCarla/carla-0.9.15/PythonAPI/carla/dist/carla-0.9.15-py3.10-linux-x86_64.egg'
     if not os.path.exists(egg_file):
         logging.error(f"CARLA egg file not found at {egg_file}. Please check the path.")
         sys.exit(1)

@@ -106,7 +106,7 @@ start_serial_transmit() {
 # =========================================
 start_autoware_vehicle_agent() {
     log "启动 Autoware Vehicle Agent..."
-    AUTOWARE_SCRIPT_DIR="/home/cityu-fsm-lab-carla/Workspace/Carla/op_carla/op_bridge/op_scripts/fsm_lab_simulation/"
+    AUTOWARE_SCRIPT_DIR="/home/cityu-fsm-lab-carla/WorkplaceCarla/op_carla/op_bridge/op_scripts/fsm_lab_simulation/"
     AUTOWARE_SCRIPT="$AUTOWARE_SCRIPT_DIR/debug_run_vehicle_ros2.sh"
 
     if [ ! -x "$AUTOWARE_SCRIPT" ]; then
