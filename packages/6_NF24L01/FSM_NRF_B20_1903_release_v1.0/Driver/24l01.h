@@ -73,7 +73,7 @@ typedef struct
 {
 	uint8_t  ST;            // state of remote (0 closed, 1 open)
     uint8_t  steering_angle ;           // angle of yaw
-    uint8_t  steering_angle_velocity;      // speed of angle of yaw
+    uint8_t  trumpet;      // trumpet
     uint8_t  speed ;                 // speed of 
     uint8_t  acceleration ;         // 
 }NRF_CTL_INFO;					   	   

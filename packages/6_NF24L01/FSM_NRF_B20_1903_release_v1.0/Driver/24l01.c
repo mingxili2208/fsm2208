@@ -272,7 +272,7 @@ void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info)
 		if(tmp_buf[0]==0x55 && tmp_buf[1]==0x7E &&tmp_buf[8]==0x7E&&tmp_buf[9]==0x55){
 			nrt_ctl_info->ST=tmp_buf[2];
 			nrt_ctl_info->steering_angle=tmp_buf[3];
-			//nrt_ctl_info->steering_angle_velocity=tmp_buf[4];
+			nrt_ctl_info->trumpet=tmp_buf[4];
 			nrt_ctl_info->speed=tmp_buf[5];
 			//nrt_ctl_info->acceleration=tmp_buf[6];
 		}
@@ -280,7 +280,7 @@ void FSM_NRF_ScanKey(NRF_CTL_INFO *nrt_ctl_info)
 		{
 			nrt_ctl_info->ST=tmp_buf[3];
 			nrt_ctl_info->steering_angle=tmp_buf[4];
-			//nrt_ctl_info->steering_angle_velocity=tmp_buf[5];
+			nrt_ctl_info->trumpet=tmp_buf[5];
 			nrt_ctl_info->speed=tmp_buf[6];
 			//nrt_ctl_info->acceleration=tmp_buf[7];
 //			AX_BEEP_On();

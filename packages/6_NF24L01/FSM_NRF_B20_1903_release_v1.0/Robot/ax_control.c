@@ -337,17 +337,15 @@ void FSM_CTL_NRF(void){
     if(nrt_ctl_info.ST==0x01){
         // Increment counter each time an instruction is successfully processed
         command_count++;
-        
+        if(nrt_ctl_info.trumpet==0x01){
+					ax_beep_ring = BEEP_LONG;
+				}
         R_Vel.TG_IX = (int16_t)(-speed*(0x80- nrt_ctl_info.speed));
         ax_akm_angle= (int16_t)(-based_angle_speed*(0x78 - nrt_ctl_info.steering_angle));
-        if(nrt_ctl_info.acceleration>0){
-            speed++;
-            ax_beep_ring = BEEP_SHORT;
-        }
-        else if(nrt_ctl_info.acceleration<0){
-            speed--;
-            ax_beep_ring = BEEP_SHORT;
-        }
+        //if(nrt_ctl_info.acceleration!=0){
+        //    speed++;
+            //ax_beep_ring = BEEP_SHORT;
+				// }
     }
     
     // Update display once per second - using tick count for more precise timing
