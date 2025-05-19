@@ -18,6 +18,7 @@ import carla
 import datetime
 import logging
 import setproctitle
+import time
 
 setproctitle.setproctitle('python_update_coordinate')
 VEHICLE_NAME = "follow_adtruck"
@@ -119,7 +120,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
         """
 
         #offset_A_to_B = np.array([-0.0605, 0, 0])
-        offset_A_to_B = np.array([0, 0, 0])
+        offset_A_to_B = np.array([-0.005, 0, 0])
         #offset_A_to_B = np.array([-0.0825, 0, 0])
 
         # 旋转矩阵 (绕 Z 轴旋转 yaw 角)
@@ -217,6 +218,7 @@ class TransformedSandBoxCoorPublisherNode(Node):
             msg = PoseWithCovarianceStamped(header=header, pose=pose_with_cov)
 
             # Publish the message
+            #time.sleep(0.5)
             self.publisher.publish(msg)
             
             if self.log_flag:

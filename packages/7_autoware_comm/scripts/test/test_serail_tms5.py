@@ -358,6 +358,7 @@ class IntegratedControlPublisher(Node):
             if (self.last_sent_commands['speed'] != speed or
                 self.last_sent_commands['steering_angle_deg'] != steering_tire_angle_deg):
                 self.stop_flag = False
+
                 self.send_command(steering_tire_angle_deg, speed)
         else:
             self.logger.debug(f'cmd变化过小, angle:{abs(steering_tire_angle_deg - self.pre_steering_tire_angle)}, speed:{abs(speed - self.pre_speed)}')
@@ -365,6 +366,10 @@ class IntegratedControlPublisher(Node):
     def send_command(self, steering_angle_deg, speed):
         """统一的命令发送函数"""
         try:
+            #############################
+            #####test need to delete#####
+            #############################
+            #time.sleep(0.2)
             # 四舍五入到3位小数
             steering_angle_deg = round(steering_angle_deg, 3)
             speed = round(speed, 3)
