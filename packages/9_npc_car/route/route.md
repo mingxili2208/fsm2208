@@ -1,11 +1,11 @@
 # this is the potential topic which is about route
 
-global path 
+## global path 
 
 /planning/scenario_planning/lane_driving/behavior_planning/path
 type: autoware_auto_planning_msgs/msg/Path
 
-local path
+## local path
 
 /planning/scenario_planning/trajectory
     type: autoware_auto_planning_msgs/msg/Trajectory
@@ -16,10 +16,16 @@ local path
     type: autoware_auto_planning_msgs/msg/Path
 
     /home/cityu-fsm-lab-carla/Workspace/autoware/install/autoware_auto_planning_msgs/include/autoware_auto_planning_msgs/autoware_auto_planning_msgs/msg/path.h
-    
+
+/real_world/follow_adtruck/transformed_with_covariance
+    type: geometry_msgs/msg/PoseWithCovarianceStamped
+
+
 ```cpp
+
 #include "autoware_auto_planning_msgs/msg/path.hpp"
 #include "autoware_auto_planning_msgs/msg/trajectory.hpp"
+
 ```
 
 ```bash
@@ -40,3 +46,7 @@ local path
 
 ```
 
+
+0.02347555673045143, y : 0.0, z : -1.5808621201177706, yaw is -178.281394931699
+
+x : 0.07367357080606096, y : 0.0, z : -1.5304785781495163, yaw is -178.305494931687

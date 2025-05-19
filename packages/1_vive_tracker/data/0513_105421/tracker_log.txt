@@ -1,0 +1,654 @@
+日志创建时间: 2025-05-13 10:54:21
+=== 系统日志 ===
+[10:54:21] [系统] 初始化 ViveTrackerModule...
+[10:54:21] [系统] Tracker 'tracker_1' 连接成功
+[10:54:21] [系统] 成功打开串口: /dev/ttyUSB0
+[10:54:21] 按 'R' 开始录制，按 'E' 停止录制，按 'Esc' 退出并保存数据.
+[10:55:22] [系统] 开始录制数据...
+[10:55:22] [错误] 无效数据包: []
+[10:55:23] [错误] 无效数据包: []
+[10:55:23] [错误] 无效数据包: []
+[10:55:23] [错误] 无效数据包: []
+[10:55:23] [错误] 无效数据包: []
+[10:55:23] [错误] 无效数据包: []
+[10:55:23] [错误] 无效数据包: []
+[10:55:23] [错误] 无效数据包: []
+[10:55:23] [错误] 无效数据包: []
+[10:55:23] [错误] 无效数据包: []
+[10:55:24] [错误] 无效数据包: []
+[10:55:24] [错误] 无效数据包: []
+[10:55:24] [错误] 无效数据包: []
+[10:55:24] [错误] 无效数据包: []
+[10:55:24] [错误] 无效数据包: []
+[10:55:24] [错误] 无效数据包: []
+[10:55:24] [错误] 无效数据包: []
+[10:55:24] [错误] 无效数据包: []
+[10:55:25] [错误] 无效数据包: []
+[10:55:25] [错误] 无效数据包: []
+[10:55:25] [错误] 无效数据包: []
+[10:55:25] [错误] 无效数据包: []
+[10:55:25] [错误] 无效数据包: []
+[10:55:25] [错误] 无效数据包: []
+[10:55:25] [错误] 无效数据包: []
+[10:55:26] [系统] 保存所有 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:27] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:28] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:28] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:29] [错误] 无效数据包: []
+[10:55:29] [错误] 无效数据包: []
+[10:55:29] [错误] 无效数据包: []
+[10:55:29] [错误] 无效数据包: []
+[10:55:29] [错误] 无效数据包: []
+[10:55:30] [错误] 无效数据包: []
+[10:55:30] [错误] 无效数据包: []
+[10:55:30] [错误] 无效数据包: []
+[10:55:30] [错误] 无效数据包: []
+[10:55:30] [错误] 无效数据包: []
+[10:55:30] [错误] 无效数据包: []
+[10:55:30] [错误] 无效数据包: []
+[10:55:30] [错误] 无效数据包: []
+[10:55:31] [错误] 无效数据包: []
+[10:55:31] [错误] 无效数据包: []
+[10:55:31] [错误] 无效数据包: []
+[10:55:31] [错误] 无效数据包: []
+[10:55:31] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:32] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:33] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:34] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:35] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:35] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:36] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:37] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:38] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:39] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:39] [错误] 无效数据包: []
+[10:55:39] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:40] [错误] 无效数据包: []
+[10:55:40] [错误] 无效数据包: []
+[10:55:40] [错误] 无效数据包: []
+[10:55:40] [错误] 无效数据包: []
+[10:55:40] [错误] 无效数据包: []
+[10:55:40] [错误] 无效数据包: []
+[10:55:40] [错误] 无效数据包: []
+[10:55:41] [错误] 无效数据包: []
+[10:55:41] [错误] 无效数据包: []
+[10:55:41] [错误] 无效数据包: []
+[10:55:41] [错误] 无效数据包: []
+[10:55:41] [错误] 无效数据包: []
+[10:55:41] [错误] 无效数据包: []
+[10:55:41] [错误] 无效数据包: []
+[10:55:41] [错误] 无效数据包: []
+[10:55:42] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:43] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:44] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:44] [错误] 无效数据包: []
+[10:55:44] [错误] 无效数据包: []
+[10:55:44] [错误] 无效数据包: []
+[10:55:45] [错误] 无效数据包: []
+[10:55:45] [错误] 无效数据包: []
+[10:55:45] [错误] 无效数据包: []
+[10:55:45] [错误] 无效数据包: []
+[10:55:45] [错误] 无效数据包: []
+[10:55:45] [错误] 无效数据包: []
+[10:55:45] [错误] 无效数据包: []
+[10:55:45] [错误] 无效数据包: []
+[10:55:46] [错误] 无效数据包: []
+[10:55:46] [错误] 无效数据包: []
+[10:55:46] [错误] 无效数据包: []
+[10:55:46] [错误] 无效数据包: []
+[10:55:46] [错误] 无效数据包: []
+[10:55:46] [错误] 无效数据包: []
+[10:55:46] [错误] 无效数据包: []
+[10:55:46] [错误] 无效数据包: []
+[10:55:47] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:48] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:48] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:49] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:50] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:51] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:51] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:52] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:53] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:54] [错误] 无效数据包: []
+[10:55:54] [错误] 无效数据包: []
+[10:55:54] [错误] 无效数据包: []
+[10:55:54] [错误] 无效数据包: []
+[10:55:54] [错误] 无效数据包: []
+[10:55:54] [错误] 无效数据包: []
+[10:55:54] [错误] 无效数据包: []
+[10:55:54] [错误] 无效数据包: []
+[10:55:55] [错误] 无效数据包: []
+[10:55:55] [错误] 无效数据包: []
+[10:55:55] [错误] 无效数据包: []
+[10:55:55] [错误] 无效数据包: []
+[10:55:55] [错误] 无效数据包: []
+[10:55:55] [错误] 无效数据包: []
+[10:55:55] [错误] 无效数据包: []
+[10:55:55] [错误] 无效数据包: []
+[10:55:56] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:57] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:57] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:58] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:55:59] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:00] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:01] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:01] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:02] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:03] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:04] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:05] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:05] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:06] [错误] 无效数据包: []
+[10:56:06] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:07] [错误] 无效数据包: []
+[10:56:07] [错误] 无效数据包: []
+[10:56:07] [错误] 无效数据包: []
+[10:56:07] [错误] 无效数据包: []
+[10:56:08] [错误] 无效数据包: []
+[10:56:08] [错误] 无效数据包: []
+[10:56:08] [错误] 无效数据包: []
+[10:56:08] [错误] 无效数据包: []
+[10:56:08] [错误] 无效数据包: []
+[10:56:08] [错误] 无效数据包: []
+[10:56:08] [错误] 无效数据包: []
+[10:56:08] [错误] 无效数据包: []
+[10:56:08] [错误] 无效数据包: []
+[10:56:09] [错误] 无效数据包: []
+[10:56:09] [错误] 无效数据包: []
+[10:56:09] [错误] 无效数据包: []
+[10:56:09] [错误] 无效数据包: []
+[10:56:09] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:10] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:11] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:12] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:12] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:13] [错误] 无效数据包: []
+[10:56:13] [错误] 无效数据包: []
+[10:56:13] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:14] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:15] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:16] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:17] [错误] 无效数据包: []
+[10:56:17] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:17] [错误] 无效数据包: []
+[10:56:17] [错误] 无效数据包: []
+[10:56:17] [错误] 无效数据包: []
+[10:56:17] [错误] 无效数据包: []
+[10:56:17] [错误] 无效数据包: []
+[10:56:18] [错误] 无效数据包: []
+[10:56:18] [错误] 无效数据包: []
+[10:56:18] [错误] 无效数据包: []
+[10:56:18] [错误] 无效数据包: []
+[10:56:18] [错误] 无效数据包: []
+[10:56:18] [错误] 无效数据包: []
+[10:56:18] [错误] 无效数据包: []
+[10:56:18] [错误] 无效数据包: []
+[10:56:19] [错误] 无效数据包: []
+[10:56:19] [错误] 无效数据包: []
+[10:56:19] [错误] 无效数据包: []
+[10:56:19] [错误] 无效数据包: []
+[10:56:19] [错误] 无效数据包: []
+[10:56:20] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:20] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:21] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:22] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:23] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:24] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:24] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:25] [错误] 无效数据包: []
+[10:56:25] [错误] 无效数据包: []
+[10:56:25] [错误] 无效数据包: []
+[10:56:25] [错误] 无效数据包: []
+[10:56:25] [错误] 无效数据包: []
+[10:56:26] [错误] 无效数据包: []
+[10:56:26] [错误] 无效数据包: []
+[10:56:26] [错误] 无效数据包: []
+[10:56:26] [错误] 无效数据包: []
+[10:56:26] [错误] 无效数据包: []
+[10:56:26] [错误] 无效数据包: []
+[10:56:26] [错误] 无效数据包: []
+[10:56:26] [错误] 无效数据包: []
+[10:56:27] [错误] 无效数据包: []
+[10:56:27] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:28] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:28] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:29] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:30] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:31] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:31] [错误] 无效数据包: []
+[10:56:32] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:33] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:33] [错误] 无效数据包: []
+[10:56:34] [错误] 无效数据包: []
+[10:56:34] [错误] 无效数据包: []
+[10:56:34] [错误] 无效数据包: []
+[10:56:34] [错误] 无效数据包: []
+[10:56:34] [错误] 无效数据包: []
+[10:56:34] [错误] 无效数据包: []
+[10:56:34] [错误] 无效数据包: []
+[10:56:34] [错误] 无效数据包: []
+[10:56:35] [错误] 无效数据包: []
+[10:56:35] [错误] 无效数据包: []
+[10:56:35] [错误] 无效数据包: []
+[10:56:35] [错误] 无效数据包: []
+[10:56:35] [错误] 无效数据包: []
+[10:56:35] [错误] 无效数据包: []
+[10:56:35] [错误] 无效数据包: []
+[10:56:35] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:36] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:37] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:38] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:38] [错误] 无效数据包: []
+[10:56:38] [错误] 无效数据包: []
+[10:56:38] [错误] 无效数据包: []
+[10:56:39] [错误] 无效数据包: []
+[10:56:39] [错误] 无效数据包: []
+[10:56:39] [错误] 无效数据包: []
+[10:56:39] [错误] 无效数据包: []
+[10:56:39] [错误] 无效数据包: []
+[10:56:39] [错误] 无效数据包: []
+[10:56:39] [错误] 无效数据包: []
+[10:56:39] [错误] 无效数据包: []
+[10:56:40] [错误] 无效数据包: []
+[10:56:40] [错误] 无效数据包: []
+[10:56:40] [错误] 无效数据包: []
+[10:56:40] [错误] 无效数据包: []
+[10:56:40] [错误] 无效数据包: []
+[10:56:40] [错误] 无效数据包: []
+[10:56:40] [错误] 无效数据包: []
+[10:56:41] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:41] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:42] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:43] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:44] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:45] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:45] [错误] 无效数据包: []
+[10:56:45] [错误] 无效数据包: []
+[10:56:45] [错误] 无效数据包: []
+[10:56:45] [错误] 无效数据包: []
+[10:56:45] [错误] 无效数据包: []
+[10:56:46] [错误] 无效数据包: []
+[10:56:46] [错误] 无效数据包: []
+[10:56:46] [错误] 无效数据包: []
+[10:56:46] [错误] 无效数据包: []
+[10:56:46] [错误] 无效数据包: []
+[10:56:46] [错误] 无效数据包: []
+[10:56:46] [错误] 无效数据包: []
+[10:56:46] [错误] 无效数据包: []
+[10:56:47] [错误] 无效数据包: []
+[10:56:47] [错误] 无效数据包: []
+[10:56:47] [错误] 无效数据包: []
+[10:56:47] [错误] 无效数据包: []
+[10:56:48] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:48] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:49] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:50] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:51] [错误] 无效数据包: []
+[10:56:51] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:52] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:52] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:53] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:54] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:55] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:56] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:56] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:57] [错误] 无效数据包: []
+[10:56:57] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:56:58] [错误] 无效数据包: []
+[10:56:58] [错误] 无效数据包: []
+[10:56:58] [错误] 无效数据包: []
+[10:56:58] [错误] 无效数据包: []
+[10:56:58] [错误] 无效数据包: []
+[10:56:58] [错误] 无效数据包: []
+[10:56:58] [错误] 无效数据包: []
+[10:56:59] [错误] 无效数据包: []
+[10:56:59] [错误] 无效数据包: []
+[10:56:59] [错误] 无效数据包: []
+[10:56:59] [错误] 无效数据包: []
+[10:56:59] [错误] 无效数据包: []
+[10:56:59] [错误] 无效数据包: []
+[10:56:59] [错误] 无效数据包: []
+[10:56:59] [错误] 无效数据包: []
+[10:57:00] [错误] 无效数据包: []
+[10:57:00] [错误] 无效数据包: []
+[10:57:00] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:01] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:02] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:03] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:03] [错误] 无效数据包: []
+[10:57:03] [错误] 无效数据包: []
+[10:57:03] [错误] 无效数据包: []
+[10:57:03] [错误] 无效数据包: []
+[10:57:03] [错误] 无效数据包: []
+[10:57:03] [错误] 无效数据包: []
+[10:57:03] [错误] 无效数据包: []
+[10:57:04] [错误] 无效数据包: []
+[10:57:04] [错误] 无效数据包: []
+[10:57:04] [错误] 无效数据包: []
+[10:57:04] [错误] 无效数据包: []
+[10:57:04] [错误] 无效数据包: []
+[10:57:04] [错误] 无效数据包: []
+[10:57:04] [错误] 无效数据包: []
+[10:57:04] [错误] 无效数据包: []
+[10:57:04] [错误] 无效数据包: []
+[10:57:05] [错误] 无效数据包: []
+[10:57:05] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:06] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:07] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:08] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:09] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:09] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:10] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:11] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:12] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:13] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:13] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:14] [错误] 无效数据包: []
+[10:57:14] [错误] 无效数据包: []
+[10:57:14] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:15] [错误] 无效数据包: []
+[10:57:15] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:16] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:17] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:17] [错误] 无效数据包: []
+[10:57:17] [错误] 无效数据包: []
+[10:57:18] [错误] 无效数据包: []
+[10:57:18] [错误] 无效数据包: []
+[10:57:18] [错误] 无效数据包: []
+[10:57:18] [错误] 无效数据包: []
+[10:57:18] [错误] 无效数据包: []
+[10:57:19] [错误] 无效数据包: []
+[10:57:19] [错误] 无效数据包: []
+[10:57:19] [错误] 无效数据包: []
+[10:57:19] [错误] 无效数据包: []
+[10:57:19] [错误] 无效数据包: []
+[10:57:19] [错误] 无效数据包: []
+[10:57:19] [错误] 无效数据包: []
+[10:57:19] [错误] 无效数据包: []
+[10:57:20] [错误] 无效数据包: []
+[10:57:20] [错误] 无效数据包: []
+[10:57:20] [错误] 无效数据包: []
+[10:57:20] [错误] 无效数据包: []
+[10:57:20] [错误] 无效数据包: []
+[10:57:20] [错误] 无效数据包: []
+[10:57:20] [错误] 无效数据包: []
+[10:57:20] [错误] 无效数据包: []
+[10:57:20] [错误] 无效数据包: []
+[10:57:21] [错误] 无效数据包: []
+[10:57:21] [错误] 无效数据包: []
+[10:57:21] [错误] 无效数据包: []
+[10:57:21] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:22] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:23] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:23] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:24] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:25] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:26] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:27] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:27] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:28] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:29] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:30] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:31] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:31] [错误] 无效数据包: []
+[10:57:31] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:32] [错误] 无效数据包: []
+[10:57:32] [错误] 无效数据包: []
+[10:57:32] [错误] 无效数据包: []
+[10:57:32] [错误] 无效数据包: []
+[10:57:32] [错误] 无效数据包: []
+[10:57:32] [错误] 无效数据包: []
+[10:57:32] [错误] 无效数据包: []
+[10:57:33] [错误] 无效数据包: []
+[10:57:33] [错误] 无效数据包: []
+[10:57:33] [错误] 无效数据包: []
+[10:57:33] [错误] 无效数据包: []
+[10:57:33] [错误] 无效数据包: []
+[10:57:33] [错误] 无效数据包: []
+[10:57:33] [错误] 无效数据包: []
+[10:57:33] [错误] 无效数据包: []
+[10:57:34] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:35] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:36] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:36] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:37] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:38] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:39] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:40] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:40] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:41] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:42] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:43] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:44] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:44] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:45] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:46] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:47] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:48] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:48] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:49] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:50] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:51] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:52] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:52] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:53] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:54] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:55] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:56] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:56] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:57] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:57] [错误] 无效数据包: []
+[10:57:58] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:57:59] [错误] 无效数据包: []
+[10:57:59] [错误] 无效数据包: []
+[10:57:59] [错误] 无效数据包: []
+[10:57:59] [错误] 无效数据包: []
+[10:57:59] [错误] 无效数据包: []
+[10:57:59] [错误] 无效数据包: []
+[10:58:00] [错误] 无效数据包: []
+[10:58:00] [错误] 无效数据包: []
+[10:58:00] [错误] 无效数据包: []
+[10:58:00] [错误] 无效数据包: []
+[10:58:00] [错误] 无效数据包: []
+[10:58:00] [错误] 无效数据包: []
+[10:58:00] [错误] 无效数据包: []
+[10:58:00] [错误] 无效数据包: []
+[10:58:01] [错误] 无效数据包: []
+[10:58:01] [错误] 无效数据包: []
+[10:58:01] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:02] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:02] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:03] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:04] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:05] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:06] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:06] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:07] [错误] 无效数据包: []
+[10:58:07] [错误] 无效数据包: []
+[10:58:07] [错误] 无效数据包: []
+[10:58:07] [错误] 无效数据包: []
+[10:58:08] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:08] [错误] 无效数据包: []
+[10:58:09] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:09] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:10] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:11] [错误] 无效数据包: []
+[10:58:11] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:12] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:13] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:13] [错误] 无效数据包: []
+[10:58:13] [错误] 无效数据包: []
+[10:58:13] [错误] 无效数据包: []
+[10:58:14] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:14] [错误] 无效数据包: []
+[10:58:14] [错误] 无效数据包: []
+[10:58:15] [错误] 无效数据包: []
+[10:58:15] [错误] 无效数据包: []
+[10:58:15] [错误] 无效数据包: []
+[10:58:15] [错误] 无效数据包: []
+[10:58:15] [错误] 无效数据包: []
+[10:58:15] [错误] 无效数据包: []
+[10:58:15] [错误] 无效数据包: []
+[10:58:15] [错误] 无效数据包: []
+[10:58:15] [错误] 无效数据包: []
+[10:58:16] [错误] 无效数据包: []
+[10:58:16] [错误] 无效数据包: []
+[10:58:16] [错误] 无效数据包: []
+[10:58:16] [错误] 无效数据包: []
+[10:58:16] [错误] 无效数据包: []
+[10:58:16] [错误] 无效数据包: []
+[10:58:16] [错误] 无效数据包: []
+[10:58:16] [错误] 无效数据包: []
+[10:58:17] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:18] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:19] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:19] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:20] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:21] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:22] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:23] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:23] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:24] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:25] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:26] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:26] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:27] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:28] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:29] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:30] [错误] 无效数据包: []
+[10:58:30] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:31] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:31] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:32] [错误] 无效数据包: []
+[10:58:32] [错误] 无效数据包: []
+[10:58:32] [错误] 无效数据包: []
+[10:58:32] [错误] 无效数据包: []
+[10:58:32] [错误] 无效数据包: []
+[10:58:32] [错误] 无效数据包: []
+[10:58:32] [错误] 无效数据包: []
+[10:58:33] [错误] 无效数据包: []
+[10:58:33] [错误] 无效数据包: []
+[10:58:33] [错误] 无效数据包: []
+[10:58:33] [错误] 无效数据包: []
+[10:58:33] [错误] 无效数据包: []
+[10:58:33] [错误] 无效数据包: []
+[10:58:33] [错误] 无效数据包: []
+[10:58:33] [错误] 无效数据包: []
+[10:58:34] [错误] 无效数据包: []
+[10:58:34] [错误] 无效数据包: []
+[10:58:34] [错误] 无效数据包: []
+[10:58:34] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:35] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:36] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:37] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:38] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:38] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:39] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:39] [错误] 无效数据包: []
+[10:58:40] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:40] [错误] 无效数据包: []
+[10:58:41] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:42] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:43] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:43] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:44] [错误] 无效数据包: []
+[10:58:44] [错误] 无效数据包: []
+[10:58:44] [错误] 无效数据包: []
+[10:58:44] [错误] 无效数据包: []
+[10:58:44] [错误] 无效数据包: []
+[10:58:44] [错误] 无效数据包: []
+[10:58:44] [错误] 无效数据包: []
+[10:58:44] [错误] 无效数据包: []
+[10:58:45] [错误] 无效数据包: []
+[10:58:45] [错误] 无效数据包: []
+[10:58:45] [错误] 无效数据包: []
+[10:58:45] [错误] 无效数据包: []
+[10:58:45] [错误] 无效数据包: []
+[10:58:45] [错误] 无效数据包: []
+[10:58:45] [错误] 无效数据包: []
+[10:58:45] [错误] 无效数据包: []
+[10:58:46] [错误] 无效数据包: []
+[10:58:46] [错误] 无效数据包: []
+[10:58:46] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:47] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:48] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:49] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:50] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:50] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:51] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:52] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:53] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:53] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:54] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:55] [错误] 无效数据包: []
+[10:58:55] [错误] 无效数据包: []
+[10:58:55] [错误] 无效数据包: []
+[10:58:55] [错误] 无效数据包: []
+[10:58:56] [错误] 无效数据包: []
+[10:58:56] [错误] 无效数据包: []
+[10:58:56] [错误] 无效数据包: []
+[10:58:56] [错误] 无效数据包: []
+[10:58:56] [错误] 无效数据包: []
+[10:58:56] [错误] 无效数据包: []
+[10:58:56] [错误] 无效数据包: []
+[10:58:56] [错误] 无效数据包: []
+[10:58:56] [错误] 无效数据包: []
+[10:58:57] [错误] 无效数据包: []
+[10:58:57] [错误] 无效数据包: []
+[10:58:57] [错误] 无效数据包: []
+[10:58:57] [错误] 无效数据包: []
+[10:58:57] [错误] 无效数据包: []
+[10:58:57] [错误] 无效数据包: []
+[10:58:57] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:58] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:58:59] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:00] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:01] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:01] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:02] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:03] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:04] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:05] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:05] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:06] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:07] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:08] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:09] [错误] 无效数据包: []
+[10:59:09] [错误] 无效数据包: []
+[10:59:09] [错误] 无效数据包: []
+[10:59:09] [错误] 无效数据包: []
+[10:59:09] [错误] 无效数据包: []
+[10:59:09] [错误] 无效数据包: []
+[10:59:09] [错误] 无效数据包: []
+[10:59:09] [错误] 无效数据包: []
+[10:59:09] [错误] 无效数据包: []
+[10:59:10] [错误] 无效数据包: []
+[10:59:10] [错误] 无效数据包: []
+[10:59:10] [错误] 无效数据包: []
+[10:59:10] [错误] 无效数据包: []
+[10:59:10] [错误] 无效数据包: []
+[10:59:10] [错误] 无效数据包: []
+[10:59:10] [错误] 无效数据包: []
+[10:59:10] [错误] 无效数据包: []
+[10:59:11] [错误] 无效数据包: []
+[10:59:11] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:12] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:12] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:13] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:14] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:15] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:16] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:16] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:17] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:18] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:19] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:19] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:20] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:21] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:22] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:23] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:23] [系统] 增量保存 10 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:24] [系统] 程序退出，保存所有数据...
+[10:59:24] [系统] 保存所有 2424 条数据到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:24] [系统] 数据已保存到 /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/data/0513_105421/tracker_data_0513_105421.csv
+[10:59:24] [系统] 串口已关闭

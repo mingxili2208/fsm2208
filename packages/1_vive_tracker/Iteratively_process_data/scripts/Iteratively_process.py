@@ -55,7 +55,7 @@ console.setFormatter(formatter)
 logger.addHandler(console)
 
 # File paths - update these with your input file paths
-LASER_TRACKER_CSV = os.path.join(parent_dir, "data/corrected_laser_tracker_0428_164614.csv")  # Update with your input file
+LASER_TRACKER_CSV = os.path.join(parent_dir, "data/corrected_tracker_data_0513_124038.csv")  # Update with your input file
 EULER_CSV = os.path.join(parent_dir, "data/euler_2304.csv")  # Update with your input file
 CORRECTED_LASER_TRACKER_CSV = os.path.join(data_dir, "corrected_laser_tracker.csv")
 
