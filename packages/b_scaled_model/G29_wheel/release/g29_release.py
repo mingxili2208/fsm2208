@@ -691,7 +691,6 @@ class IntegratedControlPublisher(Node):
         
         # 强制发送带喇叭的命令
         self.send_command_with_trumpet(current_steering_angle, current_speed, True, force_send=True)
-
     def release_trumpet(self):
         """释放喇叭"""
         self.logger.info("喇叭按钮释放 - 关闭喇叭")
@@ -892,10 +891,14 @@ class IntegratedControlPublisher(Node):
             prev_mode = self.mode
             self.mode = self.MODE_WHEEL
             self.logger.info(f"\n****切换到 WHEEL 控制模式 (从 {prev_mode})****")
+            self.handle_enter_button()  
             self.send_stop_command(force_send=True) # 确保停止命令发送
             self.last_sent_commands.update({'speed': None, 'steering_angle_deg': None})
             self.gear_direction = 0 #不挂档则停止 默认前进
+            self.release_trumpet()
+            #self.handle_enter_button()
             self.update_wheel_control(force_send=True) # 发送当前方向盘状态
+            #self.handle_enter_button()  
 
     def switch_to_auto_mode(self):
         """切换到自动控制模式"""
