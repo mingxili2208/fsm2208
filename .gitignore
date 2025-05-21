@@ -21,3 +21,105 @@
 *.zip
 
 **/results/*
+
+# Keil µVision Project Files
+####################################
+# User specific uVision files (Project and IDE settings)
+# 通常这些文件包含个人工作区的配置，可以被忽略，除非团队需要统一的IDE布局和调试设置。
+# 如果需要共享项目配置，可以取消注释 .uvprojx 和 .uvoptx，但用户特定的 .uvguix.* 应该被忽略。
+*.opt
+*.uvopt
+*.uvoptx
+*.uvgui.*
+*.uvguix.*
+# *.uvprojx  # 如果不希望跟踪项目文件本身（通常不推荐）
+# *.uvoptx   # 如果不希望跟踪项目选项文件（通常不推荐）
+
+# Listing files (Generated during compilation)
+####################################
+*.cod
+*.htm
+*.i
+*.lst
+*.map
+*.m51
+*.m66
+*.scr # Script files, define exception below if needed
+
+# Object and HEX files (Compilation and linking output)
+####################################
+*.axf
+*.elf
+*.hex
+*.bin
+*.lib
+*.o
+*.obj
+*.sbr
+*.sct
+*.crf
+*.d # Dependency files
+
+# Build files (Intermediate files from build process)
+####################################
+*._ia
+*.__i
+*._ii
+*.plg      # Build log
+*.dep      # Dependency files, can also be *.d
+*.lnp      # Linker parameter file (often generated)
+*.build_log.htm
+
+# Generated output directories
+####################################
+# 通常 Keil 会将编译产物输出到特定的文件夹，例如 "Objects", "Listings", "Debug", "Release" 等。
+# 建议明确指定这些文件夹。如果你的项目输出文件夹名称不同，请相应修改。
+Objects/
+Listings/
+Debug/
+Release/
+Build/
+Output/ # 有些项目可能会使用这个文件夹名
+
+# Debugger files
+####################################
+*.ini      # Debugger initialization files, define exception if needed
+JLinkLog.txt # Log file from J-Link debugger
+*.dbg*
+*.scvd     # System Viewer Description File (often user-specific)
+
+# Other files
+####################################
+*.bak      # Backup files
+*.tmp      # Temporary files
+*.cdb
+*.ic
+*.orc
+# *.pack   # Pack files, define exception if needed (usually managed by pack installer)
+# *.pdsc   # Pack description files, define exception if needed
+.mxproject # STM32CubeMX configuration file if managed separately or generated
+
+# RTE (Run-Time Environment) generated files
+####################################
+# RTE 文件夹通常包含由 Pack Installer 管理的库文件和配置。
+# 最佳实践是只提交项目的核心代码和必要的配置文件，RTE组件可以通过Pack Installer在不同环境中重新生成。
+# 如果团队成员使用不同版本的Packs，或者希望保持仓库的清洁，忽略RTE是推荐的。
+# 如果需要确保所有开发者使用完全相同的RTE配置并且不希望每次都重新下载，则可以考虑跟踪RTE文件夹，但这会显著增加仓库体积。
+RTE/
+
+# User specific files from other tools that might be used with Keil
+####################################
+# For example, if using STM32CubeMX, you might have:
+# *.ioc # STM32CubeMX project file - 通常这个文件是需要跟踪的，因为它定义了硬件配置
+# 但由CubeMX生成的代码（例如在 Src, Inc 文件夹中的部分）通常会被修改并跟踪。
+
+# IDE specific files (e.g. VSCode if used alongside Keil)
+####################################
+.vscode/
+*.code-workspace
+
+# Miscellaneous
+####################################
+*.rar
+*.zip
+*.tar.gz
