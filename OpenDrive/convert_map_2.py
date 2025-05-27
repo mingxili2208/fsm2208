@@ -2,6 +2,208 @@ import os
 import sys
 import xml.etree.ElementTree as ET
 
+def check_opendrive2lanelet_structure():
+    """检查opendrive2lanelet库的实际结构"""
+    try:
+        import opendrive2lanelet
+        print("正在检查 opendrive2lanelet 库结构...")
+        
+        # 检查主模块
+        print("主模块属性:")
+        for attr in dir(opendrive2lanelet):
+            if not attr.startswith('_'):
+                print(f"  - {attr}")
+        
+        # 检查子模块
+        import pkgutil
+        print("\n子模块:")
+        for importer, modname, ispkg in pkgutil.iter_modules(opendrive2lanelet.__path__):
+            print(f"  - {modname} {'(包)' if ispkg else ''}")
+            
+        # 尝试不同的导入路径
+        possible_imports = [
+            'opendrive2lanelet.opendriveparser.parser',
+            'opendrive2lanelet.opendrive_parser.parser', 
+            'opendrive2lanelet.parser',
+            'opendrive2lanelet.conversion',
+            'opendrive2lanelet.converter'
+        ]
+        
+        print("\n尝试导入解析器:")
+        for import_path in possible_imports:
+            try:
+                module = __import__(import_path, fromlist=[''])
+                print(f"  ✓ {import_path}")
+                print(f"    可用函数: {[f for f in dir(module) if not f.startswith('_')]}")
+            except ImportError as e:
+                print(f"  ❌ {import_path}: {e}")
+        
+        return True
+        
+    except ImportError:
+        print("❌ opendrive2lanelet 未安装")
+        return False
+
+def convert_with_opendrive2lanelet_v2(xodr_file_path, output_osm_file_path):
+    """使用opendrive2lanelet库进行转换 - 改进版"""
+    try:
+        print("正在尝试使用 opendrive2lanelet (改进版)...")
+        
+        # 首先检查库结构
+        check_opendrive2lanelet_structure()
+        print("-" * 20)
+        
+        # 尝试更多可能的导入方式
+        parse_function = None
+        
+        # 方法1: 尝试标准导入
+        try:
+            from opendrive2lanelet.opendriveparser.parser import parse_opendrive
+            parse_function = parse_opendrive
+            print("✓ 成功导入 parse_opendrive (标准路径)")
+        except ImportError:
+            pass
+        
+        # 方法2: 尝试备用路径
+        if parse_function is None:
+            try:
+                import opendrive2lanelet.opendriveparser as parser_module
+                if hasattr(parser_module, 'parse_opendrive'):
+                    parse_function = parser_module.parse_opendrive
+                    print("✓ 找到 parse_opendrive (备用路径1)")
+            except ImportError:
+                pass
+        
+        # 方法3: 尝试主模块
+        if parse_function is None:
+            try:
+                import opendrive2lanelet
+                if hasattr(opendrive2lanelet, 'parse_opendrive'):
+                    parse_function = opendrive2lanelet.parse_opendrive
+                    print("✓ 找到 parse_opendrive (主模块)")
+            except ImportError:
+                pass
+        
+        # 方法4: 尝试转换器模块
+        if parse_function is None:
+            try:
+                from opendrive2lanelet import converter
+                if hasattr(converter, 'parse_opendrive'):
+                    parse_function = converter.parse_opendrive
+                    print("✓ 找到 parse_opendrive (转换器模块)")
+                elif hasattr(converter, 'convert'):
+                    parse_function = converter.convert
+                    print("✓ 找到 convert 函数")
+            except ImportError:
+                pass
+        
+        # 方法5: 尝试通过网络接口
+        if parse_function is None:
+            try:
+                from opendrive2lanelet.network import Network
+                print("✓ 找到 Network 类")
+                # 这种情况下需要不同的处理方式
+                return convert_using_network_class(xodr_file_path, output_osm_file_path)
+            except ImportError:
+                pass
+        
+        if parse_function is None:
+            raise ImportError("无法找到任何有效的解析函数")
+        
+        # 尝试解析
+        print("正在解析OpenDRIVE文件...")
+        
+        try:
+            # 直接文件路径
+            result = parse_function(xodr_file_path)
+        except Exception as e1:
+            print(f"文件路径解析失败: {e1}")
+            try:
+                # 读取文件内容
+                with open(xodr_file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                result = parse_function(content)
+            except Exception as e2:
+                print(f"文件内容解析失败: {e2}")
+                raise Exception(f"所有解析方法都失败了: {e1}, {e2}")
+        
+        # 检查结果
+        if result is None:
+            raise ValueError("解析结果为空")
+        
+        print(f"✓ 解析成功，结果类型: {type(result)}")
+        
+        # 尝试提取或转换为CommonRoad格式
+        lanelet_network = None
+        
+        # 如果结果已经是CommonRoad网络
+        if hasattr(result, 'lanelets'):
+            lanelet_network = result
+        # 如果结果有网络属性
+        elif hasattr(result, 'lanelet_network'):
+            lanelet_network = result.lanelet_network
+        # 如果结果是元组
+        elif isinstance(result, tuple) and len(result) > 0:
+            lanelet_network = result[0]
+        else:
+            # 尝试直接使用result
+            lanelet_network = result
+        
+        if lanelet_network is None:
+            raise ValueError("无法从解析结果中提取lanelet网络")
+        
+        if not hasattr(lanelet_network, 'lanelets') or not lanelet_network.lanelets:
+            raise ValueError("lanelet网络为空或无车道")
+        
+        print(f"✓ 成功提取网络，车道数量: {len(lanelet_network.lanelets)}")
+        
+        # 尝试写入文件
+        return write_with_commonroad(lanelet_network, output_osm_file_path)
+        
+    except Exception as e:
+        print(f"❌ opendrive2lanelet 转换失败: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+def convert_using_network_class(xodr_file_path, output_osm_file_path):
+    """使用Network类进行转换"""
+    try:
+        from opendrive2lanelet.network import Network
+        
+        print("正在使用Network类转换...")
+        
+        # 创建Network实例
+        network = Network()
+        
+        # 尝试加载OpenDRIVE文件
+        if hasattr(network, 'load_opendrive'):
+            network.load_opendrive(xodr_file_path)
+        elif hasattr(network, 'from_opendrive'):
+            network = Network.from_opendrive(xodr_file_path)
+        else:
+            raise AttributeError("Network类没有预期的加载方法")
+        
+        # 尝试导出为CommonRoad格式
+        if hasattr(network, 'export_commonroad'):
+            lanelet_network = network.export_commonroad()
+        elif hasattr(network, 'to_commonroad'):
+            lanelet_network = network.to_commonroad()
+        else:
+            # 直接使用网络对象
+            lanelet_network = network
+        
+        if not hasattr(lanelet_network, 'lanelets') or not lanelet_network.lanelets:
+            raise ValueError("网络转换失败或无车道")
+        
+        print(f"✓ Network类转换成功，车道数量: {len(lanelet_network.lanelets)}")
+        
+        return write_with_commonroad(lanelet_network, output_osm_file_path)
+        
+    except Exception as e:
+        print(f"❌ Network类转换失败: {e}")
+        return False
+
 def validate_xodr_file(xodr_file_path):
     """验证OpenDRIVE文件是否有效"""
     try:
@@ -53,67 +255,6 @@ def validate_xodr_file(xodr_file_path):
         print(f"❌ 文件验证失败: {e}")
         return False
 
-def convert_with_opendrive2lanelet(xodr_file_path, output_osm_file_path):
-    """使用opendrive2lanelet库进行转换"""
-    try:
-        print("正在尝试使用 opendrive2lanelet...")
-        
-        # 尝试不同的导入方式
-        try:
-            from opendrive2lanelet.opendriveparser.parser import parse_opendrive
-            print("✓ 导入 parse_opendrive (路径1)")
-        except ImportError:
-            try:
-                from opendrive2lanelet.opendrive_parser.parser import parse_opendrive
-                print("✓ 导入 parse_opendrive (路径2)")
-            except ImportError:
-                try:
-                    from opendrive2lanelet import opendrive_parser
-                    parse_opendrive = opendrive_parser.parser.parse_opendrive
-                    print("✓ 导入 parse_opendrive (路径3)")
-                except ImportError:
-                    raise ImportError("无法找到 parse_opendrive 函数")
-        
-        # 尝试解析，使用不同的参数
-        print("正在解析OpenDRIVE文件...")
-        
-        try:
-            # 方法1：直接解析
-            lanelet_network = parse_opendrive(xodr_file_path)
-        except Exception as e1:
-            print(f"直接解析失败: {e1}")
-            try:
-                # 方法2：读取为字符串后解析
-                with open(xodr_file_path, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                lanelet_network = parse_opendrive(content)
-            except Exception as e2:
-                print(f"字符串解析失败: {e2}")
-                try:
-                    # 方法3：使用额外参数
-                    import xml.etree.ElementTree as ET
-                    tree = ET.parse(xodr_file_path)
-                    root = tree.getroot()
-                    lanelet_network = parse_opendrive(root)
-                except Exception as e3:
-                    print(f"XML元素解析失败: {e3}")
-                    raise Exception(f"所有解析方法都失败了: {e1}, {e2}, {e3}")
-        
-        if not lanelet_network:
-            raise ValueError("解析得到空的网络")
-            
-        if not hasattr(lanelet_network, 'lanelets') or not lanelet_network.lanelets:
-            raise ValueError("网络中没有车道")
-        
-        print(f"✓ 成功解析，车道数量: {len(lanelet_network.lanelets)}")
-        
-        # 尝试写入文件
-        return write_with_commonroad(lanelet_network, output_osm_file_path)
-        
-    except Exception as e:
-        print(f"❌ opendrive2lanelet 转换失败: {e}")
-        return False
-
 def convert_with_sumo_and_manual(xodr_file_path, output_osm_file_path):
     """使用SUMO转换然后手动转换为Lanelet2格式"""
     try:
@@ -159,7 +300,7 @@ def convert_with_sumo_and_manual(xodr_file_path, output_osm_file_path):
             print("✓ SUMO网络转换成功")
             
             # 解析SUMO网络文件
-            return convert_sumo_to_lanelet2(temp_net_file, output_osm_file_path)
+            return create_standard_osm_file_from_sumo(temp_net_file, output_osm_file_path)
             
         finally:
             # 清理临时文件
@@ -173,8 +314,8 @@ def convert_with_sumo_and_manual(xodr_file_path, output_osm_file_path):
         print(f"❌ SUMO转换失败: {e}")
         return False
 
-def convert_sumo_to_lanelet2(sumo_net_file, output_osm_file_path):
-    """将SUMO网络文件转换为Lanelet2格式"""
+def create_standard_osm_file_from_sumo(sumo_net_file, output_osm_file_path):
+    """从SUMO网络创建标准OSM文件"""
     try:
         print("正在将SUMO网络转换为Lanelet2格式...")
         
@@ -182,24 +323,10 @@ def convert_sumo_to_lanelet2(sumo_net_file, output_osm_file_path):
         tree = ET.parse(sumo_net_file)
         root = tree.getroot()
         
-        # 创建标准的OSM文件
-        return create_standard_osm_file(root, output_osm_file_path)
-        
-    except Exception as e:
-        print(f"❌ SUMO到Lanelet2转换失败: {e}")
-        import traceback
-        traceback.print_exc()
-        return False
-
-def create_standard_osm_file(sumo_root, output_osm_file_path):
-    """创建标准的OSM文件"""
-    try:
-        print("正在创建标准OSM文件...")
-        
-        # 手动构建OSM XML内容
+        # 构建OSM内容
         osm_content = []
         osm_content.append('<?xml version="1.0" encoding="UTF-8"?>')
-        osm_content.append('<osm version="0.6" generator="opendrive2lanelet2-converter">')
+        osm_content.append('<osm version="0.6" generator="sumo2lanelet2-converter">')
         
         node_id = 1
         way_id = 1
@@ -210,7 +337,7 @@ def create_standard_osm_file(sumo_root, output_osm_file_path):
         
         # 处理节点 - 从交叉口创建
         print("正在处理交叉口...")
-        for junction in sumo_root.findall('junction'):
+        for junction in root.findall('junction'):
             junction_id = junction.get('id')
             x = float(junction.get('x', 0))
             y = float(junction.get('y', 0))
@@ -229,10 +356,8 @@ def create_standard_osm_file(sumo_root, output_osm_file_path):
         lane_count = 0
         print("正在处理道路和车道...")
         
-        for edge in sumo_root.findall('edge'):
+        for edge in root.findall('edge'):
             edge_id = edge.get('id')
-            from_node = edge.get('from')
-            to_node = edge.get('to')
             
             # 跳过内部边
             if edge_id.startswith(':'):
@@ -508,8 +633,8 @@ def convert_xodr_to_lanelet2(xodr_file_path, output_osm_file_path):
     
     print("-" * 30)
     
-    # 尝试方法1：opendrive2lanelet
-    if convert_with_opendrive2lanelet(xodr_file_path, output_osm_file_path):
+    # 尝试方法1：opendrive2lanelet (改进版)
+    if convert_with_opendrive2lanelet_v2(xodr_file_path, output_osm_file_path):
         return True
     
     print("-" * 30)
@@ -529,7 +654,7 @@ def convert_xodr_to_lanelet2(xodr_file_path, output_osm_file_path):
 
 def main():
     """主函数"""
-    print("=== 修复版 OpenDRIVE to Lanelet2 转换工具 ===")
+    print("=== 调试版 OpenDRIVE to Lanelet2 转换工具 ===")
     
     # 配置文件路径
     input_xodr_file = "0516_1.xodr"
@@ -579,17 +704,6 @@ def main():
             print("⚠️  输出文件为空")
     else:
         print(f"❌ 输出文件未创建")
-    
-    if success:
-        print("\n📋 使用建议:")
-        print("1. 用JOSM编辑器打开 .osm 文件查看")
-        print("2. 检查车道连接关系")
-        print("3. 根据需要调整车道属性")
-    else:
-        print("\n💡 故障排除:")
-        print("1. 检查OpenDRIVE文件格式")
-        print("2. 尝试其他OpenDRIVE文件测试")
-        print("3. 检查软件依赖是否完整")
     
     print("-" * 50)
 
