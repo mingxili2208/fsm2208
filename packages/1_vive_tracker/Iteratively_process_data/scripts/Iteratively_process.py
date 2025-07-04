@@ -18,7 +18,7 @@ current_time = datetime.datetime.now()
 timestamp = current_time.strftime("%Y-%m-%d %H:%M:%S")
 
 
-TAGET_RMSE=0.02
+TAGET_RMSE=0.009
 
 
 # Create output directory in parent directory of the script
@@ -55,7 +55,7 @@ console.setFormatter(formatter)
 logger.addHandler(console)
 
 # File paths - update these with your input file paths
-LASER_TRACKER_CSV = os.path.join(parent_dir, "data/corrected_tracker_data_0513_124038.csv")  # Update with your input file
+LASER_TRACKER_CSV = os.path.join(parent_dir, "data/corrected_tracker_data_0630_163030.csv")  # Update with your input file
 EULER_CSV = os.path.join(parent_dir, "data/euler_2304.csv")  # Update with your input file
 CORRECTED_LASER_TRACKER_CSV = os.path.join(data_dir, "corrected_laser_tracker.csv")
 
@@ -461,68 +461,14 @@ def transform_point_pose(position, orientation, T_pos, R_euler):
 
     return transformed_position, transformed_orientation
 
-def process_laser_tracker_data(input_file, output_file):
-    """
-    Process laser tracker data to correct measurements
-    
-    Args:
-        input_file: Input CSV file path
-        output_file: Output CSV file path
-    """
+def process_laser_tracker_data(input_file):
+    """Process laser tracker data"""
     logger.info(f"Processing laser tracker data from {input_file}")
     
     try:
         df = pd.read_csv(input_file)
+        logger.info(f"Processed {len(df)} data points")
         
-        # Rename columns
-        df.rename(columns={"Distance_2": "d_laser_z", "Distance_3": "d_laser_x"}, inplace=True)
-        
-        # Apply offsets
-        df["d_laser_x"] = df["d_laser_x"] + 0.05
-        df["d_laser_z"] = df["d_laser_z"] + 0.05
-        
-        # Calculate corrected distances
-        def compute_corrected_distances(laser_x, laser_z, yaw):
-            if yaw < 0:
-                theta = np.radians(yaw + 137.4)
-            else:
-                theta = np.radians(yaw - 40.7)  # Calculate offset angle (in radians)
-        
-            # Rotation transformation, recover real vertical distance in 30° direction
-            d_perp_x = laser_x * np.cos(theta)   # X direction corrected distance
-            d_perp_z = laser_z * np.cos(theta)   # Z direction corrected distance
-        
-            return round(d_perp_x, 3), round(d_perp_z, 3)  # Keep 3 decimal places
-        
-        # Calculate corrected data
-        corrected_data = [
-            compute_corrected_distances(lx, lz, yaw)
-            for lx, lz, yaw in zip(df["d_laser_x"], df["d_laser_z"], df["Yaw"])
-        ]
-        
-        # Split calculation results
-        df["laser_x"], df["laser_z"] = zip(*corrected_data)
-        
-        df["laser_x"] = 4.250 - df["laser_x"]
-        df["laser_z"] = 1.660 - df["laser_z"]
-        
-        # Filter rows based on Yaw value
-        condition1 = abs(df["Yaw"] + 137.4) <= 10     # Filter data with yaw in  angle_90°±10° range
-        condition2 = abs(df["Yaw"] - 40.7) <= 10       # Filter data with yaw in angle_-90°±10° range
-        
-        df = df[condition1 | condition2]
-        
-        # Keep only needed columns and sort in required order
-        df = df[["Timestamp", "d_laser_x", "d_laser_z", "laser_x", "laser_z", "X", "Y", "Z", "Yaw", "Roll", "Pitch"]]
-        df = df.round(4)  # Keep 4 decimal places for all numeric columns
-        
-        # Save corrected data as CSV
-        df.to_csv(output_file, index=False, encoding="utf-8")
-        
-        logger.info(f"Corrected data saved to {output_file}")
-        logger.info(f"First few rows: \n{df.head()}")
-        
-            
         return df
         
     except Exception as e:
@@ -835,7 +781,7 @@ def main():
     # Process laser tracker data
     if os.path.exists(LASER_TRACKER_CSV):
         logger.info("Processing laser tracker data...")
-        process_laser_tracker_data(LASER_TRACKER_CSV, CORRECTED_LASER_TRACKER_CSV)
+        process_laser_tracker_data(LASER_TRACKER_CSV)
         
         # Calculate transformation matrices iteratively if both necessary files exist
         if os.path.exists(EULER_CSV) and os.path.exists(CORRECTED_LASER_TRACKER_CSV):

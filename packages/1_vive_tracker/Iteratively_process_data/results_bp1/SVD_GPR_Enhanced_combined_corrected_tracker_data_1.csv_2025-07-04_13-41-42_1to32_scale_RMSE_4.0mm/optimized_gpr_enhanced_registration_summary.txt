@@ -1,0 +1,23 @@
+Optimized GPR Enhanced Two-Stage Registration Summary
+================================================================================
+Scale Factor: 32
+Target RMSE: 4.00mm
+Final RMSE: 37.347mm
+Success: No
+Original points: 6980
+After preprocessing: 6980
+Duplicates removed: 0
+Clean points used: 6943
+Real-world equivalent: 119.51cm
+Best model type: GPR
+Outlier detection method: robust_iqr
+Mean prediction uncertainty: 127.354mm
+High uncertainty regions: 25.0%
+
+Optimized GPR Enhanced features:
+- Improved numerical stability and performance
+- Timeout protection for training
+- Reduced parameter grid for faster optimization
+- Data subsampling for large datasets
+- Error handling and graceful degradation
+- Uncertainty quantification and mapping

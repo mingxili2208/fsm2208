@@ -1,0 +1,16 @@
+Spatial Filtering Enhanced Registration Summary (NaN-Safe)
+================================================================================
+Scale Factor: 32
+Target RMSE: 4.00mm
+Best RMSE: 21.339mm
+Success: No
+Best filter configuration: {'filter_type': 'adaptive_median', 'k_neighbors': 8}
+Original points: 6980
+Real-world equivalent: 68.28cm
+
+NaN-Safe spatial filtering features:
+- KNNImputer and SimpleImputer for missing value handling
+- Safe nearest neighbor operations
+- Robust error handling throughout pipeline
+- Multiple filter types with adaptive parameters
+- Comprehensive data validation and debugging

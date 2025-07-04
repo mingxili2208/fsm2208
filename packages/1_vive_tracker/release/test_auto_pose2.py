@@ -200,7 +200,8 @@ def process_buffer():
         return
     
     # 计算平均值
-    avg_timestamp = sum(item[0] for item in data_buffer) / len(data_buffer)
+    # avg_timestamp = sum(item[0] for item in data_buffer) / len(data_buffer)
+    new_timestamp = data_buffer[-1][0]
     avg_distance_2 = sum(item[1] for item in data_buffer) / len(data_buffer)
     avg_distance_3 = sum(item[2] for item in data_buffer) / len(data_buffer)
     
@@ -217,7 +218,7 @@ def process_buffer():
     data_buffer.clear()
     
     # 将平均值添加回缓冲区
-    data_buffer.append((avg_timestamp, avg_distance_2, avg_distance_3, avg_coords))
+    data_buffer.append((new_timestamp, avg_distance_2, avg_distance_3, avg_coords))
     
     write_log(f"[缓冲] 计算缓冲区平均值 ({buffer_size_before}个点)，保留在缓冲区: d2={avg_distance_2:.3f}m, d3={avg_distance_3:.3f}m | x={avg_coords[0]:.3f}, z={avg_coords[2]:.3f}")
 
