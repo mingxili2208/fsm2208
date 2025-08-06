@@ -1,0 +1,5 @@
+日志创建时间: 2025-07-07 12:56:07
+=== 系统日志 ===
+[12:56:07] [系统] 初始化 ViveTrackerModule...
+[12:56:07] [系统] Tracker 'tracker_1' 连接成功
+[12:56:07] [错误] 无法打开串口 /dev/ttyUSB0: [Errno 2] could not open port /dev/ttyUSB0: [Errno 2] No such file or directory: '/dev/ttyUSB0'

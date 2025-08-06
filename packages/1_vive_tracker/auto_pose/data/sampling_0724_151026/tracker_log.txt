@@ -1,0 +1,134 @@
+日志创建时间: 2025-07-24 15:10:26
+=== 系统日志 ===
+[15:10:26.556] [系统] 初始化 ViveTrackerModule...
+[15:10:26.566] [系统] Tracker 'tracker_1' 连接成功
+[15:10:26.566] Serial port configured: /dev/ttyUSB0, 9600 baud, timeout 0.1s
+[15:10:26.568] 
+=== Control Instructions ===
+Basic Operations:
+  'R' - Start recording data (linear movement sampling)
+  'E' - Stop recording data  
+  'P' - Pause/Resume recording (switch position, recalibrate baseline)
+  'T' - Start 60-second static zero drift test
+  'S' - Show current performance statistics
+  'D' - Toggle Debug detailed information
+  'I' - Show test status
+  'Q' - Manually end test
+  'X' - Force exit current mode, return to idle state
+  'H' - Show help information
+  'Esc' - Exit program and save data
+
+Sampling Process:
+  1. Press 'R' to start recording, perform linear movement
+  2. Press 'P' to pause recording, can switch to new position
+  3. At new position press 'P' again, system will recalibrate baseline then continue sampling
+  4. Finally save raw data and filtered data to two separate CSV files
+=========================
+    
+[15:10:26.568] [系统] 当前状态: IDLE
+[15:10:29.099] [验证-Distance_2] 开始60秒静态零飘测试（支持连接中断后继续）
+[15:10:29.099] [验证-Distance_3] 开始60秒静态零飘测试（支持连接中断后继续）
+[15:10:29.099] [系统] 静态测试已开始，即使连接中断也会继续累积时间
+[15:10:29.099] [系统] 系统状态: TESTING
+[15:10:29.099] [警告] 当前状态为 TESTING，无法开始测试。请先按 'X' 退出当前模式
+[15:10:29.101] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:29.164] 读取10字节，缓冲区总长度: 10
+[15:10:29.164] 收到原始数据: [55 7E 03 08 2E 0F 0F 26 7E 55] (长度: 10)
+[15:10:29.164] 解析成功: D2=2094(2.094m), D3=3855(3.855m)
+[15:10:29.164] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:29.179] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:29.330] 未收到响应 (连续失败: 2次)
+[15:10:29.346] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:29.405] 读取10字节，缓冲区总长度: 10
+[15:10:29.405] 收到原始数据: [55 7E 03 08 2E 0F 11 38 7E 55] (长度: 10)
+[15:10:29.405] 解析成功: D2=2094(2.094m), D3=3857(3.857m)
+[15:10:29.405] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:29.420] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:29.483] 读取10字节，缓冲区总长度: 10
+[15:10:29.483] 收到原始数据: [55 7E 03 08 2E 0F 11 38 7E 55] (长度: 10)
+[15:10:29.483] 解析成功: D2=2094(2.094m), D3=3857(3.857m)
+[15:10:29.483] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:29.498] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:29.649] 未收到响应 (连续失败: 2次)
+[15:10:29.664] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:29.722] 读取10字节，缓冲区总长度: 10
+[15:10:29.722] 收到原始数据: [55 7E 03 08 2D 0F 10 3A 7E 55] (长度: 10)
+[15:10:29.722] 解析成功: D2=2093(2.093m), D3=3856(3.856m)
+[15:10:29.722] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:29.738] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:29.801] 读取10字节，缓冲区总长度: 10
+[15:10:29.801] 收到原始数据: [55 7E 03 08 2D 0F 0E 24 7E 55] (长度: 10)
+[15:10:29.801] 解析成功: D2=2093(2.093m), D3=3854(3.854m)
+[15:10:29.801] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:29.816] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:29.881] 读取10字节，缓冲区总长度: 10
+[15:10:29.881] 收到原始数据: [55 7E 03 08 2D 0F 0E 24 7E 55] (长度: 10)
+[15:10:29.881] 解析成功: D2=2093(2.093m), D3=3854(3.854m)
+[15:10:29.881] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:29.896] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:29.961] 读取10字节，缓冲区总长度: 10
+[15:10:29.961] 收到原始数据: [55 7E 03 08 2D 0F 10 3A 7E 55] (长度: 10)
+[15:10:29.961] 解析成功: D2=2093(2.093m), D3=3856(3.856m)
+[15:10:29.961] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:29.976] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:30.127] 未收到响应 (连续失败: 2次)
+[15:10:30.142] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:30.199] 读取10字节，缓冲区总长度: 10
+[15:10:30.199] 收到原始数据: [55 7E 03 08 2E 0F 10 39 7E 55] (长度: 10)
+[15:10:30.199] 解析成功: D2=2094(2.094m), D3=3856(3.856m)
+[15:10:30.199] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:30.215] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:30.279] 读取10字节，缓冲区总长度: 10
+[15:10:30.279] 收到原始数据: [55 7E 03 08 2E 0F 10 39 7E 55] (长度: 10)
+[15:10:30.279] 解析成功: D2=2094(2.094m), D3=3856(3.856m)
+[15:10:30.279] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:30.295] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:30.360] 读取10字节，缓冲区总长度: 10
+[15:10:30.360] 收到原始数据: [55 7E 03 08 2C 0F 0E 25 7E 55] (长度: 10)
+[15:10:30.360] 解析成功: D2=2092(2.092m), D3=3854(3.854m)
+[15:10:30.360] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:30.375] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:30.439] 读取10字节，缓冲区总长度: 10
+[15:10:30.439] 收到原始数据: [55 7E 03 08 2E 0F 0F 26 7E 55] (长度: 10)
+[15:10:30.439] 解析成功: D2=2094(2.094m), D3=3855(3.855m)
+[15:10:30.439] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:30.454] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:30.520] 读取10字节，缓冲区总长度: 10
+[15:10:30.520] 收到原始数据: [55 7E 03 08 2D 0F 10 3A 7E 55] (长度: 10)
+[15:10:30.520] 解析成功: D2=2093(2.093m), D3=3856(3.856m)
+[15:10:30.520] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:30.535] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:30.598] 读取10字节，缓冲区总长度: 10
+[15:10:30.598] 收到原始数据: [55 7E 03 08 2D 0F 10 3A 7E 55] (长度: 10)
+[15:10:30.598] 解析成功: D2=2093(2.093m), D3=3856(3.856m)
+[15:10:30.598] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:30.613] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:30.619] [系统] 接收到 Ctrl+C，程序退出...
+[15:10:30.619] [系统] 强制停止录制
+[15:10:30.619] [验证-Distance_2] 紧急停止测试
+[15:10:30.619] [验证-Distance_3] 紧急停止测试
+[15:10:30.619] [系统] 强制停止静态测试: d2, d3
+[15:10:30.619] [系统] 系统状态: IDLE
+[15:10:30.619] 
+=== Control Instructions ===
+Basic Operations:
+  'R' - Start recording data (linear movement sampling)
+  'E' - Stop recording data  
+  'P' - Pause/Resume recording (switch position, recalibrate baseline)
+  'T' - Start 60-second static zero drift test
+  'S' - Show current performance statistics
+  'D' - Toggle Debug detailed information
+  'I' - Show test status
+  'Q' - Manually end test
+  'X' - Force exit current mode, return to idle state
+  'H' - Show help information
+  'Esc' - Exit program and save data
+
+Sampling Process:
+  1. Press 'R' to start recording, perform linear movement
+  2. Press 'P' to pause recording, can switch to new position
+  3. At new position press 'P' again, system will recalibrate baseline then continue sampling
+  4. Finally save raw data and filtered data to two separate CSV files
+=========================
+    
+[15:10:30.620] [系统] 串口已关闭

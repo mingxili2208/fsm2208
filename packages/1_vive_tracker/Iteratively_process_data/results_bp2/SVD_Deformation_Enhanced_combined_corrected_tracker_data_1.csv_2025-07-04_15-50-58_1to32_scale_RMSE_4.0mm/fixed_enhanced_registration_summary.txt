@@ -1,0 +1,25 @@
+FIXED Enhanced Two-Stage Registration Summary
+================================================================================
+Scale Factor: 32
+Target RMSE: 4.00mm
+Final RMSE: 13.867mm
+Success: No
+Original points: 6980
+After preprocessing: 6980
+Duplicates removed: 0
+Clean points used: 6943
+Real-world equivalent: 44.38cm
+Best model type: rbf
+Outlier detection method: robust_iqr
+
+FIXED Issues:
+- B-Spline LSQBivariateSpline parameter passing (s=smoothing_value instead of s=s)
+- RBF epsilon parameter for multiquadric/gaussian kernels properly handled
+- Direct use of CV-optimized parameters (adaptive smoothing disabled)
+
+Enhanced features:
+- Data preprocessing with deduplication and quality check
+- Robust statistical outlier detection
+- 5-fold cross-validation with proper parameter handling
+- Automatic model selection
+- Comprehensive residual analysis

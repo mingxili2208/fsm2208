@@ -1,0 +1,36 @@
+{
+  "R_EULER_3D": [
+    [
+      0.67654891,
+      -0.7363977,
+      0.0
+    ],
+    [
+      0.7363977,
+      0.67654891,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "MLP_HIDDEN_LAYERS": [
+    512,
+    256,
+    128,
+    64,
+    32
+  ],
+  "RANSAC_ITERATIONS": 3000,
+  "RANSAC_BASE_THRESHOLD": 0.04,
+  "RANSAC_INLIER_THRESHOLD": 0.02,
+  "original_points": 5554,
+  "inlier_points": 2777,
+  "train_points": 2221,
+  "test_points": 556,
+  "best_method": "Enhanced Ensemble Hybrid",
+  "best_rmse_mm": 6.0853306735235515,
+  "cpd_available": true
+}

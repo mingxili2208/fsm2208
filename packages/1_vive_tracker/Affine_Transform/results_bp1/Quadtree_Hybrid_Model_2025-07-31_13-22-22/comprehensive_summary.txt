@@ -1,0 +1,51 @@
+
+=========================================================
+       Enhanced Quadtree Hybrid Model Training Summary
+=========================================================
+Data Source: final_coordinates.csv
+Total Data Points: 3261
+Training Points: 2608
+Test Points: 653
+
+Model Configuration:
+---------------------------------------------------------
+RANSAC Iterations: 3000
+RANSAC Inlier Threshold: 15.0 mm
+Quadtree Max Depth: 10
+Quadtree Min Points Per Cell: 15
+Quadtree Error Threshold: 4.0 mm
+Prediction Clip Value: 100.0 mm
+
+Test Set Performance Evaluation (RMSE):
+---------------------------------------------------------
+Stage A (Known Rotation Only):        3099.4749 mm
+Stage B (Rotation + Affine):          15.9747 mm  
+Stage C (Enhanced Quadtree Hybrid):   56.6618 mm
+---------------------------------------------------------
+
+Performance Improvement Analysis:
+---------------------------------------------------------
+Stage A to Stage B Improvement:   3083.5002 mm (99.5%)
+Stage B to Stage C Improvement:   -40.6871 mm (-254.7%)
+Stage A to Stage C Improvement:   3042.8130 mm (98.2%)
+
+Detailed Performance Metrics (Stage C - Final Model):
+---------------------------------------------------------
+RMSE: 56.6618 mm
+MAE:  39.1596 mm
+Max:  145.6611 mm
+95%:  107.9699 mm
+99%:  113.8915 mm
+=========================================================
+
+Production Enhancements Applied:
+- Smooth bilinear interpolation between quadtree cells
+- Robust out-of-bounds handling with clamping strategy
+- Prediction clipping mechanism for error control
+- Distance-weighted neighbor predictions
+- Enhanced boundary discontinuity elimination
+
+Model Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Quadtree_Hybrid_Model_2025-07-31_13-22-22/models
+Log Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Quadtree_Hybrid_Model_2025-07-31_13-22-22/log/quadtree_training_process.log
+Visualization Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Quadtree_Hybrid_Model_2025-07-31_13-22-22/img
+=========================================================

@@ -1,0 +1,91 @@
+
+=== Improved CTE Analysis Report ===
+Generated at: 2025-08-01 19:06:31.051371
+
+Data Summary:
+- Actual pose records: 5640
+- Valid CTE calculations: 5640
+- Path points: 561
+- Trajectory points: 8819
+
+CTE Calculation Methods Comparison:
+
+1. Traditional (Time-based): 
+   - Each vehicle position finds nearest path segment
+   - Most common method in existing systems
+
+2. Vehicle-to-Path Correspondence:
+   - Each vehicle position matches to closest path segment
+   - Similar to traditional but with improved geometry
+
+3. Path-to-Vehicle Correspondence:
+   - Each path segment finds closest vehicle position
+   - Ensures every path segment is evaluated
+
+4. Trajectory Reference:
+   - CTE calculated relative to local trajectory
+   - Represents local planning performance
+
+CTE Statistics:
+
+Traditional (Time-based):
+  Count: 5640
+  Mean: 0.3144 m
+  Median: 0.4001 m
+  Std: 0.4119 m
+  RMSE: 0.5181 m
+  Max Abs: 1.1061 m
+  95th Percentile: 0.8657 m
+
+Vehicle-to-Path Correspondence:
+  Count: 5640
+  Mean: 0.3144 m
+  Median: 0.4001 m
+  Std: 0.4119 m
+  RMSE: 0.5181 m
+  Max Abs: 1.1061 m
+  95th Percentile: 0.8657 m
+
+Trajectory:
+  Count: 5640
+  Mean: 0.5495 m
+  Median: 0.3652 m
+  Std: 1.4537 m
+  RMSE: 1.5539 m
+  Max Abs: 5.1597 m
+  95th Percentile: 5.1597 m
+
+Path-to-Vehicle Correspondence:
+  Count: 560
+  Mean: 0.2875 m
+  Median: 0.2980 m
+  Std: 0.4010 m
+  RMSE: 0.4931 m
+  Max Abs: 1.0960 m
+  95th Percentile: 0.8949 m
+
+
+Method Analysis:
+
+Traditional vs Vehicle-to-Path Correspondence:
+- Both methods are similar in concept but V2P uses improved geometric calculation
+- RMSE comparison shows the difference in accuracy
+
+Path-to-Vehicle Correspondence:
+- Provides different perspective: how well the vehicle follows each path segment
+- May have different sample size due to different correspondence logic
+- Useful for path quality assessment
+
+Trajectory Reference:
+- Shows local planning performance
+- Generally should have lower CTE as trajectory is adapted to current conditions
+- Useful for comparing global path vs local trajectory quality
+
+Recommendations:
+1. For path following evaluation: Use Vehicle-to-Path correspondence
+2. For path quality assessment: Use Path-to-Vehicle correspondence  
+3. For local planning evaluation: Use Trajectory reference
+4. The traditional time-based method may not be optimal due to temporal misalignment
+
+Recommended Method for Path Following Evaluation:
+'Path-to-Vehicle Correspondence' shows the best performance with RMSE = 0.4931m

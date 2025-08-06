@@ -1,0 +1,51 @@
+
+=== Final CTE Analysis Report ===
+Generated at: 2025-08-01 18:53:31.252298
+
+Data Summary:
+- Actual pose records: 5640
+- Valid CTE calculations: 5640
+- Original path points: 561
+- Interpolated path points: 569
+- Trajectory points: 8819
+- Path segments: 1
+- Detected gaps: 0
+
+Gap Information:
+
+CTE Statistics Comparison:
+
+Original Path:
+  Mean: 0.2539 m
+  Median: 0.2047 m
+  Std: 0.3638 m
+  RMSE: 0.4436 m
+  Max Abs: 1.1061 m
+  95th Percentile: 0.8660 m
+
+Interpolated Path:
+  Mean: 0.2463 m
+  Median: 0.1947 m
+  Std: 0.3689 m
+  RMSE: 0.4435 m
+  Max Abs: 1.1061 m
+  95th Percentile: 0.8660 m
+
+Trajectory:
+  Mean: 0.2451 m
+  Median: 0.1636 m
+  Std: 0.3849 m
+  RMSE: 0.4563 m
+  Max Abs: 1.1338 m
+  95th Percentile: 0.8660 m
+
+Segmented Path:
+  Mean: 0.2539 m
+  Median: 0.2047 m
+  Std: 0.3638 m
+  RMSE: 0.4436 m
+  Max Abs: 1.1061 m
+  95th Percentile: 0.8660 m
+
+Recommendation:
+Based on RMSE analysis, 'Interpolated Path' shows the best performance with RMSE = 0.4435m

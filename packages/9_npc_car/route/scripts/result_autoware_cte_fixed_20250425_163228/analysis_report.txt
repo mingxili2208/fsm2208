@@ -1,0 +1,19 @@
+
+=== CTE Analysis Report (Fixed) ===
+Generated at: 2025-08-01 18:35:07.724557
+Experiment: autoware_cte_fixed
+
+Data Summary:
+- Actual pose records: 5640
+- Path waypoints: 111266
+- Trajectory points: 7225
+
+CTE Statistics relative to Path:
+- Mean CTE: 0.2408 m
+- Median CTE: 0.1733 m
+- Max CTE (absolute): 1.1061 m
+- Min CTE: -0.7824 m
+- Max CTE: 1.1061 m
+- RMSE: 0.4399 m
+- Standard Deviation: 0.3682 m
+- 95th Percentile: 0.8629 m

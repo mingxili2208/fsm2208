@@ -1,0 +1,54 @@
+
+=========================================================
+     Enhanced Comparative Model Training Summary
+=========================================================
+Best Method: Enhanced Ensemble Hybrid
+Best Test RMSE: 10.066 mm
+
+Method Performance Comparison:
+
+Affine:
+  Train RMSE: 16.090 mm
+  Test RMSE: 15.682 mm
+  Train MAE: 13.583 mm
+  Test MAE: 13.157 mm
+  Max Error: 71.263 mm
+  95th Percentile: 28.823 mm
+
+RBF Registration:
+  Train RMSE: 12.166 mm
+  Test RMSE: 13.551 mm
+  Train MAE: 7.285 mm
+  Test MAE: 8.215 mm
+  Max Error: 56.335 mm
+  95th Percentile: 33.022 mm
+
+CPD Registration:
+  Train RMSE: 15.572 mm
+  Test RMSE: 14.775 mm
+  Train MAE: 12.238 mm
+  Test MAE: 11.606 mm
+  Max Error: 67.664 mm
+  95th Percentile: 28.946 mm
+
+Original Hybrid:
+  Train RMSE: 10.779 mm
+  Test RMSE: 11.294 mm
+  Train MAE: 8.011 mm
+  Test MAE: 8.236 mm
+  Max Error: 56.914 mm
+  95th Percentile: 22.467 mm
+
+Enhanced Ensemble Hybrid:
+  Train RMSE: 10.655 mm
+  Test RMSE: 10.066 mm
+  Train MAE: 7.851 mm
+  Test MAE: 7.098 mm
+  Max Error: 50.762 mm
+  95th Percentile: 19.476 mm
+
+=========================================================
+Model Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Comparative_Model_2025-07-31_13-39-31/models
+Log Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Comparative_Model_2025-07-31_13-39-31/log/enhanced_training_process.log
+Visualization Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Comparative_Model_2025-07-31_13-39-31/img
+=========================================================

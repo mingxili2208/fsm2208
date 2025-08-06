@@ -1,0 +1,82 @@
+{
+    "preprocessing": {
+      "enable_stationary_filter": true,
+      "stationary_window_size": 10,
+      "stationary_std_threshold": 0.001,
+      "stationary_detection_channels": ["distance_2", "distance_3"]
+    },
+    "synchronization": {
+      "interpolation_tolerance_ms": 100,
+      "outlier_detection": true,
+      "outlier_threshold_sigma": 3.0,
+      "disable_angle_interpolation": true
+    },
+    "pose_filtering": {
+      "enable_pose_stability_filter": true,
+      "roll_fluctuation_threshold": 1.0,
+      "pitch_fluctuation_threshold": 2.0,
+      "yaw_fluctuation_threshold": 5.0,
+      "histogram_bins": 50
+    },
+    "segmentation": {
+      "max_time_gap_ms": 150,
+      "min_segment_length": 10
+    },
+    "filtering": {
+      "sg_window_length": 7,
+      "sg_polyorder": 2,
+      "auto_optimize_parameters": true
+    },
+    "_comments":{
+        "nomal_distance_2_maps_to": "laser_z",
+        "nomal_distance_3_maps_to": "laser_x",
+        "crossed_distance_2_maps_to": "laser_x",
+        "crossed_distance_3_maps_to": "laser_z"
+    },
+    "coordinate_mapping": {
+      "distance_to_laser_mapping": {
+        "distance_2_maps_to": "laser_x",
+        "distance_3_maps_to": "laser_z"
+      },
+      "laser_to_tracker_mapping": {
+        "laser_x_maps_to": "tracker_x",
+        "laser_z_maps_to": "tracker_z"
+      },
+      "coordinate_transform": {
+        "laser_x_sign": 1,
+        "laser_z_sign": 1,
+        "tracker_x_sign": 1,
+        "tracker_z_sign": 1
+      },
+      "validation": {
+        "enable_coordinate_validation": true,
+        "log_mapping_details": true
+      }
+    },
+    "physical_correction": {
+      "enable_physical_correction": true,
+      "physical_offset": 0.05,
+      "world_target_x": 4.250,
+      "world_target_z": 1.660,
+      "apply_angle_projection": true,
+      "coordinate_system": {
+        "world_coordinate_origin": "laser_origin",
+        "measurement_direction": "distance_from_laser_to_target",
+        "world_transform_method": "subtraction"
+      }
+    },
+    "visualization": {
+      "generate_interactive_plots": true,
+      "generate_static_plots": true,
+      "plot_3d_trajectories": true,
+      "show_segment_boundaries": true,
+      "generate_residual_histogram": true,
+      "generate_fft_analysis": true
+    },
+    "output": {
+      "save_synchronized_csv": true,
+      "save_filtered_csv": true,
+      "save_final_coordinates_csv": true,
+      "output_dir": "processed_data"
+    }
+  }

@@ -1,0 +1,42 @@
+
+=========================================================
+     Enhanced Comparative Model Training Summary
+=========================================================
+Best Method: Enhanced Ensemble Hybrid
+Best Test RMSE: 10.059 mm
+
+Method Performance Comparison:
+
+RBF Registration:
+  Train RMSE: 12.166 mm
+  Test RMSE: 13.551 mm
+  Test MAE: 8.215 mm
+  Max Error: 56.335 mm
+  95th Percentile: 33.022 mm
+
+CPD Registration:
+  Train RMSE: 15.572 mm
+  Test RMSE: 14.775 mm
+  Test MAE: 11.606 mm
+  Max Error: 67.664 mm
+  95th Percentile: 28.946 mm
+
+Original Hybrid:
+  Train RMSE: 11.069 mm
+  Test RMSE: 11.334 mm
+  Test MAE: 8.374 mm
+  Max Error: 56.751 mm
+  95th Percentile: 22.843 mm
+
+Enhanced Ensemble Hybrid:
+  Train RMSE: 10.633 mm
+  Test RMSE: 10.059 mm
+  Test MAE: 7.036 mm
+  Max Error: 51.163 mm
+  95th Percentile: 19.126 mm
+
+=========================================================
+Model Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Comparative_Model_2025-07-30_18-34-46/models
+Log Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Comparative_Model_2025-07-30_18-34-46/log/enhanced_training_process.log
+Visualization Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Comparative_Model_2025-07-30_18-34-46/img
+=========================================================

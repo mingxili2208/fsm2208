@@ -1,0 +1,123 @@
+Log created: 2025-07-24 17:43:16
+=== System Log ===
+[17:43:16.352] [System] Initializing ViveTrackerModule...
+[17:43:16.367] [System] Tracker 'tracker_1' connected successfully
+[17:43:16.368] Serial port configured: /dev/ttyUSB0, 9600 baud
+[17:43:16.369] 
+=== Control Instructions ===
+Basic Operations:
+  'T' - Start 60-second baseline zero drift test (test only, data not saved)
+  'R' - Start data collection (segment 0, with baseline calibration)
+  'E' - Stop data collection  
+  'P' - Pause/Resume data collection (switch position, recalibrate baseline)
+  'S' - Show current performance statistics
+  'D' - Toggle Debug detailed information
+  'I' - Show test status
+  'Q' - Manually end test
+  'X' - Force exit current mode, return to idle state
+  'H' - Show help information
+  'Esc' - Exit program and save data
+
+Zero Drift Filtering:
+  - Learns noise characteristics during baseline calibration
+  - Applies adaptive filtering based on deviation magnitude
+  - No time-based compensation, only noise-level filtering
+=========================
+    
+[17:43:16.369] [System] Current state: IDLE
+[17:43:22.416] [ZeroDrift-D2] Starting baseline calibration...
+[17:43:22.416] [ZeroDrift-D3] Starting baseline calibration...
+[17:43:22.416] [Validation-Distance_2] Starting 60-second static zero drift test
+[17:43:22.416] [Validation-Distance_3] Starting 60-second static zero drift test
+[17:43:22.416] [System] 开始基线测试，数据不会保存到CSV
+[17:43:22.648] [Baseline] D2: 2.100m, D3: 3.899m
+[17:43:22.887] [Baseline] D2: 2.100m, D3: 3.895m
+[17:43:22.967] [Baseline] D2: 2.100m, D3: 3.895m
+[17:43:23.205] [Baseline] D2: 2.099m, D3: 3.899m
+[17:43:23.285] [Baseline] D2: 2.099m, D3: 3.897m
+[17:43:23.365] [Baseline] D2: 2.099m, D3: 3.897m
+[17:43:23.443] [Baseline] D2: 2.099m, D3: 3.896m
+[17:43:23.682] [Baseline] D2: 2.099m, D3: 3.896m
+[17:43:23.922] [Baseline] D2: 2.100m, D3: 3.896m
+[17:43:24.161] [Baseline] D2: 2.099m, D3: 3.898m
+[17:43:24.240] [Baseline] D2: 2.101m, D3: 3.897m
+[17:43:24.479] [Baseline] D2: 2.102m, D3: 3.898m
+[17:43:24.718] [Baseline] D2: 2.100m, D3: 3.900m
+[17:43:24.798] [Baseline] D2: 2.101m, D3: 3.897m
+[17:43:25.037] [Baseline] D2: 2.099m, D3: 3.895m
+[17:43:25.116] [Baseline] D2: 2.102m, D3: 3.896m
+[17:43:25.196] [Baseline] D2: 2.100m, D3: 3.899m
+[17:43:25.275] [Baseline] D2: 2.100m, D3: 3.896m
+[17:43:25.355] [Baseline] D2: 2.101m, D3: 3.896m
+[17:43:25.435] [Baseline] D2: 2.099m, D3: 3.897m
+[17:43:25.514] [Baseline] D2: 2.100m, D3: 3.896m
+[17:43:25.595] [Baseline] D2: 2.100m, D3: 3.898m
+[17:43:25.674] [Baseline] D2: 2.100m, D3: 3.898m
+[17:43:25.754] [Baseline] D2: 2.100m, D3: 3.898m
+[17:43:25.833] [Baseline] D2: 2.101m, D3: 3.899m
+[17:43:25.912] [Baseline] D2: 2.099m, D3: 3.896m
+[17:43:25.992] [Baseline] D2: 2.098m, D3: 3.899m
+[17:43:26.072] [Baseline] D2: 2.098m, D3: 3.899m
+[17:43:26.152] [Baseline] D2: 2.099m, D3: 3.897m
+[17:43:26.232] [Baseline] D2: 2.099m, D3: 3.898m
+[17:43:26.311] [Baseline] D2: 2.101m, D3: 3.895m
+[17:43:26.391] [Baseline] D2: 2.101m, D3: 3.899m
+[17:43:26.470] [Baseline] D2: 2.101m, D3: 3.899m
+[17:43:26.549] [Baseline] D2: 2.101m, D3: 3.898m
+[17:43:26.629] [Baseline] D2: 2.101m, D3: 3.898m
+[17:43:26.710] [Baseline] D2: 2.100m, D3: 3.899m
+[17:43:26.789] [Baseline] D2: 2.099m, D3: 3.896m
+[17:43:26.868] [Baseline] D2: 2.099m, D3: 3.896m
+[17:43:26.948] [Baseline] D2: 2.099m, D3: 3.897m
+[17:43:27.028] [Baseline] D2: 2.099m, D3: 3.896m
+[17:43:27.107] [Baseline] D2: 2.100m, D3: 3.898m
+[17:43:27.187] [Baseline] D2: 2.099m, D3: 3.896m
+[17:43:27.267] [Baseline] D2: 2.099m, D3: 3.896m
+[17:43:27.347] [Baseline] D2: 2.101m, D3: 3.897m
+[17:43:27.426] [Baseline] D2: 2.099m, D3: 3.899m
+[17:43:27.506] [Baseline] D2: 2.099m, D3: 3.895m
+[17:43:27.585] [Baseline] D2: 2.098m, D3: 3.898m
+[17:43:27.665] [Baseline] D2: 2.098m, D3: 3.898m
+[17:43:27.745] [Baseline] D2: 2.102m, D3: 3.897m
+[17:43:27.825] [ZeroDrift-D2] Baseline analysis complete:
+[17:43:27.825]   Reference: 2.1000m
+[17:43:27.825]   Noise Std: 1.07mm
+[17:43:27.825]   Filter Threshold: 2.15mm
+[17:43:27.825] [ZeroDrift-D3] Baseline analysis complete:
+[17:43:27.825]   Reference: 3.8970m
+[17:43:27.825]   Noise Std: 1.37mm
+[17:43:27.825]   Filter Threshold: 2.74mm
+[17:43:27.825] [System] Baseline test completed
+[17:43:27.825] [System] Baseline test completed, returning to idle
+[17:43:46.380] Serial statistics: 270 requests, 239 successes, 88.5% success rate
+[17:44:08.546] Attempting connection recovery (attempt 1)
+[17:44:08.660] [System] Executing data recovery reset
+[17:44:16.385] Serial statistics: 617 requests, 557 successes, 90.3% success rate
+[17:44:46.410] Serial statistics: 975 requests, 896 successes, 91.9% success rate
+[17:44:54.248] [System] Received Ctrl+C, program exit...
+[17:44:54.249] [System] Force stop recording
+[17:44:54.249] [Validation-Distance_2] Manually ending test
+[17:44:54.249] [Validation-Distance_3] Manually ending test
+[17:44:54.249] [System] System state: IDLE
+[17:44:54.249] 
+=== Control Instructions ===
+Basic Operations:
+  'T' - Start 60-second baseline zero drift test (test only, data not saved)
+  'R' - Start data collection (segment 0, with baseline calibration)
+  'E' - Stop data collection  
+  'P' - Pause/Resume data collection (switch position, recalibrate baseline)
+  'S' - Show current performance statistics
+  'D' - Toggle Debug detailed information
+  'I' - Show test status
+  'Q' - Manually end test
+  'X' - Force exit current mode, return to idle state
+  'H' - Show help information
+  'Esc' - Exit program and save data
+
+Zero Drift Filtering:
+  - Learns noise characteristics during baseline calibration
+  - Applies adaptive filtering based on deviation magnitude
+  - No time-based compensation, only noise-level filtering
+=========================
+    
+[17:44:54.249] [System] Serial port closed

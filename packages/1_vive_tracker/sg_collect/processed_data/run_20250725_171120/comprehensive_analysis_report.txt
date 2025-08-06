@@ -1,0 +1,40 @@
+================================================================================
+INDUSTRIAL-GRADE DATA PROCESSING ANALYSIS REPORT
+================================================================================
+
+Processing Date: 2025-07-25T17:11:22.392066
+Session ID: 20250725_171120
+Raw Data File: raw_data/raw_data_20250725_161942.npz
+Output Directory: processed_data/run_20250725_171120
+
+PREPROCESSING RESULTS:
+----------------------------------------
+original_points: 3064
+filtered_points: 2932
+points_removed: 60
+reduction_ratio: 4.308093994778073
+stationary_segments: 8
+
+SYNCHRONIZATION RESULTS:
+----------------------------------------
+success: 2932
+failed: 0
+outliers_removed: 0
+
+POSE_FILTERING RESULTS:
+----------------------------------------
+original_points: 2932
+filtered_points: 2932
+points_removed: 0
+removal_ratio: 0.0
+stable_ranges:
+  roll: None
+  pitch: None
+  yaw: None
+
+SEGMENTATION RESULTS:
+----------------------------------------
+segment_count: 101
+
+FILTERING RESULTS:
+----------------------------------------

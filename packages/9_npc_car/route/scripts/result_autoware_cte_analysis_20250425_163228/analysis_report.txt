@@ -1,0 +1,33 @@
+
+=== CTE Analysis Report ===
+Generated at: 2025-08-01 18:29:09.936348
+Experiment: autoware_cte_analysis
+
+Data Summary:
+- Actual pose records: 5640
+- Path waypoints: 130313
+- Trajectory points: 165822
+
+CTE Statistics relative to Path (Global Planning):
+- Mean CTE: 0.2306 m
+- Median CTE: 0.2003 m
+- Max CTE (absolute): 1.1061 m
+- Min CTE: -0.7265 m
+- Max CTE: 1.1061 m
+- RMSE: 0.4437 m
+- Standard Deviation: 0.3791 m
+- 95th Percentile: 0.8660 m
+
+CTE Statistics relative to Trajectory (Local Planning):
+- Mean CTE: 0.2435 m
+- Median CTE: 0.1636 m
+- Max CTE (absolute): 1.1183 m
+- Min CTE: -0.8627 m
+- Max CTE: 1.1183 m
+- RMSE: 0.4403 m
+- Standard Deviation: 0.3668 m
+- 95th Percentile: 0.8612 m
+
+Performance Comparison:
+- Path RMSE vs Trajectory RMSE: 0.4437 vs 0.4403
+- Path Mean Abs Error vs Trajectory Mean Abs Error: 0.3444 vs 0.3486

@@ -1,0 +1,2391 @@
+Log created: 2025-07-24 17:29:55
+=== System Log ===
+[17:29:55.957] [System] Initializing ViveTrackerModule...
+[17:29:55.969] [System] Tracker 'tracker_1' connected successfully
+[17:29:55.970] Serial port configured: /dev/ttyUSB0, 9600 baud, timeout 0.1s
+[17:29:55.971] 
+=== Control Instructions ===
+Basic Operations:
+  'T' - Start 60-second baseline zero drift test (test only, data not saved)
+  'R' - Start data collection (segment 0, with baseline calibration)
+  'E' - Stop data collection  
+  'P' - Pause/Resume data collection (switch position, recalibrate baseline)
+  'S' - Show current performance statistics
+  'D' - Toggle Debug detailed information
+  'I' - Show test status
+  'Q' - Manually end test
+  'X' - Force exit current mode, return to idle state
+  'H' - Show help information
+  'Esc' - Exit program and save data
+
+Data Collection Process:
+  1. Press 'T' for baseline test (optional, 60s test, data not saved)
+  2. Press 'R' to start data collection (segment 0, baseline calibration first)
+  3. After baseline calibration, perform linear movement
+  4. Press 'P' to pause and switch to new position
+  5. Press 'P' again to resume (new baseline calibration + new segment)
+  6. Repeat steps 4-5 as needed
+  7. Press 'E' to finish and save data to CSV files
+
+Data Validation:
+  - LiDAR continuity: adjacent data interval must be <0.1m
+  - Tracker yaw stability: sudden changes >10 degrees rejected
+  - Drift compensation applied based on baseline analysis
+=========================
+    
+[17:29:55.971] [System] Current state: IDLE
+[17:29:59.504] [DriftFilter-D2] Starting baseline calibration...
+[17:29:59.505] [DriftFilter-D3] Starting baseline calibration...
+[17:29:59.505] [System] 开始基线测试，数据不会保存到CSV
+[17:29:59.505] [System] System state: BASELINE_TESTING
+[17:29:59.512] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:29:59.662] No response received (consecutive failures: 1)
+[17:29:59.677] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:29:59.741] Read 10 bytes, total buffer length: 10
+[17:29:59.741] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:29:59.741] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:29:59.742] [Baseline] D2: 2.098m, D3: 3.896m
+[17:29:59.757] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:29:59.820] Read 10 bytes, total buffer length: 10
+[17:29:59.821] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:29:59.821] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:29:59.821] [Baseline] D2: 2.099m, D3: 3.899m
+[17:29:59.836] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:29:59.900] Read 10 bytes, total buffer length: 10
+[17:29:59.900] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:29:59.900] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:29:59.900] [Baseline] D2: 2.099m, D3: 3.898m
+[17:29:59.915] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:29:59.979] Read 10 bytes, total buffer length: 10
+[17:29:59.979] Received raw data: [55 7E 03 08 34 0F 3B 08 7E 55] (length: 10)
+[17:29:59.980] Parse successful: D2=2100(2.100m), D3=3899(3.899m)
+[17:29:59.980] [Baseline] D2: 2.100m, D3: 3.899m
+[17:29:59.995] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.059] Read 10 bytes, total buffer length: 10
+[17:30:00.059] Received raw data: [55 7E 03 08 34 0F 3B 08 7E 55] (length: 10)
+[17:30:00.059] Parse successful: D2=2100(2.100m), D3=3899(3.899m)
+[17:30:00.059] [Baseline] D2: 2.100m, D3: 3.899m
+[17:30:00.075] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.139] Read 10 bytes, total buffer length: 10
+[17:30:00.139] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:00.139] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:00.139] [Baseline] D2: 2.098m, D3: 3.899m
+[17:30:00.155] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.218] Read 10 bytes, total buffer length: 10
+[17:30:00.218] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:00.218] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:00.218] [Baseline] D2: 2.098m, D3: 3.896m
+[17:30:00.234] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.298] Read 10 bytes, total buffer length: 10
+[17:30:00.298] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:00.298] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:00.298] [Baseline] D2: 2.098m, D3: 3.899m
+[17:30:00.313] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.378] Read 10 bytes, total buffer length: 10
+[17:30:00.378] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:00.378] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:00.378] [Baseline] D2: 2.099m, D3: 3.899m
+[17:30:00.393] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.458] Read 10 bytes, total buffer length: 10
+[17:30:00.458] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:00.458] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:00.458] [Baseline] D2: 2.098m, D3: 3.899m
+[17:30:00.474] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.537] Read 10 bytes, total buffer length: 10
+[17:30:00.537] Received raw data: [55 7E 03 08 32 0F 37 02 7E 55] (length: 10)
+[17:30:00.537] Parse successful: D2=2098(2.098m), D3=3895(3.895m)
+[17:30:00.537] [Baseline] D2: 2.098m, D3: 3.895m
+[17:30:00.552] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.617] Read 10 bytes, total buffer length: 10
+[17:30:00.617] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:00.617] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:00.617] [Baseline] D2: 2.098m, D3: 3.897m
+[17:30:00.632] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.697] Read 10 bytes, total buffer length: 10
+[17:30:00.697] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:00.697] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:00.697] [Baseline] D2: 2.099m, D3: 3.896m
+[17:30:00.712] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.777] Read 10 bytes, total buffer length: 10
+[17:30:00.777] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:00.777] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:00.777] [Baseline] D2: 2.098m, D3: 3.896m
+[17:30:00.792] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.855] Read 10 bytes, total buffer length: 10
+[17:30:00.855] Received raw data: [55 7E 03 08 32 0F 37 02 7E 55] (length: 10)
+[17:30:00.855] Parse successful: D2=2098(2.098m), D3=3895(3.895m)
+[17:30:00.856] [Baseline] D2: 2.098m, D3: 3.895m
+[17:30:00.871] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:00.935] Read 10 bytes, total buffer length: 10
+[17:30:00.935] Received raw data: [55 7E 03 08 35 0F 37 05 7E 55] (length: 10)
+[17:30:00.935] Parse successful: D2=2101(2.101m), D3=3895(3.895m)
+[17:30:00.935] [Baseline] D2: 2.101m, D3: 3.895m
+[17:30:00.950] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.015] Read 10 bytes, total buffer length: 10
+[17:30:01.015] Received raw data: [55 7E 03 08 35 0F 3B 09 7E 55] (length: 10)
+[17:30:01.015] Parse successful: D2=2101(2.101m), D3=3899(3.899m)
+[17:30:01.015] [Baseline] D2: 2.101m, D3: 3.899m
+[17:30:01.031] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.094] Read 10 bytes, total buffer length: 10
+[17:30:01.094] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:01.094] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:01.095] [Baseline] D2: 2.098m, D3: 3.897m
+[17:30:01.110] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.175] Read 10 bytes, total buffer length: 10
+[17:30:01.175] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:01.175] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:01.175] [Baseline] D2: 2.100m, D3: 3.897m
+[17:30:01.190] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.254] Read 10 bytes, total buffer length: 10
+[17:30:01.254] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:01.254] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:01.254] [Baseline] D2: 2.099m, D3: 3.896m
+[17:30:01.269] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.333] Read 10 bytes, total buffer length: 10
+[17:30:01.333] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:01.333] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:01.334] [Baseline] D2: 2.099m, D3: 3.897m
+[17:30:01.349] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.414] Read 10 bytes, total buffer length: 10
+[17:30:01.414] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:01.414] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:01.414] [Baseline] D2: 2.099m, D3: 3.898m
+[17:30:01.429] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.493] Read 10 bytes, total buffer length: 10
+[17:30:01.493] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:01.493] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:01.493] [Baseline] D2: 2.101m, D3: 3.897m
+[17:30:01.508] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.572] Read 10 bytes, total buffer length: 10
+[17:30:01.572] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:01.572] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:01.572] [Baseline] D2: 2.098m, D3: 3.897m
+[17:30:01.588] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.652] Read 10 bytes, total buffer length: 10
+[17:30:01.652] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:01.652] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:01.652] [Baseline] D2: 2.100m, D3: 3.898m
+[17:30:01.667] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.732] Read 10 bytes, total buffer length: 10
+[17:30:01.732] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:01.732] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:01.732] [Baseline] D2: 2.099m, D3: 3.899m
+[17:30:01.747] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.811] Read 10 bytes, total buffer length: 10
+[17:30:01.811] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:01.811] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:01.811] [Baseline] D2: 2.099m, D3: 3.898m
+[17:30:01.826] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.891] Read 10 bytes, total buffer length: 10
+[17:30:01.891] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:01.891] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:01.892] [Baseline] D2: 2.098m, D3: 3.896m
+[17:30:01.907] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:01.971] Read 10 bytes, total buffer length: 10
+[17:30:01.971] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:01.971] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:01.971] [Baseline] D2: 2.099m, D3: 3.896m
+[17:30:01.986] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.051] Read 10 bytes, total buffer length: 10
+[17:30:02.051] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:02.051] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:02.051] [Baseline] D2: 2.098m, D3: 3.897m
+[17:30:02.066] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.130] Read 10 bytes, total buffer length: 10
+[17:30:02.130] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:02.130] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:02.130] [Baseline] D2: 2.098m, D3: 3.896m
+[17:30:02.145] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.209] Read 10 bytes, total buffer length: 10
+[17:30:02.209] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:02.209] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:02.209] [Baseline] D2: 2.098m, D3: 3.897m
+[17:30:02.225] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.290] Read 10 bytes, total buffer length: 10
+[17:30:02.290] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:02.290] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:02.290] [Baseline] D2: 2.098m, D3: 3.898m
+[17:30:02.305] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.369] Read 10 bytes, total buffer length: 10
+[17:30:02.369] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:02.369] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:02.369] [Baseline] D2: 2.098m, D3: 3.898m
+[17:30:02.384] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.448] Read 10 bytes, total buffer length: 10
+[17:30:02.448] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:02.448] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:02.448] [Baseline] D2: 2.099m, D3: 3.898m
+[17:30:02.463] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.528] Read 10 bytes, total buffer length: 10
+[17:30:02.528] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:02.528] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:02.528] [Baseline] D2: 2.100m, D3: 3.898m
+[17:30:02.544] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.607] Read 10 bytes, total buffer length: 10
+[17:30:02.607] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:02.608] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:02.608] [Baseline] D2: 2.100m, D3: 3.895m
+[17:30:02.623] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.688] Read 10 bytes, total buffer length: 10
+[17:30:02.688] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:02.688] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:02.688] [Baseline] D2: 2.099m, D3: 3.897m
+[17:30:02.703] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.767] Read 10 bytes, total buffer length: 10
+[17:30:02.767] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:02.767] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:02.767] [Baseline] D2: 2.099m, D3: 3.897m
+[17:30:02.782] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.847] Read 10 bytes, total buffer length: 10
+[17:30:02.847] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:02.847] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:02.847] [Baseline] D2: 2.098m, D3: 3.896m
+[17:30:02.862] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:02.926] Read 10 bytes, total buffer length: 10
+[17:30:02.926] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:02.926] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:02.926] [Baseline] D2: 2.099m, D3: 3.898m
+[17:30:02.942] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:03.006] Read 10 bytes, total buffer length: 10
+[17:30:03.007] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:03.007] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:03.007] [Baseline] D2: 2.099m, D3: 3.897m
+[17:30:03.022] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:03.085] Read 10 bytes, total buffer length: 10
+[17:30:03.086] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:03.086] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:03.086] [Baseline] D2: 2.098m, D3: 3.898m
+[17:30:03.101] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:03.166] Read 10 bytes, total buffer length: 10
+[17:30:03.166] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:03.166] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:03.166] [Baseline] D2: 2.100m, D3: 3.898m
+[17:30:03.181] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:03.245] Read 10 bytes, total buffer length: 10
+[17:30:03.245] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:03.245] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:03.245] [Baseline] D2: 2.099m, D3: 3.896m
+[17:30:03.260] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:03.325] Read 10 bytes, total buffer length: 10
+[17:30:03.325] Received raw data: [55 7E 03 08 36 0F 38 09 7E 55] (length: 10)
+[17:30:03.325] Parse successful: D2=2102(2.102m), D3=3896(3.896m)
+[17:30:03.325] [Baseline] D2: 2.102m, D3: 3.896m
+[17:30:03.340] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:03.404] Read 10 bytes, total buffer length: 10
+[17:30:03.405] Received raw data: [55 7E 03 08 36 0F 3A 0B 7E 55] (length: 10)
+[17:30:03.405] Parse successful: D2=2102(2.102m), D3=3898(3.898m)
+[17:30:03.405] [Baseline] D2: 2.102m, D3: 3.898m
+[17:30:03.420] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:03.484] Read 10 bytes, total buffer length: 10
+[17:30:03.484] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:03.484] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:03.484] [Baseline] D2: 2.101m, D3: 3.898m
+[17:30:03.499] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:03.650] No response received (consecutive failures: 1)
+[17:30:03.665] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:03.723] Read 10 bytes, total buffer length: 10
+[17:30:03.723] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:03.723] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:03.723] [Baseline] D2: 2.100m, D3: 3.897m
+[17:30:03.738] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:03.888] No response received (consecutive failures: 1)
+[17:30:03.904] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:03.962] Read 10 bytes, total buffer length: 10
+[17:30:03.962] Received raw data: [55 7E 03 08 33 0F 37 03 7E 55] (length: 10)
+[17:30:03.962] Parse successful: D2=2099(2.099m), D3=3895(3.895m)
+[17:30:03.962] [DriftFilter-D2] Baseline analysis complete:
+[17:30:03.962]   Mean: 2.0991m
+[17:30:03.962]   Std Dev: 1.10mm
+[17:30:03.962]   Drift Rate: 0.274mm/s
+[17:30:03.963] [DriftFilter-D3] Baseline analysis complete:
+[17:30:03.963]   Mean: 3.8972m
+[17:30:03.963]   Std Dev: 1.25mm
+[17:30:03.963]   Drift Rate: -0.216mm/s
+[17:30:03.963] [System] Baseline test completed
+[17:30:03.963] [System] Baseline test completed, returning to idle
+[17:30:03.978] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.041] Read 10 bytes, total buffer length: 10
+[17:30:04.041] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:04.041] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:04.057] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.121] Read 10 bytes, total buffer length: 10
+[17:30:04.121] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:04.122] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:04.137] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.288] No response received (consecutive failures: 1)
+[17:30:04.303] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.360] Read 10 bytes, total buffer length: 10
+[17:30:04.360] Received raw data: [55 7E 03 08 36 0F 39 08 7E 55] (length: 10)
+[17:30:04.361] Parse successful: D2=2102(2.102m), D3=3897(3.897m)
+[17:30:04.376] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.440] Read 10 bytes, total buffer length: 10
+[17:30:04.440] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:04.440] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:04.455] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.519] Read 10 bytes, total buffer length: 10
+[17:30:04.519] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:04.519] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:04.534] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.599] Read 10 bytes, total buffer length: 10
+[17:30:04.599] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:04.599] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:04.614] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.678] Read 10 bytes, total buffer length: 10
+[17:30:04.678] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:04.678] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:04.693] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.758] Read 10 bytes, total buffer length: 10
+[17:30:04.758] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:04.758] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:04.773] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.838] Read 10 bytes, total buffer length: 10
+[17:30:04.838] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:04.838] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:04.853] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.918] Read 10 bytes, total buffer length: 10
+[17:30:04.918] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:04.918] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:04.933] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:04.997] Read 10 bytes, total buffer length: 10
+[17:30:04.997] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:04.997] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:05.012] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.077] Read 10 bytes, total buffer length: 10
+[17:30:05.077] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:05.077] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:05.092] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.157] Read 10 bytes, total buffer length: 10
+[17:30:05.157] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:05.157] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:05.172] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.236] Read 10 bytes, total buffer length: 10
+[17:30:05.236] Received raw data: [55 7E 03 08 34 0F 36 05 7E 55] (length: 10)
+[17:30:05.236] Parse successful: D2=2100(2.100m), D3=3894(3.894m)
+[17:30:05.251] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.316] Read 10 bytes, total buffer length: 10
+[17:30:05.316] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:05.316] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:05.331] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.395] Read 10 bytes, total buffer length: 10
+[17:30:05.396] Received raw data: [55 7E 03 08 33 0F 37 03 7E 55] (length: 10)
+[17:30:05.396] Parse successful: D2=2099(2.099m), D3=3895(3.895m)
+[17:30:05.411] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.475] Read 10 bytes, total buffer length: 10
+[17:30:05.475] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:05.475] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:05.490] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.555] Read 10 bytes, total buffer length: 10
+[17:30:05.555] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:05.555] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:05.570] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.634] Read 10 bytes, total buffer length: 10
+[17:30:05.634] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:05.634] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:05.650] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.714] Read 10 bytes, total buffer length: 10
+[17:30:05.714] Received raw data: [55 7E 03 08 33 0F 36 02 7E 55] (length: 10)
+[17:30:05.714] Parse successful: D2=2099(2.099m), D3=3894(3.894m)
+[17:30:05.730] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.793] Read 10 bytes, total buffer length: 10
+[17:30:05.793] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:05.793] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:05.809] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.873] Read 10 bytes, total buffer length: 10
+[17:30:05.873] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:05.873] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:05.889] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:05.953] Read 10 bytes, total buffer length: 10
+[17:30:05.953] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:05.953] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:05.969] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.032] Read 10 bytes, total buffer length: 10
+[17:30:06.032] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:06.032] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:06.048] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.112] Read 10 bytes, total buffer length: 10
+[17:30:06.112] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:06.112] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:06.128] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.192] Read 10 bytes, total buffer length: 10
+[17:30:06.192] Received raw data: [55 7E 03 08 32 0F 37 02 7E 55] (length: 10)
+[17:30:06.192] Parse successful: D2=2098(2.098m), D3=3895(3.895m)
+[17:30:06.207] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.271] Read 10 bytes, total buffer length: 10
+[17:30:06.271] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:06.271] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:06.286] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.351] Read 10 bytes, total buffer length: 10
+[17:30:06.351] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:06.351] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:06.367] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.431] Read 10 bytes, total buffer length: 10
+[17:30:06.431] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:06.431] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:06.447] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.511] Read 10 bytes, total buffer length: 10
+[17:30:06.511] Received raw data: [55 7E 03 08 33 0F 37 03 7E 55] (length: 10)
+[17:30:06.511] Parse successful: D2=2099(2.099m), D3=3895(3.895m)
+[17:30:06.526] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.590] Read 10 bytes, total buffer length: 10
+[17:30:06.591] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:06.591] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:06.606] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.669] Read 10 bytes, total buffer length: 10
+[17:30:06.669] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:06.669] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:06.685] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.749] Read 10 bytes, total buffer length: 10
+[17:30:06.750] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:06.750] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:06.765] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.829] Read 10 bytes, total buffer length: 10
+[17:30:06.829] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:06.829] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:06.845] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.908] Read 10 bytes, total buffer length: 10
+[17:30:06.908] Received raw data: [55 7E 03 08 34 0F 3B 08 7E 55] (length: 10)
+[17:30:06.908] Parse successful: D2=2100(2.100m), D3=3899(3.899m)
+[17:30:06.923] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:06.988] Read 10 bytes, total buffer length: 10
+[17:30:06.988] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:06.988] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:07.003] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:07.068] Read 10 bytes, total buffer length: 10
+[17:30:07.068] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:07.068] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:07.083] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:07.148] Read 10 bytes, total buffer length: 10
+[17:30:07.148] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:07.148] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:07.163] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:07.227] Read 10 bytes, total buffer length: 10
+[17:30:07.227] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:07.227] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:07.242] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:07.307] Read 10 bytes, total buffer length: 10
+[17:30:07.307] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:07.307] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:07.322] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:07.386] Read 10 bytes, total buffer length: 10
+[17:30:07.386] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:07.386] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:07.401] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:07.552] No response received (consecutive failures: 1)
+[17:30:07.567] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:07.625] Read 10 bytes, total buffer length: 10
+[17:30:07.625] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:07.625] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:07.640] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:07.705] Read 10 bytes, total buffer length: 10
+[17:30:07.705] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:07.705] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:07.720] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:07.785] Read 10 bytes, total buffer length: 10
+[17:30:07.785] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:07.785] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:07.800] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:07.864] Read 10 bytes, total buffer length: 10
+[17:30:07.864] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:07.864] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:07.879] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:07.944] Read 10 bytes, total buffer length: 10
+[17:30:07.944] Received raw data: [55 7E 03 08 31 0F 3A 0C 7E 55] (length: 10)
+[17:30:07.944] Parse successful: D2=2097(2.097m), D3=3898(3.898m)
+[17:30:07.959] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.024] Read 10 bytes, total buffer length: 10
+[17:30:08.024] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:08.024] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:08.039] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.104] Read 10 bytes, total buffer length: 10
+[17:30:08.104] Received raw data: [55 7E 03 08 35 0F 3B 09 7E 55] (length: 10)
+[17:30:08.104] Parse successful: D2=2101(2.101m), D3=3899(3.899m)
+[17:30:08.119] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.183] Read 10 bytes, total buffer length: 10
+[17:30:08.183] Received raw data: [55 7E 03 08 34 0F 3B 08 7E 55] (length: 10)
+[17:30:08.183] Parse successful: D2=2100(2.100m), D3=3899(3.899m)
+[17:30:08.198] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.262] Read 10 bytes, total buffer length: 10
+[17:30:08.263] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:08.263] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:08.278] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.343] Read 10 bytes, total buffer length: 10
+[17:30:08.343] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:08.343] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:08.358] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.422] Read 10 bytes, total buffer length: 10
+[17:30:08.422] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:08.422] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:08.437] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.502] Read 10 bytes, total buffer length: 10
+[17:30:08.502] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:08.502] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:08.517] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.581] Read 10 bytes, total buffer length: 10
+[17:30:08.581] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:08.581] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:08.596] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.660] Read 10 bytes, total buffer length: 10
+[17:30:08.661] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:08.661] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:08.676] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.741] Read 10 bytes, total buffer length: 10
+[17:30:08.741] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:08.741] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:08.756] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.821] Read 10 bytes, total buffer length: 10
+[17:30:08.821] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:08.821] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:08.836] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.900] Read 10 bytes, total buffer length: 10
+[17:30:08.900] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:08.900] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:08.915] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:08.979] Read 10 bytes, total buffer length: 10
+[17:30:08.980] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:08.980] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:08.995] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.059] Read 10 bytes, total buffer length: 10
+[17:30:09.059] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:09.060] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:09.075] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.138] Read 10 bytes, total buffer length: 10
+[17:30:09.138] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:09.138] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:09.154] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.218] Read 10 bytes, total buffer length: 10
+[17:30:09.218] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:09.218] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:09.234] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.298] Read 10 bytes, total buffer length: 10
+[17:30:09.298] Received raw data: [55 7E 03 08 34 0F 3C 0F 7E 55] (length: 10)
+[17:30:09.298] Parse successful: D2=2100(2.100m), D3=3900(3.900m)
+[17:30:09.314] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.377] Read 10 bytes, total buffer length: 10
+[17:30:09.377] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:09.377] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:09.392] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.457] Read 10 bytes, total buffer length: 10
+[17:30:09.457] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:09.457] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:09.472] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.537] Read 10 bytes, total buffer length: 10
+[17:30:09.537] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:09.537] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:09.552] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.616] Read 10 bytes, total buffer length: 10
+[17:30:09.616] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:09.616] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:09.631] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.696] Read 10 bytes, total buffer length: 10
+[17:30:09.696] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:09.696] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:09.711] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.776] Read 10 bytes, total buffer length: 10
+[17:30:09.776] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:09.776] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:09.791] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.855] Read 10 bytes, total buffer length: 10
+[17:30:09.855] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:09.855] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:09.870] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:09.935] Read 10 bytes, total buffer length: 10
+[17:30:09.935] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:09.935] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:09.950] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.015] Read 10 bytes, total buffer length: 10
+[17:30:10.015] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:10.015] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:10.031] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.095] Read 10 bytes, total buffer length: 10
+[17:30:10.095] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:10.095] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:10.110] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.174] Read 10 bytes, total buffer length: 10
+[17:30:10.174] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:10.174] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:10.190] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.253] Read 10 bytes, total buffer length: 10
+[17:30:10.254] Received raw data: [55 7E 03 08 35 0F 38 0A 7E 55] (length: 10)
+[17:30:10.254] Parse successful: D2=2101(2.101m), D3=3896(3.896m)
+[17:30:10.269] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.333] Read 10 bytes, total buffer length: 10
+[17:30:10.333] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:10.333] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:10.349] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.412] Read 10 bytes, total buffer length: 10
+[17:30:10.412] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:10.412] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:10.428] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.492] Read 10 bytes, total buffer length: 10
+[17:30:10.492] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:10.492] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:10.507] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.572] Read 10 bytes, total buffer length: 10
+[17:30:10.572] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:10.572] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:10.587] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.652] Read 10 bytes, total buffer length: 10
+[17:30:10.652] Received raw data: [55 7E 03 08 34 0F 3B 08 7E 55] (length: 10)
+[17:30:10.652] Parse successful: D2=2100(2.100m), D3=3899(3.899m)
+[17:30:10.667] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.731] Read 10 bytes, total buffer length: 10
+[17:30:10.731] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:10.731] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:10.746] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.811] Read 10 bytes, total buffer length: 10
+[17:30:10.811] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:10.811] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:10.826] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.891] Read 10 bytes, total buffer length: 10
+[17:30:10.891] Received raw data: [55 7E 03 08 34 0F 3C 0F 7E 55] (length: 10)
+[17:30:10.891] Parse successful: D2=2100(2.100m), D3=3900(3.900m)
+[17:30:10.906] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:10.970] Read 10 bytes, total buffer length: 10
+[17:30:10.970] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:10.970] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:10.985] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.050] Read 10 bytes, total buffer length: 10
+[17:30:11.050] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:11.050] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:11.065] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.130] Read 10 bytes, total buffer length: 10
+[17:30:11.130] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:11.130] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:11.145] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.209] Read 10 bytes, total buffer length: 10
+[17:30:11.209] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:11.209] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:11.224] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.289] Read 10 bytes, total buffer length: 10
+[17:30:11.289] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:11.289] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:11.304] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.368] Read 10 bytes, total buffer length: 10
+[17:30:11.368] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:11.368] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:11.383] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.448] Read 10 bytes, total buffer length: 10
+[17:30:11.448] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:11.448] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:11.463] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.528] Read 10 bytes, total buffer length: 10
+[17:30:11.528] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:11.528] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:11.543] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.607] Read 10 bytes, total buffer length: 10
+[17:30:11.607] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:11.607] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:11.622] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.686] Read 10 bytes, total buffer length: 10
+[17:30:11.687] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:11.687] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:11.702] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.766] Read 10 bytes, total buffer length: 10
+[17:30:11.766] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:11.767] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:11.782] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.846] Read 10 bytes, total buffer length: 10
+[17:30:11.846] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:11.846] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:11.862] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:11.926] Read 10 bytes, total buffer length: 10
+[17:30:11.926] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:11.926] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:11.942] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.006] Read 10 bytes, total buffer length: 10
+[17:30:12.006] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:12.006] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:12.022] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.085] Read 10 bytes, total buffer length: 10
+[17:30:12.085] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:12.085] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:12.101] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.165] Read 10 bytes, total buffer length: 10
+[17:30:12.165] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:12.165] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:12.181] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.244] Read 10 bytes, total buffer length: 10
+[17:30:12.244] Received raw data: [55 7E 03 08 32 0F 37 02 7E 55] (length: 10)
+[17:30:12.244] Parse successful: D2=2098(2.098m), D3=3895(3.895m)
+[17:30:12.260] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.324] Read 10 bytes, total buffer length: 10
+[17:30:12.324] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:12.324] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:12.340] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.404] Read 10 bytes, total buffer length: 10
+[17:30:12.405] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:12.405] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:12.420] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.484] Read 10 bytes, total buffer length: 10
+[17:30:12.484] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:12.484] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:12.499] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.563] Read 10 bytes, total buffer length: 10
+[17:30:12.563] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:12.563] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:12.578] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.643] Read 10 bytes, total buffer length: 10
+[17:30:12.643] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:12.643] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:12.658] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.722] Read 10 bytes, total buffer length: 10
+[17:30:12.723] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:12.723] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:12.738] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.802] Read 10 bytes, total buffer length: 10
+[17:30:12.803] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:12.803] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:12.818] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.882] Read 10 bytes, total buffer length: 10
+[17:30:12.882] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:12.882] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:12.897] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:12.961] Read 10 bytes, total buffer length: 10
+[17:30:12.961] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:12.961] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:12.976] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.041] Read 10 bytes, total buffer length: 10
+[17:30:13.041] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:13.041] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:13.056] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.121] Read 10 bytes, total buffer length: 10
+[17:30:13.121] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:13.121] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:13.136] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.201] Read 10 bytes, total buffer length: 10
+[17:30:13.201] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:13.201] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:13.216] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.280] Read 10 bytes, total buffer length: 10
+[17:30:13.280] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:13.280] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:13.295] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.360] Read 10 bytes, total buffer length: 10
+[17:30:13.360] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:13.360] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:13.375] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.440] Read 10 bytes, total buffer length: 10
+[17:30:13.440] Received raw data: [55 7E 03 08 33 0F 37 03 7E 55] (length: 10)
+[17:30:13.440] Parse successful: D2=2099(2.099m), D3=3895(3.895m)
+[17:30:13.455] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.519] Read 10 bytes, total buffer length: 10
+[17:30:13.519] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:13.519] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:13.534] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.598] Read 10 bytes, total buffer length: 10
+[17:30:13.598] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:13.598] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:13.613] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.678] Read 10 bytes, total buffer length: 10
+[17:30:13.678] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:13.678] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:13.693] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.757] Read 10 bytes, total buffer length: 10
+[17:30:13.757] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:13.758] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:13.773] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.838] Read 10 bytes, total buffer length: 10
+[17:30:13.838] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:13.838] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:13.853] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.917] Read 10 bytes, total buffer length: 10
+[17:30:13.917] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:13.917] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:13.933] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:13.996] Read 10 bytes, total buffer length: 10
+[17:30:13.996] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:13.997] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:14.012] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.076] Read 10 bytes, total buffer length: 10
+[17:30:14.077] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:14.077] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:14.092] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.156] Read 10 bytes, total buffer length: 10
+[17:30:14.156] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:14.156] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:14.171] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.236] Read 10 bytes, total buffer length: 10
+[17:30:14.236] Received raw data: [55 7E 03 08 36 0F 38 09 7E 55] (length: 10)
+[17:30:14.236] Parse successful: D2=2102(2.102m), D3=3896(3.896m)
+[17:30:14.251] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.315] Read 10 bytes, total buffer length: 10
+[17:30:14.315] Received raw data: [55 7E 03 08 36 0F 3A 0B 7E 55] (length: 10)
+[17:30:14.315] Parse successful: D2=2102(2.102m), D3=3898(3.898m)
+[17:30:14.330] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.395] Read 10 bytes, total buffer length: 10
+[17:30:14.395] Received raw data: [55 7E 03 08 36 0F 38 09 7E 55] (length: 10)
+[17:30:14.395] Parse successful: D2=2102(2.102m), D3=3896(3.896m)
+[17:30:14.410] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.475] Read 10 bytes, total buffer length: 10
+[17:30:14.475] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:14.475] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:14.490] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.554] Read 10 bytes, total buffer length: 10
+[17:30:14.554] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:14.554] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:14.569] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.634] Read 10 bytes, total buffer length: 10
+[17:30:14.634] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:14.634] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:14.650] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.713] Read 10 bytes, total buffer length: 10
+[17:30:14.713] Received raw data: [55 7E 03 08 35 0F 3B 09 7E 55] (length: 10)
+[17:30:14.713] Parse successful: D2=2101(2.101m), D3=3899(3.899m)
+[17:30:14.728] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.793] Read 10 bytes, total buffer length: 10
+[17:30:14.793] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:14.793] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:14.809] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.872] Read 10 bytes, total buffer length: 10
+[17:30:14.872] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:14.872] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:14.887] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:14.952] Read 10 bytes, total buffer length: 10
+[17:30:14.952] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:14.952] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:14.968] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.032] Read 10 bytes, total buffer length: 10
+[17:30:15.032] Received raw data: [55 7E 03 08 34 0F 3C 0F 7E 55] (length: 10)
+[17:30:15.032] Parse successful: D2=2100(2.100m), D3=3900(3.900m)
+[17:30:15.048] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.111] Read 10 bytes, total buffer length: 10
+[17:30:15.111] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:15.111] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:15.127] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.192] Read 10 bytes, total buffer length: 10
+[17:30:15.192] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:15.192] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:15.207] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.272] Read 10 bytes, total buffer length: 10
+[17:30:15.272] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:15.272] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:15.287] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.350] Read 10 bytes, total buffer length: 10
+[17:30:15.350] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:15.350] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:15.366] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.430] Read 10 bytes, total buffer length: 10
+[17:30:15.430] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:15.430] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:15.446] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.510] Read 10 bytes, total buffer length: 10
+[17:30:15.510] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:15.510] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:15.526] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.589] Read 10 bytes, total buffer length: 10
+[17:30:15.589] Received raw data: [55 7E 03 08 34 0F 3B 08 7E 55] (length: 10)
+[17:30:15.589] Parse successful: D2=2100(2.100m), D3=3899(3.899m)
+[17:30:15.605] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.669] Read 10 bytes, total buffer length: 10
+[17:30:15.669] Received raw data: [55 7E 03 08 35 0F 3B 09 7E 55] (length: 10)
+[17:30:15.669] Parse successful: D2=2101(2.101m), D3=3899(3.899m)
+[17:30:15.684] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.749] Read 10 bytes, total buffer length: 10
+[17:30:15.749] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:15.749] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:15.764] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.828] Read 10 bytes, total buffer length: 10
+[17:30:15.828] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:15.828] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:15.844] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.908] Read 10 bytes, total buffer length: 10
+[17:30:15.908] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:15.908] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:15.924] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:15.988] Read 10 bytes, total buffer length: 10
+[17:30:15.988] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:15.988] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:16.003] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.067] Read 10 bytes, total buffer length: 10
+[17:30:16.067] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:16.067] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:16.082] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.147] Read 10 bytes, total buffer length: 10
+[17:30:16.147] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:16.147] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:16.162] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.227] Read 10 bytes, total buffer length: 10
+[17:30:16.227] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:16.227] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:16.242] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.306] Read 10 bytes, total buffer length: 10
+[17:30:16.306] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:16.306] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:16.321] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.386] Read 10 bytes, total buffer length: 10
+[17:30:16.386] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:16.386] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:16.401] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.466] Read 10 bytes, total buffer length: 10
+[17:30:16.466] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:16.466] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:16.481] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.545] Read 10 bytes, total buffer length: 10
+[17:30:16.545] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:16.545] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:16.561] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.625] Read 10 bytes, total buffer length: 10
+[17:30:16.625] Received raw data: [55 7E 03 08 35 0F 38 0A 7E 55] (length: 10)
+[17:30:16.625] Parse successful: D2=2101(2.101m), D3=3896(3.896m)
+[17:30:16.641] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.704] Read 10 bytes, total buffer length: 10
+[17:30:16.704] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:16.704] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:16.720] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.784] Read 10 bytes, total buffer length: 10
+[17:30:16.784] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:16.784] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:16.800] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.864] Read 10 bytes, total buffer length: 10
+[17:30:16.864] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:16.864] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:16.880] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:16.943] Read 10 bytes, total buffer length: 10
+[17:30:16.943] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:16.943] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:16.959] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.023] Read 10 bytes, total buffer length: 10
+[17:30:17.023] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:17.023] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:17.039] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.103] Read 10 bytes, total buffer length: 10
+[17:30:17.103] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:17.103] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:17.119] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.182] Read 10 bytes, total buffer length: 10
+[17:30:17.182] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:17.182] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:17.198] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.262] Read 10 bytes, total buffer length: 10
+[17:30:17.262] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:17.262] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:17.278] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.341] Read 10 bytes, total buffer length: 10
+[17:30:17.342] Received raw data: [55 7E 03 08 35 0F 3C 0E 7E 55] (length: 10)
+[17:30:17.342] Parse successful: D2=2101(2.101m), D3=3900(3.900m)
+[17:30:17.357] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.421] Read 10 bytes, total buffer length: 10
+[17:30:17.422] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:17.422] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:17.437] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.501] Read 10 bytes, total buffer length: 10
+[17:30:17.501] Received raw data: [55 7E 03 08 33 0F 36 02 7E 55] (length: 10)
+[17:30:17.501] Parse successful: D2=2099(2.099m), D3=3894(3.894m)
+[17:30:17.517] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.580] Read 10 bytes, total buffer length: 10
+[17:30:17.580] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:17.580] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:17.596] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.660] Read 10 bytes, total buffer length: 10
+[17:30:17.660] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:17.660] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:17.676] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.740] Read 10 bytes, total buffer length: 10
+[17:30:17.740] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:17.740] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:17.755] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.820] Read 10 bytes, total buffer length: 10
+[17:30:17.820] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:17.820] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:17.835] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.899] Read 10 bytes, total buffer length: 10
+[17:30:17.899] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:17.899] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:17.914] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:17.979] Read 10 bytes, total buffer length: 10
+[17:30:17.979] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:17.979] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:17.994] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:18.059] Read 10 bytes, total buffer length: 10
+[17:30:18.059] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:18.059] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:18.074] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:18.138] Read 10 bytes, total buffer length: 10
+[17:30:18.138] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:18.138] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:18.153] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:18.218] Read 10 bytes, total buffer length: 10
+[17:30:18.218] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:18.218] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:18.234] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:18.297] Read 10 bytes, total buffer length: 10
+[17:30:18.297] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:18.297] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:18.313] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:18.377] Read 10 bytes, total buffer length: 10
+[17:30:18.378] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:18.378] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:18.393] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:18.456] Read 10 bytes, total buffer length: 10
+[17:30:18.456] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:18.457] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:18.472] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:18.537] Read 10 bytes, total buffer length: 10
+[17:30:18.537] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:18.537] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:18.552] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:18.616] Read 10 bytes, total buffer length: 10
+[17:30:18.616] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:18.616] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:18.631] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:18.696] Read 10 bytes, total buffer length: 10
+[17:30:18.696] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:18.696] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:18.711] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:18.775] Read 10 bytes, total buffer length: 10
+[17:30:18.775] Received raw data: [55 7E 03 08 32 0F 36 03 7E 55] (length: 10)
+[17:30:18.775] Parse successful: D2=2098(2.098m), D3=3894(3.894m)
+[17:30:18.791] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:18.941] No response received (consecutive failures: 1)
+[17:30:18.956] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:19.014] Read 10 bytes, total buffer length: 10
+[17:30:19.014] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:19.014] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:19.029] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:19.093] Read 10 bytes, total buffer length: 10
+[17:30:19.094] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:19.094] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:19.109] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:19.173] Read 10 bytes, total buffer length: 10
+[17:30:19.174] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:19.174] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:19.189] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:19.253] Read 10 bytes, total buffer length: 10
+[17:30:19.254] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:19.254] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:19.269] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:19.333] Read 10 bytes, total buffer length: 10
+[17:30:19.333] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:19.333] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:19.348] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:19.499] No response received (consecutive failures: 1)
+[17:30:19.514] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:19.571] Read 10 bytes, total buffer length: 10
+[17:30:19.571] Received raw data: [55 7E 03 08 32 0F 37 02 7E 55] (length: 10)
+[17:30:19.571] Parse successful: D2=2098(2.098m), D3=3895(3.895m)
+[17:30:19.587] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:19.737] No response received (consecutive failures: 1)
+[17:30:19.752] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:19.810] Read 10 bytes, total buffer length: 10
+[17:30:19.810] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:19.810] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:19.826] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:19.890] Read 10 bytes, total buffer length: 10
+[17:30:19.890] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:19.890] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:19.905] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:20.056] No response received (consecutive failures: 1)
+[17:30:20.071] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:20.129] Read 10 bytes, total buffer length: 10
+[17:30:20.129] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:20.129] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:20.145] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:20.209] Read 10 bytes, total buffer length: 10
+[17:30:20.209] Received raw data: [55 7E 03 08 32 0F 37 02 7E 55] (length: 10)
+[17:30:20.209] Parse successful: D2=2098(2.098m), D3=3895(3.895m)
+[17:30:20.225] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:20.288] Read 10 bytes, total buffer length: 10
+[17:30:20.288] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:20.288] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:20.304] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:20.454] No response received (consecutive failures: 1)
+[17:30:20.469] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:20.527] Read 10 bytes, total buffer length: 10
+[17:30:20.527] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:20.527] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:20.542] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:20.607] Read 10 bytes, total buffer length: 10
+[17:30:20.607] Received raw data: [55 7E 03 08 31 0F 3B 0D 7E 55] (length: 10)
+[17:30:20.607] Parse successful: D2=2097(2.097m), D3=3899(3.899m)
+[17:30:20.623] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:20.686] Read 10 bytes, total buffer length: 10
+[17:30:20.687] Received raw data: [55 7E 03 08 31 0F 39 0F 7E 55] (length: 10)
+[17:30:20.687] Parse successful: D2=2097(2.097m), D3=3897(3.897m)
+[17:30:20.702] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:20.853] No response received (consecutive failures: 1)
+[17:30:20.868] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:20.925] Read 10 bytes, total buffer length: 10
+[17:30:20.925] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:20.925] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:20.941] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.005] Read 10 bytes, total buffer length: 10
+[17:30:21.006] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:21.006] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:21.021] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.085] Read 10 bytes, total buffer length: 10
+[17:30:21.085] Received raw data: [55 7E 03 08 32 0F 3C 09 7E 55] (length: 10)
+[17:30:21.085] Parse successful: D2=2098(2.098m), D3=3900(3.900m)
+[17:30:21.100] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.165] Read 10 bytes, total buffer length: 10
+[17:30:21.165] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:21.165] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:21.180] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.245] Read 10 bytes, total buffer length: 10
+[17:30:21.245] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:21.245] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:21.260] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.324] Read 10 bytes, total buffer length: 10
+[17:30:21.324] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:21.324] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:21.339] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.404] Read 10 bytes, total buffer length: 10
+[17:30:21.404] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:21.404] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:21.419] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.483] Read 10 bytes, total buffer length: 10
+[17:30:21.483] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:21.483] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:21.498] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.563] Read 10 bytes, total buffer length: 10
+[17:30:21.563] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:21.563] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:21.578] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.642] Read 10 bytes, total buffer length: 10
+[17:30:21.642] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:21.643] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:21.658] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.722] Read 10 bytes, total buffer length: 10
+[17:30:21.722] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:21.723] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:21.738] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.801] Read 10 bytes, total buffer length: 10
+[17:30:21.802] Received raw data: [55 7E 03 08 35 0F 3B 09 7E 55] (length: 10)
+[17:30:21.802] Parse successful: D2=2101(2.101m), D3=3899(3.899m)
+[17:30:21.817] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.881] Read 10 bytes, total buffer length: 10
+[17:30:21.882] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:21.882] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:21.897] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:21.961] Read 10 bytes, total buffer length: 10
+[17:30:21.962] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:21.962] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:21.977] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.041] Read 10 bytes, total buffer length: 10
+[17:30:22.041] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:22.041] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:22.056] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.121] Read 10 bytes, total buffer length: 10
+[17:30:22.121] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:22.121] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:22.136] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.200] Read 10 bytes, total buffer length: 10
+[17:30:22.200] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:22.200] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:22.215] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.280] Read 10 bytes, total buffer length: 10
+[17:30:22.280] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:22.280] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:22.295] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.359] Read 10 bytes, total buffer length: 10
+[17:30:22.360] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:22.360] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:22.375] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.438] Read 10 bytes, total buffer length: 10
+[17:30:22.438] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:22.438] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:22.454] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.518] Read 10 bytes, total buffer length: 10
+[17:30:22.518] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:22.518] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:22.534] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.598] Read 10 bytes, total buffer length: 10
+[17:30:22.599] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:22.599] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:22.614] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.677] Read 10 bytes, total buffer length: 10
+[17:30:22.677] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:22.677] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:22.693] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.757] Read 10 bytes, total buffer length: 10
+[17:30:22.757] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:22.758] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:22.773] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.837] Read 10 bytes, total buffer length: 10
+[17:30:22.838] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:22.838] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:22.853] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.916] Read 10 bytes, total buffer length: 10
+[17:30:22.916] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:22.916] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:22.932] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:22.996] Read 10 bytes, total buffer length: 10
+[17:30:22.996] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:22.996] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:23.012] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.076] Read 10 bytes, total buffer length: 10
+[17:30:23.076] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:23.077] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:23.092] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.156] Read 10 bytes, total buffer length: 10
+[17:30:23.156] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:23.156] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:23.171] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.235] Read 10 bytes, total buffer length: 10
+[17:30:23.235] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:23.235] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:23.250] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.315] Read 10 bytes, total buffer length: 10
+[17:30:23.315] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:23.315] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:23.330] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.395] Read 10 bytes, total buffer length: 10
+[17:30:23.395] Received raw data: [55 7E 03 08 33 0F 37 03 7E 55] (length: 10)
+[17:30:23.395] Parse successful: D2=2099(2.099m), D3=3895(3.895m)
+[17:30:23.410] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.474] Read 10 bytes, total buffer length: 10
+[17:30:23.474] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:23.474] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:23.489] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.554] Read 10 bytes, total buffer length: 10
+[17:30:23.554] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:23.554] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:23.569] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.633] Read 10 bytes, total buffer length: 10
+[17:30:23.633] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:23.633] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:23.649] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.713] Read 10 bytes, total buffer length: 10
+[17:30:23.713] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:23.713] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:23.729] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.793] Read 10 bytes, total buffer length: 10
+[17:30:23.793] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:23.793] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:23.809] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.872] Read 10 bytes, total buffer length: 10
+[17:30:23.872] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:23.872] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:23.888] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:23.952] Read 10 bytes, total buffer length: 10
+[17:30:23.952] Received raw data: [55 7E 03 08 31 0F 3A 0C 7E 55] (length: 10)
+[17:30:23.952] Parse successful: D2=2097(2.097m), D3=3898(3.898m)
+[17:30:23.967] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.031] Read 10 bytes, total buffer length: 10
+[17:30:24.031] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:24.031] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:24.047] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.111] Read 10 bytes, total buffer length: 10
+[17:30:24.111] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:24.111] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:24.126] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.191] Read 10 bytes, total buffer length: 10
+[17:30:24.191] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:24.191] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:24.207] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.271] Read 10 bytes, total buffer length: 10
+[17:30:24.271] Received raw data: [55 7E 03 08 33 0F 37 03 7E 55] (length: 10)
+[17:30:24.271] Parse successful: D2=2099(2.099m), D3=3895(3.895m)
+[17:30:24.286] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.350] Read 10 bytes, total buffer length: 10
+[17:30:24.350] Received raw data: [55 7E 03 08 32 0F 37 02 7E 55] (length: 10)
+[17:30:24.350] Parse successful: D2=2098(2.098m), D3=3895(3.895m)
+[17:30:24.365] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.429] Read 10 bytes, total buffer length: 10
+[17:30:24.429] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:24.429] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:24.445] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.509] Read 10 bytes, total buffer length: 10
+[17:30:24.509] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:24.509] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:24.525] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.589] Read 10 bytes, total buffer length: 10
+[17:30:24.589] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:24.589] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:24.604] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.669] Read 10 bytes, total buffer length: 10
+[17:30:24.669] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:24.669] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:24.684] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.748] Read 10 bytes, total buffer length: 10
+[17:30:24.748] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:24.748] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:24.763] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.828] Read 10 bytes, total buffer length: 10
+[17:30:24.828] Received raw data: [55 7E 03 08 36 0F 38 09 7E 55] (length: 10)
+[17:30:24.828] Parse successful: D2=2102(2.102m), D3=3896(3.896m)
+[17:30:24.843] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.908] Read 10 bytes, total buffer length: 10
+[17:30:24.908] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:24.908] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:24.923] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:24.987] Read 10 bytes, total buffer length: 10
+[17:30:24.987] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:24.987] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:25.002] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.067] Read 10 bytes, total buffer length: 10
+[17:30:25.067] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:25.067] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:25.082] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.147] Read 10 bytes, total buffer length: 10
+[17:30:25.147] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:25.147] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:25.162] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.226] Read 10 bytes, total buffer length: 10
+[17:30:25.226] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:25.226] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:25.241] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.306] Read 10 bytes, total buffer length: 10
+[17:30:25.306] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:25.306] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:25.321] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.386] Read 10 bytes, total buffer length: 10
+[17:30:25.386] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:25.386] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:25.401] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.465] Read 10 bytes, total buffer length: 10
+[17:30:25.465] Received raw data: [55 7E 03 08 35 0F 38 0A 7E 55] (length: 10)
+[17:30:25.465] Parse successful: D2=2101(2.101m), D3=3896(3.896m)
+[17:30:25.480] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.544] Read 10 bytes, total buffer length: 10
+[17:30:25.545] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:25.545] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:25.560] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.624] Read 10 bytes, total buffer length: 10
+[17:30:25.624] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:25.624] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:25.640] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.705] Read 10 bytes, total buffer length: 10
+[17:30:25.705] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:25.706] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:25.721] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.783] Read 10 bytes, total buffer length: 10
+[17:30:25.783] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:25.783] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:25.799] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.863] Read 10 bytes, total buffer length: 10
+[17:30:25.863] Received raw data: [55 7E 03 08 34 0F 3B 08 7E 55] (length: 10)
+[17:30:25.863] Parse successful: D2=2100(2.100m), D3=3899(3.899m)
+[17:30:25.878] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:25.943] Read 10 bytes, total buffer length: 10
+[17:30:25.943] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:25.943] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:25.958] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.023] Read 10 bytes, total buffer length: 10
+[17:30:26.023] Received raw data: [55 7E 03 08 34 0F 3B 08 7E 55] (length: 10)
+[17:30:26.023] Parse successful: D2=2100(2.100m), D3=3899(3.899m)
+[17:30:26.023] Serial statistics: 322 requests, 311 successes, 96.6% success rate
+[17:30:26.038] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.103] Read 10 bytes, total buffer length: 10
+[17:30:26.103] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:26.103] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:26.118] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.182] Read 10 bytes, total buffer length: 10
+[17:30:26.182] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:26.182] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:26.197] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.262] Read 10 bytes, total buffer length: 10
+[17:30:26.262] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:26.262] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:26.277] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.341] Read 10 bytes, total buffer length: 10
+[17:30:26.342] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:26.342] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:26.357] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.421] Read 10 bytes, total buffer length: 10
+[17:30:26.421] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:26.421] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:26.437] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.500] Read 10 bytes, total buffer length: 10
+[17:30:26.500] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:26.500] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:26.516] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.580] Read 10 bytes, total buffer length: 10
+[17:30:26.580] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:26.580] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:26.595] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.661] Read 10 bytes, total buffer length: 10
+[17:30:26.661] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:26.661] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:26.677] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.739] Read 10 bytes, total buffer length: 10
+[17:30:26.739] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:26.739] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:26.754] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.819] Read 10 bytes, total buffer length: 10
+[17:30:26.819] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:26.819] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:26.834] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.899] Read 10 bytes, total buffer length: 10
+[17:30:26.899] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:26.899] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:26.914] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:26.978] Read 10 bytes, total buffer length: 10
+[17:30:26.978] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:26.978] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:26.994] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.058] Read 10 bytes, total buffer length: 10
+[17:30:27.058] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:27.058] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:27.074] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.138] Read 10 bytes, total buffer length: 10
+[17:30:27.138] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:27.138] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:27.153] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.217] Read 10 bytes, total buffer length: 10
+[17:30:27.217] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:27.217] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:27.232] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.297] Read 10 bytes, total buffer length: 10
+[17:30:27.297] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:27.297] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:27.312] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.376] Read 10 bytes, total buffer length: 10
+[17:30:27.376] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:27.376] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:27.391] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.456] Read 10 bytes, total buffer length: 10
+[17:30:27.456] Received raw data: [55 7E 03 08 35 0F 38 0A 7E 55] (length: 10)
+[17:30:27.456] Parse successful: D2=2101(2.101m), D3=3896(3.896m)
+[17:30:27.471] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.536] Read 10 bytes, total buffer length: 10
+[17:30:27.536] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:27.536] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:27.551] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.616] Read 10 bytes, total buffer length: 10
+[17:30:27.616] Received raw data: [55 7E 03 08 35 0F 38 0A 7E 55] (length: 10)
+[17:30:27.616] Parse successful: D2=2101(2.101m), D3=3896(3.896m)
+[17:30:27.631] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.695] Read 10 bytes, total buffer length: 10
+[17:30:27.695] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:27.695] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:27.711] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.774] Read 10 bytes, total buffer length: 10
+[17:30:27.774] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:27.774] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:27.790] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.854] Read 10 bytes, total buffer length: 10
+[17:30:27.854] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:27.854] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:27.870] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:27.934] Read 10 bytes, total buffer length: 10
+[17:30:27.934] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:27.934] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:27.949] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.013] Read 10 bytes, total buffer length: 10
+[17:30:28.013] Received raw data: [55 7E 03 08 35 0F 3B 09 7E 55] (length: 10)
+[17:30:28.013] Parse successful: D2=2101(2.101m), D3=3899(3.899m)
+[17:30:28.029] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.093] Read 10 bytes, total buffer length: 10
+[17:30:28.093] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:28.093] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:28.108] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.173] Read 10 bytes, total buffer length: 10
+[17:30:28.173] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:28.173] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:28.188] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.253] Read 10 bytes, total buffer length: 10
+[17:30:28.253] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:28.253] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:28.268] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.333] Read 10 bytes, total buffer length: 10
+[17:30:28.333] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:28.333] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:28.348] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.411] Read 10 bytes, total buffer length: 10
+[17:30:28.411] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:28.411] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:28.427] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.491] Read 10 bytes, total buffer length: 10
+[17:30:28.491] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:28.491] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:28.507] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.571] Read 10 bytes, total buffer length: 10
+[17:30:28.571] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:28.571] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:28.586] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.651] Read 10 bytes, total buffer length: 10
+[17:30:28.651] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:28.651] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:28.667] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.730] Read 10 bytes, total buffer length: 10
+[17:30:28.731] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:28.731] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:28.746] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.810] Read 10 bytes, total buffer length: 10
+[17:30:28.810] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:28.810] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:28.825] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.889] Read 10 bytes, total buffer length: 10
+[17:30:28.889] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:28.889] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:28.905] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:28.969] Read 10 bytes, total buffer length: 10
+[17:30:28.969] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:28.969] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:28.985] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.049] Read 10 bytes, total buffer length: 10
+[17:30:29.049] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:29.049] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:29.065] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.128] Read 10 bytes, total buffer length: 10
+[17:30:29.128] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:29.128] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:29.143] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.208] Read 10 bytes, total buffer length: 10
+[17:30:29.208] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:29.208] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:29.223] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.288] Read 10 bytes, total buffer length: 10
+[17:30:29.288] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:29.288] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:29.303] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.368] Read 10 bytes, total buffer length: 10
+[17:30:29.368] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:29.368] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:29.383] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.447] Read 10 bytes, total buffer length: 10
+[17:30:29.448] Received raw data: [55 7E 03 08 35 0F 3B 09 7E 55] (length: 10)
+[17:30:29.448] Parse successful: D2=2101(2.101m), D3=3899(3.899m)
+[17:30:29.463] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.526] Read 10 bytes, total buffer length: 10
+[17:30:29.526] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:29.526] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:29.542] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.606] Read 10 bytes, total buffer length: 10
+[17:30:29.606] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:29.606] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:29.622] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.686] Read 10 bytes, total buffer length: 10
+[17:30:29.687] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:29.687] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:29.703] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.765] Read 10 bytes, total buffer length: 10
+[17:30:29.766] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:29.766] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:29.781] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.846] Read 10 bytes, total buffer length: 10
+[17:30:29.846] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:29.846] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:29.861] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:29.925] Read 10 bytes, total buffer length: 10
+[17:30:29.925] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:29.925] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:29.940] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.005] Read 10 bytes, total buffer length: 10
+[17:30:30.005] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:30.005] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:30.020] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.085] Read 10 bytes, total buffer length: 10
+[17:30:30.085] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:30.085] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:30.100] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.164] Read 10 bytes, total buffer length: 10
+[17:30:30.164] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:30.164] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:30.179] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.244] Read 10 bytes, total buffer length: 10
+[17:30:30.244] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:30.244] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:30.259] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.324] Read 10 bytes, total buffer length: 10
+[17:30:30.324] Received raw data: [55 7E 03 08 31 0F 39 0F 7E 55] (length: 10)
+[17:30:30.324] Parse successful: D2=2097(2.097m), D3=3897(3.897m)
+[17:30:30.339] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.402] Read 10 bytes, total buffer length: 10
+[17:30:30.403] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:30.403] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:30.418] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.482] Read 10 bytes, total buffer length: 10
+[17:30:30.482] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:30.482] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:30.498] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.562] Read 10 bytes, total buffer length: 10
+[17:30:30.562] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:30.562] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:30.578] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.642] Read 10 bytes, total buffer length: 10
+[17:30:30.642] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:30.642] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:30.658] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.721] Read 10 bytes, total buffer length: 10
+[17:30:30.721] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:30.721] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:30.736] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.887] No response received (consecutive failures: 1)
+[17:30:30.902] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:30.960] Read 10 bytes, total buffer length: 10
+[17:30:30.961] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:30.961] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:30.976] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.041] Read 10 bytes, total buffer length: 10
+[17:30:31.041] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:31.041] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:31.056] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.120] Read 10 bytes, total buffer length: 10
+[17:30:31.120] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:31.120] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:31.135] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.199] Read 10 bytes, total buffer length: 10
+[17:30:31.199] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:31.199] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:31.214] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.279] Read 10 bytes, total buffer length: 10
+[17:30:31.279] Received raw data: [55 7E 03 08 34 0F 3D 0E 7E 55] (length: 10)
+[17:30:31.279] Parse successful: D2=2100(2.100m), D3=3901(3.901m)
+[17:30:31.294] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.358] Read 10 bytes, total buffer length: 10
+[17:30:31.358] Received raw data: [55 7E 03 08 33 0F 3D 09 7E 55] (length: 10)
+[17:30:31.358] Parse successful: D2=2099(2.099m), D3=3901(3.901m)
+[17:30:31.373] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.438] Read 10 bytes, total buffer length: 10
+[17:30:31.438] Received raw data: [55 7E 03 08 34 0F 3D 0E 7E 55] (length: 10)
+[17:30:31.438] Parse successful: D2=2100(2.100m), D3=3901(3.901m)
+[17:30:31.453] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.518] Read 10 bytes, total buffer length: 10
+[17:30:31.518] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:31.518] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:31.533] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.683] No response received (consecutive failures: 1)
+[17:30:31.699] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.757] Read 10 bytes, total buffer length: 10
+[17:30:31.757] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:31.757] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:31.772] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.837] Read 10 bytes, total buffer length: 10
+[17:30:31.837] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:31.837] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:31.852] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.916] Read 10 bytes, total buffer length: 10
+[17:30:31.916] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:31.916] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:31.931] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:31.995] Read 10 bytes, total buffer length: 10
+[17:30:31.996] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:31.996] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:32.011] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:32.075] Read 10 bytes, total buffer length: 10
+[17:30:32.075] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:32.075] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:32.091] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:32.155] Read 10 bytes, total buffer length: 10
+[17:30:32.155] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:32.155] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:32.170] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:32.235] Read 10 bytes, total buffer length: 10
+[17:30:32.235] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:32.235] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:32.250] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:32.315] Read 10 bytes, total buffer length: 10
+[17:30:32.315] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:32.315] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:32.330] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:32.393] Read 10 bytes, total buffer length: 10
+[17:30:32.393] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:32.393] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:32.409] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:32.473] Read 10 bytes, total buffer length: 10
+[17:30:32.473] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:32.473] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:32.489] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:32.553] Read 10 bytes, total buffer length: 10
+[17:30:32.553] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:32.553] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:32.568] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:32.633] Read 10 bytes, total buffer length: 10
+[17:30:32.633] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:32.633] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:32.648] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:32.712] Read 10 bytes, total buffer length: 10
+[17:30:32.712] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:32.712] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:32.727] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:32.878] No response received (consecutive failures: 1)
+[17:30:32.893] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:32.951] Read 10 bytes, total buffer length: 10
+[17:30:32.951] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:32.951] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:32.967] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.031] Read 10 bytes, total buffer length: 10
+[17:30:33.031] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:33.031] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:33.047] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.111] Read 10 bytes, total buffer length: 10
+[17:30:33.111] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:33.111] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:33.126] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.190] Read 10 bytes, total buffer length: 10
+[17:30:33.190] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:33.190] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:33.205] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.270] Read 10 bytes, total buffer length: 10
+[17:30:33.270] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:33.270] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:33.286] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.350] Read 10 bytes, total buffer length: 10
+[17:30:33.350] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:33.350] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:33.365] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.429] Read 10 bytes, total buffer length: 10
+[17:30:33.429] Received raw data: [55 7E 03 08 36 0F 38 09 7E 55] (length: 10)
+[17:30:33.429] Parse successful: D2=2102(2.102m), D3=3896(3.896m)
+[17:30:33.444] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.509] Read 10 bytes, total buffer length: 10
+[17:30:33.509] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:33.509] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:33.524] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.589] Read 10 bytes, total buffer length: 10
+[17:30:33.589] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:33.589] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:33.604] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.668] Read 10 bytes, total buffer length: 10
+[17:30:33.669] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:33.669] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:33.684] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.748] Read 10 bytes, total buffer length: 10
+[17:30:33.748] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:33.748] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:33.764] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.827] Read 10 bytes, total buffer length: 10
+[17:30:33.827] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:33.827] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:33.843] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.907] Read 10 bytes, total buffer length: 10
+[17:30:33.908] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:33.908] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:33.923] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:33.986] Read 10 bytes, total buffer length: 10
+[17:30:33.986] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:33.986] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:34.002] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.066] Read 10 bytes, total buffer length: 10
+[17:30:34.066] Received raw data: [55 7E 03 08 34 0F 3B 08 7E 55] (length: 10)
+[17:30:34.066] Parse successful: D2=2100(2.100m), D3=3899(3.899m)
+[17:30:34.082] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.146] Read 10 bytes, total buffer length: 10
+[17:30:34.146] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:34.146] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:34.162] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.226] Read 10 bytes, total buffer length: 10
+[17:30:34.226] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:34.226] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:34.241] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.305] Read 10 bytes, total buffer length: 10
+[17:30:34.305] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:34.305] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:34.320] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.385] Read 10 bytes, total buffer length: 10
+[17:30:34.385] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:34.385] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:34.400] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.465] Read 10 bytes, total buffer length: 10
+[17:30:34.465] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:34.465] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:34.480] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.544] Read 10 bytes, total buffer length: 10
+[17:30:34.544] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:34.544] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:34.559] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.624] Read 10 bytes, total buffer length: 10
+[17:30:34.624] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:34.625] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:34.640] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.703] Read 10 bytes, total buffer length: 10
+[17:30:34.703] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:34.703] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:34.719] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.783] Read 10 bytes, total buffer length: 10
+[17:30:34.783] Received raw data: [55 7E 03 08 33 0F 3D 09 7E 55] (length: 10)
+[17:30:34.783] Parse successful: D2=2099(2.099m), D3=3901(3.901m)
+[17:30:34.799] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.863] Read 10 bytes, total buffer length: 10
+[17:30:34.863] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:34.863] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:34.879] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:34.942] Read 10 bytes, total buffer length: 10
+[17:30:34.942] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:34.942] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:34.957] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.022] Read 10 bytes, total buffer length: 10
+[17:30:35.022] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:35.022] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:35.037] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.102] Read 10 bytes, total buffer length: 10
+[17:30:35.102] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:35.102] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:35.117] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.182] Read 10 bytes, total buffer length: 10
+[17:30:35.182] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:35.182] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:35.197] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.261] Read 10 bytes, total buffer length: 10
+[17:30:35.261] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:35.261] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:35.276] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.341] Read 10 bytes, total buffer length: 10
+[17:30:35.341] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:35.341] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:35.356] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.420] Read 10 bytes, total buffer length: 10
+[17:30:35.421] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:35.421] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:35.436] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.500] Read 10 bytes, total buffer length: 10
+[17:30:35.500] Received raw data: [55 7E 03 08 31 0F 3A 0C 7E 55] (length: 10)
+[17:30:35.500] Parse successful: D2=2097(2.097m), D3=3898(3.898m)
+[17:30:35.515] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.580] Read 10 bytes, total buffer length: 10
+[17:30:35.580] Received raw data: [55 7E 03 08 31 0F 3A 0C 7E 55] (length: 10)
+[17:30:35.580] Parse successful: D2=2097(2.097m), D3=3898(3.898m)
+[17:30:35.596] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.659] Read 10 bytes, total buffer length: 10
+[17:30:35.660] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:35.660] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:35.675] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.739] Read 10 bytes, total buffer length: 10
+[17:30:35.739] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:35.739] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:35.754] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.905] No response received (consecutive failures: 1)
+[17:30:35.920] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:35.978] Read 10 bytes, total buffer length: 10
+[17:30:35.978] Received raw data: [55 7E 03 08 35 0F 38 0A 7E 55] (length: 10)
+[17:30:35.978] Parse successful: D2=2101(2.101m), D3=3896(3.896m)
+[17:30:35.993] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:36.058] Read 10 bytes, total buffer length: 10
+[17:30:36.058] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:36.058] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:36.073] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:36.137] Read 10 bytes, total buffer length: 10
+[17:30:36.137] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:36.137] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:36.152] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:36.216] Read 10 bytes, total buffer length: 10
+[17:30:36.217] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:36.217] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:36.232] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:36.296] Read 10 bytes, total buffer length: 10
+[17:30:36.296] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:36.296] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:36.311] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:36.462] No response received (consecutive failures: 1)
+[17:30:36.478] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:36.535] Read 10 bytes, total buffer length: 10
+[17:30:36.535] Received raw data: [55 7E 03 08 33 0F 37 03 7E 55] (length: 10)
+[17:30:36.535] Parse successful: D2=2099(2.099m), D3=3895(3.895m)
+[17:30:36.550] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:36.700] No response received (consecutive failures: 1)
+[17:30:36.716] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:36.774] Read 10 bytes, total buffer length: 10
+[17:30:36.774] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:36.774] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:36.789] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:36.854] Read 10 bytes, total buffer length: 10
+[17:30:36.854] Received raw data: [55 7E 03 08 31 0F 3A 0C 7E 55] (length: 10)
+[17:30:36.854] Parse successful: D2=2097(2.097m), D3=3898(3.898m)
+[17:30:36.869] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:36.933] Read 10 bytes, total buffer length: 10
+[17:30:36.933] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:36.933] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:36.949] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.013] Read 10 bytes, total buffer length: 10
+[17:30:37.013] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:37.013] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:37.028] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.093] Read 10 bytes, total buffer length: 10
+[17:30:37.093] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:37.093] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:37.108] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.173] Read 10 bytes, total buffer length: 10
+[17:30:37.173] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:37.173] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:37.188] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.252] Read 10 bytes, total buffer length: 10
+[17:30:37.252] Received raw data: [55 7E 03 08 33 0F 3C 08 7E 55] (length: 10)
+[17:30:37.252] Parse successful: D2=2099(2.099m), D3=3900(3.900m)
+[17:30:37.267] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.331] Read 10 bytes, total buffer length: 10
+[17:30:37.331] Received raw data: [55 7E 03 08 33 0F 3C 08 7E 55] (length: 10)
+[17:30:37.331] Parse successful: D2=2099(2.099m), D3=3900(3.900m)
+[17:30:37.347] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.413] Read 10 bytes, total buffer length: 10
+[17:30:37.413] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:37.413] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:37.429] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.491] Read 10 bytes, total buffer length: 10
+[17:30:37.491] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:37.491] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:37.506] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.571] Read 10 bytes, total buffer length: 10
+[17:30:37.571] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:37.571] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:37.586] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.650] Read 10 bytes, total buffer length: 10
+[17:30:37.650] Received raw data: [55 7E 03 08 33 0F 36 02 7E 55] (length: 10)
+[17:30:37.650] Parse successful: D2=2099(2.099m), D3=3894(3.894m)
+[17:30:37.665] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.729] Read 10 bytes, total buffer length: 10
+[17:30:37.730] Received raw data: [55 7E 03 08 33 0F 36 02 7E 55] (length: 10)
+[17:30:37.730] Parse successful: D2=2099(2.099m), D3=3894(3.894m)
+[17:30:37.745] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.809] Read 10 bytes, total buffer length: 10
+[17:30:37.809] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:37.809] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:37.825] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.889] Read 10 bytes, total buffer length: 10
+[17:30:37.889] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:37.889] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:37.905] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:37.969] Read 10 bytes, total buffer length: 10
+[17:30:37.969] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:37.969] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:37.984] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.048] Read 10 bytes, total buffer length: 10
+[17:30:38.048] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:38.048] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:38.063] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.128] Read 10 bytes, total buffer length: 10
+[17:30:38.128] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:38.128] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:38.143] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.208] Read 10 bytes, total buffer length: 10
+[17:30:38.208] Received raw data: [55 7E 03 08 35 0F 3B 09 7E 55] (length: 10)
+[17:30:38.208] Parse successful: D2=2101(2.101m), D3=3899(3.899m)
+[17:30:38.223] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.287] Read 10 bytes, total buffer length: 10
+[17:30:38.288] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:38.288] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:38.303] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.367] Read 10 bytes, total buffer length: 10
+[17:30:38.367] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:38.367] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:38.383] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.446] Read 10 bytes, total buffer length: 10
+[17:30:38.446] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:38.446] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:38.462] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.526] Read 10 bytes, total buffer length: 10
+[17:30:38.526] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:38.526] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:38.541] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.606] Read 10 bytes, total buffer length: 10
+[17:30:38.606] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:38.606] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:38.621] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.686] Read 10 bytes, total buffer length: 10
+[17:30:38.686] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:38.686] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:38.701] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.765] Read 10 bytes, total buffer length: 10
+[17:30:38.765] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:38.765] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:38.780] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.845] Read 10 bytes, total buffer length: 10
+[17:30:38.845] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:38.845] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:38.860] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:38.925] Read 10 bytes, total buffer length: 10
+[17:30:38.925] Received raw data: [55 7E 03 08 32 0F 3A 0F 7E 55] (length: 10)
+[17:30:38.925] Parse successful: D2=2098(2.098m), D3=3898(3.898m)
+[17:30:38.940] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.004] Read 10 bytes, total buffer length: 10
+[17:30:39.004] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:39.005] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:39.020] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.084] Read 10 bytes, total buffer length: 10
+[17:30:39.084] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:39.084] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:39.100] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.163] Read 10 bytes, total buffer length: 10
+[17:30:39.163] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:39.163] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:39.178] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.243] Read 10 bytes, total buffer length: 10
+[17:30:39.243] Received raw data: [55 7E 03 08 33 0F 37 03 7E 55] (length: 10)
+[17:30:39.243] Parse successful: D2=2099(2.099m), D3=3895(3.895m)
+[17:30:39.258] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.323] Read 10 bytes, total buffer length: 10
+[17:30:39.323] Received raw data: [55 7E 03 08 32 0F 37 02 7E 55] (length: 10)
+[17:30:39.323] Parse successful: D2=2098(2.098m), D3=3895(3.895m)
+[17:30:39.338] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.402] Read 10 bytes, total buffer length: 10
+[17:30:39.403] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:39.403] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:39.418] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.482] Read 10 bytes, total buffer length: 10
+[17:30:39.482] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:39.482] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:39.497] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.562] Read 10 bytes, total buffer length: 10
+[17:30:39.562] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:39.562] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:39.577] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.642] Read 10 bytes, total buffer length: 10
+[17:30:39.642] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:39.642] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:39.657] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.721] Read 10 bytes, total buffer length: 10
+[17:30:39.721] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:39.721] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:39.736] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.801] Read 10 bytes, total buffer length: 10
+[17:30:39.801] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:39.801] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:39.816] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.880] Read 10 bytes, total buffer length: 10
+[17:30:39.880] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:39.880] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:39.895] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:39.960] Read 10 bytes, total buffer length: 10
+[17:30:39.960] Received raw data: [55 7E 03 08 32 0F 38 0D 7E 55] (length: 10)
+[17:30:39.960] Parse successful: D2=2098(2.098m), D3=3896(3.896m)
+[17:30:39.975] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.039] Read 10 bytes, total buffer length: 10
+[17:30:40.039] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:40.039] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:40.055] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.119] Read 10 bytes, total buffer length: 10
+[17:30:40.119] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:40.119] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:40.135] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.199] Read 10 bytes, total buffer length: 10
+[17:30:40.199] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:40.199] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:40.214] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.279] Read 10 bytes, total buffer length: 10
+[17:30:40.279] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:40.279] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:40.294] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.445] No response received (consecutive failures: 1)
+[17:30:40.460] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.517] Read 10 bytes, total buffer length: 10
+[17:30:40.517] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:40.517] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:40.532] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.597] Read 10 bytes, total buffer length: 10
+[17:30:40.597] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:40.597] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:40.612] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.677] Read 10 bytes, total buffer length: 10
+[17:30:40.677] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:40.677] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:40.692] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.756] Read 10 bytes, total buffer length: 10
+[17:30:40.756] Received raw data: [55 7E 03 08 32 0F 3C 09 7E 55] (length: 10)
+[17:30:40.756] Parse successful: D2=2098(2.098m), D3=3900(3.900m)
+[17:30:40.771] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.836] Read 10 bytes, total buffer length: 10
+[17:30:40.836] Received raw data: [55 7E 03 08 32 0F 3C 09 7E 55] (length: 10)
+[17:30:40.836] Parse successful: D2=2098(2.098m), D3=3900(3.900m)
+[17:30:40.851] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.916] Read 10 bytes, total buffer length: 10
+[17:30:40.916] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:40.916] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:40.931] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:40.996] Read 10 bytes, total buffer length: 10
+[17:30:40.996] Received raw data: [55 7E 03 08 31 0F 39 0F 7E 55] (length: 10)
+[17:30:40.996] Parse successful: D2=2097(2.097m), D3=3897(3.897m)
+[17:30:41.011] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:41.074] Read 10 bytes, total buffer length: 10
+[17:30:41.074] Received raw data: [55 7E 03 08 31 0F 3A 0C 7E 55] (length: 10)
+[17:30:41.074] Parse successful: D2=2097(2.097m), D3=3898(3.898m)
+[17:30:41.090] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:41.155] Read 10 bytes, total buffer length: 10
+[17:30:41.155] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:41.155] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:41.170] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:41.235] Read 10 bytes, total buffer length: 10
+[17:30:41.235] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:41.235] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:41.250] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:41.400] No response received (consecutive failures: 1)
+[17:30:41.415] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:41.473] Read 10 bytes, total buffer length: 10
+[17:30:41.474] Received raw data: [55 7E 03 08 32 0F 3B 0E 7E 55] (length: 10)
+[17:30:41.474] Parse successful: D2=2098(2.098m), D3=3899(3.899m)
+[17:30:41.489] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:41.552] Read 10 bytes, total buffer length: 10
+[17:30:41.552] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:41.552] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:41.568] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:41.632] Read 10 bytes, total buffer length: 10
+[17:30:41.632] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:41.632] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:41.647] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:41.712] Read 10 bytes, total buffer length: 10
+[17:30:41.712] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:41.712] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:41.727] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:41.792] Read 10 bytes, total buffer length: 10
+[17:30:41.792] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:41.792] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:41.807] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:41.871] Read 10 bytes, total buffer length: 10
+[17:30:41.871] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:41.871] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:41.886] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:41.951] Read 10 bytes, total buffer length: 10
+[17:30:41.951] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:41.951] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:41.966] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.030] Read 10 bytes, total buffer length: 10
+[17:30:42.031] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:42.031] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:42.046] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.088] Current System State: IDLE
+[17:30:42.088] Sampling Segment: 0, Pause Count: 0
+[17:30:42.088] Filter d2: Ready - Drift: 0.274mm/s, Ref: 2.0991m
+[17:30:42.088] Filter d3: Ready - Drift: -0.216mm/s, Ref: 3.8972m
+[17:30:42.110] Read 10 bytes, total buffer length: 10
+[17:30:42.111] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:42.111] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:42.126] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.190] Read 10 bytes, total buffer length: 10
+[17:30:42.190] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:42.190] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:42.206] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.269] Read 10 bytes, total buffer length: 10
+[17:30:42.269] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:42.269] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:42.284] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.349] Read 10 bytes, total buffer length: 10
+[17:30:42.349] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:42.349] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:42.364] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.429] Read 10 bytes, total buffer length: 10
+[17:30:42.429] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:42.429] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:42.444] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.509] Read 10 bytes, total buffer length: 10
+[17:30:42.509] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:42.509] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:42.524] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.588] Read 10 bytes, total buffer length: 10
+[17:30:42.588] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:42.588] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:42.603] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.667] Read 10 bytes, total buffer length: 10
+[17:30:42.668] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:42.668] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:42.683] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.747] Read 10 bytes, total buffer length: 10
+[17:30:42.748] Received raw data: [55 7E 03 08 34 0F 37 04 7E 55] (length: 10)
+[17:30:42.748] Parse successful: D2=2100(2.100m), D3=3895(3.895m)
+[17:30:42.763] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.768] Warning: Current state is IDLE, cannot pause/resume data collection
+[17:30:42.827] Read 10 bytes, total buffer length: 10
+[17:30:42.828] Received raw data: [55 7E 03 08 35 0F 37 05 7E 55] (length: 10)
+[17:30:42.828] Parse successful: D2=2101(2.101m), D3=3895(3.895m)
+[17:30:42.843] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.906] Read 10 bytes, total buffer length: 10
+[17:30:42.906] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:42.906] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:42.922] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:42.968] Current System State: IDLE
+[17:30:42.968] Sampling Segment: 0, Pause Count: 0
+[17:30:42.968] Filter d2: Ready - Drift: 0.274mm/s, Ref: 2.0991m
+[17:30:42.968] Filter d3: Ready - Drift: -0.216mm/s, Ref: 3.8972m
+[17:30:42.986] Read 10 bytes, total buffer length: 10
+[17:30:42.987] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:42.987] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:43.002] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.066] Read 10 bytes, total buffer length: 10
+[17:30:43.066] Received raw data: [55 7E 03 08 33 0F 38 0C 7E 55] (length: 10)
+[17:30:43.066] Parse successful: D2=2099(2.099m), D3=3896(3.896m)
+[17:30:43.082] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.146] Read 10 bytes, total buffer length: 10
+[17:30:43.146] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:43.146] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:43.162] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.225] Read 10 bytes, total buffer length: 10
+[17:30:43.225] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:43.225] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:43.240] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.305] Read 10 bytes, total buffer length: 10
+[17:30:43.305] Received raw data: [55 7E 03 08 34 0F 3C 0F 7E 55] (length: 10)
+[17:30:43.305] Parse successful: D2=2100(2.100m), D3=3900(3.900m)
+[17:30:43.320] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.385] Read 10 bytes, total buffer length: 10
+[17:30:43.385] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:43.385] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:43.400] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.432] 
+=== Performance Analysis Report ===
+System State: IDLE
+Sampling Segments: 0
+Pause Count: 0
+Latency Statistics: Avg: 64.5ms, Max: 64.9ms, Reject: 0.0%
+Filter Statistics:
+  D2: Ready - Drift: 0.274mm/s, Ref: 2.0991m
+  D3: Ready - Drift: -0.216mm/s, Ref: 3.8972m
+Data Statistics:
+  Raw Data Points: 0
+  Filtered Data Points: 0
+    
+[17:30:43.464] Read 10 bytes, total buffer length: 10
+[17:30:43.464] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:43.464] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:43.479] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.536] 
+=== Control Instructions ===
+Basic Operations:
+  'T' - Start 60-second baseline zero drift test (test only, data not saved)
+  'R' - Start data collection (segment 0, with baseline calibration)
+  'E' - Stop data collection  
+  'P' - Pause/Resume data collection (switch position, recalibrate baseline)
+  'S' - Show current performance statistics
+  'D' - Toggle Debug detailed information
+  'I' - Show test status
+  'Q' - Manually end test
+  'X' - Force exit current mode, return to idle state
+  'H' - Show help information
+  'Esc' - Exit program and save data
+
+Data Collection Process:
+  1. Press 'T' for baseline test (optional, 60s test, data not saved)
+  2. Press 'R' to start data collection (segment 0, baseline calibration first)
+  3. After baseline calibration, perform linear movement
+  4. Press 'P' to pause and switch to new position
+  5. Press 'P' again to resume (new baseline calibration + new segment)
+  6. Repeat steps 4-5 as needed
+  7. Press 'E' to finish and save data to CSV files
+
+Data Validation:
+  - LiDAR continuity: adjacent data interval must be <0.1m
+  - Tracker yaw stability: sudden changes >10 degrees rejected
+  - Drift compensation applied based on baseline analysis
+=========================
+    
+[17:30:43.544] Read 10 bytes, total buffer length: 10
+[17:30:43.544] Received raw data: [55 7E 03 08 34 0F 3A 09 7E 55] (length: 10)
+[17:30:43.544] Parse successful: D2=2100(2.100m), D3=3898(3.898m)
+[17:30:43.559] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.623] Read 10 bytes, total buffer length: 10
+[17:30:43.624] Received raw data: [55 7E 03 08 35 0F 3A 08 7E 55] (length: 10)
+[17:30:43.624] Parse successful: D2=2101(2.101m), D3=3898(3.898m)
+[17:30:43.632] Warning: Current state is IDLE, cannot stop data collection
+[17:30:43.639] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.703] Read 10 bytes, total buffer length: 10
+[17:30:43.703] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:43.703] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:43.719] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.783] Read 10 bytes, total buffer length: 10
+[17:30:43.783] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:43.783] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:43.799] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.862] Read 10 bytes, total buffer length: 10
+[17:30:43.862] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:43.862] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:43.877] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:43.942] Read 10 bytes, total buffer length: 10
+[17:30:43.942] Received raw data: [55 7E 03 08 35 0F 3B 09 7E 55] (length: 10)
+[17:30:43.942] Parse successful: D2=2101(2.101m), D3=3899(3.899m)
+[17:30:43.957] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.022] Read 10 bytes, total buffer length: 10
+[17:30:44.022] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:44.022] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:44.037] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.096] Warning: Current state is IDLE, cannot stop data collection
+[17:30:44.102] Read 10 bytes, total buffer length: 10
+[17:30:44.102] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:44.102] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:44.117] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.181] Read 10 bytes, total buffer length: 10
+[17:30:44.181] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:44.181] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:44.197] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.261] Read 10 bytes, total buffer length: 10
+[17:30:44.261] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:44.261] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:44.276] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.340] Read 10 bytes, total buffer length: 10
+[17:30:44.340] Received raw data: [55 7E 03 08 35 0F 38 0A 7E 55] (length: 10)
+[17:30:44.340] Parse successful: D2=2101(2.101m), D3=3896(3.896m)
+[17:30:44.355] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.420] Read 10 bytes, total buffer length: 10
+[17:30:44.420] Received raw data: [55 7E 03 08 34 0F 38 0B 7E 55] (length: 10)
+[17:30:44.420] Parse successful: D2=2100(2.100m), D3=3896(3.896m)
+[17:30:44.435] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.499] Read 10 bytes, total buffer length: 10
+[17:30:44.499] Received raw data: [55 7E 03 08 33 0F 3B 0F 7E 55] (length: 10)
+[17:30:44.499] Parse successful: D2=2099(2.099m), D3=3899(3.899m)
+[17:30:44.514] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.579] Read 10 bytes, total buffer length: 10
+[17:30:44.579] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:44.579] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:44.594] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.659] Read 10 bytes, total buffer length: 10
+[17:30:44.659] Received raw data: [55 7E 03 08 34 0F 39 0A 7E 55] (length: 10)
+[17:30:44.659] Parse successful: D2=2100(2.100m), D3=3897(3.897m)
+[17:30:44.674] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.739] Read 10 bytes, total buffer length: 10
+[17:30:44.739] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:44.739] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:44.754] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.818] Read 10 bytes, total buffer length: 10
+[17:30:44.818] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:44.818] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:44.833] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.898] Read 10 bytes, total buffer length: 10
+[17:30:44.898] Received raw data: [55 7E 03 08 35 0F 38 0A 7E 55] (length: 10)
+[17:30:44.898] Parse successful: D2=2101(2.101m), D3=3896(3.896m)
+[17:30:44.913] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:44.977] Read 10 bytes, total buffer length: 10
+[17:30:44.978] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:44.978] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:44.993] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:45.056] Read 10 bytes, total buffer length: 10
+[17:30:45.057] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:45.057] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:45.072] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:45.137] Read 10 bytes, total buffer length: 10
+[17:30:45.137] Received raw data: [55 7E 03 08 32 0F 39 0C 7E 55] (length: 10)
+[17:30:45.137] Parse successful: D2=2098(2.098m), D3=3897(3.897m)
+[17:30:45.152] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:45.216] Read 10 bytes, total buffer length: 10
+[17:30:45.216] Received raw data: [55 7E 03 08 32 0F 36 03 7E 55] (length: 10)
+[17:30:45.216] Parse successful: D2=2098(2.098m), D3=3894(3.894m)
+[17:30:45.231] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:45.296] Read 10 bytes, total buffer length: 10
+[17:30:45.296] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:45.296] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:45.311] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:45.376] Read 10 bytes, total buffer length: 10
+[17:30:45.376] Received raw data: [55 7E 03 08 33 0F 3A 0E 7E 55] (length: 10)
+[17:30:45.376] Parse successful: D2=2099(2.099m), D3=3898(3.898m)
+[17:30:45.391] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:45.455] Read 10 bytes, total buffer length: 10
+[17:30:45.455] Received raw data: [55 7E 03 08 35 0F 39 0B 7E 55] (length: 10)
+[17:30:45.455] Parse successful: D2=2101(2.101m), D3=3897(3.897m)
+[17:30:45.470] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:45.535] Read 10 bytes, total buffer length: 10
+[17:30:45.535] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:45.535] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:45.551] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:45.614] Read 10 bytes, total buffer length: 10
+[17:30:45.614] Received raw data: [55 7E 03 08 33 0F 39 0D 7E 55] (length: 10)
+[17:30:45.614] Parse successful: D2=2099(2.099m), D3=3897(3.897m)
+[17:30:45.629] Request sent: 55 7E 02 00 00 00 00 00 7E 55
+[17:30:45.649] [System] Received Ctrl+C, program exit...
+[17:30:45.649] [System] Force stop recording
+[17:30:45.649] [System] System state: IDLE
+[17:30:45.649] 
+=== Control Instructions ===
+Basic Operations:
+  'T' - Start 60-second baseline zero drift test (test only, data not saved)
+  'R' - Start data collection (segment 0, with baseline calibration)
+  'E' - Stop data collection  
+  'P' - Pause/Resume data collection (switch position, recalibrate baseline)
+  'S' - Show current performance statistics
+  'D' - Toggle Debug detailed information
+  'I' - Show test status
+  'Q' - Manually end test
+  'X' - Force exit current mode, return to idle state
+  'H' - Show help information
+  'Esc' - Exit program and save data
+
+Data Collection Process:
+  1. Press 'T' for baseline test (optional, 60s test, data not saved)
+  2. Press 'R' to start data collection (segment 0, baseline calibration first)
+  3. After baseline calibration, perform linear movement
+  4. Press 'P' to pause and switch to new position
+  5. Press 'P' again to resume (new baseline calibration + new segment)
+  6. Repeat steps 4-5 as needed
+  7. Press 'E' to finish and save data to CSV files
+
+Data Validation:
+  - LiDAR continuity: adjacent data interval must be <0.1m
+  - Tracker yaw stability: sudden changes >10 degrees rejected
+  - Drift compensation applied based on baseline analysis
+=========================
+    
+[17:30:45.650] [System] Serial port closed

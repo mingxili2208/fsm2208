@@ -1,0 +1,32 @@
+{
+  "R_EULER_3D": [
+    [
+      0.67654891,
+      -0.7363977,
+      0.0
+    ],
+    [
+      0.7363977,
+      0.67654891,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "MLP_HIDDEN_LAYERS": [
+    512,
+    256,
+    128,
+    64,
+    32
+  ],
+  "RANSAC_ITERATIONS": 3000,
+  "RANSAC_BASE_THRESHOLD": 0.015,
+  "train_points": 2608,
+  "test_points": 653,
+  "feature_dim": 39,
+  "primary_mlp_iterations": 85
+}

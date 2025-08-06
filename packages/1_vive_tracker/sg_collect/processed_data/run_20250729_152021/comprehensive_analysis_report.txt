@@ -1,0 +1,785 @@
+================================================================================
+INDUSTRIAL-GRADE DATA PROCESSING ANALYSIS REPORT
+================================================================================
+
+Processing Date: 2025-07-29T15:20:28.235921
+Session ID: 20250729_152021
+Raw Data File: raw_data/raw_data_20250728_173542.npz
+Output Directory: processed_data/run_20250729_152021
+
+PREPROCESSING RESULTS:
+----------------------------------------
+original_points: 5689
+filtered_points: 5653
+points_removed: 0
+reduction_ratio: 0.6328001406222583
+stationary_segments: 4
+
+SYNCHRONIZATION RESULTS:
+----------------------------------------
+success: 5652
+failed: 0
+outliers_removed: 0
+
+MEDIAN_FILTERING RESULTS:
+----------------------------------------
+distance_2:
+  original_std: 0.9771952629089355
+  filtered_std: 0.9773668050765991
+  outliers_detected: 0
+  outliers_replaced: 0
+  significant_changes: 0
+  max_change: 0.0
+  improvement_pct: -0.01755454286467284
+distance_3:
+  original_std: 0.8712856769561768
+  filtered_std: 0.851811408996582
+  outliers_detected: 0
+  outliers_replaced: 0
+  significant_changes: 0
+  max_change: 0.0
+  improvement_pct: 2.2351184859871864
+x:
+  original_std: 0.8250335483851193
+  filtered_std: 0.8251044598681552
+  outliers_detected: 0
+  outliers_replaced: 0
+  significant_changes: 0
+  max_change: 0.0
+  improvement_pct: -0.008594981764637218
+y:
+  original_std: 0.013766381386889584
+  filtered_std: 0.01374031284677564
+  outliers_detected: 0
+  outliers_replaced: 0
+  significant_changes: 0
+  max_change: 0.0
+  improvement_pct: 0.1893637796405245
+z:
+  original_std: 1.0005991739227669
+  filtered_std: 1.000496370116473
+  outliers_detected: 0
+  outliers_replaced: 0
+  significant_changes: 0
+  max_change: 0.0
+  improvement_pct: 0.010274224581933271
+
+POSE_FILTERING RESULTS:
+----------------------------------------
+original_points: 5652
+filtered_points: 2619
+points_removed: 3033
+removal_ratio: 53.66242038216561
+
+SEGMENTATION RESULTS:
+----------------------------------------
+segment_count: 87
+total_points: 1315
+average_segment_length: 15.114942528735632
+
+FILTERING RESULTS:
+----------------------------------------
+Segment 0:
+  points: 12
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 6.577022510365883
+  d3_std_improvement: 0.07884453192570284
+
+Segment 1:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0
+  d3_std_improvement: 0.29939396735183876
+
+Segment 2:
+  points: 10
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 8.779048195488352
+  d3_std_improvement: 0.09041149474242256
+
+Segment 3:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0
+  d3_std_improvement: 0.05937372242332149
+
+Segment 4:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 4.578930346891476
+  d3_std_improvement: -0.06260161346653093
+
+Segment 5:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 47.38867398432268
+  d3_std_improvement: 4.81603269770744
+
+Segment 6:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0
+  d3_std_improvement: 7.310896858300178
+
+Segment 7:
+  points: 12
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 47.21973590606907
+  d3_std_improvement: 0.393963995091756
+
+Segment 8:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 3.740723644163609
+  d3_std_improvement: 1.550547289248518
+
+Segment 9:
+  points: 12
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 6.321022902406906
+  d3_std_improvement: 0.247721518447877
+
+Segment 10:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0
+  d3_std_improvement: 0.12244064967888439
+
+Segment 11:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 1.740389678479342
+  d3_std_improvement: 15.494025994541227
+
+Segment 12:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 2.8984154424026585
+  d3_std_improvement: 16.88003087832107
+
+Segment 13:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 7.310896857850295
+  d3_std_improvement: 17.20477240691941
+
+Segment 14:
+  points: 20
+  window_length: 5
+  polyorder: 4
+  d2_std_improvement: 9.575768212432219e-11
+  d3_std_improvement: 3.0573317239202066e-13
+
+Segment 15:
+  points: 10
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 4.134266836240111
+  d3_std_improvement: 1.3429588526762528
+
+Segment 16:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 44.86227744697174
+  d3_std_improvement: 0.31193262548347417
+
+Segment 17:
+  points: 20
+  window_length: 5
+  polyorder: 4
+  d2_std_improvement: 2.6999903454833382e-11
+  d3_std_improvement: 3.172250192748341e-13
+
+Segment 18:
+  points: 15
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 3.0117604692489977
+  d3_std_improvement: 0.13589624328514474
+
+Segment 19:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 1.4269807793706373
+  d3_std_improvement: 0.12384262816526696
+
+Segment 20:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 3.2913024133000754
+  d3_std_improvement: 7.1559402202210105
+
+Segment 21:
+  points: 20
+  window_length: 5
+  polyorder: 4
+  d2_std_improvement: -3.163748358189308e-11
+  d3_std_improvement: 2.372738057275536e-12
+
+Segment 22:
+  points: 13
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 26.223103303118794
+  d3_std_improvement: 0.6079270664016814
+
+Segment 23:
+  points: 20
+  window_length: 5
+  polyorder: 4
+  d2_std_improvement: 1.0309178953343004e-11
+  d3_std_improvement: 1.0138401932912088e-12
+
+Segment 24:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 2.2706778486368675
+  d3_std_improvement: 0.13718334221956163
+
+Segment 25:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 14.976217242838159
+  d3_std_improvement: 0.09039283380512066
+
+Segment 26:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 9.395975855415752
+  d3_std_improvement: 0.03561536245936105
+
+Segment 27:
+  points: 12
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 23.90737576105267
+  d3_std_improvement: 0.7180476361051857
+
+Segment 28:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 8.49765295193221
+  d3_std_improvement: 4.642245846706981
+
+Segment 29:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0.03228329309517983
+  d3_std_improvement: 8.688760251185291
+
+Segment 30:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 7.837354981472264
+  d3_std_improvement: 7.155940220408937
+
+Segment 31:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 5.690538011485788
+  d3_std_improvement: 0.09564533463287817
+
+Segment 32:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 1.8494640066403092
+  d3_std_improvement: -0.06862894956608598
+
+Segment 33:
+  points: 17
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 3.627552669695923
+  d3_std_improvement: 0.0342461617627969
+
+Segment 34:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 5.948480337091457
+  d3_std_improvement: 7.830339228579194
+
+Segment 35:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 9.494781171135152
+  d3_std_improvement: 0.21469949827943052
+
+Segment 36:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 9.081905189035286
+  d3_std_improvement: 0.05150152964258324
+
+Segment 37:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 10.82958435124975
+  d3_std_improvement: 0.04785348969818874
+
+Segment 38:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0.7808734615652118
+  d3_std_improvement: 0.04934494323219313
+
+Segment 39:
+  points: 10
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 5.948863909952502
+  d3_std_improvement: 2.4303186372442975
+
+Segment 40:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 1.167929405079879
+  d3_std_improvement: 0.2153287685742676
+
+Segment 41:
+  points: 10
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 1.9644483477397858
+  d3_std_improvement: 0.16208999691133721
+
+Segment 42:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 2.3832771363393053
+  d3_std_improvement: 7.837354981327651
+
+Segment 43:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 2.3045950727543643
+  d3_std_improvement: 7.767197074645782
+
+Segment 44:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 16.684675815129925
+  d3_std_improvement: 17.935924597680813
+
+Segment 45:
+  points: 20
+  window_length: 5
+  polyorder: 4
+  d2_std_improvement: 3.9231085043690385e-10
+  d3_std_improvement: 2.4840326060524313e-11
+
+Segment 46:
+  points: 20
+  window_length: 5
+  polyorder: 4
+  d2_std_improvement: 1.1229041183287222e-11
+  d3_std_improvement: 1.7749874879391877e-12
+
+Segment 47:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 3.1561807060700118
+  d3_std_improvement: 0.6511742193002195
+
+Segment 48:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0.9511463388710326
+  d3_std_improvement: 0.45096770609157405
+
+Segment 49:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 3.643119953739561
+  d3_std_improvement: 0.06578505394415267
+
+Segment 50:
+  points: 20
+  window_length: 5
+  polyorder: 4
+  d2_std_improvement: 5.609336546306596e-11
+  d3_std_improvement: -1.41863004085552e-12
+
+Segment 51:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0
+  d3_std_improvement: 0.10809544786407355
+
+Segment 52:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 2.7544395278111597
+  d3_std_improvement: 0.2986419192045702
+
+Segment 53:
+  points: 15
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 6.96133795130536
+  d3_std_improvement: 2.5736160196805073
+
+Segment 54:
+  points: 13
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 3.0568650157792017
+  d3_std_improvement: 0.17005643810006538
+
+Segment 55:
+  points: 13
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0
+  d3_std_improvement: 7.3843188274639715
+
+Segment 56:
+  points: 10
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0
+  d3_std_improvement: 0.032838522307983446
+
+Segment 57:
+  points: 10
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 3.3692227860279207
+  d3_std_improvement: 0.1346438057017754
+
+Segment 58:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 7.76719707478082
+  d3_std_improvement: 0.38102619059073106
+
+Segment 59:
+  points: 11
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 1.5466296676918618
+  d3_std_improvement: 1.2462621443433881
+
+Segment 60:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0.41555462894666845
+  d3_std_improvement: 0.11922651459475922
+
+Segment 61:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 2.377304395323585
+  d3_std_improvement: 0.033619712108489436
+
+Segment 62:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 3.769110223697704
+  d3_std_improvement: 0.012796312918719022
+
+Segment 63:
+  points: 22
+  window_length: 5
+  polyorder: 4
+  d2_std_improvement: -3.961057832627483e-12
+  d3_std_improvement: -1.9466694038594345e-14
+
+Segment 64:
+  points: 10
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 6.486742725586381
+  d3_std_improvement: 0.4869406404476217
+
+Segment 65:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 2.860707271292055
+  d3_std_improvement: 0.3103954653841141
+
+Segment 66:
+  points: 20
+  window_length: 5
+  polyorder: 4
+  d2_std_improvement: -3.1333909442820773e-11
+  d3_std_improvement: 4.640001460716723e-11
+
+Segment 67:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 4.904869208647256
+  d3_std_improvement: 0.38847771915904766
+
+Segment 68:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 1.6175629655916415
+  d3_std_improvement: 0.0025961581436264266
+
+Segment 69:
+  points: 17
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 4.046901641800333
+  d3_std_improvement: 0.055916949502248195
+
+Segment 70:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 17.204772406870983
+  d3_std_improvement: 4.117796447330493
+
+Segment 71:
+  points: 13
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0
+  d3_std_improvement: 0.4152393973979862
+
+Segment 72:
+  points: 13
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 1.4497770508075305
+  d3_std_improvement: 0.09770776568005367
+
+Segment 73:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 4.54412273158757
+  d3_std_improvement: 17.20477240605918
+
+Segment 74:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0
+  d3_std_improvement: 0.43176048612493584
+
+Segment 75:
+  points: 11
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 6.231577773719244
+  d3_std_improvement: 1.3689639307444383
+
+Segment 76:
+  points: 20
+  window_length: 5
+  polyorder: 4
+  d2_std_improvement: 2.109236991676672e-12
+  d3_std_improvement: 1.2223953182484455e-12
+
+Segment 77:
+  points: 13
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 8.032343257988877
+  d3_std_improvement: 2.0952925091636745
+
+Segment 78:
+  points: 10
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 6.6911677770440585
+  d3_std_improvement: 0.8491476124185021
+
+Segment 79:
+  points: 12
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 8.791977771075606
+  d3_std_improvement: -0.13051016573899327
+
+Segment 80:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 1.3317044878481934
+  d3_std_improvement: 0.18635525624128405
+
+Segment 81:
+  points: 18
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 3.7435398404300377
+  d3_std_improvement: 0.14700605533008368
+
+Segment 82:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0
+  d3_std_improvement: 7.310896857356533
+
+Segment 83:
+  points: 16
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 30.36647057448434
+  d3_std_improvement: 43.40206916566599
+
+Segment 84:
+  points: 14
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 52.518235407588875
+  d3_std_improvement: 8.118680512609428
+
+Segment 85:
+  points: 10
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 0
+  d3_std_improvement: 48.934260500500805
+
+Segment 86:
+  points: 13
+  window_length: 7
+  polyorder: 2
+  d2_std_improvement: 2.905007123356301
+  d3_std_improvement: 5.602543529195081
+
+
+CONFIGURATION USED:
+----------------------------------------
+{
+  "preprocessing": {
+    "enable_stationary_filter": true,
+    "stationary_window_size": 10,
+    "stationary_std_threshold": 0.001,
+    "stationary_detection_channels": [
+      "distance_2",
+      "distance_3"
+    ],
+    "enable_median_filter": true,
+    "median_filter_kernel_size": 15,
+    "enable_outlier_detection": true,
+    "outlier_detection_method": "iqr",
+    "iqr_multiplier": 2.0,
+    "zscore_threshold": 3.0
+  },
+  "synchronization": {
+    "interpolation_tolerance_ms": 100,
+    "outlier_detection": true,
+    "outlier_threshold_sigma": 3.0,
+    "disable_angle_interpolation": true
+  },
+  "pose_filtering": {
+    "enable_pose_stability_filter": true,
+    "roll_fluctuation_threshold": 2.0,
+    "pitch_fluctuation_threshold": 2.0,
+    "yaw_fluctuation_threshold": 5.0,
+    "histogram_bins": 50
+  },
+  "segmentation": {
+    "max_time_gap_ms": 150,
+    "min_segment_length": 10
+  },
+  "filtering": {
+    "sg_window_length": 7,
+    "sg_polyorder": 2,
+    "auto_optimize_parameters": true
+  },
+  "physical_correction": {
+    "enable_physical_correction": true,
+    "physical_offset": 0.05,
+    "world_target_x": 4.25,
+    "world_target_z": 1.66,
+    "apply_angle_projection": true,
+    "coordinate_system": {
+      "world_coordinate_origin": "laser_origin",
+      "measurement_direction": "distance_from_laser_to_target",
+      "world_transform_method": "subtraction"
+    }
+  },
+  "visualization": {
+    "generate_interactive_plots": true,
+    "generate_static_plots": true,
+    "plot_3d_trajectories": true,
+    "show_segment_boundaries": true,
+    "generate_residual_histogram": true,
+    "generate_fft_analysis": true,
+    "residual_moving_average_window": 50
+  },
+  "output": {
+    "save_synchronized_csv": true,
+    "save_filtered_csv": true,
+    "save_final_coordinates_csv": true,
+    "output_dir": "processed_data"
+  },
+  "_comments": {
+    "nomal_distance_2_maps_to": "laser_z",
+    "nomal_distance_3_maps_to": "laser_x",
+    "crossed_distance_2_maps_to": "laser_x",
+    "crossed_distance_3_maps_to": "laser_z"
+  },
+  "coordinate_mapping": {
+    "distance_to_laser_mapping": {
+      "distance_2_maps_to": "laser_z",
+      "distance_3_maps_to": "laser_x"
+    },
+    "laser_to_tracker_mapping": {
+      "laser_x_maps_to": "tracker_x",
+      "laser_z_maps_to": "tracker_z"
+    },
+    "coordinate_transform": {
+      "laser_x_sign": 1,
+      "laser_z_sign": 1,
+      "tracker_x_sign": 1,
+      "tracker_z_sign": 1
+    },
+    "validation": {
+      "enable_coordinate_validation": true,
+      "log_mapping_details": true
+    }
+  }
+}

@@ -1,0 +1,59 @@
+
+=========================================================
+     Enhanced Comparative Model Training Summary
+=========================================================
+Initial Inlier Filtering: 20.0 mm threshold
+Original Data Points: 5554
+Inlier Data Points: 2777
+Outlier Ratio: 50.0%
+
+Best Method: Enhanced Ensemble Hybrid
+Best Test RMSE: 6.085 mm
+
+Method Performance Comparison:
+
+Affine:
+  Train RMSE: 11.293 mm
+  Test RMSE: 10.888 mm
+  Train MAE: 10.150 mm
+  Test MAE: 9.682 mm
+  Max Error: 24.852 mm
+  95th Percentile: 18.777 mm
+
+RBF Registration:
+  Train RMSE: 6.820 mm
+  Test RMSE: 7.632 mm
+  Train MAE: 3.822 mm
+  Test MAE: 4.607 mm
+  Max Error: 41.781 mm
+  95th Percentile: 17.361 mm
+
+CPD Registration:
+  Train RMSE: 10.527 mm
+  Test RMSE: 10.190 mm
+  Train MAE: 8.761 mm
+  Test MAE: 8.348 mm
+  Max Error: 26.811 mm
+  95th Percentile: 19.111 mm
+
+Original Hybrid:
+  Train RMSE: 6.214 mm
+  Test RMSE: 6.902 mm
+  Train MAE: 4.330 mm
+  Test MAE: 4.860 mm
+  Max Error: 34.130 mm
+  95th Percentile: 16.149 mm
+
+Enhanced Ensemble Hybrid:
+  Train RMSE: 6.382 mm
+  Test RMSE: 6.085 mm
+  Train MAE: 4.642 mm
+  Test MAE: 4.288 mm
+  Max Error: 36.187 mm
+  95th Percentile: 13.711 mm
+
+=========================================================
+Model Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Comparative_Model_2025-07-31_14-08-02/models
+Log Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Comparative_Model_2025-07-31_14-08-02/log/enhanced_training_process.log
+Visualization Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Comparative_Model_2025-07-31_14-08-02/img
+=========================================================

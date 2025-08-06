@@ -108,5 +108,10 @@ open a new teminal tap of above one (new_camera_pygame), typing in
 
 ```
 
+```sh
+
+bash /home/cityu-fsm-lab-carla/lmx/packages/9_npc_car/bash/integrated_scenario_launcher.sh
+
+```
 
 echo 'FSM_ROOT="/home/cityu-fsm-lab-carla/lmx"' >> ~/.bashrc  

@@ -1,0 +1,208 @@
+日志创建时间: 2025-07-24 15:10:10
+=== 系统日志 ===
+[15:10:10.198] [系统] 初始化 ViveTrackerModule...
+[15:10:10.208] [系统] Tracker 'tracker_1' 连接成功
+[15:10:10.209] Serial port configured: /dev/ttyUSB0, 9600 baud, timeout 0.1s
+[15:10:10.210] 
+=== Control Instructions ===
+Basic Operations:
+  'R' - Start recording data (linear movement sampling)
+  'E' - Stop recording data  
+  'P' - Pause/Resume recording (switch position, recalibrate baseline)
+  'T' - Start 60-second static zero drift test
+  'S' - Show current performance statistics
+  'D' - Toggle Debug detailed information
+  'I' - Show test status
+  'Q' - Manually end test
+  'X' - Force exit current mode, return to idle state
+  'H' - Show help information
+  'Esc' - Exit program and save data
+
+Sampling Process:
+  1. Press 'R' to start recording, perform linear movement
+  2. Press 'P' to pause recording, can switch to new position
+  3. At new position press 'P' again, system will recalibrate baseline then continue sampling
+  4. Finally save raw data and filtered data to two separate CSV files
+=========================
+    
+[15:10:10.210] [系统] 当前状态: IDLE
+[15:10:11.634] [验证-Distance_2] 开始60秒静态零飘测试（支持连接中断后继续）
+[15:10:11.635] [验证-Distance_3] 开始60秒静态零飘测试（支持连接中断后继续）
+[15:10:11.635] [系统] 静态测试已开始，即使连接中断也会继续累积时间
+[15:10:11.635] [系统] 系统状态: TESTING
+[15:10:11.635] [警告] 当前状态为 TESTING，无法开始测试。请先按 'X' 退出当前模式
+[15:10:11.645] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:11.702] 读取10字节，缓冲区总长度: 10
+[15:10:11.702] 收到原始数据: [55 7E 03 08 2F 0F A3 8B 7E 55] (长度: 10)
+[15:10:11.702] 解析成功: D2=2095(2.095m), D3=4003(4.003m)
+[15:10:11.702] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:11.717] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:11.782] 读取10字节，缓冲区总长度: 10
+[15:10:11.782] 收到原始数据: [55 7E 03 08 31 0F A5 93 7E 55] (长度: 10)
+[15:10:11.782] 解析成功: D2=2097(2.097m), D3=4005(4.005m)
+[15:10:11.782] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:11.797] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:11.862] 读取10字节，缓冲区总长度: 10
+[15:10:11.862] 收到原始数据: [55 7E 03 08 31 0F A4 92 7E 55] (长度: 10)
+[15:10:11.862] 解析成功: D2=2097(2.097m), D3=4004(4.004m)
+[15:10:11.862] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:11.877] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:11.941] 读取10字节，缓冲区总长度: 10
+[15:10:11.941] 收到原始数据: [55 7E 03 08 2F 0F A3 8B 7E 55] (长度: 10)
+[15:10:11.941] 解析成功: D2=2095(2.095m), D3=4003(4.003m)
+[15:10:11.941] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:11.956] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.020] 读取10字节，缓冲区总长度: 10
+[15:10:12.021] 收到原始数据: [55 7E 03 08 30 0F A4 93 7E 55] (长度: 10)
+[15:10:12.021] 解析成功: D2=2096(2.096m), D3=4004(4.004m)
+[15:10:12.021] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.036] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.100] 读取10字节，缓冲区总长度: 10
+[15:10:12.101] 收到原始数据: [55 7E 03 08 30 0F A4 93 7E 55] (长度: 10)
+[15:10:12.101] 解析成功: D2=2096(2.096m), D3=4004(4.004m)
+[15:10:12.101] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.116] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.180] 读取10字节，缓冲区总长度: 10
+[15:10:12.180] 收到原始数据: [55 7E 03 08 30 0F A5 92 7E 55] (长度: 10)
+[15:10:12.180] 解析成功: D2=2096(2.096m), D3=4005(4.005m)
+[15:10:12.180] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.195] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.260] 读取10字节，缓冲区总长度: 10
+[15:10:12.260] 收到原始数据: [55 7E 03 08 30 0F A3 94 7E 55] (长度: 10)
+[15:10:12.260] 解析成功: D2=2096(2.096m), D3=4003(4.003m)
+[15:10:12.260] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.275] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.339] 读取10字节，缓冲区总长度: 10
+[15:10:12.339] 收到原始数据: [55 7E 03 08 31 0F A3 95 7E 55] (长度: 10)
+[15:10:12.339] 解析成功: D2=2097(2.097m), D3=4003(4.003m)
+[15:10:12.339] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.355] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.419] 读取10字节，缓冲区总长度: 10
+[15:10:12.419] 收到原始数据: [55 7E 03 08 2F 0F A3 8B 7E 55] (长度: 10)
+[15:10:12.419] 解析成功: D2=2095(2.095m), D3=4003(4.003m)
+[15:10:12.419] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.434] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.500] 读取10字节，缓冲区总长度: 10
+[15:10:12.500] 收到原始数据: [55 7E 03 08 2F 0F A3 8B 7E 55] (长度: 10)
+[15:10:12.500] 解析成功: D2=2095(2.095m), D3=4003(4.003m)
+[15:10:12.500] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.516] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.579] 读取10字节，缓冲区总长度: 10
+[15:10:12.579] 收到原始数据: [55 7E 03 08 30 0F A4 93 7E 55] (长度: 10)
+[15:10:12.579] 解析成功: D2=2096(2.096m), D3=4004(4.004m)
+[15:10:12.579] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.594] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.658] 读取10字节，缓冲区总长度: 10
+[15:10:12.658] 收到原始数据: [55 7E 03 08 30 0F A4 93 7E 55] (长度: 10)
+[15:10:12.658] 解析成功: D2=2096(2.096m), D3=4004(4.004m)
+[15:10:12.658] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.674] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.737] 读取10字节，缓冲区总长度: 10
+[15:10:12.738] 收到原始数据: [55 7E 03 08 31 0F A6 90 7E 55] (长度: 10)
+[15:10:12.738] 解析成功: D2=2097(2.097m), D3=4006(4.006m)
+[15:10:12.738] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.753] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.817] 读取10字节，缓冲区总长度: 10
+[15:10:12.818] 收到原始数据: [55 7E 03 08 30 0F A4 93 7E 55] (长度: 10)
+[15:10:12.818] 解析成功: D2=2096(2.096m), D3=4004(4.004m)
+[15:10:12.818] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.833] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.897] 读取10字节，缓冲区总长度: 10
+[15:10:12.897] 收到原始数据: [55 7E 03 08 30 0F A4 93 7E 55] (长度: 10)
+[15:10:12.898] 解析成功: D2=2096(2.096m), D3=4004(4.004m)
+[15:10:12.898] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.913] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:12.976] 读取10字节，缓冲区总长度: 10
+[15:10:12.976] 收到原始数据: [55 7E 03 08 30 0F A5 92 7E 55] (长度: 10)
+[15:10:12.976] 解析成功: D2=2096(2.096m), D3=4005(4.005m)
+[15:10:12.977] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:12.992] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.056] 读取10字节，缓冲区总长度: 10
+[15:10:13.056] 收到原始数据: [55 7E 03 08 30 0F A5 92 7E 55] (长度: 10)
+[15:10:13.056] 解析成功: D2=2096(2.096m), D3=4005(4.005m)
+[15:10:13.056] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.072] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.136] 读取10字节，缓冲区总长度: 10
+[15:10:13.136] 收到原始数据: [55 7E 03 08 32 0F A4 91 7E 55] (长度: 10)
+[15:10:13.136] 解析成功: D2=2098(2.098m), D3=4004(4.004m)
+[15:10:13.136] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.151] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.215] 读取10字节，缓冲区总长度: 10
+[15:10:13.215] 收到原始数据: [55 7E 03 08 2F 0F A4 8C 7E 55] (长度: 10)
+[15:10:13.215] 解析成功: D2=2095(2.095m), D3=4004(4.004m)
+[15:10:13.215] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.230] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.295] 读取10字节，缓冲区总长度: 10
+[15:10:13.295] 收到原始数据: [55 7E 03 08 2F 0F A4 8C 7E 55] (长度: 10)
+[15:10:13.295] 解析成功: D2=2095(2.095m), D3=4004(4.004m)
+[15:10:13.295] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.310] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.375] 读取10字节，缓冲区总长度: 10
+[15:10:13.375] 收到原始数据: [55 7E 03 08 30 0F A4 93 7E 55] (长度: 10)
+[15:10:13.375] 解析成功: D2=2096(2.096m), D3=4004(4.004m)
+[15:10:13.375] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.390] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.457] 读取10字节，缓冲区总长度: 10
+[15:10:13.457] 收到原始数据: [55 7E 03 08 31 0F A6 90 7E 55] (长度: 10)
+[15:10:13.457] 解析成功: D2=2097(2.097m), D3=4006(4.006m)
+[15:10:13.457] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.472] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.535] 读取10字节，缓冲区总长度: 10
+[15:10:13.535] 收到原始数据: [55 7E 03 08 2F 0F A4 8C 7E 55] (长度: 10)
+[15:10:13.535] 解析成功: D2=2095(2.095m), D3=4004(4.004m)
+[15:10:13.535] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.550] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.613] 读取10字节，缓冲区总长度: 10
+[15:10:13.613] 收到原始数据: [55 7E 03 08 31 0F A4 92 7E 55] (长度: 10)
+[15:10:13.613] 解析成功: D2=2097(2.097m), D3=4004(4.004m)
+[15:10:13.613] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.629] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.693] 读取10字节，缓冲区总长度: 10
+[15:10:13.693] 收到原始数据: [55 7E 03 08 31 0F A4 92 7E 55] (长度: 10)
+[15:10:13.693] 解析成功: D2=2097(2.097m), D3=4004(4.004m)
+[15:10:13.693] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.708] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.773] 读取10字节，缓冲区总长度: 10
+[15:10:13.773] 收到原始数据: [55 7E 03 08 30 0F A5 92 7E 55] (长度: 10)
+[15:10:13.773] 解析成功: D2=2096(2.096m), D3=4005(4.005m)
+[15:10:13.773] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.788] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.852] 读取10字节，缓冲区总长度: 10
+[15:10:13.852] 收到原始数据: [55 7E 03 08 30 0F A4 93 7E 55] (长度: 10)
+[15:10:13.852] 解析成功: D2=2096(2.096m), D3=4004(4.004m)
+[15:10:13.852] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.868] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.932] 读取10字节，缓冲区总长度: 10
+[15:10:13.932] 收到原始数据: [55 7E 03 08 30 0F A4 93 7E 55] (长度: 10)
+[15:10:13.932] 解析成功: D2=2096(2.096m), D3=4004(4.004m)
+[15:10:13.932] 获取tracker数据失败: 'NoneType' object is not subscriptable
+[15:10:13.948] 发送请求: 55 7E 02 00 00 00 00 00 7E 55
+[15:10:13.971] [系统] 接收到 Ctrl+C，程序退出...
+[15:10:13.971] [系统] 强制停止录制
+[15:10:13.971] [验证-Distance_2] 紧急停止测试
+[15:10:13.971] [验证-Distance_3] 紧急停止测试
+[15:10:13.971] [系统] 强制停止静态测试: d2, d3
+[15:10:13.971] [系统] 系统状态: IDLE
+[15:10:13.971] 
+=== Control Instructions ===
+Basic Operations:
+  'R' - Start recording data (linear movement sampling)
+  'E' - Stop recording data  
+  'P' - Pause/Resume recording (switch position, recalibrate baseline)
+  'T' - Start 60-second static zero drift test
+  'S' - Show current performance statistics
+  'D' - Toggle Debug detailed information
+  'I' - Show test status
+  'Q' - Manually end test
+  'X' - Force exit current mode, return to idle state
+  'H' - Show help information
+  'Esc' - Exit program and save data
+
+Sampling Process:
+  1. Press 'R' to start recording, perform linear movement
+  2. Press 'P' to pause recording, can switch to new position
+  3. At new position press 'P' again, system will recalibrate baseline then continue sampling
+  4. Finally save raw data and filtered data to two separate CSV files
+=========================
+    
+[15:10:13.971] [系统] 串口已关闭

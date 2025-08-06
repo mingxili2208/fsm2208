@@ -35,7 +35,12 @@ TARGET_RMSE = 0.004  # 4mm
 script_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(script_dir)
 result_dir = os.path.join(parent_dir, "results")
-LASER_TRACKER_CSV = os.path.join(parent_dir, "data/corrected_tracker_data_0703_162626.csv")
+##########################################################
+#corrected_tracker_data_0703_162626
+#crossed_corrected_tracker_data_0707_125849
+#combined_corrected_tracker_data_2
+#########################################################
+LASER_TRACKER_CSV = os.path.join(parent_dir, "data/combined_corrected_tracker_data_2.csv")
 csv_filename = os.path.basename(LASER_TRACKER_CSV)
 output_dir = os.path.join(result_dir, f"SVD_Deformation_{timestamp}_1to32_scale_RMSE_{TARGET_RMSE*1000:.1f}mm_{csv_filename}")
 os.makedirs(output_dir, exist_ok=True)

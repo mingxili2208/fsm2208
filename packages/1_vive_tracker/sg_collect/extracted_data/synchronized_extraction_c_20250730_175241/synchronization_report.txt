@@ -1,0 +1,28 @@
+🕒 TIMESTAMP SYNCHRONIZATION REPORT
+============================================================
+
+📅 Extraction Time: 2025-07-30T17:52:42.444871
+📁 Source NPZ File: raw_data/raw_data_20250728_173542.npz
+⏱️ Interpolation Tolerance: 100ms
+
+📊 Raw Data Statistics:
+------------------------------
+📡 LiDAR Points: 5,689
+🎯 Tracker Points: 43,149
+⏰ LiDAR Duration: 866.0s
+⏰ Tracker Duration: 866.0s
+
+🔗 Synchronization Results:
+------------------------------
+✅ Synchronized Points: 5,688
+❌ Failed Synchronizations: 0
+📈 Linear Interpolated: 5,688
+📍 Nearest Neighbor: 0
+📊 Success Rate: 100.0%
+🗑️ Data Reduction: 0.0%
+
+📂 Generated Files:
+------------------------------
+📡 Raw LiDAR: raw_lidar_data.csv
+🎯 Raw Tracker: raw_tracker_data.csv
+🔗 Synchronized: synchronized_raw_data.csv

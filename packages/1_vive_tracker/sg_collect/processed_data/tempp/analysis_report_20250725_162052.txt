@@ -1,0 +1,705 @@
+============================================================
+ADVANCED DATA PROCESSING ANALYSIS REPORT
+============================================================
+
+Processing Date: 2025-07-25T16:20:52.285040
+Raw Data File: raw_data/raw_data_20250725_161942.npz
+Collection Duration: 476.6s
+
+RAW DATA STATISTICS:
+------------------------------
+LiDAR Samples: 3064
+Tracker Samples: 23725
+LiDAR Mean Latency: 66.5ms
+Tracker Mean Latency: 0.0ms
+
+SYNCHRONIZATION RESULTS:
+------------------------------
+Successful Points: 3064
+Failed Points: 0
+Outliers Removed: 0
+Success Rate: 100.0%
+
+SEGMENTATION RESULTS:
+------------------------------
+Number of Segments: 108
+
+FILTERING RESULTS:
+------------------------------
+Segment 0:
+  Points: 12
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 25.4%
+  D3 Improvement: 44.4%
+
+Segment 1:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 46.5%
+  D3 Improvement: 27.4%
+
+Segment 2:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 55.1%
+  D3 Improvement: 42.9%
+
+Segment 3:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 55.6%
+  D3 Improvement: 52.3%
+
+Segment 4:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 13.2%
+  D3 Improvement: 41.3%
+
+Segment 5:
+  Points: 20
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 6:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 42.6%
+  D3 Improvement: 34.1%
+
+Segment 7:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 4.5%
+  D3 Improvement: -0.1%
+
+Segment 8:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 68.2%
+  D3 Improvement: 25.8%
+
+Segment 9:
+  Points: 12
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 21.7%
+  D3 Improvement: 0.4%
+
+Segment 10:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 8.6%
+  D3 Improvement: 0.1%
+
+Segment 11:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 8.8%
+  D3 Improvement: -0.0%
+
+Segment 12:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 2.1%
+  D3 Improvement: 1.3%
+
+Segment 13:
+  Points: 12
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 20.5%
+  D3 Improvement: 0.0%
+
+Segment 14:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 1.2%
+  D3 Improvement: 0.1%
+
+Segment 15:
+  Points: 13
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 4.9%
+  D3 Improvement: -0.1%
+
+Segment 16:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 2.5%
+  D3 Improvement: 0.2%
+
+Segment 17:
+  Points: 12
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 2.9%
+  D3 Improvement: 0.1%
+
+Segment 18:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 0.7%
+  D3 Improvement: 0.1%
+
+Segment 19:
+  Points: 20
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 20:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 50.9%
+  D3 Improvement: 35.1%
+
+Segment 21:
+  Points: 22
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 22:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 2.8%
+  D3 Improvement: 0.1%
+
+Segment 23:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 3.5%
+  D3 Improvement: 0.0%
+
+Segment 24:
+  Points: 24
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 25:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 25.5%
+  D3 Improvement: 1.6%
+
+Segment 26:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 0.6%
+  D3 Improvement: 3.8%
+
+Segment 27:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 19.1%
+  D3 Improvement: -0.0%
+
+Segment 28:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: -0.0%
+  D3 Improvement: -0.1%
+
+Segment 29:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 43.4%
+  D3 Improvement: 27.8%
+
+Segment 30:
+  Points: 20
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 31:
+  Points: 20
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 32:
+  Points: 20
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 33:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 14.8%
+  D3 Improvement: 0.5%
+
+Segment 34:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 1.0%
+  D3 Improvement: -0.1%
+
+Segment 35:
+  Points: 12
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 12.2%
+  D3 Improvement: 0.1%
+
+Segment 36:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 2.2%
+  D3 Improvement: -0.1%
+
+Segment 37:
+  Points: 12
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 6.5%
+  D3 Improvement: 0.8%
+
+Segment 38:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 0.2%
+  D3 Improvement: 0.9%
+
+Segment 39:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 0.6%
+  D3 Improvement: 6.2%
+
+Segment 40:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 35.5%
+  D3 Improvement: 36.4%
+
+Segment 41:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 44.3%
+  D3 Improvement: 45.4%
+
+Segment 42:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 8.1%
+  D3 Improvement: 0.7%
+
+Segment 43:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 14.1%
+  D3 Improvement: 0.6%
+
+Segment 44:
+  Points: 20
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 45:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 11.7%
+  D3 Improvement: 0.1%
+
+Segment 46:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 11.7%
+  D3 Improvement: -0.1%
+
+Segment 47:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 26.9%
+  D3 Improvement: 0.1%
+
+Segment 48:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.6%
+
+Segment 49:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 24.9%
+  D3 Improvement: 19.9%
+
+Segment 50:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 21.6%
+  D3 Improvement: 0.1%
+
+Segment 51:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 28.3%
+  D3 Improvement: 0.0%
+
+Segment 52:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 12.7%
+  D3 Improvement: 0.3%
+
+Segment 53:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 36.2%
+  D3 Improvement: 0.5%
+
+Segment 54:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 18.6%
+  D3 Improvement: 0.1%
+
+Segment 55:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 8.2%
+  D3 Improvement: 0.1%
+
+Segment 56:
+  Points: 17
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 35.4%
+  D3 Improvement: 48.8%
+
+Segment 57:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 35.8%
+  D3 Improvement: 0.1%
+
+Segment 58:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 5.3%
+  D3 Improvement: 0.1%
+
+Segment 59:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 63.6%
+  D3 Improvement: 0.5%
+
+Segment 60:
+  Points: 10
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 32.1%
+  D3 Improvement: 0.0%
+
+Segment 61:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 74.9%
+  D3 Improvement: 0.2%
+
+Segment 62:
+  Points: 17
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 41.1%
+  D3 Improvement: 0.1%
+
+Segment 63:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 57.0%
+  D3 Improvement: 17.4%
+
+Segment 64:
+  Points: 12
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 24.8%
+  D3 Improvement: 36.8%
+
+Segment 65:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 47.2%
+  D3 Improvement: 45.0%
+
+Segment 66:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 30.8%
+  D3 Improvement: 0.3%
+
+Segment 67:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 4.2%
+  D3 Improvement: 0.2%
+
+Segment 68:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 16.8%
+  D3 Improvement: 0.3%
+
+Segment 69:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 0.5%
+  D3 Improvement: 5.4%
+
+Segment 70:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 1.7%
+  D3 Improvement: 0.2%
+
+Segment 71:
+  Points: 10
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 42.2%
+  D3 Improvement: 0.4%
+
+Segment 72:
+  Points: 20
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 73:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 16.8%
+  D3 Improvement: -0.1%
+
+Segment 74:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 5.4%
+  D3 Improvement: 0.1%
+
+Segment 75:
+  Points: 22
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 76:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 8.2%
+  D3 Improvement: 0.3%
+
+Segment 77:
+  Points: 20
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 78:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 2.3%
+  D3 Improvement: -0.0%
+
+Segment 79:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 18.3%
+  D3 Improvement: 0.6%
+
+Segment 80:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 19.7%
+  D3 Improvement: 0.2%
+
+Segment 81:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 35.1%
+  D3 Improvement: 5.8%
+
+Segment 82:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 6.1%
+  D3 Improvement: 2.7%
+
+Segment 83:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 2.2%
+  D3 Improvement: 0.3%
+
+Segment 84:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 43.6%
+  D3 Improvement: 0.6%
+
+Segment 85:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 1.8%
+  D3 Improvement: 0.7%
+
+Segment 86:
+  Points: 10
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 10.7%
+  D3 Improvement: 0.1%
+
+Segment 87:
+  Points: 13
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 20.8%
+  D3 Improvement: -0.1%
+
+Segment 88:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 19.6%
+  D3 Improvement: 0.1%
+
+Segment 89:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 7.9%
+  D3 Improvement: 0.2%
+
+Segment 90:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 18.6%
+  D3 Improvement: 0.6%
+
+Segment 91:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 24.7%
+  D3 Improvement: 1.4%
+
+Segment 92:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 1.4%
+  D3 Improvement: 0.0%
+
+Segment 93:
+  Points: 20
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 94:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 0.2%
+  D3 Improvement: 24.4%
+
+Segment 95:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 5.2%
+  D3 Improvement: -0.0%
+
+Segment 96:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 2.7%
+  D3 Improvement: 0.2%
+
+Segment 97:
+  Points: 16
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 21.1%
+  D3 Improvement: 0.4%
+
+Segment 98:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 10.9%
+  D3 Improvement: 0.6%
+
+Segment 99:
+  Points: 18
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 24.1%
+  D3 Improvement: 0.1%
+
+Segment 100:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 29.2%
+  D3 Improvement: 46.0%
+
+Segment 101:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 22.4%
+  D3 Improvement: 0.3%
+
+Segment 102:
+  Points: 12
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 42.5%
+  D3 Improvement: 0.1%
+
+Segment 103:
+  Points: 15
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 5.8%
+  D3 Improvement: -0.0%
+
+Segment 104:
+  Points: 14
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 2.3%
+  D3 Improvement: 0.8%
+
+Segment 105:
+  Points: 12
+  SG Parameters: window=7, poly=2
+  D2 Improvement: 2.0%
+  D3 Improvement: 0.7%
+
+Segment 106:
+  Points: 21
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+Segment 107:
+  Points: 20
+  SG Parameters: window=5, poly=4
+  D2 Improvement: 0.0%
+  D3 Improvement: 0.0%
+
+CONFIGURATION USED:
+------------------------------
+{
+  "synchronization": {
+    "interpolation_tolerance_ms": 100,
+    "outlier_detection": true,
+    "outlier_threshold_sigma": 3.0
+  },
+  "segmentation": {
+    "max_time_gap_ms": 150,
+    "min_segment_length": 10
+  },
+  "filtering": {
+    "sg_window_length": 7,
+    "sg_polyorder": 2,
+    "auto_optimize_parameters": true
+  },
+  "visualization": {
+    "generate_interactive_plots": true,
+    "generate_static_plots": true,
+    "plot_3d_trajectories": true,
+    "show_segment_boundaries": true
+  },
+  "output": {
+    "save_synchronized_csv": true,
+    "save_filtered_csv": true,
+    "output_dir": "processed_data"
+  }
+}

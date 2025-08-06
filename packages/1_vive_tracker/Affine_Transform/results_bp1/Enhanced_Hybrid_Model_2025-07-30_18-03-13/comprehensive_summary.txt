@@ -1,0 +1,44 @@
+
+=========================================================
+          Enhanced Hybrid Model Training Summary
+=========================================================
+Data Source: final_coordinates.csv
+Total Data Points: 3261
+Training Points: 2608
+Test Points: 653
+
+Model Configuration:
+---------------------------------------------------------
+RANSAC Iterations: 3000
+RANSAC Inlier Threshold: 15.0 mm
+Primary MLP Structure: (512, 256, 128, 64, 32)
+Enhanced Feature Dimension: 39
+Primary MLP Training Iterations: 85
+
+Test Set Performance Evaluation (RMSE):
+---------------------------------------------------------
+Stage A (Known Rotation Only):    3099.4749 mm
+Stage B (Rotation + Affine):      15.9269 mm  
+Stage C (Single Hybrid Model):    11.3242 mm
+Stage D (Enhanced Ensemble):      10.0232 mm
+---------------------------------------------------------
+
+Performance Improvement Analysis:
+---------------------------------------------------------
+Stage A to Stage D Improvement:   3089.4517 mm (99.7%)
+Stage B to Stage C Improvement:   4.6027 mm (28.9%)
+Stage C to Stage D Improvement:   1.3009 mm (11.5%)
+
+Detailed Performance Metrics (Stage D - Best Model):
+---------------------------------------------------------
+RMSE: 10.0232 mm
+MAE:  7.0418 mm
+Max:  50.4309 mm
+95%:  19.5594 mm
+99%:  31.8783 mm
+=========================================================
+
+Model Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Hybrid_Model_2025-07-30_18-03-13/models
+Log Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Hybrid_Model_2025-07-30_18-03-13/log/enhanced_training_process.log
+Visualization Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Hybrid_Model_2025-07-30_18-03-13/img
+=========================================================

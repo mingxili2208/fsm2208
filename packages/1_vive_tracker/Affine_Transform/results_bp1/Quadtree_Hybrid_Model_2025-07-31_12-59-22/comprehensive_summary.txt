@@ -1,0 +1,43 @@
+
+=========================================================
+       Adaptive Quadtree Hybrid Model Training Summary
+=========================================================
+Data Source: final_coordinates.csv
+Total Data Points: 3261
+Training Points: 2608
+Test Points: 653
+
+Model Configuration:
+---------------------------------------------------------
+RANSAC Iterations: 3000
+RANSAC Inlier Threshold: 15.0 mm
+Quadtree Max Depth: 10
+Quadtree Min Points Per Cell: 15
+Quadtree Error Threshold: 4.0 mm
+
+Test Set Performance Evaluation (RMSE):
+---------------------------------------------------------
+Stage A (Known Rotation Only):        3099.4749 mm
+Stage B (Rotation + Affine):          15.9068 mm  
+Stage C (Adaptive Quadtree Hybrid):   10.5482 mm
+---------------------------------------------------------
+
+Performance Improvement Analysis:
+---------------------------------------------------------
+Stage A to Stage B Improvement:   3083.5681 mm (99.5%)
+Stage B to Stage C Improvement:   5.3585 mm (33.7%)
+Stage A to Stage C Improvement:   3088.9266 mm (99.7%)
+
+Detailed Performance Metrics (Stage C - Final Model):
+---------------------------------------------------------
+RMSE: 10.5482 mm
+MAE:  4.2281 mm
+Max:  156.7284 mm
+95%:  16.3998 mm
+99%:  41.7939 mm
+=========================================================
+
+Model Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Quadtree_Hybrid_Model_2025-07-31_12-59-22/models
+Log Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Quadtree_Hybrid_Model_2025-07-31_12-59-22/log/quadtree_training_process.log
+Visualization Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Quadtree_Hybrid_Model_2025-07-31_12-59-22/img
+=========================================================

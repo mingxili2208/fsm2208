@@ -1,0 +1,20 @@
+📊 DATA FILTERING VISUALIZATION SUMMARY
+============================================================
+
+🕒 Analysis Time: 2025-07-30T18:16:12.734733
+📁 Raw Data File: ./extracted_data/img_data/synchronized_raw_data.csv
+📁 Processed Data File: ./extracted_data/img_data/final_coordinates.csv
+📂 Output Directory: visualization_output/filtering_analysis_20250730_181610
+
+📈 Filtering Statistics:
+------------------------------
+🔢 Original Points: 12,917
+✅ Retained Points: 3,433
+🗑️ Removed Points: 9,484
+📊 Retention Rate: 26.6%
+📊 Removal Rate: 73.4%
+
+📋 Generated Visualizations:
+------------------------------
+🎨 train_test_split: train_test_split_distribution.png
+🎨 filtering_process: comprehensive_filtering_analysis.png

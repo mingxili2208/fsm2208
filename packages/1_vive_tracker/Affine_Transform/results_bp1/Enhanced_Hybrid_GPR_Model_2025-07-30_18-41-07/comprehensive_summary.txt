@@ -1,0 +1,45 @@
+
+=========================================================
+       Enhanced Hybrid GPR Model Training Summary
+=========================================================
+Data Source: final_coordinates.csv
+Total Data Points: 3261
+Training Points: 2608
+Test Points: 653
+
+Model Configuration:
+---------------------------------------------------------
+RANSAC Iterations: 3000
+RANSAC Inlier Threshold: 15.0 mm
+GPR Alpha (Noise): 1e-06
+GPR Optimizer Restarts: 10
+Enhanced Feature Dimension: 39
+Number of GPR Models: 3
+
+Test Set Performance Evaluation (RMSE):
+---------------------------------------------------------
+Stage A (Known Rotation Only):    3099.4749 mm
+Stage B (Rotation + Affine):      15.8993 mm  
+Stage C (Single GPR Model):       14.6286 mm
+Stage D (Enhanced GPR Ensemble):  11.6241 mm
+---------------------------------------------------------
+
+Performance Improvement Analysis:
+---------------------------------------------------------
+Stage A to Stage D Improvement:   3087.8508 mm (99.6%)
+Stage B to Stage C Improvement:   1.2707 mm (8.0%)
+Stage C to Stage D Improvement:   3.0045 mm (20.5%)
+
+Detailed Performance Metrics (Stage D - Best Model):
+---------------------------------------------------------
+RMSE: 11.6241 mm
+MAE:  8.4310 mm
+Max:  60.3656 mm
+95%:  22.9862 mm
+99%:  42.4861 mm
+=========================================================
+
+Model Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Hybrid_GPR_Model_2025-07-30_18-41-07/models
+Log Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Hybrid_GPR_Model_2025-07-30_18-41-07/log/enhanced_gpr_training_process.log
+Visualization Files Location: /home/cityu-fsm-lab-carla/lmx/packages/1_vive_tracker/Affine_Transform/results/Enhanced_Hybrid_GPR_Model_2025-07-30_18-41-07/img
+=========================================================

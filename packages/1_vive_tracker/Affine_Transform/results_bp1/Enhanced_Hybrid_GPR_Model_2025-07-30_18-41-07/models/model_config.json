@@ -1,0 +1,27 @@
+{
+  "R_EULER_3D": [
+    [
+      0.67654891,
+      -0.7363977,
+      0.0
+    ],
+    [
+      0.7363977,
+      0.67654891,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "GPR_ALPHA": 1e-06,
+  "GPR_N_RESTARTS": 10,
+  "RANSAC_ITERATIONS": 3000,
+  "RANSAC_BASE_THRESHOLD": 0.015,
+  "train_points": 2608,
+  "test_points": 653,
+  "feature_dim": 39,
+  "n_gpr_models": 3
+}

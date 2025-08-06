@@ -1,0 +1,20 @@
+FOUR-STAGE REGISTRATION FINAL RESULTS
+============================================================
+Timestamp: 2025-07-04 16:22:20.570990
+Pipeline: SVD → RANSAC → Adaptive Point Selection → GPR
+Success: NO
+Final RMSE: 120.134mm
+Target RMSE: 4.00mm
+Scale Factor: 1:32
+Real-world Equivalent: 384.43cm
+Processing Time: 1049.77s
+Points Processed: 6980
+Improvement: 1.495mm
+GPR Training Points: 1758
+Adaptive Selection Success: No
+Selection Iterations: 20/20
+Initial Grid Size: 0.075247m
+Final Grid Size: 0.032590m
+Target vs Actual Points: 2000 vs 1758
+Selection Deviation: 242 points
+Point Selection Ratio: 33.0%

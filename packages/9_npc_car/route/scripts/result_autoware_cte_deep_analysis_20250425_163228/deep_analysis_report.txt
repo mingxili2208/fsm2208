@@ -1,0 +1,18 @@
+
+=== Deep Path Analysis Report ===
+Generated at: 2025-08-01 18:47:24.578982
+
+Path Statistics:
+- Total messages processed: 1443
+- Final path points: 197
+- Detected discontinuities: 1
+
+Path Quality Metrics:
+
+- Average point spacing: 2.145 m
+- Max point spacing: 18.924 m
+- Min point spacing: 1.574 m
+- Points with large gaps (>8m): 2
+
+Detected Discontinuities:
+Gap 1: 18.92m at index 80

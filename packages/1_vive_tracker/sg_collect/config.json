@@ -1,0 +1,9 @@
+{
+    "serial_port": "/dev/ttyUSB0",
+    "baud_rate": 9600,
+    "tracker_name": "tracker_1",
+    "lidar_target_hz": 10,
+    "tracker_target_hz": 50,
+    "collection_timeout": 3600,
+    "output_dir": "raw_data"
+  }
