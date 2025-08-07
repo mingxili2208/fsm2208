@@ -1,0 +1,59 @@
+experiment_a1:
+  parameters:
+    cleanup_threshold_ns: 60000000000
+    correlation_window_ns: 50000000
+    stats_report_interval_s: 5.0
+  quality_thresholds:
+    ndt_p95_ms: 20
+    pipeline_p99_ms: 100
+    pipeline_std_ms: 30
+    render_mean_ms: 50
+  topics:
+    lidar_input: /carla/follow_adtruck/carla_pointcloud
+    ndt_output: /localization/kinematic_state
+    timing_sync: /fsm_sandbox/timing/t1_t2
+experiment_a2:
+  message_types:
+    ground_truth_type: PoseWithCovarianceStamped
+    ndt_output_type: PoseWithCovarianceStamped
+  parameters:
+    alignment_tolerance_windows_ms:
+    - 10
+    - 50
+    - 100
+    - 200
+    min_alignment_rate_percent: 50
+    outlier_iqr_factor: 1.5
+    outlier_removal_enabled: true
+  quality_thresholds:
+    translation_mean_mm: 5
+    translation_p99_mm: 20
+    translation_std_mm: 10
+    yaw_mean_deg: 0.1
+    yaw_p95_deg: 0.5
+  topics:
+    ground_truth: /real_world/follow_adtruck/transformed_with_covariance
+    offline_ndt: /localization/kinematic_state
+    virtual_lidar: /carla/follow_adtruck/carla_pointcloud
+file_management:
+  base_directories:
+    data: data
+    logs: logs
+    results: results
+  file_naming:
+    timestamp_format: '%Y%m%d_%H%M%S'
+    use_session_id: true
+project:
+  description: Integrated Timing and Fidelity Analysis
+  name: FSM Sandbox Validation
+  version: '2.0'
+visualization:
+  color_palette: husl
+  dpi: 300
+  enable_grid: true
+  figure_size:
+  - 16
+  - 12
+  font_size: 12
+  grid_alpha: 0.3
+  style: default

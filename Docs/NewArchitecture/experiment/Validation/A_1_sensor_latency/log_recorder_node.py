@@ -6,53 +6,32 @@ from collections import deque
 import csv
 import os
 import datetime
+import yaml
 import threading
 
 # Import required message types
 from sensor_msgs.msg import TimeReference, PointCloud2
 from geometry_msgs.msg import PoseWithCovarianceStamped
 
-# Import configuration manager
-from config_manager import ConfigManager
-
 class LatencyLogRecorderNode(Node):
     """
-    Node for recording timing data to analyze FSM Sandbox latency performance.
-    Now uses external configuration management for better flexibility.
+    A1实验：FSM Sandbox时效性验证节点 (修正版)
+    - 从config.yaml加载配置
+    - 测量完整的R2V信息管道延迟 (T1→T4)
+    - 为实验B提供ΔT_R2V数据
     """
     
-    def __init__(self, config_file: str = "config.yaml"):
+    def __init__(self, config_file="config.yaml"):
         super().__init__('latency_log_recorder_node')
 
-        # Load configuration
-        self.config_manager = ConfigManager(config_file)
-        self.a1_config = self.config_manager.get_a1_config()
+        # 加载配置
+        self.load_config(config_file)
         
-        # Create session timestamp
-        self.session_timestamp = datetime.datetime.now().strftime(
-            self.config_manager.get('file_management.file_naming.timestamp_format', '%Y%m%d_%H%M%S')
-        )
-        
-        # Setup directory structure
-        self.setup_directories()
-
-        # Get topic configuration
-        topics = self.a1_config.get('topics', {})
-        self.timing_sync_topic = topics.get('timing_sync', '/fsm_sandbox/timing/t1_t2')
-        self.lidar_topic = topics.get('lidar_input', '/carla/follow_adtruck/carla_pointcloud')
-        self.ndt_topic = topics.get('ndt_output', '/localization/kinematic_state')
-        
-        # Get parameters
-        params = self.a1_config.get('parameters', {})
-        self.correlation_window_ns = params.get('correlation_window_ns', 50_000_000)
-        self.cleanup_threshold_ns = params.get('cleanup_threshold_ns', 60_000_000_000)
-        self.stats_interval = params.get('stats_report_interval_s', 5.0)
-        
-        # Data structures for timestamp correlation
+        # 数据结构
         self.t1_t2_map = {}  # {t1_ns: t2_ns}
         self.t3_to_t1_map = {}  # {t3_ns: t1_ns}
         
-        # Statistics counters
+        # 统计计数器
         self.total_t1_t2_received = 0
         self.total_lidar_received = 0
         self.total_ndt_received = 0
@@ -60,7 +39,62 @@ class LatencyLogRecorderNode(Node):
         self.failed_t1_t3_matches = 0
         self.failed_t3_t4_matches = 0
         
-        # Create subscribers
+        # 创建订阅器
+        self.create_subscriptions()
+        
+        # 设置CSV日志
+        self.setup_csv_logging()
+        
+        # 定时器
+        self.stats_timer = self.create_timer(
+            self.stats_report_interval, self.report_statistics)
+        self.cleanup_timer = self.create_timer(30.0, self.cleanup_old_entries)
+        
+        self.get_logger().info("A1时效性验证节点启动")
+        self.get_logger().info(f"配置文件: {config_file}")
+        self.get_logger().info(f"关联窗口: {self.correlation_window_ns/1e6:.1f}ms")
+
+    def load_config(self, config_file):
+        """从config.yaml加载配置"""
+        try:
+            with open(config_file, 'r') as f:
+                config = yaml.safe_load(f)
+            
+            # 提取A1实验配置
+            a1_config = config['experiment_a1']
+            
+            # 话题配置
+            self.timing_sync_topic = a1_config['topics']['timing_sync']
+            self.lidar_topic = a1_config['topics']['lidar_input']
+            self.ndt_topic = a1_config['topics']['ndt_output']
+            
+            # 参数配置
+            params = a1_config['parameters']
+            self.correlation_window_ns = params['correlation_window_ns']
+            self.cleanup_threshold_ns = params['cleanup_threshold_ns']
+            self.stats_report_interval = params['stats_report_interval_s']
+            
+            self.get_logger().info("配置加载成功:")
+            self.get_logger().info(f"  时序同步话题: {self.timing_sync_topic}")
+            self.get_logger().info(f"  LiDAR话题: {self.lidar_topic}")
+            self.get_logger().info(f"  NDT输出话题: {self.ndt_topic}")
+            
+        except Exception as e:
+            self.get_logger().error(f"配置加载失败: {e}")
+            self.get_logger().info("使用默认配置")
+            self.use_default_config()
+
+    def use_default_config(self):
+        """使用默认配置"""
+        self.timing_sync_topic = "/fsm_sandbox/timing/t1_t2"
+        self.lidar_topic = "/carla/follow_adtruck/carla_pointcloud"
+        self.ndt_topic = "/localization/pose_estimator/pose"
+        self.correlation_window_ns = 50_000_000
+        self.cleanup_threshold_ns = 60_000_000_000
+        self.stats_report_interval = 5.0
+
+    def create_subscriptions(self):
+        """创建订阅器"""
         self.t1_t2_sub = self.create_subscription(
             TimeReference, self.timing_sync_topic, self.t1_t2_callback, 10)
         
@@ -70,298 +104,172 @@ class LatencyLogRecorderNode(Node):
         self.ndt_pose_sub = self.create_subscription(
             PoseWithCovarianceStamped, self.ndt_topic, self.ndt_pose_callback, 10)
 
-        # Setup CSV logging
-        self.setup_csv_logging()
-        
-        # Setup session logging
-        self.setup_session_logging()
-        
-        # Statistics reporting timer
-        self.stats_timer = self.create_timer(self.stats_interval, self.report_statistics)
-        
-        # Cleanup timer
-        self.cleanup_timer = self.create_timer(30.0, self.cleanup_old_entries)
-        
-        self.get_logger().info("Latency log recorder node started")
-        self.get_logger().info(f"Session timestamp: {self.session_timestamp}")
-        self.get_logger().info(f"Data directory: {self.data_dir}")
-        self.get_logger().info(f"Monitoring topics:")
-        self.get_logger().info(f"  - Timing sync: {self.timing_sync_topic}")
-        self.get_logger().info(f"  - LiDAR: {self.lidar_topic}")
-        self.get_logger().info(f"  - NDT: {self.ndt_topic}")
-        self.get_logger().info(f"Correlation window: {self.correlation_window_ns/1e6:.1f}ms")
-
-    def setup_directories(self):
-        """Setup directory structure using configuration"""
-        self.base_dir = os.path.dirname(os.path.abspath(__file__))
-        
-        # Get directory configuration
-        dirs = self.config_manager.get_directories()
-        self.log_dir = os.path.join(self.base_dir, dirs.get('logs', 'logs'))
-        self.data_dir = os.path.join(self.base_dir, dirs.get('data', 'data'))
-        self.results_dir = os.path.join(self.base_dir, dirs.get('results', 'results'))
-        
-        # Create directories
-        for directory in [self.log_dir, self.data_dir, self.results_dir]:
-            os.makedirs(directory, exist_ok=True)
-
     def setup_csv_logging(self):
-        """Setup CSV file for logging timing data"""
-        self.csv_filename = os.path.join(
-            self.data_dir, 
-            f'fsm_timing_data_{self.session_timestamp}.csv'
-        )
+        """设置CSV日志"""
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        # 确保data目录存在
+        data_dir = "data"
+        os.makedirs(data_dir, exist_ok=True)
+        
+        # 使用统一的文件命名：为实验B提供明确的数据源
+        self.csv_filename = os.path.join(data_dir, f'r2v_timing_data_{timestamp}.csv')
         self.csv_file = open(self.csv_filename, 'w', newline='')
         self.csv_writer = csv.writer(self.csv_file)
         
-        # CSV header
+        # CSV头部 - 为实验B提供清晰的数据结构
         self.csv_writer.writerow([
-            'Timestamp_ISO', 'Session_ID', 'T1_ns', 'T2_ns', 'T3_ns', 'T4_ns',
-            'T1_T3_Diff_ms', 'Render_Latency_ms', 'NDT_Processing_Latency_ms', 
-            'Total_Pipeline_Latency_ms', 'Sequence_Valid'
+            'timestamp_iso', 'correlation_id', 'session_id',
+            't1_ns', 't2_ns', 't3_ns', 't4_ns',
+            'carla_sync_latency_ms', 'carla_render_latency_ms', 
+            'ndt_processing_latency_ms', 'r2v_total_latency_ms',
+            'sequence_valid'
         ])
         
         self.csv_file.flush()
-        self.get_logger().info(f"CSV data logging to: {self.csv_filename}")
-
-    def setup_session_logging(self):
-        """Setup session log file"""
-        self.session_log_filename = os.path.join(
-            self.log_dir,
-            f'fsm_session_log_{self.session_timestamp}.log'
-        )
-        
-        # Write session header
-        with open(self.session_log_filename, 'w') as f:
-            f.write(f"FSM Sandbox Timing Analysis Session Log\n")
-            f.write(f"Session ID: {self.session_timestamp}\n")
-            f.write(f"Start Time: {datetime.datetime.now().isoformat()}\n")
-            f.write(f"Configuration:\n")
-            f.write(f"  - Timing Sync Topic: {self.timing_sync_topic}\n")
-            f.write(f"  - LiDAR Topic: {self.lidar_topic}\n")
-            f.write(f"  - NDT Topic: {self.ndt_topic}\n")
-            f.write(f"  - Correlation Window: {self.correlation_window_ns/1e6:.1f}ms\n")
-            f.write("="*60 + "\n\n")
-        
-        self.get_logger().info(f"Session logging to: {self.session_log_filename}")
-
-    def log_to_session_file(self, message):
-        """Write message to session log file"""
-        timestamp = datetime.datetime.now().isoformat()
-        with open(self.session_log_filename, 'a') as f:
-            f.write(f"[{timestamp}] {message}\n")
+        self.get_logger().info(f"A1数据将保存到: {os.path.abspath(self.csv_filename)}")
 
     def to_nanoseconds(self, stamp):
-        """Convert ROS Time message to nanoseconds integer"""
+        """转换ROS时间戳为纳秒"""
         return stamp.sec * 1_000_000_000 + stamp.nanosec
 
     def t1_t2_callback(self, msg: TimeReference):
-        """Receive (T1, T2) pairs and store in dictionary"""
+        """接收(T1, T2)对并存储"""
         t1_ns = self.to_nanoseconds(msg.header.stamp)
         t2_ns = self.to_nanoseconds(msg.time_ref)
         
-        # Validate timestamp order
+        # 验证时间戳顺序
         if t2_ns <= t1_ns:
-            warning_msg = f"Invalid T1-T2 order: T2({t2_ns}) <= T1({t1_ns})"
-            self.get_logger().warn(warning_msg)
-            self.log_to_session_file(f"WARNING: {warning_msg}")
+            self.get_logger().warn(f"无效T1-T2顺序: T2({t2_ns}) <= T1({t1_ns})")
             return
             
         self.t1_t2_map[t1_ns] = t2_ns
         self.total_t1_t2_received += 1
-        
-        debug_msg = f"T1-T2 received: diff={(t2_ns-t1_ns)/1e6:.2f}ms"
-        self.get_logger().debug(debug_msg)
-        
-        # Log every 10th T1-T2 pair to session file
-        if self.total_t1_t2_received % 10 == 0:
-            self.log_to_session_file(f"T1-T2 pairs received: {self.total_t1_t2_received}")
 
     def lidar_callback(self, msg: PointCloud2):
-        """Receive LiDAR data and establish T3->T1 mapping"""
+        """接收LiDAR数据并建立T3->T1映射"""
         t3_ns = self.to_nanoseconds(msg.header.stamp)
         self.total_lidar_received += 1
         
         if not self.t1_t2_map:
-            self.get_logger().debug("No T1-T2 pairs available for correlation")
             return
         
-        # Find closest T1 timestamp
+        # 找到最接近的T1时间戳
         closest_t1 = min(self.t1_t2_map.keys(), key=lambda t1: abs(t1 - t3_ns))
         time_diff_ns = abs(closest_t1 - t3_ns)
-        time_diff_ms = time_diff_ns / 1e6
         
         if time_diff_ns < self.correlation_window_ns:
             self.t3_to_t1_map[t3_ns] = closest_t1
-            self.get_logger().debug(f"T1-T3 correlation: diff={time_diff_ms:.2f}ms")
         else:
             self.failed_t1_t3_matches += 1
-            debug_msg = f"T1-T3 correlation failed: diff={time_diff_ms:.2f}ms"
-            self.get_logger().debug(debug_msg)
-            
-            # Log correlation failures periodically
-            if self.failed_t1_t3_matches % 20 == 0:
-                self.log_to_session_file(f"T1-T3 correlation failures: {self.failed_t1_t3_matches}")
 
     def ndt_pose_callback(self, msg: PoseWithCovarianceStamped):
-        """Receive NDT pose output and complete timing chain correlation"""
+        """接收NDT输出并完成时序链关联"""
         t4_ns = self.to_nanoseconds(self.get_clock().now().to_msg())
         t3_ns = self.to_nanoseconds(msg.header.stamp)
         self.total_ndt_received += 1
         
-        # Check if T3 exists in our mapping
+        # 检查T3是否在映射中
         if t3_ns not in self.t3_to_t1_map:
             self.failed_t3_t4_matches += 1
-            self.get_logger().debug(f"T3-T4 correlation failed: T3 not found")
             return
         
-        # Find corresponding T1
+        # 找到对应的T1
         t1_ns = self.t3_to_t1_map.pop(t3_ns)
         
-        # Check if T1 exists in T1-T2 mapping
+        # 检查T1是否在T1-T2映射中
         if t1_ns not in self.t1_t2_map:
             self.failed_t3_t4_matches += 1
-            self.get_logger().debug(f"T3-T4 correlation failed: T1 not found in T1-T2 map")
             return
         
         t2_ns = self.t1_t2_map.pop(t1_ns)
         
-        # Validate timestamp sequence
+        # 验证时间戳序列
         sequence_valid = (t1_ns < t2_ns < t3_ns < t4_ns)
-        if not sequence_valid:
-            warning_msg = f"Invalid timestamp sequence detected"
-            self.get_logger().warn(warning_msg)
-            self.log_to_session_file(f"WARNING: {warning_msg}")
         
-        # Calculate latencies
-        t1_t3_diff_ms = (t3_ns - t1_ns) / 1e6
-        render_latency_ms = (t3_ns - t2_ns) / 1e6
-        ndt_processing_latency_ms = (t4_ns - t3_ns) / 1e6
-        pipeline_latency_ms = (t4_ns - t1_ns) / 1e6
+        # 计算延迟 - 为实验B提供明确的数据
+        carla_sync_latency_ms = (t2_ns - t1_ns) / 1e6      # CARLA同步延迟
+        carla_render_latency_ms = (t3_ns - t2_ns) / 1e6    # CARLA渲染延迟
+        ndt_processing_latency_ms = (t4_ns - t3_ns) / 1e6  # NDT处理延迟
+        r2v_total_latency_ms = (t4_ns - t1_ns) / 1e6       # 总R2V延迟 (这是实验B需要的ΔT_R2V)
         
-        # Record to CSV
+        # 记录到CSV
         timestamp_iso = datetime.datetime.now().isoformat()
+        correlation_id = f"A1_{self.successful_correlations:06d}"
+        session_id = timestamp_iso[:8].replace('-', '')  # YYYYMMDD
+        
         self.csv_writer.writerow([
-            timestamp_iso, self.session_timestamp, t1_ns, t2_ns, t3_ns, t4_ns,
-            t1_t3_diff_ms, render_latency_ms, ndt_processing_latency_ms,
-            pipeline_latency_ms, sequence_valid
+            timestamp_iso, correlation_id, session_id,
+            t1_ns, t2_ns, t3_ns, t4_ns,
+            carla_sync_latency_ms, carla_render_latency_ms,
+            ndt_processing_latency_ms, r2v_total_latency_ms,
+            sequence_valid
         ])
         
         self.csv_file.flush()
         self.successful_correlations += 1
         
-        success_msg = (
-            f"Complete timing chain recorded: "
-            f"Pipeline={pipeline_latency_ms:.2f}ms, "
-            f"Render={render_latency_ms:.2f}ms, "
-            f"NDT={ndt_processing_latency_ms:.2f}ms"
+        self.get_logger().info(
+            f"R2V延迟链记录: 总延迟={r2v_total_latency_ms:.2f}ms "
+            f"(同步={carla_sync_latency_ms:.2f}ms, "
+            f"渲染={carla_render_latency_ms:.2f}ms, "
+            f"NDT={ndt_processing_latency_ms:.2f}ms)"
         )
-        self.get_logger().info(success_msg)
-        self.log_to_session_file(f"SUCCESS: {success_msg}")
 
     def cleanup_old_entries(self):
-        """Remove old entries from dictionaries to prevent memory leak"""
+        """清理旧条目"""
         current_time_ns = self.to_nanoseconds(self.get_clock().now().to_msg())
         
-        # Cleanup T1-T2 map
+        # 清理T1-T2映射
         old_t1_keys = [t1 for t1 in self.t1_t2_map.keys() 
                        if (current_time_ns - t1) > self.cleanup_threshold_ns]
         for t1 in old_t1_keys:
             del self.t1_t2_map[t1]
         
-        # Cleanup T3-T1 map
+        # 清理T3-T1映射
         old_t3_keys = [t3 for t3 in self.t3_to_t1_map.keys() 
                        if (current_time_ns - t3) > self.cleanup_threshold_ns]
         for t3 in old_t3_keys:
             del self.t3_to_t1_map[t3]
-        
-        if old_t1_keys or old_t3_keys:
-            cleanup_msg = f"Cleaned up {len(old_t1_keys)} T1-T2 and {len(old_t3_keys)} T3-T1 entries"
-            self.get_logger().debug(cleanup_msg)
-            self.log_to_session_file(f"CLEANUP: {cleanup_msg}")
 
     def report_statistics(self):
-        """Report current statistics"""
+        """报告统计信息"""
         correlation_rate = (self.successful_correlations / max(self.total_ndt_received, 1)) * 100
         
-        stats_msg = (
-            f"Statistics: T1-T2 received={self.total_t1_t2_received}, "
-            f"LiDAR received={self.total_lidar_received}, "
-            f"NDT received={self.total_ndt_received}, "
-            f"Successful correlations={self.successful_correlations} "
-            f"({correlation_rate:.1f}%), "
-            f"T1-T3 match failures={self.failed_t1_t3_matches}, "
-            f"T3-T4 match failures={self.failed_t3_t4_matches}"
+        self.get_logger().info(
+            f"A1统计: T1-T2={self.total_t1_t2_received}, "
+            f"LiDAR={self.total_lidar_received}, "
+            f"NDT={self.total_ndt_received}, "
+            f"成功关联={self.successful_correlations} ({correlation_rate:.1f}%)"
         )
-        
-        self.get_logger().info(stats_msg)
-        self.log_to_session_file(f"STATS: {stats_msg}")
-
-    def write_session_summary(self):
-        """Write final session summary"""
-        end_time = datetime.datetime.now()
-        final_correlation_rate = (self.successful_correlations / max(self.total_ndt_received, 1)) * 100
-        
-        summary = f"""
-Session Summary:
-  End Time: {end_time.isoformat()}
-  Configuration Used:
-    - Timing Sync Topic: {self.timing_sync_topic}
-    - LiDAR Topic: {self.lidar_topic}
-    - NDT Topic: {self.ndt_topic}
-    - Correlation Window: {self.correlation_window_ns/1e6:.1f}ms
-  Final Statistics:
-    - T1-T2 pairs received: {self.total_t1_t2_received}
-    - LiDAR messages received: {self.total_lidar_received}
-    - NDT messages received: {self.total_ndt_received}
-    - Successful correlations: {self.successful_correlations}
-    - Correlation success rate: {final_correlation_rate:.2f}%
-    - T1-T3 match failures: {self.failed_t1_t3_matches}
-    - T3-T4 match failures: {self.failed_t3_t4_matches}
-  
-Data Files Generated:
-  - CSV Data: {self.csv_filename}
-  - Session Log: {self.session_log_filename}
-"""
-        
-        with open(self.session_log_filename, 'a') as f:
-            f.write("\n" + "="*60 + "\n")
-            f.write(summary)
 
     def destroy_node(self):
-        """Clean shutdown with final statistics"""
-        self.write_session_summary()
-        
-        super().destroy_node()
+        """清理关闭"""
         if hasattr(self, 'csv_file') and self.csv_file:
             self.csv_file.close()
             
-        final_correlation_rate = (self.successful_correlations / max(self.total_ndt_received, 1)) * 100
-        final_msg = (
-            f"Final statistics: {self.successful_correlations} successful correlations "
-            f"out of {self.total_ndt_received} NDT messages ({final_correlation_rate:.1f}%)"
-        )
-        self.get_logger().info(final_msg)
-        self.get_logger().info(f"Data saved to: {self.csv_filename}")
-        self.get_logger().info(f"Session log saved to: {self.session_log_filename}")
+        final_rate = (self.successful_correlations / max(self.total_ndt_received, 1)) * 100
+        self.get_logger().info(f"A1实验完成: {self.successful_correlations} 次成功测量 ({final_rate:.1f}%)")
+        self.get_logger().info(f"R2V延迟数据保存至: {self.csv_filename}")
+        
+        super().destroy_node()
 
 
 def main(args=None):
-    import argparse
-    
-    parser = argparse.ArgumentParser(description='FSM Sandbox Timing Analysis Data Recorder')
-    parser.add_argument('--config', default='config.yaml', help='Configuration file path')
-    
-    # Parse known args to avoid ROS2 argument conflicts
-    known_args, _ = parser.parse_known_args()
-    
     rclpy.init(args=args)
-    log_recorder_node = LatencyLogRecorderNode(known_args.config)
+    
+    # 支持命令行参数指定配置文件
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--config', default='config.yaml', help='配置文件路径')
+    parsed_args = parser.parse_args()
+    
+    log_recorder_node = LatencyLogRecorderNode(parsed_args.config)
     
     try:
         rclpy.spin(log_recorder_node)
     except KeyboardInterrupt:
-        log_recorder_node.get_logger().info("Shutting down log recorder...")
+        log_recorder_node.get_logger().info("A1数据收集停止")
     finally:
         log_recorder_node.destroy_node()
         rclpy.shutdown()

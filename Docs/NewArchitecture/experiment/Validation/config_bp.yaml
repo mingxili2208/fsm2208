@@ -1,0 +1,72 @@
+# FSM Sandbox Validation Configuration
+project:
+  name: "FSM Sandbox Validation"
+  version: "3.0"
+  description: "Comprehensive Timing, Fidelity and Latency Baseline Analysis"
+
+# Experiment B: Latency and Baseline Tracking Error Configuration
+experiment_b:
+  topics:
+    perception_input: "/localization/pose_estimator/pose"
+    planning_output: "/planning/scenario_planning/trajectory"
+
+    ground_truth: "/real_world/follow_adtruck/transformed_with_covariance"
+  
+  test_scenarios:
+    constant_velocity_test:
+      target_velocity_ms: 0.5
+      test_duration_s: 300
+      straight_path_length_m: 200
+      path_start_point: [0, 0]
+      path_end_point: [200, 0]
+  
+  parameters:
+    correlation_window_ns: 100000000  # 100ms for looser matching
+    outlier_removal_enabled: true
+    outlier_percentile_threshold: 99
+    
+  quality_thresholds:
+    max_acceptable_total_latency_ms: 200
+    max_acceptable_d2a_latency_ms: 50
+    max_acceptable_planner_latency_ms: 100
+    error_prediction_accuracy_threshold: 0.8  # 80% accuracy required
+
+# Extend existing configurations...
+experiment_a1:
+  topics:
+    timing_sync: "/fsm_sandbox/timing/t1_t2"
+    lidar_input: "/carla/follow_adtruck/carla_pointcloud"
+    ndt_output: "/localization/pose_estimator/pose_with_covariance"
+  parameters:
+    correlation_window_ns: 50000000
+    cleanup_threshold_ns: 60000000000
+    stats_report_interval_s: 5.0
+
+experiment_a2:
+  topics:
+    ground_truth: "/real_world/follow_adtruck/transformed_with_covariance"
+    virtual_lidar: "/carla/follow_adtruck/carla_pointcloud"
+    offline_ndt: "/localization/kinematic_state"
+  parameters:
+    alignment_tolerance_windows_ms: [10, 50, 100, 200]
+    min_alignment_rate_percent: 50
+    outlier_removal_enabled: true
+    outlier_iqr_factor: 1.5
+
+file_management:
+  base_directories:
+    data: "data"
+    logs: "logs" 
+    results: "results"
+  file_naming:
+    timestamp_format: "%Y%m%d_%H%M%S"
+    use_session_id: true
+
+visualization:
+  style: "seaborn-v0_8-whitegrid"
+  figure_size: [16, 12]
+  font_size: 12
+  dpi: 300
+  color_palette: "Set2"
+  enable_grid: true
+  grid_alpha: 0.3

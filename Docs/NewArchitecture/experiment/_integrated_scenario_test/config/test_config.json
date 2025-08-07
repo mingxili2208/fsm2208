@@ -1,0 +1,118 @@
+{
+  "description": "增强版自动驾驶测试系统配置文件",
+  "version": "2.0",
+  "author": "James LI",
+  "created": "2025-01-XX",
+  
+  "carla": {
+    "host": "127.0.0.1",
+    "port": 2000,
+    "tm_port": 8100,
+    "alt_tm_port": 8200,
+    "timeout": 10.0
+  },
+  
+  "vehicles": {
+    "num_vehicles": 5,
+    "seed": 42,
+    "safe_mode": true,
+    "batch_spawn": true,
+    "types": [
+      "vehicle.carlamotors.european_hgv",
+      "vehicle.mini.cooper_s",
+      "vehicle.nissan.patrol_2021",
+      "vehicle.tesla.cybertruck",
+      "vehicle.mini.cooper_s"
+    ],
+    "colors": [
+      "202,88,176",
+      "159,0,0",
+      "0,38,132",
+      null,
+      "202,88,176"
+    ]
+  },
+  
+  "navigation": {
+    "wait_before_engage": 2.0,
+    "wait_at_waypoint": 5.0,
+    "position_check_interval": 0.5,
+    "max_position_wait_time": 30.0,
+    "cleanup_wait_time": 0.5,
+    "wait_after_npc_removal": 5.0,
+    "goal_distance_threshold": 8.0,
+    "start_point_threshold": 10.0,
+    "navigation_timeout": 120.0,
+    "engage_retry_attempts": 3
+  },
+  
+  "traffic_manager": {
+    "following_distance": 5.0,
+    "speed_difference": 0.1,
+    "max_speed_limit": 25,
+    "spawn_retry_attempts": 5,
+    "spawn_position_variance": 1.0
+  },
+  
+  "waypoints": {
+    "npc_test": {
+      "description": "NPC测试路径点",
+      "points": [
+        {
+          "name": "NPC起点",
+          "position": [-48.4787, -32.6236, 0.0],
+          "orientation": [0.0, 0.0, -0.715607, 0.698503]
+        },
+        {
+          "name": "NPC任务终点1",
+          "position": [29.7123, -36.908, 0.0],
+          "orientation": [0.0, 0.0, 0.248181, 0.968714]
+        },
+        {
+          "name": "NPC任务终点2",
+          "position": [-6.22938, 50.2089, 0.0],
+          "orientation": [0.0, 0.0, -0.999831, 0.0183731]
+        }
+      ]
+    },
+    "loop_test": {
+      "description": "回环测试路径点",
+      "points": [
+        {
+          "name": "回环起点",
+          "position": [-6.22938, 50.2089, 0.0],
+          "orientation": [0.0, 0.0, -0.999831, 0.0183731]
+        },
+        {
+          "name": "回环路点1",
+          "position": [-48.3957, -19.3472, 0.0],
+          "orientation": [0.0, 0.0, -0.723422, 0.690406]
+        },
+        {
+          "name": "回环路点2",
+          "position": [54.3231, -47.6682, 0.0],
+          "orientation": [0.0, 0.0, 0.300639, 0.953738]
+        },
+        {
+          "name": "回环路点3",
+          "position": [26.589, 50.3549, 0.0],
+          "orientation": [0.0, 0.0, -0.999824, 0.01874]
+        }
+      ]
+    }
+  },
+  
+  "logging": {
+    "level": "INFO",
+    "max_log_files": 10,
+    "log_rotation": true
+  },
+  
+  "keyboard_controls": {
+    "collision_recovery": "T",
+    "restart_test": "R",
+    "pause_test": "P",
+    "stop_test": "S",
+    "quit_program": "Q"
+  }
+}

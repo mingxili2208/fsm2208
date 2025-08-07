@@ -1,51 +1,33 @@
-# FSM Sandbox Validation Configuration
+# 简化的config.yaml - 移除硬编码路径
 project:
   name: "FSM Sandbox Validation"
-  version: "3.0"
-  description: "Comprehensive Timing, Fidelity and Latency Baseline Analysis"
+  version: "3.1"
+  description: "Intelligent Adaptive Timing and Baseline Analysis"
 
-# Experiment B: Latency and Baseline Tracking Error Configuration
-experiment_b:
-  topics:
-    perception_input: "/localization/kinematic_state"
-    planning_output: "/planning/trajectory"
-    actuation_timing: "/fsm_sandbox/timing/t_plan_t_actuate"
-    ground_truth: "/real_world/follow_adtruck/transformed_with_covariance"
-  
-  test_scenarios:
-    constant_velocity_test:
-      target_velocity_ms: 0.5
-      test_duration_s: 300
-      straight_path_length_m: 200
-      path_start_point: [0, 0]
-      path_end_point: [200, 0]
-  
-  parameters:
-    correlation_window_ns: 100000000  # 100ms for looser matching
-    outlier_removal_enabled: true
-    outlier_percentile_threshold: 99
-    
-  quality_thresholds:
-    max_acceptable_total_latency_ms: 200
-    max_acceptable_d2a_latency_ms: 50
-    max_acceptable_planner_latency_ms: 100
-    error_prediction_accuracy_threshold: 0.8  # 80% accuracy required
+# 全局话题配置
+topics:
+  ground_truth: "/real_world/follow_adtruck/transformed_with_covariance"
+  virtual_lidar: "/sensing/lidar/concatenated/pointcloud"
+  ndt_output: "/localization/pose_estimator/pose"
+  carla_sync: "/fsm_sandbox/timing/t1_t2"
+  planning_output: "/planning/scenario_planning/trajectory"
 
-# Extend existing configurations...
+# 实验A1：时效性验证
 experiment_a1:
   topics:
     timing_sync: "/fsm_sandbox/timing/t1_t2"
-    lidar_input: "/carla/follow_adtruck/carla_pointcloud"
-    ndt_output: "/localization/kinematic_state"
+    lidar_input: "/sensing/lidar/concatenated/pointcloud"
+    ndt_output: "/localization/pose_estimator/pose"
   parameters:
     correlation_window_ns: 50000000
     cleanup_threshold_ns: 60000000000
     stats_report_interval_s: 5.0
 
+# 实验A2：保真度验证
 experiment_a2:
   topics:
     ground_truth: "/real_world/follow_adtruck/transformed_with_covariance"
-    virtual_lidar: "/carla/follow_adtruck/carla_pointcloud"
+    virtual_lidar: "/sensing/lidar/concatenated/pointcloud"
     offline_ndt: "/localization/kinematic_state"
   parameters:
     alignment_tolerance_windows_ms: [10, 50, 100, 200]
@@ -53,6 +35,31 @@ experiment_a2:
     outlier_removal_enabled: true
     outlier_iqr_factor: 1.5
 
+# 实验B：智能基线分析
+experiment_b:
+  # 复用A1结果作为R2V延迟
+  r2v_data_source: "experiment_a1"
+  
+  # 智能基线检测参数
+  intelligent_detection:
+    min_straight_distance_m: 20.0        # 最小直线距离
+    max_direction_variance_deg: 5.0      # 最大方向变化
+    min_straight_duration_s: 10.0        # 最小直线持续时间
+    target_velocity_ms: 0.5              # 期望的基线速度
+    velocity_tolerance: 0.2              # 速度容差（±0.2 m/s）
+    
+  # V2R延迟分析配置
+  v2r_analysis:
+    pc_controller_log_dir: "../_Sys/log"
+    timing_log_pattern: "timing_log_*.csv"
+    
+  # 质量控制阈值
+  quality_thresholds:
+    max_acceptable_r2v_latency_ms: 100
+    max_acceptable_v2r_latency_ms: 50
+    error_prediction_accuracy_threshold: 0.8
+
+# 文件管理
 file_management:
   base_directories:
     data: "data"
@@ -61,12 +68,3 @@ file_management:
   file_naming:
     timestamp_format: "%Y%m%d_%H%M%S"
     use_session_id: true
-
-visualization:
-  style: "seaborn-v0_8-whitegrid"
-  figure_size: [16, 12]
-  font_size: 12
-  dpi: 300
-  color_palette: "Set2"
-  enable_grid: true
-  grid_alpha: 0.3
